@@ -402,7 +402,89 @@ quick-add-modal button.product-form__submit.button.button--full-width.button--se
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* .quick-add-modal .product__info-wrapper.grid__item .product__info-container::-webkit-scrollbar:vertical {
-  display: none;
+/* ===== CONTRASTE QUICK VIEW - Charutos Reserva (inspirado na PDP) ===== */
+/* Fundos com contraste adequado */
+.quick-add-modal .product__info-wrapper.grid__item .product__info-container,
+.quick-add-modal .product__info-wrapper .product__info-container {
+  background: #ffffff !important;
 }
- */
+.quick-add-modal .product__media-wrapper,
+.quick-add-modal .product__media-wrapper .media {
+  background-color: #f5f5f5 !important;
+}
+
+/* Link "Ver informações completas" - cor escura legível */
+.quick-add-modal .product__view-details {
+  color: #1a322c !important;
+  font-weight: 600;
+}
+.quick-add-modal .product__view-details:hover {
+  color: #244039 !important;
+}
+
+/* Botão Adicionar ao carrinho - mesma cor da PDP */
+.quick-add-modal .product-form__submit.button--primary,
+.quick-add-modal .product-form__submit.button--secondary {
+  background-color: #1a322c !important;
+  border-color: #1a322c !important;
+  color: #fff !important;
+  transition: background-color 0.25s ease;
+}
+.quick-add-modal .product-form__submit.button--primary:hover,
+.quick-add-modal .product-form__submit.button--secondary:hover {
+  background-color: #244039 !important;
+  border-color: #244039 !important;
+  color: #fff !important;
+}
+
+/* Botão fechar - visível em fundo claro */
+.quick-add-modal .quick-add-modal__toggle {
+  color: #1a322c !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+.quick-add-modal .quick-add-modal__toggle:hover {
+  color: #244039 !important;
+  background-color: #fff !important;
+}
+
+/* Título e texto - cor primária da marca */
+.quick-add-modal .product__title h2,
+.quick-add-modal .product__title a {
+  color: #1a322c !important;
+}
+.quick-add-modal .product__info-container p.product__text {
+  color: #1a322c !important;
+  opacity: 0.9;
+}
+.quick-add-modal .product__text.caption-with-letter-spacing {
+  color: #959595 !important;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+/* Evitar sobreposição título/categoria */
+.quick-add-modal .product__title {
+  margin-top: 0.5rem;
+}
+
+/* Seletor de quantidade - borda para contraste */
+.quick-add-modal .quantity {
+  border: 1px solid #efefef;
+  background-color: #fff;
+}
+.quick-add-modal .quantity__input {
+  color: #1a322c;
+  opacity: 1;
+}
+.quick-add-modal .quantity__button {
+  color: #1a322c;
+}
+
+/* Variantes / inputs - borda para contraste em fundo claro */
+.quick-add-modal .product-form__input .select,
+.quick-add-modal .product-form__input .field__input,
+.quick-add-modal .product-form__input .quantity {
+  border-color: #efefef !important;
+  background-color: #fff !important;
+}

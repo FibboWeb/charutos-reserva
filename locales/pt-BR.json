@@ -55,6 +55,7 @@
       "item_added": "Item adicionado ao carrinho"
     },
     "share": {
+      "share_label": "Compartilhar",
       "copy_to_clipboard": "Copiar link",
       "share_url": "Link",
       "success_message": "Link copiado para a área de transferência",
@@ -117,6 +118,7 @@
       "add_to_cart": "Adicionar ao carrinho",
       "quick_buy": "Visualização rápida",
       "description": "Descrição",
+      "reviews": "Avaliações",
       "on_sale": "Promoção",
       "product_variants": "Variantes do produto",
       "quantity": {
@@ -135,8 +137,13 @@
       "sold_out": "Esgotado",
       "stock_status": "Disponibilidade",
       "in_stock": "Em estoque",
+      "inventory_in_stock_show_count": "{{ quantity }} em estoque",
       "unavailable": "Indisponível",
       "vendor": "Fabricante",
+      "type": "Tipo de produto",
+      "more_payment_option": "Mais opções de pagamento",
+      "inventory_out_of_stock": "Esgotado",
+      "inventory_out_of_stock_continue_selling": "Em estoque",
       "video_exit_message": "{{ title }} abre um vídeo em tela cheia na mesma janela.",
       "xr_button": "Ver em seu espaço",
       "xr_button_label": "Ver em seu espaço, carrega item na janela de realidade aumentada",
@@ -456,6 +463,20 @@
       "tracking_number": "Número de rastreamento",
       "subtotal": "Subtotal",
       "total_duties": "Tributos de importação"
+    }
+  },
+  "enquiry": {
+    "form": {
+      "heading": "Conte-nos sobre sua dúvida!",
+      "sub_heading": "Fale Conosco",
+      "name": "Nome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "by_email": "E-mail",
+      "by_phone": "Telefone",
+      "by_both": "Ambos",
+      "message_heading": "Modo de comunicação preferido",
+      "message": "Mensagem"
     }
   },
   "gift_cards": {

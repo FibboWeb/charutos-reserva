@@ -42,6 +42,7 @@
   .custom-product-grid li.active .icon-columns{ color:var(--gradient-base-background-1); }
 .custom-product-grid li.active:before { left: 0; width: 100%;  background-color:var(--gradient-base-accent-1); }
 .custom-product-grid li .icon-columns{z-index:1;width: 2rem;height: 2rem;}
+.facets-toolbar-left { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 
 @media screen and (min-width: 320px) {
 .custom-product-grid li[data-cols="grid--5-col-desktop"]{display:none;}
@@ -125,16 +126,10 @@
     <div class="product-grid-container{% if section.settings.filter_type == 'vertical' and section.settings.collapse_on_larger_devices %} product-grid-container-vertical{% endif %}" id="ProductGridContainer">      
         {%- if section.settings.enable_sorting -%}
           <facet-filters-form class="facets facets-vertical-sort  {% if section.settings.page_full_width %} page-full-width {% else %} page-width {% endif %} {% if section.settings.sidebar_settings != 'no-sidebar'  %}small-hide{% endif %} no-js-hidden facte-{{ section.settings.filter_type }}">
+             <div class="facets-toolbar-left">
              <div class="product-count-vertical light {% if section.settings.sidebar_settings != 'no-sidebar' or section.settings.filter_type != 'vertical'  %}medium-hide small-hide {% endif %}" role="status">
                 <h2 class="product-count__text text-body">
                   <span class="ProductCountDesktop">
-                  <!-- {%- if collection.results_count -%}
-                      {{ 'templates.search.results_with_count' | t: terms: collection.terms, count: collection.results_count }}
-                    {%- elsif collection.products_count == collection.all_products_count -%}
-                      {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
-                    {%- else -%}
-                      {{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}
-                    {%- endif -%}   -->
                     {%- paginate collection.products by section.settings.products_per_page -%}
                     {%- assign productSize = collection.products.size -%}
                     {{ 'products.facets.count_text' | t:current_count:productSize,total_count:collection.products_count}}
@@ -146,16 +141,39 @@
                     <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                   </svg>
                 </div>
-              </div>  
-             
-            <!-- {% if section.settings.enable_grid_list %}  
-            <div class="filter-style">
-              <div class="filter-buttons">
-                <div class="grid-view-button layout-mode active"> {% render 'icon-large' %}</div>
-                <div class="list-view-button layout-mode ">{% render 'icon-bars' %}</div>
               </div>
-            </div>
-             {% endif %}  -->
+               <form class="facets-vertical-form" id="FacetSortForm">
+               <div class="facet-filters sorting caption">
+                <div class="facet-filters__field">                                    
+                    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+              <div class="sorting dt-sort__container">
+                <div class="facet-filters__field">
+                  <label>{{ 'products.facets.sort_by_label' | t }}</label>
+                  <details class="disclosure-has-popup facets__disclosure facet-filters__sort">                    
+                    <summary class="facets__summary">
+                       <span class="button button--tertiary button--small facets__summary-label"></span>{% render 'icon-caret' %}   
+                    </summary>
+                    <div class="facets__display">
+                      
+                      <ul class="facets__list list-unstyled dt-sort__data" role="list">
+                        {%- for option in collection.sort_options -%}
+                          <li class="list-menu__item facets__item">
+                            <label for="Filter-{{ option.value | escape }}-{{ forloop.index }}" class="facet-checkbox">
+                              <input type="radio" name="sort_by" value="{{ option.value | escape }}" id="Filter-{{ option.value | escape }}-{{ forloop.index }}" {% if option.value == sort_by %}checked="checked"{% endif %} class="visually-hidden dt-sort-list" data-value="{{  option.name | escape}}" />
+                              <span class="label">{{ option.name | escape }}</span>
+                            </label>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                  </details>                         
+              </div>
+                  </div>
+                </div>
+                
+              </div>
+            </form>
+             </div>
               {% if section.settings.collections_custom_cols %}
               <ul class="custom-product-grid {% if section.settings.sidebar_settings != 'no-sidebar' or  section.settings.filter_type != 'vertical'  %}medium-hide small-hide {% endif %}">
               <li data-val="1"  data-cols="list-view-filter" class="list-view-button layout-mode{% if section.settings.columns_desktop == '1' %}active{% endif %} ">
@@ -197,37 +215,6 @@
               </li>
               </ul>
               {% endif %}
-               <form class="facets-vertical-form medium-hide small-hide" id="FacetSortForm">
-               <div class="facet-filters sorting caption">
-                <div class="facet-filters__field">                                    
-                    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-              <div class="sorting dt-sort__container">
-                <div class="facet-filters__field">
-                  <label>{{ 'products.facets.sort_by_label' | t }}</label>
-                  <details class="disclosure-has-popup facets__disclosure facet-filters__sort">                    
-                    <summary class="facets__summary">
-                       <span class="button button--tertiary button--small facets__summary-label"></span>{% render 'icon-caret' %}   
-                    </summary>
-                    <div class="facets__display">
-                      
-                      <ul class="facets__list list-unstyled dt-sort__data" role="list">
-                        {%- for option in collection.sort_options -%}
-                          <li class="list-menu__item facets__item">
-                            <label for="Filter-{{ option.value | escape }}-{{ forloop.index }}" class="facet-checkbox">
-                              <input type="radio" name="sort_by" value="{{ option.value | escape }}" id="Filter-{{ option.value | escape }}-{{ forloop.index }}" {% if option.value == sort_by %}checked="checked"{% endif %} class="visually-hidden dt-sort-list" data-value="{{  option.name | escape}}" />
-                              <span class="label">{{ option.name | escape }}</span>
-                            </label>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    </div>
-                  </details>                         
-              </div>
-                  </div>
-                </div>
-                
-              </div>
-            </form>
            
           </facet-filters-form>
         {%- endif -%}

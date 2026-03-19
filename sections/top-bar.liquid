@@ -17,7 +17,7 @@
               {% render 'social-icons' %}
             </ul>
           {%- endif -%}
-          {%- if section.settings.enable_language_selector or section.settings.enable_country_selector and section.settings.show_account %}
+          {%- if section.settings.enable_language_selector or section.settings.enable_country_selector or section.settings.show_account or section.settings.show_wishlist or section.settings.show_compare %}
             <div class="currency_and_account">
               <div class="currency_language">
                 {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -169,6 +169,22 @@
                   </localization-form>
                 {%- endif -%}
               </div>
+              {%- if section.settings.show_wishlist -%}
+                <a href="/pages/wishlist" class="link focus-inset top-bar__icon top-bar__icon--wishlist" aria-label="{{ 'products.product.wishlist' | t }}">
+                  {% render 'icon-wishlist' %}
+                  <dtx-wish-count class="dtxc-wishlist-count cart-count-bubble top-bar-count" grid_type="wishList" count="0">
+                    <div class="grid-count-bubble"><span aria-hidden="true"></span></div>
+                  </dtx-wish-count>
+                </a>
+              {%- endif -%}
+              {%- if section.settings.show_compare -%}
+                <a href="/pages/compare" class="link focus-inset top-bar__icon top-bar__icon--compare" aria-label="{{ 'products.product.compare' | t }}">
+                  {% render 'icon-compare' %}
+                  <dtx-compare-count class="dtxc-compare-count cart-count-bubble top-bar-count" grid_type="compareList" count="0">
+                    <div class="grid-count-bubble"><span aria-hidden="true"></span></div>
+                  </dtx-compare-count>
+                </a>
+              {%- endif -%}
              {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
                {%- if customer -%} 
               <div class="myaccount-links">
@@ -244,7 +260,7 @@
   </section>
   <style>
       .dt-sc-header-top-bar{ padding: 11px;background:#1a322c;color:#fff;}
-      .dt-sc-header-top-bar .list-social__link svg{width:1.6rem;height:1.6rem;color:#d4b064;}
+      .dt-sc-header-top-bar .list-social__link svg{width:1.6rem;height:1.6rem;color:#1a322c;}
       /* .dt-sc-header-top-bar .list-social__item:not(:last-child) .list-social__link{margin-right: 20px;} */
       .dt-sc-header-top-bar a .icon-text{font-size:1.4rem;font-weight:600;transition: all var(--duration-default) linear;}
       .dt-sc-header-top-bar ul{list-style:none;margin:0;padding:0; display:flex;align-items: center;column-gap:20px;}
@@ -255,8 +271,13 @@
       .dt-sc-header-top-bar .header-contact li:not(:last-child){margin-right:20px}
       .dt-sc-header-top-bar .top-bar-content a.top-bar-link.link {text-decoration: underline;}
       .dt-sc-header-top-bar .top-bar-content .top-bar-text{margin:0;font-size:1.4rem;font-weight:500;color:#fff;}
-      .dt-sc-header-top-bar .list-social__link{padding:0 0rem;color:#d4b064;}
-      .dt-sc-header-top-bar .list-social__link:hover{color:#e5c77a;}
+      .dt-sc-header-top-bar .list-social__link{padding:0 0rem;color:#1a322c;}
+      .dt-sc-header-top-bar .top-bar__icon{position:relative;color:#fff;padding:0.4rem;}
+      .dt-sc-header-top-bar .top-bar__icon:hover{color:#d4b064;}
+      .dt-sc-header-top-bar .top-bar__icon svg{width:1.8rem;height:1.8rem;}
+      .dt-sc-header-top-bar .top-bar__icon .cart-count-bubble{top:-2px;right:-2px;}
+      .dt-sc-header-top-bar .top-bar-count .grid-count-bubble{min-width:1.6rem;height:1.6rem;font-size:1rem;background:#d4b064;color:#1a322c;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+      .dt-sc-header-top-bar .list-social__link:hover,.dt-sc-header-top-bar .list-social__link:hover svg{color:#d4b064;}
       .dt-sc-header-top-bar .disclosure__link,.dt-sc-header-top-bar .disclosure__button{color:#fff;}
       .dt-sc-header-top-bar .disclosure .localization-form__select{padding-top: 0;margin: 0!important; padding-bottom: 0;font-weight:400;box-shadow: none;outline: 0;text-decoration: none;padding-right:0rem;}
       .dt-sc-header-top-bar .localization-form{padding:0!important;margin:0!important;}
@@ -285,7 +306,7 @@
         .dt-sc-header-top-bar .disclosure .localization-form__select{ line-height: normal;height: auto;min-height: unset;display: flex;align-items: baseline;gap: 0.6rem; }
 
      @media screen and (max-width: 749px) {
-
+      .dt-sc-header-top-bar .top-bar__icon { display: none !important; }
       {% if section.settings.disable_topbar_mobile %}
         .dt-sc-header-top-bar{display:none;}
       {% endif %}
@@ -452,6 +473,18 @@
     "type": "checkbox",
     "id": "show_account",
     "label": "Enable Account",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_wishlist",
+    "label": "Exibir Wishlist",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_compare",
+    "label": "Exibir Compare",
     "default": true
   },
    {

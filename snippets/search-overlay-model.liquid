@@ -1,4 +1,5 @@
  {%- if section.settings.search_style == 'search_icon' -%}
+      {%- assign input_id = 'Search-In-Modal-' | append: section.id -%}
       <details-overlay-modal class="header__search {% if section.settings.header_icon_type =="text"  %} icon__fallback-content {% endif %}" id="dT_top-sticky">
           <div class="search-modal modal__content gradient" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
             <div class="modal-overlay"></div>

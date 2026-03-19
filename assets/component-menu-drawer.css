@@ -271,14 +271,16 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer .list-social__link,
-.menu-drawer .list-social__link .icon {
-  color: rgb(var(--color-base-outline-button-labels));
+.menu-drawer .list-social__link .icon,
+.menu-drawer .list-social__link svg {
+  color: #1a322c;
 }
 
 .menu-drawer .list-social__link:hover,
-.menu-drawer .list-social__link:hover .icon {
-  color: rgb(var(--color-base-accent-2));
-  opacity: 0.9;
+.menu-drawer .list-social__link:hover .icon,
+.menu-drawer .list-social__link:hover svg {
+  color: #d4b064;
+  opacity: 1;
 }
 
 ul.dt-nav > li > a span {

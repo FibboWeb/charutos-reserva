@@ -6,7 +6,7 @@
 }
 
 .tabs .tablinks {
-  color: var(--color-base-accent-1);
+  color: rgb(var(--color-base-accent-1));
   cursor: pointer;
   padding: 0.5rem 2.5rem;
   margin:  0 0 20px;
@@ -29,7 +29,7 @@
 .collection .image-with-text__grid.grid #tab-template--21701471240498__1687cb80-13cd-4565-8a3a-7641b90f2c92-js .tabs{margin-bottom:2.6rem;}
 .tabs .tablinks:hover,
 .tabs .tablinks.active {
-  color: rgb(var(--color-base-outline-button-labels));
+  color: rgb(var(--color-base-accent-1)) !important;
   box-shadow: inset 0 -3px 0 var(--gradient-base-accent-1);
 }
 

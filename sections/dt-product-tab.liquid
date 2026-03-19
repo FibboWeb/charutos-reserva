@@ -67,6 +67,12 @@
   margin-top: calc(0rem - var(--card-image-padding));
   padding: 3rem 2rem;
 }
+
+/* Correção de contraste: guia ativa legível em fundo branco (WCAG AA) */
+#shopify-section-{{ section.id }} .lush-product-tab .tabs .tablinks.active,
+#shopify-section-{{ section.id }} .lush-product-tab .tabs .tablinks:hover {
+  color: rgb(var(--color-base-accent-1)) !important;
+}
   
 {%- endstyle -%}
 

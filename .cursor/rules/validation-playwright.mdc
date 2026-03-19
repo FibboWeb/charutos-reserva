@@ -1,0 +1,43 @@
+---
+description: Validação de entregas com Playwright MCP
+alwaysApply: true
+---
+
+# Validação com Playwright MCP
+
+## Obrigatório
+
+Ao alterar **header**, **top-bar**, **navegação** ou qualquer UI visível no site, **sempre validar** com o Playwright MCP antes de considerar a entrega concluída.
+
+## Fluxo de Validação
+
+1. **Navegar** até o site (produção ou preview):
+   ```
+   browser_navigate → url: https://charutosreserva.com.br/
+   ```
+
+2. **Redimensionar** para desktop (≥1280px):
+   ```
+   browser_resize → width: 1280, height: 800
+   ```
+
+3. **Capturar snapshot** para verificar estrutura:
+   ```
+   browser_snapshot
+   ```
+
+4. **Screenshot** para evidência visual:
+   ```
+   browser_take_screenshot → filename: header-desktop-verification.png
+   ```
+
+## O que Verificar
+
+- Ícone de pesquisa visível no desktop (quando `search_style == 'search_icon'`)
+- Menu entre logo e ícones (layout `heading | navigation | icons`)
+- Wishlist e Compare na top bar (quando habilitados)
+- Hamburger em viewport < 1180px
+
+## Nota
+
+O site em produção pode não refletir alterações locais até o deploy do tema. Se o snapshot mostrar layout antigo, confirmar se o deploy foi realizado.

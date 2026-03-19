@@ -1348,7 +1348,160 @@ p.rating-count.caption span {
 .card-heading{ display:flex;gap:10px; justify-content: space-between; align-items: center;}
 .collection .card-heading .quick-add .quick-add__submit.button{ margin:0; }
 
+/* ===== CORREÇÃO CARDS PRODUTO - Referência layout tênis ===== */
+/* 1. Corrige sobreposição de texto nos títulos */
+.card__information .card__heading,
+.card__content .card__information .card__heading {
+  line-height: 1.4 !important;
+  min-height: auto !important;
+  margin: 0 0 0.5rem 0 !important;
+  overflow: visible;
+}
+.card__content .card__information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: auto;
+}
+.card__content .card__information .card__heading a {
+  display: block;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #1a322c;
+}
 
+/* 2. Área da imagem com fundo cinza claro (referência) */
+.card__media,
+.card__media .media {
+  background-color: #f5f5f5 !important;
+}
+
+/* 3. Botão Adicionar ao carrinho - cor dourada da marca, canto inferior direito */
+.card-wrapper .quick-add.button-quick-add,
+.card-wrapper .card__inner .quick-add.button-quick-add {
+  display: flex !important;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  top: auto;
+  margin: 0;
+  pointer-events: all;
+  z-index: 2;
+}
+.card-wrapper .quick-add__submit.button,
+.card-wrapper .quick-add .quick-add__submit.button {
+  width: 56px !important;
+  min-width: 56px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border-radius: 20px !important;
+  background-color: #d4b064 !important;
+  color: #ffffff !important;
+  border: none;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0;
+  margin: 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  transition: background-color 0.25s ease;
+}
+.card-wrapper .quick-add__submit.button:hover,
+.card-wrapper .quick-add .quick-add__submit.button:hover {
+  background-color: #c79b2f !important;
+}
+.card-wrapper .quick-add__submit.button span:not(.sold-out-message):not(.loading-overlay__spinner),
+.card-wrapper .quick-add .quick-add__submit.button span:not(.sold-out-message):not(.loading-overlay__spinner) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100%;
+}
+.card-wrapper .quick-add__submit.button svg,
+.card-wrapper .quick-add .quick-add__submit.button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+/* Card estrutura - info área branca */
+.card--card.card--media > .card__content {
+  background: #ffffff;
+  padding: 1rem 1rem 3rem 1rem !important;
+}
+/* Espaçamento preço */
+.card__content .price {
+  margin: 0;
+  font-weight: 600;
+  color: #1a322c;
+}
+/* Layout linha título + preço + botão (referência) */
+.card-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  position: relative;
+  padding-right: 0;
+}
+.card-info-row .quick-add {
+  position: static !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+.card-info-row .quick-add__submit.button,
+.card-info-row .card-add-to-cart-btn {
+  width: 56px !important;
+  min-width: 56px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border-radius: 20px !important;
+  background-color: #d4b064 !important;
+  color: #ffffff !important;
+  border: none;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  transition: background-color 0.25s ease;
+}
+.card-info-row .quick-add__submit.button:hover,
+.card-info-row .card-add-to-cart-btn:hover {
+  background-color: #c79b2f !important;
+}
+.card-info-row .quick-add__submit.button .icon-wrap,
+.card-info-row .card-add-to-cart-btn .icon-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100%;
+  margin: 0;
+}
+.card-info-row .quick-add__submit.button .icon-wrap svg,
+.card-info-row .card-add-to-cart-btn .icon-wrap svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+.card-info-row .quick-add__submit.button .loading-overlay__spinner,
+.card-info-row .card-add-to-cart-btn .loading-overlay__spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 

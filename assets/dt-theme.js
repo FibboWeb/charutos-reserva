@@ -407,13 +407,22 @@ $("#dT_TopStickySearchBtn").click(function (ev) {
   $("#dT_top-sticky").addClass("search-show");
   $("#dT_top-sticky .search-modal").css("opacity", "1");
   $("body").addClass("search-overlay-open");
+  setTimeout(function() {
+    $("#dT_top-sticky .search__input").focus();
+  }, 100);
 });
 
-$(".dT_TopStickySearchCloseBtn").click(function (ev) {
-  ev.preventDefault();
+function closeSearchOverlay() {
   $("#dT_top-sticky").removeClass("search-show");
   $("#dT_top-sticky .search-modal").css("opacity", "0");
   $("body").removeClass("search-overlay-open");
+}
+$(".dT_TopStickySearchCloseBtn").click(function (ev) {
+  ev.preventDefault();
+  closeSearchOverlay();
+});
+$(document).on("click", "#dT_top-sticky .modal-overlay", function() {
+  closeSearchOverlay();
 });
 
 setTimeout(function () {

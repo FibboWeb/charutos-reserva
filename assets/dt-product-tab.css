@@ -7,7 +7,7 @@
 
 
 .lush-product-tab .tabs .tablinks {
-  color: var(--color-base-accent-1);
+  color: rgb(var(--color-base-accent-1));
   cursor: pointer;
   padding: 0rem 1rem;
   margin: 0 0.5rem;
@@ -30,7 +30,7 @@
 
 /* .tabs .tablinks:hover, */
 .lush-product-tab .tabs .tablinks.active {
-  color: var(--gradient-base-accent-3);
+  color: rgb(var(--color-base-accent-1));
   /*     box-shadow: inset 0 -3px 0 var(--gradient-base-accent-1); */
   /* border-left: none;
   border-right: none; */
@@ -40,7 +40,7 @@
 }
 
 .lush-product-tab .tabs .tablinks:hover {
-  color: var(--gradient-base-accent-3);
+  color: rgb(var(--color-base-accent-1));
   box-shadow: none;
 }
 
@@ -422,7 +422,7 @@
 
 /* .tabs_container .product-tab-carousel .swiper-container ul{padding-left:10px;} */
 .lush-product-tab .tabs .tablinks:hover {
-  color: var(--gradient-base-accent-3);
+  color: rgb(var(--color-base-accent-1));
 }
 
 @media screen and (max-width:876px) {

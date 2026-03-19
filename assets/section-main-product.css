@@ -148,6 +148,17 @@ display: inline-block;
   letter-spacing: 0.07rem;
 }
 
+/* Botão Compre já - fundo dourado (Charutos Reserva) */
+.main-product-template .shopify-payment-button__button--unbranded {
+  background-color: #d4b064 !important;
+  color: #fff !important;
+}
+.main-product-template .shopify-payment-button__button--unbranded:hover,
+.main-product-template .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  background-color: #c79b2f !important;
+  color: #fff !important;
+}
+
 .shopify-payment-button__button--unbranded::selection {
   background-color: rgba(var(--color-button-text), 0.3);
 }
@@ -412,6 +423,24 @@ variant-selects .product-form__input .form__label {
 
 .product-form__submit {
   margin-bottom: 1rem;
+}
+
+/* Botão Adicionar ao carrinho - fundo verde (Charutos Reserva) */
+.main-product-template .product-form__submit.button--primary,
+.main-product-template .product-form__submit.button--secondary,
+.sticky-bar .product-form__submit.button--primary,
+.sticky-bar .product-form__submit.button--secondary {
+  background-color: #1a322c !important;
+  border-color: #1a322c !important;
+  color: #fff !important;
+}
+.main-product-template .product-form__submit.button--primary:hover,
+.main-product-template .product-form__submit.button--secondary:hover,
+.sticky-bar .product-form__submit.button--primary:hover,
+.sticky-bar .product-form__submit.button--secondary:hover {
+  background-color: #244039 !important;
+  border-color: #244039 !important;
+  color: #fff !important;
 }
 
 .no-js .product-form__submit.button--secondary {
@@ -2271,9 +2300,12 @@ label.swatch-variant-image {
   padding: 20px 0 20px 48px;
   border: 1px solid rgba(var(--color-foreground),.08);
   margin-top:45px;
+  color: #1a322c;
 }
 .dt-sc-enquiry-form  .enquiry-image{display: flex;align-items: center;}
-.dt-sc-enquiry-form .enquiry_heading{font-weight: 400;font-size: 2rem;margin:0 0 5px;}
+.dt-sc-enquiry-form .enquiry_heading{font-weight: 400;font-size: 2rem;margin:0 0 5px;color: #1a322c;}
+.dt-sc-enquiry-form a#trigger-enquiry{color: #1a322c;}
+.dt-sc-enquiry-form a#trigger-enquiry:hover{color: #d4b064;}
 
 .product__info-wrapper a.button--secondary,
 .product__info-wrapper .share-button__button {

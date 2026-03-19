@@ -107,94 +107,37 @@
             {%- endif -%}
           </div>
            
-        {%- if settings.enable_wishlist -%}
-          <ul class="product-icons right-aligned">          
-        <li><dtx-wishlist><a href="javascript:void(0);" class="add-wishlist" data-product_handle="{{ card_product.handle }}"> </a></dtx-wishlist>
-            <tooltip class="tooltip">{{ 'products.wishlist.addToWishList' | t }}</tooltip>
-          </li>          
-           </ul>
-      {%  endif %}         
-          <div class="quick-add button-quick-add">
-             {%- if settings.enable_quickview -%}
-           <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
-                <button
-                  id="{{ product_form_id }}-submit"
-                  type="submit"
-                  name="add"
-                  class="small-hide quick-add__submit  button--full-width button button--primary"
-                  aria-haspopup="dialog"
-                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                  data-product-url="{{ card_product.url }}"
-                >               
-               {{ 'products.product.quick_buy' | t }}
-                  <div class="loading-overlay__spinner hidden">    
-           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background:transparent; display: block; shape-rendering: auto; animation-play-state: running; animation-delay: 0s;" width="40px" height="40px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-                    <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="13" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" style="animation-play-state: running; animation-delay: 0s;">
-                      <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="0.819672131147541s" values="0 50 50;360 50 50" keyTimes="0;1" style="animation-play-state: running; animation-delay: 0s;"></animateTransform>
-                    </circle>
-                  </svg>
+        <ul class="product-icons right-aligned">
+          {%- if settings.enable_compare -%}
+            <li><dtx-compare><a href="javascript:void(0);" class="add-compare" data-product_handle="{{ card_product.handle }}"></a></dtx-compare>
+              <tooltip class="tooltip">{{ 'products.compare.add_to_compare' | t }}</tooltip>
+            </li>
+          {%- endif -%}
+          {%- if settings.enable_quickview -%}
+            <li>
+              <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
+                <button type="button" class="quick-add__submit button--full-width button--secondary" aria-haspopup="dialog" aria-labelledby="title-{{ section_id }}-{{ card_product.id }}" data-product-url="{{ card_product.url }}">
+                  {% render 'icon-eye' %}
+                  <div class="loading-overlay__spinner hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100"><circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="6" r="35" stroke-dasharray="164.93 56.98"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="0.82s" values="0 50 50;360 50 50" keyTimes="0;1"/></circle></svg>
                   </div>
                 </button>
               </modal-opener>
               <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
-                <div
-                  role="dialog"
-                  aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
-                  aria-modal="true"
-                  class="quick-add-modal__content global-settings-popup"
-                  tabindex="-1"
-                >
-                  <button
-                    id="ModalClose-{{ card_product.id }}"
-                    type="button"
-                    class="quick-add-modal__toggle"
-                    aria-label="{{ 'accessibility.close' | t }}"
-                  >
-                    {% render 'icon-close' %}
-                    
-                  </button>
+                <div role="dialog" aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}" aria-modal="true" class="quick-add-modal__content global-settings-popup" tabindex="-1">
+                  <button id="ModalClose-{{ card_product.id }}" type="button" class="quick-add-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
                   <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
                 </div>
               </quick-add-modal>
-             <tooltip class="tooltip">{{ 'products.product.quick_buy' | t }}</tooltip>
-                {%- endif -%}
-                 {%- if settings.enable_quickadd -%}
-              <product-form>
-                {%- form 'product', card_product, id: product_form_id, class: 'form shopify-product-form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-                  <input type="hidden" name="id" class="variant-push" value="{{ card_product.selected_or_first_available_variant.id }}" disabled>
-                  <button
-                    id="{{ product_form_id }}-submit"
-                    type="submit"
-                    name="add"
-                    class="quick-add__submit button button--full-width button--primary"
-                    aria-haspopup="dialog"
-                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                    aria-live="polite"
-                    data-sold-out-message="true"
-                    {% if card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-                  >
-                    <span>
-                      {%- if card_product.selected_or_first_available_variant.available -%}
-                        {{ 'products.product.add_to_cart' | t }}
-                      {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
-                      {%- endif -%}
-                    </span>
-                    <span class="sold-out-message hidden">
-                      {{ 'products.product.sold_out' | t }}
-                    </span>
-                    <div class="loading-overlay__spinner hidden">
-                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="path" fill="currentColor" fill-rule="evenodd" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                      </svg>
-                    </div>
-                  </button>
-                {%- endform -%}
-              </product-form>                         
-             <tooltip class="tooltip">{{ 'products.product.add_to_cart' | t }}</tooltip>
-               {%- endif -%}
-          </div>
-        
+              <tooltip class="tooltip">{{ 'products.product.quick_buy' | t }}</tooltip>
+            </li>
+          {%- endif -%}
+          {%- if settings.enable_wishlist -%}
+            <li><dtx-wishlist><a href="javascript:void(0);" class="add-wishlist" data-product_handle="{{ card_product.handle }}"> </a></dtx-wishlist>
+              <tooltip class="tooltip">{{ 'products.wishlist.addToWishList' | t }}</tooltip>
+            </li>
+          {%- endif -%}
+        </ul>         
         </div>
   {%  render 'deal-snippet', product: card_product %}
          
@@ -222,8 +165,38 @@
               {{ card_product.title | escape }} <span class="choosen-swatch"></span>
             </a>
           </h3>
-        {% render 'price', product: card_product, price_class: '' %}      
-         <span class="caption-large light">{{ block.settings.description | escape }}</span>
+        <div class="card-info-row">
+          {% render 'price', product: card_product, price_class: '' %}
+          <div class="quick-add button-quick-add">
+            {%- if settings.enable_quickadd -%}
+              <product-form>
+                {%- form 'product', card_product, id: product_form_id, class: 'form shopify-product-form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                  <input type="hidden" name="id" class="variant-push" value="{{ card_product.selected_or_first_available_variant.id }}" disabled>
+                  <button
+                    id="{{ product_form_id }}-submit"
+                    type="submit"
+                    name="add"
+                    class="quick-add__submit button button--primary card-add-to-cart-btn"
+                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                    aria-live="polite"
+                    data-sold-out-message="true"
+                    {% if card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+                  >
+                    <span class="icon-wrap">{% render 'icon-cart' %}</span>
+                    <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
+                    <div class="loading-overlay__spinner hidden">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="currentColor" fill-rule="evenodd" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </div>
+                  </button>
+                {%- endform -%}
+              </product-form>
+              <tooltip class="tooltip">{{ 'products.product.add_to_cart' | t }}</tooltip>
+            {%- endif -%}
+          </div>
+        </div>      
+         {% if block != blank and block.settings.description != blank %}<span class="caption-large light">{{ block.settings.description | escape }}</span>{% endif %}
        <div class="card-information review">
             {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
               {% liquid
