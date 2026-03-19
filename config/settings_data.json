@@ -401,11 +401,14 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "872fb711-49d8-4e35-bc16-d8e2e3131ec4": {
-            "type": "text",
+          "address_3HQm3g": {
+            "type": "address",
             "settings": {
-              "heading": "",
-              "subtext": "<p>1245, North Western Street<br/>Europia. Lumbio</p><p>Monday to Friday from 09:00 to 17:00. <br/>Call Us+31 (0) 123 456 789</p>",
+              "address_heading": "Contato",
+              "footer_address": "",
+              "footer_contact_no": "11 97812 1234",
+              "footer_contact_id": "sac@charutosreserva.com.br",
+              "office_hours": "",
               "alignment": "left",
               "column_width": 25
             }
@@ -442,7 +445,7 @@
           }
         },
         "block_order": [
-          "872fb711-49d8-4e35-bc16-d8e2e3131ec4",
+          "address_3HQm3g",
           "3408e200-d33a-433c-bdd0-1d9c73fff07e",
           "8c88a831-9d3f-4039-9e74-6f7b20caa8ff",
           "bd27e402-31b6-4bd2-9c8f-b64d9598283f"
