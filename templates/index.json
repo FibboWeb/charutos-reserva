@@ -159,22 +159,22 @@
         "template--21701471240498__1687cb80-13cd-4565-8a3a-7641b90f2c92-tab-1": {
           "type": "tab",
           "settings": {
-            "collection": "formal",
-            "title": "SHOP ALL"
+            "collection": "cigarrilhas",
+            "title": "CIGARRILHAS"
           }
         },
         "template--21701471240498__1687cb80-13cd-4565-8a3a-7641b90f2c92-tab-2": {
           "type": "tab",
           "settings": {
-            "collection": "new-arrivals",
-            "title": "MENS"
+            "collection": "palheiros",
+            "title": "PALHEIROS"
           }
         },
         "template--21701471240498__1687cb80-13cd-4565-8a3a-7641b90f2c92-tab-3": {
           "type": "tab",
           "settings": {
-            "collection": "new-arrivals",
-            "title": "WOMENS"
+            "collection": "acessorios",
+            "title": "ACESSÓRIOS"
           }
         }
       },
