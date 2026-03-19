@@ -402,7 +402,7 @@ function closeDrawerMenu() {
   document.querySelector("body").classList.remove("overflow-hidden-tablet");
 }
 
-$("#dT_TopStickySearchBtn").click(function (ev) {
+$(document).on("click", ".dT_TopStickySearchBtn", function (ev) {
   ev.preventDefault();
   $("#dT_top-sticky").addClass("search-show");
   $("#dT_top-sticky .search-modal").css("opacity", "1");

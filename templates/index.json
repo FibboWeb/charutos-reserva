@@ -39,6 +39,7 @@
       "settings": {
         "page_full_width": true,
         "page_full_width_spacing": false,
+        "banner_fluid": true,
         "slider_image_height": 750,
         "slider_image_height_laptop": 600,
         "slider_image_height_tab": 530,

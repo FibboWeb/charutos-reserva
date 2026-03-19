@@ -376,7 +376,7 @@
           "enable_transparent_header": false,
           "enable_country_selector": false,
           "enable_language_selector": false,
-          "search_style": "search_box",
+          "search_style": "search_icon",
           "show_header_wishlist": true,
           "show_header_compare": true,
           "show_account": true,

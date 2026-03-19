@@ -111,7 +111,6 @@
     padding-top: 1.3rem;
     padding-bottom: 1.3rem;
   }
-  .header--top-left:not(.header--search-centered) .header-row,
   .header--middle-left:not(.header--has-menu) .header-row {
     grid-template-areas:
      "heading icons"
@@ -572,7 +571,7 @@ display: inline-flex;
 <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
 {% render 'icon-search' %}
 <{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} id="shopify-section-headers" class="header-wrapper {% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
-  <header id="header" class=" animate__animated fadeInLeft {% if request.page_type == 'index' %}{%- if section.settings.enable_transparent_header -%}index-header {% endif %}{% endif %} header header--{{ section.settings.logo_position }}  {%- if section.settings.show_secondary_menu -%} secondary-menu-enabled {%- endif -%}    {% if section.settings.menu != blank %} header--has-menu{% endif %} color-{{ section.settings.color_scheme }} {% if section.settings.logo_position == 'top-left' %} header--search-centered{% endif %} ">
+  <header id="header" class=" animate__animated fadeInLeft {% if request.page_type == 'index' %}{%- if section.settings.enable_transparent_header -%}index-header {% endif %}{% endif %} header header--{{ section.settings.logo_position }}  {%- if section.settings.show_secondary_menu -%} secondary-menu-enabled {%- endif -%}    {% if section.settings.menu != blank %} header--has-menu{% endif %} color-{{ section.settings.color_scheme }} ">
    <div class="{% if section.settings.page_full_width %} page-full-width {% else %} page-width {% endif %} {% if section.settings.page_full_width_spacing %} page-full-width_spacing {% endif %}">
     <div class="row ">
       <div class="header-row">
@@ -794,17 +793,7 @@ display: inline-flex;
       </header-drawer>
     {%- endif -%}
      
-    {%- assign show_search_box = false -%}
-    {%- if section.settings.search_style == 'search_box' -%}
-      {%- if section.settings.logo_position == 'top-center' or section.settings.menu == blank or section.settings.logo_position == 'top-left' -%}
-        {%- assign show_search_box = true -%}
-      {%- elsif section.settings.logo_position == 'middle' and section.settings.show_secondary_menu -%}
-        {%- assign show_search_box = true -%}
-      {%- endif -%}
-    {%- endif -%}
-    {%- if show_search_box -%}
-     <div class="search-icon{% if section.settings.logo_position == 'top-left' %} header-search-center{% endif %}">{%  render 'header-search', section: section %}</div>
-    {%- endif -%}    
+    {%- comment -%} Barra de busca removida - ícone na top bar {%- endcomment -%}
     {%- if request.page_type == 'index' -%}
       <h1 class="header__heading">
     {%- endif -%}
@@ -846,15 +835,18 @@ display: inline-flex;
       {%- endif -%}
                     
     <div class="header__icons {% if section.settings.header_icon_type =="text"  %} icon__fallback-content {% endif %} ">
+        {%- comment -%} Ícone de pesquisa na top bar - no header apenas em mobile (top-bar oculta) {%- endcomment -%}
         {%- if section.settings.search_style == 'search_icon' -%}
-          <button type="button" class="header__icon header__icon--search link focus-inset icon-search" id="dT_TopStickySearchBtn" aria-label="{{ 'general.search.search' | t }}">
-            <span>
-              <svg class="icon icon-search icon-search--bold" aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="m21 21-4.35-4.35"/>
-              </svg>
-            </span>
-          </button>
+          <div class="header__icons--mobile-only">
+            <button type="button" class="header__icon header__icon--search link focus-inset icon-search dT_TopStickySearchBtn" aria-label="{{ 'general.search.search' | t }}">
+              <span>
+                <svg class="icon icon-search icon-search--bold" aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.35-4.35"/>
+                </svg>
+              </span>
+            </button>
+          </div>
         {%- elsif section.settings.logo_position != 'top-center' and section.settings.logo_position != 'top-left' -%}
         {%  render 'header-search' %}      
         {%- endif -%}

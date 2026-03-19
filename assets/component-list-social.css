@@ -36,3 +36,25 @@
   /* transform: scale(1.07); */
   color: rgb(var(--color-base-outline-button-labels));
 }
+
+/* Ícones com contraste adequado no footer (usa cor do tema) */
+footer .list-social__link,
+footer .list-social__link .icon,
+footer .list-social__link svg,
+footer .footer-social-icons .list-social__link,
+footer .footer-social-icons .list-social__link svg,
+footer ul.contact-info svg,
+footer ul.contact-info .icon {
+  color: rgb(var(--color-foreground)) !important;
+  fill: rgb(var(--color-foreground)) !important;
+  opacity: 0.9;
+}
+footer .list-social__link:hover,
+footer .list-social__link:hover .icon,
+footer .list-social__link:hover svg,
+footer .footer-social-icons .list-social__link:hover,
+footer .footer-social-icons .list-social__link:hover svg {
+  color: rgb(var(--color-foreground)) !important;
+  fill: rgb(var(--color-foreground)) !important;
+  opacity: 1;
+}

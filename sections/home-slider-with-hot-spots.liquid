@@ -43,9 +43,12 @@
 {%- endif -%}  
 
 
+      {%- unless section.settings.banner_fluid -%}
       #shopify-section-{{section.id}}.home-slideshow-with-hotspot .slide-banner.swiper-wrapper  { height: {{section.settings.slider_image_height}}px;}
+      {%- endunless -%}
       #shopify-section-{{section.id}}.home-slideshow-with-hotspot  .banner--mobile-bottom .slideshow__text-wrapper.banner__content{position:absolute;}
   
+   {%- unless section.settings.banner_fluid -%}
    @media screen and (max-width: 1540px) {   
     #shopify-section-{{section.id}}.home-slideshow-with-hotspot .slide-banner { height:{{section.settings.slider_image_height_laptop}}px;}
     }
@@ -57,6 +60,14 @@
     #shopify-section-{{section.id}}.home-slideshow-with-hotspot .slide-banner.banner--mobile-bottom{height:100%;}
     #shopify-section-{{section.id}}.home-slideshow-with-hotspot .banner--mobile-bottom .slideshow__text-wrapper.banner__content {position:relative;} 
     }
+   {%- endunless -%}
+
+   {%- if section.settings.banner_fluid and section.blocks.first.settings.image != blank -%}
+   #shopify-section-{{section.id}}.home-slideshow-with-hotspot .slide-banner.swiper-wrapper { height: auto !important; }
+   #shopify-section-{{section.id}}.home-slideshow-with-hotspot .slide-banner .swiper-slide { height: auto; align-self: stretch; }
+   #shopify-section-{{section.id}}.home-slideshow-with-hotspot .slide-banner .swiper-slide .slideshow__media { position: relative; height: auto; }
+   #shopify-section-{{section.id}}.home-slideshow-with-hotspot .slide-banner .swiper-slide .slideshow__media img { height: auto; object-fit: contain; object-position: center; }
+   {%- endif -%}
      
    
 
@@ -392,7 +403,7 @@
     {
       "type":"checkbox",
       "id":"page_full_width",
-       "default": false,
+       "default": true,
       "label": "t:sections.all.page_full_width.label"
     },
     {
@@ -400,6 +411,12 @@
       "id":"page_full_width_spacing",
        "default": false,
       "label": "t:sections.all.page_full_width_spacing.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "banner_fluid",
+      "default": true,
+      "label": "Banner fluido (altura proporcional à imagem, sem corte)"
     },
       {
       "type": "header",

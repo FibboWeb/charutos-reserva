@@ -169,6 +169,13 @@
                   </localization-form>
                 {%- endif -%}
               </div>
+              {%- comment -%} Ícone de pesquisa - abre modal de busca {%- endcomment -%}
+              <button type="button" class="link focus-inset top-bar__icon top-bar__icon--search dT_TopStickySearchBtn" aria-label="{{ 'general.search.search' | t }}">
+                <svg class="icon icon-search" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.35-4.35"/>
+                </svg>
+              </button>
               {%- if section.settings.show_wishlist -%}
                 <a href="/pages/wishlist" class="link focus-inset top-bar__icon top-bar__icon--wishlist" aria-label="{{ 'products.product.wishlist' | t }}">
                   {% render 'icon-wishlist' %}
@@ -274,6 +281,7 @@
       .dt-sc-header-top-bar .list-social__link{padding:0 0rem;color:#1a322c;}
       .dt-sc-header-top-bar .top-bar__icon{position:relative;color:#fff;padding:0.4rem;}
       .dt-sc-header-top-bar .top-bar__icon:hover{color:#d4b064;}
+      .dt-sc-header-top-bar .top-bar__icon--search{background:none;border:none;cursor:pointer;}
       .dt-sc-header-top-bar .top-bar__icon svg{width:1.8rem;height:1.8rem;}
       .dt-sc-header-top-bar .top-bar__icon .cart-count-bubble{top:-2px;right:-2px;}
       .dt-sc-header-top-bar .top-bar-count .grid-count-bubble{min-width:1.6rem;height:1.6rem;font-size:1rem;background:#d4b064;color:#1a322c;border-radius:50%;display:flex;align-items:center;justify-content:center;}
