@@ -51,124 +51,106 @@
         "custom_class_name": ""
       }
     },
-    "c81d40c6-6c76-4fd0-9717-f3423af6c9c2": {
-      "type": "suriya-grid-banner-2",
+    "brand_logos_biCRhy": {
+      "type": "brand-logos",
       "blocks": {
-        "608924fe-f0b6-458f-809b-b1bc5ccb7855": {
-          "type": "text",
+        "column_ghBjf4": {
+          "type": "column",
           "settings": {
-            "image_link": "shopify://collections/boots",
-            "show_content": true,
-            "block_title": "Sneakers",
-            "enable_title_link": false,
-            "block_sub_title": "",
-            "block_description": "",
-            "block_button_text": "",
-            "block_button_link": "",
-            "desktop_content_alignment": "center",
-            "reverse_column": false
+            "image": "shopify://shop_images/MONTE-PASCOAL.png",
+            "link": "shopify://collections/monte-pascoal"
           }
         },
-        "627a8786-7541-433b-9da7-5bf842f372bd": {
-          "type": "text",
+        "column_cLxecG": {
+          "type": "column",
           "settings": {
-            "image_link": "shopify://collections/loafer",
-            "show_content": true,
-            "block_title": "Loafer",
-            "enable_title_link": false,
-            "block_sub_title": "",
-            "block_description": "",
-            "block_button_text": "",
-            "block_button_link": "",
-            "desktop_content_alignment": "center",
-            "reverse_column": false
+            "image": "shopify://shop_images/DANNEMANN.png",
+            "link": "shopify://collections/dannemann"
           }
         },
-        "33478f57-9990-41cd-8a02-57effa53a5b8": {
-          "type": "text",
+        "column_3EVPCi": {
+          "type": "column",
           "settings": {
-            "image_link": "shopify://collections/sports",
-            "show_content": true,
-            "block_title": "Sports",
-            "enable_title_link": false,
-            "block_sub_title": "",
-            "block_description": "",
-            "block_button_text": "",
-            "block_button_link": "",
-            "desktop_content_alignment": "center",
-            "reverse_column": false
+            "image": "shopify://shop_images/VEGA-FINA.png",
+            "link": "shopify://collections/vegafina"
           }
         },
-        "5dd73661-71d8-426d-99b3-9cc86d0b03f1": {
-          "type": "text",
+        "column_dBEkwU": {
+          "type": "column",
           "settings": {
-            "image_link": "shopify://collections/formal",
-            "show_content": true,
-            "block_title": "Formal",
-            "enable_title_link": false,
-            "block_sub_title": "",
-            "block_description": "",
-            "block_button_text": "",
-            "block_button_link": "",
-            "desktop_content_alignment": "center",
-            "reverse_column": false
+            "image": "shopify://shop_images/cohiba-habana-cuba-logo-vector.svg",
+            "link": "shopify://collections/cohiba"
           }
         },
-        "f2ca7d81-ad7e-4aad-9478-0aa22bbe52b0": {
-          "type": "text",
+        "column_XGyFCL": {
+          "type": "column",
           "settings": {
-            "image_link": "shopify://collections/boots",
-            "show_content": true,
-            "block_title": "Boots",
-            "enable_title_link": false,
-            "block_sub_title": "",
-            "block_description": "",
-            "block_button_text": "",
-            "block_button_link": "",
-            "desktop_content_alignment": "center",
-            "reverse_column": false
+            "image": "shopify://shop_images/dona-flor-logo1.png",
+            "link": "shopify://collections/dona-flor"
+          }
+        },
+        "column_wx4LTg": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/ALONSO-MENENDEZ.png",
+            "link": "shopify://collections/alonso-menendez"
+          }
+        },
+        "column_E9NLjT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GUANTANAMERA.png",
+            "link": "shopify://collections/guantanamera"
+          }
+        },
+        "column_iWX8Nt": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/TALVIS.png",
+            "link": "shopify://collections/talvis"
           }
         }
       },
       "block_order": [
-        "608924fe-f0b6-458f-809b-b1bc5ccb7855",
-        "627a8786-7541-433b-9da7-5bf842f372bd",
-        "33478f57-9990-41cd-8a02-57effa53a5b8",
-        "5dd73661-71d8-426d-99b3-9cc86d0b03f1",
-        "f2ca7d81-ad7e-4aad-9478-0aa22bbe52b0"
+        "column_ghBjf4",
+        "column_cLxecG",
+        "column_3EVPCi",
+        "column_dBEkwU",
+        "column_XGyFCL",
+        "column_wx4LTg",
+        "column_E9NLjT",
+        "column_iWX8Nt"
       ],
+      "name": "t:sections.brand-logos.presets.name",
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": false,
-        "title": "OUR PRODUCT CATEGORY",
-        "heading_size": "h1",
+        "title": "Nossas Marcas",
+        "heading_size": "h0",
         "sub_heading": "",
-        "description": "orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        "button_label": "",
+        "description": "Charutos Reserva reúne marcas selecionadas que representam tradição, excelência e uma experiência única em cada detalhe.",
+        "button_label": "Button label",
         "button_link": "",
         "button_style_secondary": false,
         "column_alignment": "center",
+        "columns_desktop": 5,
         "background_style": "primary",
-        "banner_style": "grid",
-        "grid-column": "5",
-        "column_gap": "30",
-        "overlay_height": 300,
-        "overlay_height_laptop": 300,
-        "overlay_height_tab": 300,
-        "overlay_height_mobile": 200,
         "color_scheme": "background-1",
-        "padding_top": 124,
-        "padding_bottom": 0,
-        "custom_class_name": "home-custom-grid-banner",
-        "swiper_enable": true,
-        "desktop_column": 5,
-        "laptop_column": 3,
-        "tablet_column": 2,
+        "block_color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "custom_class_name": "",
+        "swiper_enable": false,
+        "desktop_column": 4,
+        "tablet_column": 3,
         "mobile_column": 1,
-        "centered_slide": false,
         "swiper_pagination": false,
-        "swiper_navigation": true,
-        "auto_play": 0
+        "swiper_navigation": false,
+        "centered_slide": false,
+        "auto_play": 0,
+        "swipe_on_mobile": false,
+        "arrow_on_mobile": false,
+        "columns_mobile": "1"
       }
     },
     "1687cb80-13cd-4565-8a3a-7641b90f2c92": {
@@ -964,7 +946,7 @@
   },
   "order": [
     "22208e64-dcc3-4578-b425-207fdf5259a3",
-    "c81d40c6-6c76-4fd0-9717-f3423af6c9c2",
+    "brand_logos_biCRhy",
     "1687cb80-13cd-4565-8a3a-7641b90f2c92",
     "a9f7c4e0-0bee-4499-b8cd-1f36c7f56d21",
     "82c690ab-c79b-4e01-b684-2fd23e6b6b80",
