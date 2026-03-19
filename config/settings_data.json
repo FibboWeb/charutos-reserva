@@ -364,7 +364,7 @@
           "color_scheme": "background-1",
           "logo": "shopify://shop_images/logo-reserva-charuto-horizontal-prioritario_3x-8.png",
           "logo_width": 250,
-          "logo_position": "middle-left",
+          "logo_position": "top-left",
           "menu_alignment": "center",
           "menu": "header-menu",
           "show_secondary_menu": false,

@@ -134,6 +134,7 @@
       "share": "Compartilhar o produto",
       "sold_out": "Esgotado",
       "stock_status": "Disponibilidade",
+      "in_stock": "Em estoque",
       "unavailable": "Indisponível",
       "vendor": "Fabricante",
       "video_exit_message": "{{ title }} abre um vídeo em tela cheia na mesma janela.",
@@ -189,7 +190,16 @@
       "addToCompareList": "Adicionar à comparação",
       "viewMyCompareList": "Ver minha comparação",
       "minCompareProductNav": "Adicione pelo menos 2 produtos para comparar",
-      "minCompareProduct": "Adicione pelo menos 2 produtos para comparar"
+      "minCompareProduct": "Adicione pelo menos 2 produtos para comparar",
+      "product": "Produto",
+      "product_title": "Nome do produto",
+      "price": "Preço",
+      "vendor": "Fabricante",
+      "type": "Tipo",
+      "sku": "SKU",
+      "add_to_cart": "Adicionar ao carrinho",
+      "remove": "Remover",
+      "select_options": "Escolher opções"
     },
     "facets": {
       "apply": "Aplicar",
