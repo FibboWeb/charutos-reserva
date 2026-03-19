@@ -370,6 +370,7 @@
           "show_secondary_menu": false,
           "secondary_menu": "",
           "mobile_screen_width": "1249",
+          "menu_collapse_width": "1180",
           "show_line_separator": false,
           "enable_sticky_header": false,
           "enable_transparent_header": false,
@@ -412,8 +413,8 @@
           "3408e200-d33a-433c-bdd0-1d9c73fff07e": {
             "type": "link_list",
             "settings": {
-              "heading": "Shop",
-              "menu": "",
+              "heading": "Institucional",
+              "menu": "footer",
               "alignment": "left",
               "list_style": "vertical",
               "column_width": 18
@@ -449,8 +450,7 @@
         "settings": {
           "page_full_width": false,
           "page_full_width_spacing": false,
-          "color_scheme": "accent-2",
-          "image": "shopify://shop_images/logo-reserva-charuto-horizontal-prioritario_3x-8.png",
+          "color_scheme": "inverse",
           "show_social": true,
           "copyright_content": "<p>All Right Reserved © 2023 <a href=\"#\" title=\"#\">Designthemes</a></p>",
           "payment_enable": true,
@@ -584,6 +584,8 @@
           "link": "",
           "show_social": true,
           "show_account": true,
+          "show_wishlist": true,
+          "show_compare": true,
           "enable_country_selector": true,
           "enable_language_selector": true
         }
