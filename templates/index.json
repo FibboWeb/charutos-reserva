@@ -186,13 +186,13 @@
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": false,
-        "title": "FRESH PICKS FOR YOU",
+        "title": "Destaques",
         "heading_size": "h1",
         "sub_heading": "",
-        "description": "Habitant morbi tristique senectus et netus et malesuada. Dolor sed viverra ipsum nunc aliquet bibendum. Magna ac placerat vestibulum lectus mauris ultrices eros in.",
-        "button_label": "VIEW ALL PRODUCTS",
+        "description": "Os produtos mais escolhidos do momento, com qualidade garantida para o seu dia a dia.",
+        "button_label": "Ver todos os produtos",
         "button_link": "shopify://collections/all",
-        "button_style_secondary": false,
+        "button_style_secondary": true,
         "column_alignment": "center",
         "color_scheme": "background-1",
         "products_to_show": 8,
@@ -228,7 +228,8 @@
         "aae95b35-74c9-4108-accb-c5e83c6f63cc": {
           "type": "text",
           "settings": {
-            "show_content": true,
+            "block_image": "shopify://shop_images/rei-charuto-630x300-02.jpg",
+            "show_content": false,
             "block_title": "WALK WITH ASSURANCE!",
             "enable_title_link": false,
             "block_sub_title": "Best Quality",
@@ -243,7 +244,8 @@
         "f4257e51-1381-4cb6-967f-3caddad14487": {
           "type": "text",
           "settings": {
-            "show_content": true,
+            "block_image": "shopify://shop_images/rei-charuto-630x300-03.jpg",
+            "show_content": false,
             "block_title": "FASHIONABLY STEPPING AHEAD!",
             "enable_title_link": false,
             "block_sub_title": "Special Edition",
@@ -258,7 +260,8 @@
         "6d9ad995-260b-497a-9509-a9230cf681e1": {
           "type": "text",
           "settings": {
-            "show_content": true,
+            "block_image": "shopify://shop_images/rei-charuto-850x500-04.jpg",
+            "show_content": false,
             "block_title": "ONE STYLISH STRIDE AT A TIME!",
             "enable_title_link": false,
             "block_sub_title": "classy collection",
@@ -469,50 +472,34 @@
         "340c7579-755b-4996-b27e-01d5e6748950": {
           "type": "tab",
           "settings": {
-            "collection": "all-shoes",
-            "title": "All Shoes"
+            "collection": "charutos",
+            "title": "Charutos"
           }
         },
         "9ca84213-3400-40c7-8995-f412554efb65": {
           "type": "tab",
           "settings": {
-            "collection": "loafer",
-            "title": "Casuals"
+            "collection": "charutos-brasileiros",
+            "title": "Charutos Brasileiros"
           }
         },
         "c1c93b8f-68e0-4054-b260-bd6d08536a0c": {
           "type": "tab",
           "settings": {
-            "collection": "sports",
-            "title": "Sports"
-          }
-        },
-        "558433ec-a823-4bc5-951d-a4a753d976df": {
-          "type": "tab",
-          "settings": {
-            "collection": "sneakers",
-            "title": "Sneakers"
-          }
-        },
-        "fba7db69-eb80-4a64-862b-3c14ded2ab49": {
-          "type": "tab",
-          "settings": {
-            "collection": "boots",
-            "title": "Boots"
+            "collection": "charutos-cubanos",
+            "title": "Charutos Cubanos"
           }
         }
       },
       "block_order": [
         "340c7579-755b-4996-b27e-01d5e6748950",
         "9ca84213-3400-40c7-8995-f412554efb65",
-        "c1c93b8f-68e0-4054-b260-bd6d08536a0c",
-        "558433ec-a823-4bc5-951d-a4a753d976df",
-        "fba7db69-eb80-4a64-862b-3c14ded2ab49"
+        "c1c93b8f-68e0-4054-b260-bd6d08536a0c"
       ],
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": false,
-        "title": "SUGGESTED FOR YOU",
+        "title": "Sugestões",
         "heading_size": "h1",
         "text": "",
         "column_alignment": "left",
