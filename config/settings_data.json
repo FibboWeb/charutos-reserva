@@ -426,8 +426,8 @@
           "8c88a831-9d3f-4039-9e74-6f7b20caa8ff": {
             "type": "link_list",
             "settings": {
-              "heading": "Customer",
-              "menu": "",
+              "heading": "Minha Conta",
+              "menu": "customer-account-main-menu",
               "alignment": "left",
               "list_style": "vertical",
               "column_width": 18
@@ -437,7 +437,7 @@
             "type": "newsletter",
             "settings": {
               "heading": "",
-              "newsletter_subtext": "<span class=\"text-separate-color\">Sign up to be the first to know about new collections.</span>",
+              "newsletter_subtext": "<span class=\"text-separate-color\">Inscreva-se para receber novidades e promoções</span>",
               "alignment": "left",
               "button_style": "icon",
               "column_width": 35
