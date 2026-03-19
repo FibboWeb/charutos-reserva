@@ -1,0 +1,84 @@
+{%- style -%}
+
+/* custom css */
+  .airkool-rich-container{
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+.airkool-rich-container .banner-img{
+    height:auto;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;display:flex;
+    /* opacity:{{ section.settings.range}};  */
+}
+  .banner-img img{object-fit:contain;width:100%;}
+  .airkool-rich-container .banner-img svg.placeholder_svg{height:300px;}
+
+  @media screen and (max-width:1200px){
+    .airkool-rich-container{padding-top:0;}
+  }
+{%- endstyle -%}
+
+
+<div class="{% if section.settings.page_full_width %} page-full-width {% else %} page-width {% endif %} {% if section.settings.page_full_width_spacing %} page-full-width_spacing {% endif %}section-{{ section.id }}-padding isolate airkool-rich-container">
+          <div class="banner-img">
+      {% if section.settings.bg-image != blank %}
+             <img src="{{ section.settings.bg-image | image_url: width: 1920 , height: 300  }}">
+            {% else %}
+            {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder_svg' }} 					
+      {% endif %}
+          </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "rich-text",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "checkbox",
+        "id": "page_full_width",
+        "default": false,
+        "label": "t:sections.all.page_full_width.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "page_full_width_spacing",
+        "default": false,
+        "label": "t:sections.all.page_full_width_spacing.label"
+      },
+    {
+      "type": "image_picker",
+      "id": "bg-image",
+      "label":"bg-image"
+    }, 
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 35
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 35
+      }
+  ],
+  "presets": [
+    {
+      "name": "rich-text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,123 @@
+.collection-list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.collection-list-title {
+  margin: 0;
+}
+
+.collection-list__item:only-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .slider.collection-list--1-items {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .slider.collection-list--1-items,
+  .slider.collection-list--2-items,
+  .slider.collection-list--3-items,
+  .slider.collection-list--4-items {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collection-list__item a:hover {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .collection-list.slider .collection-list__item {
+    max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+    width:calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  }
+}
+@media screen and (max-width: 576px) {
+  .collection-list.slider .collection-list__item {
+    max-width: 100%;
+    width:100%;
+  }
+}
+.collection-list-view-all {
+  margin-top: 2rem;
+}
+#collections .collection-list .card-wrapper .card__inner .card__content {
+    display: none;
+}
+#collections .collection-list .card--card.card--media:hover > .card__content {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+
+#collections .collection-list .card .icon-wrap {
+  display: none;
+}
+#collections .collection-list .card__information .card__heading,
+.product-page-collection-list.collection-list .card__information .card__heading{
+  font-size: 1.6rem;
+  font-weight: 500;
+   margin: 0 ;
+}
+.collection-list .card__information  .collection_product_count{margin:5px 0 0; opacity:0.8;}
+#collections
+  .collection-list
+  .card--card.card--media:hover
+  > .card__content
+  .card__information {
+  border-radius: var(--border-radius);
+}
+.collection-list .card {
+  background: transparent;
+}
+.collection-list.grid .collection-list__item .card__content {padding:20px 0;position:relative;}
+.collection-list .card-wrapper .card__inner{height: 100%; position: relative;}
+.collection-list.overlay .collection-list__item .card__content {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    height: fit-content;
+    transition:all 0.3s linear;
+    padding:0;
+}
+.collection-list.overlay .collection-list__item .card-wrapper .card:hover .card__content {transform:translateY(20px);}
+
+.collection-list.overlay  .collection-list__item .card__content .card__information{
+  background: var(--gradient-base-background-1);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  text-transform: capitalize;
+  left: auto;
+  right: auto;
+  position: relative;
+  margin: auto;
+  bottom: 19px;
+}
+#collections ul.collection-list.overlay  li.collection-list__item .card__content .card__information p.card__caption{display:none;}
+#collections ul.collection-list.overlay  li.collection-list__item .card__content .card__information a.button.button--primary{display:none;}
+#collections ul.collection-list li.collection-list__item .card__content .card__information a.button.button--primary{margin-bottom:0; margin-top:15px;}
+.section-collection-list .collection-list .collection-list__item a.button.button--primary{    background: transparent; color: rgb(var(--color-foreground)); padding: 0; margin: 0; min-width: fit-content; min-height: fit-content; transition:all var(--duration-default) linear; }
+.section-collection-list .collection-list .collection-list__item a.button.button--primary:hover { color: rgb(var(--color-base-outline-button-labels));}
+
+.section-collection-list .collection-list .card__inner.image-circle  { border-radius: 50%; width: 100%;}
+.section-collection-list .collection-list .card__inner.image-circle .card__media { border-radius: 50%; width: 100%;}
+@media screen and (min-width: 481px) {
+.product-page-collection-list.collection-list .swiper-pagination{display:none;}
+}
+@media screen and (max-width: 480px) {
+.product-page-collection-list .collection-list.overlay  .collection-list__item .card__content .card__information{  max-width: 90px;  width: 90px;}
+.product-page-collection-list.collection-list .swiper-button-next, .product-page-collection-list.collection-list .swiper-button-prev{display:none;}
+.product-page-collection-list.collection-list .swiper{padding-bottom:20px;}
+.product-page-collection-list.collection-list .swiper-pagination{bottom:0px}  
+#collections .collection-list .card__information .card__heading, .product-page-collection-list.collection-list .card__information .card__heading{font-size:1.4rem;}
+}

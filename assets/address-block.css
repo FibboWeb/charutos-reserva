@@ -1,0 +1,315 @@
+.cartrek-address .contact-address-block .title {
+  margin: 0;
+}
+
+.cartrek-address .contact-address-block.no-heading .title {
+  display: none;
+}
+.cartrek-address .slider-mobile-gutter .slider-buttons .slider-button--prev svg, 
+.cartrek-address .slider-mobile-gutter .slider-buttons .slider-button--next svg{
+  fill:transparent;
+} 
+.cartrek-address .slider-mobile-gutter .slider-buttons .slider-button--prev:disabled svg,
+.cartrek-address .slider-mobile-gutter .slider-buttons .slider-button--next:disabled svg{
+  color:rgba(var(--color-base-accent-1),0.4);
+}
+
+
+.cartrek-address .contact-address-block .title-wrapper-with-link {
+  margin-top: 0;margin-bottom:70px;
+}
+
+@media screen and (max-width:990px){
+.cartrek-address .slider-mobile-gutter .slider-buttons{
+margin:3rem 0;
+}
+}
+
+@media screen and (max-width: 749px) {
+  .cartrek-address .contact-address-block .title-wrapper-with-link {
+    margin-bottom: 3rem;
+  }
+
+/*   .contact-address-block .page-width {
+    padding-left: 0;
+    padding-right: 0;
+  } */
+}
+
+.cartrek-address .contact-address-block-card__image-wrapper--third-width {
+  width: 33%;
+}
+
+.cartrek-address .contact-address-block-card__image-wrapper--half-width {
+  width: 50%;
+}
+
+.cartrek-address .contact-address-block-list__item.center
+  .cartrek-address .contact-address-block-card__image-wrapper:not(.contact-address-block-card__image-wrapper--full-width),
+.cartrek-address .contact-address-block-list__item:only-child {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cartrek-address .contact-address-block .button {
+  margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .cartrek-address .contact-address-block .button {
+    margin-top: 4rem;
+  }
+}
+
+.cartrek-address .contact-address-block-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.cartrek-address .contact-address-block-list__item:only-child {
+  max-width: 72rem;
+}
+
+.cartrek-address .contact-address-block-list__item--empty {
+  display: none;
+}
+
+.cartrek-address .contact-address-block:not(.background-none) .contact-address-block-card {
+/*   background: rgb(var(--color-background)); */
+  height: 100%;
+}
+
+/* .contact-address-block.background-primary .contact-address-block-card {
+  background: rgb(var(--color-background)) linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));
+
+} */
+
+.cartrek-address .contact-address-block-list h3 {
+  line-height: calc(1 + 0.5 / max(1, var(--font-heading-scale)));
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.cartrek-address .contact-address-block-list h3,
+.cartrek-address .contact-address-block-list p {
+  margin: 0;
+}
+
+.cartrek-address .contact-address-block-card-spacing {
+  padding-top: 2.5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.cartrek-address .contact-address-block-card__info > :nth-child(2) {
+  margin-top: 1rem;
+}
+.cartrek-address .contact-address-block-card__info .rte{margin:0;}
+.cartrek-address .contact-address-block-list__item.center .media--adapt,
+.cartrek-address .contact-address-block-list__item .media--adapt .contact-address-block-card__image {
+  width: auto;
+}
+
+.cartrek-address .contact-address-block-list__item.center .media--adapt img {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 749px) {
+  .cartrek-address .contact-address-block-list {
+    margin: 0;
+    width: 100%;
+  }
+
+  .cartrek-address .contact-address-block-list:not(.slider) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+
+@media screen and (min-width: 750px) {
+  .cartrek-address .contact-address-block-list.slider,
+  .cartrek-address .contact-address-block-list.grid--4-col-desktop {
+    padding: 0;
+  }
+
+  .cartrek-address .contact-address-block-list__item,
+  .cartrek-address .grid--4-col-desktop .contact-address-block-list__item {
+    padding-bottom: 0;
+  }
+
+  .cartrek-address .background-none .grid--2-col-tablet .contact-address-block-list__item {
+    margin-top: 4rem;
+  }
+}
+
+.cartrek-address .background-none .contact-address-block-card-spacing {
+  padding: 0;
+  margin: 0;
+}
+.cartrek-address .background-none .contact-address-block-card__info {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cartrek-address .background-none .slider .contact-address-block-card__info {
+  padding-bottom: 0;
+}
+
+.cartrek-address .background-none .contact-address-block-card__image-wrapper + .contact-address-block-card__info {
+  padding-top: 2.5rem;
+}
+
+.cartrek-address .background-none .slider .contact-address-block-card__info {
+  padding-left: 0.5rem;
+}
+
+.cartrek-address .background-none
+  .cartrek-address .slider
+  .cartrek-address .contact-address-block-card__image-wrapper
+  + .contact-address-block-card__info {
+  padding-left: 1.5rem;
+}
+
+.cartrek-address .background-none
+  .cartrek-address .contact-address-block-list:not(.slider)
+  .cartrek-address .center
+  .cartrek-address .contact-address-block-card__info {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+@media screen and (max-width: 749px) {
+  .cartrek-address .background-none .slider .contact-address-block-card__info {
+    padding-bottom: 1rem;
+  }
+
+  .cartrek-address .contact-address-block.background-none .slider.slider--mobile {
+    margin-bottom: 0rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .cartrek-address .background-none .contact-address-block-card__image-wrapper {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .cartrek-address .background-none .contact-address-block-list .contact-address-block-card__info,
+  .cartrek-address .background-none
+    .cartrek-address .contact-address-block-list:not(.slider)
+    .cartrek-address .center
+    .cartrek-address .contact-address-block-card__info {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.cartrek-address .contact-address-block-card {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.cartrek-address .contact-address-block-card > .contact-address-block-card__image-wrapper--full-width:not(.contact-address-block-card-spacing) {
+  border-top-left-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
+  border-top-right-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
+  overflow: hidden;
+}
+
+.cartrek-address .contact-address-block.background-none .contact-address-block-card {
+  border-radius: 0;
+}
+
+.cartrek-address .contact-address-block-card__info .link {
+  text-decoration: none;
+  font-size: inherit;
+  margin-top: 1.5rem;
+}
+
+.cartrek-address .contact-address-block-card__info .icon-wrap {
+  margin-left: 0.8rem;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 990px) {
+  .cartrek-address .contact-address-block-list__item--empty {
+    display: list-item;
+  }
+}
+.cartrek-address .contact-address-block-card .contact-address-block-card__image-wrapper img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.cartrek-address .contact-address-block-card .contact-address-block-card__image-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cartrek-address .contact-address-block-list__item .contact-address-block-card{
+  padding:2.5rem;
+}
+.cartrek-address .contact-address-block-list__item.grid__item .contact-address-block-card__info {
+  padding-top: 2.5rem;
+}
+.cartrek-address .contact-address-block-list__item.list__item .contact-address-block-card {
+  display:flex;
+  align-items: center;
+} 
+.cartrek-address .contact-address-block-list__item.list__item .contact-address-block-card.veritcal_top{
+   align-items: flex-start;
+}
+.cartrek-address .contact-address-block-list__item.list__item .contact-address-block-card.veritcal_bottom{
+   align-items: flex-end;
+}
+.cartrek-address .contact-address-block-list__item.list__item .contact-address-block-card .contact-address-block-card__info{
+  padding:0 20px;
+}
+.cartrek-address .contact-address-block-list__item { list-style: none;}
+
+.cartrek-address .contact-address-block-list__item .contact-address-block-card .address-wrapper{display:flex;align-items: center;}
+.cartrek-address .contact-address-block-card .contact-address-block-card__image-wrapper{margin-right:25px;}
+.cartrek-address .contact-address-block-list__item .contact-address-block-card .address-wrapper a{text-decoration:none;color:var(--gradient-base-background-1);}
+.cartrek-address .contact-address-block-list__item .contact-address-block-card .address-wrapper:not(:last-child){margin-bottom:20px}
+.cartrek-address .contact-address-block-list__item .contact-address-block-card{padding: 5rem 10rem;transition:all 0.3s linear;z-index:1;display: flex;flex-direction: column;justify-content: center;background:var(--gradient-base-accent-2);}
+.cartrek-address .custom-contact-section .grid--3-col-desktop .grid__item {
+    width: calc(30% - var(--grid-desktop-horizontal-spacing) * 3 / 2);
+    max-width: calc(30% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+}
+.cartrek-address .custom-contact-section .contact-address-block-list{column-gap: 120px;}
+.cartrek-address .custom-contact-section .contact-address-block-list__item .contact-address-block-card .address-wrapper > *{transition:all 0.3s linear;}
+.cartrek-address .custom-contact-section .contact-address-block-list__item .contact-address-block-card:hover{background:rgba(var(--color-base-solid-button-labels));}
+.cartrek-address .custom-contact-section .contact-address-block-list__item .contact-address-block-card:hover .address-wrapper > *{    color: var(--gradient-base-background-3);}
+.cartrek-address .contact-address-block-list__item .contact-address-block-card:hover .address-wrapper a:hover{color:rgba(var(--color-base-outline-button-labels));}
+@media screen and (max-width: 1540px) {
+.cartrek-address .contact-address-block-list__item .contact-address-block-card{padding: 5rem;}
+.cartrek-address .custom-contact-section .grid--3-col-desktop .grid__item {
+    width: calc(33% - var(--grid-desktop-horizontal-spacing) * 3 / 2);
+    max-width: calc(33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+}
+.cartrek-address .custom-contact-section .contact-address-block-list{column-gap: 50px;}  
+}
+@media screen and (max-width: 1199px){
+.cartrek-address .contact-address-block-list__item .contact-address-block-card {padding: 3rem;}
+}
+@media screen and (max-width: 990px){
+  .cartrek-address .custom-contact-section .grid--3-col-desktop .grid__item {  width: calc(50% - var(--grid-desktop-horizontal-spacing) * 1/ 4);
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) * 1 / 4);}
+  .cartrek-address .custom-contact-section .contact-address-block-list {column-gap: 30px;}
+  .cartrek-address .custom-contact-section .slider--tablet.grid--peek .grid__item:first-of-type {margin-left: 0;}
+  .cartrek-address .custom-contact-section .slider--tablet.grid--peek .grid__item:last-of-type {margin-right: 0; }
+   .cartrek-address .custom-contact-section .slider.slider--tablet{margin-bottom:30px;}
+  .cartrek-address .custom-contact-section .slider-buttons{display:flex!important;}
+}
+
+.cartrek-address .custom-address-block .description{max-width:895px;margin-top: 20px;}
+   
+/* .cartrek-address .contact-address-block-list__item .contact-address-block-card:hover{background:var(--gradient-base-background-2);color:var(--gradient-base-background-1)}
+.cartrek-address .contact-address-block-list__item .contact-address-block-card:hover .address-wrapper a{color:var(--gradient-base-background-1);} */
+
+@media screen and (min-width: 1541px){
+ .cartrek-address .custom-address-block .contact-address-block-list.slider{max-width: calc(100% - 200px); margin: auto;} 
+}

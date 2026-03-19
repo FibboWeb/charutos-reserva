@@ -1,0 +1,37 @@
+---
+description: Snippets - LiquidDoc e convenções
+globs: "snippets/**/*.liquid"
+alwaysApply: false
+---
+
+# Snippets
+
+## LiquidDoc Obrigatório
+
+Snippets devem ter `{% doc %}` no cabeçalho:
+
+```liquid
+{% doc %}
+  Renders a responsive image that might be wrapped in a link.
+
+  @param {image} image - The image to be rendered
+  @param {string} [url] - An optional destination URL for the image
+
+  @example
+  {% render 'image', image: product.featured_image %}
+  {% render 'image', image: product.featured_image, url: product.url %}
+{% enddoc %}
+
+<a href="{{ url | default: '#' }}">{{ image | image_url: width: 200 | image_tag }}</a>
+```
+
+## Render e Escopo
+
+- `{% render 'nome', param: valor %}` - passar variáveis explicitamente
+- Snippets **não acessam** variáveis criadas fora; passar via parâmetros
+- Objetos globais (`product`, `collection`, etc.) acessíveis se o snippet estiver dentro do contexto
+
+## CSS e JavaScript
+
+- `{% stylesheet %}` e `{% javascript %}` suportados em snippets
+- Máximo 1 tag de cada por arquivo

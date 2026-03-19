@@ -1,0 +1,51 @@
+---
+description: Padrões de tradução e internacionalização
+globs: "locales/**/*.json"
+alwaysApply: false
+---
+
+# Locales e Traduções
+
+## Regra Principal
+
+- **Todo texto** user-facing: `{{ 'key' | t }}`
+- Nunca texto hardcoded em Liquid
+
+```liquid
+<!-- Bom -->
+<h2>{{ 'sections.featured_collection.title' | t }}</h2>
+<button>{{ 'products.add_to_cart' | t }}</button>
+
+<!-- Evitar -->
+<h2>Featured Collection</h2>
+```
+
+## Chaves
+
+- Hierárquicas, snake_case, máximo 3 níveis
+- Ex: `sections.featured_collection.title`, `products.price_range`
+
+## Interpolação
+
+```liquid
+{{ 'products.price_range' | t: min: product.price_min | money, max: product.price_max | money }}
+```
+
+```json
+{
+  "products": {
+    "price_range": "From {{ min }} to {{ max }}"
+  }
+}
+```
+
+## Estilo
+
+- **Sentence case** para títulos, headings e labels
+- Ex: "Featured collection" (não "Featured Collection")
+
+## Arquivos
+
+- `en.default.json` obrigatório
+- Atualizar ao adicionar novas chaves
+- Schema locales: `*.schema.json` para strings do editor

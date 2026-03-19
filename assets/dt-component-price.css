@@ -1,0 +1,115 @@
+.lush-product-tab .price {
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  color: rgb(var(--color-foreground));
+}
+
+.lush-product-tab .price>* {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.lush-product-tab .price.price--unavailable {
+  visibility: hidden;
+}
+
+.lush-product-tab .price--end {
+  text-align: right;
+}
+
+.lush-product-tab .price .price-item {
+  margin: 0 1rem 0 0;
+}
+
+.lush-product-tab .price__regular .price-item--regular {
+  margin-right: 0;
+}
+
+.lush-product-tab .price:not(.price--show-badge) .price-item--last:last-of-type {
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  /*   .price {
+    margin-bottom: 0;
+  } */
+}
+
+.lush-product-tab .price--large {
+  font-size: 1.8rem;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  letter-spacing: 0.13rem;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 750px) {
+  .lush-product-tab .price--large {
+    font-size: 2.4rem;
+  }
+}
+
+.lush-product-tab .price--sold-out .price__availability,
+.lush-product-tab .price__regular {
+  display: block;
+}
+
+.lush-product-tab .price__sale,
+.lush-product-tab .price__availability,
+.lush-product-tab .price .price__badge-sale,
+.lush-product-tab .price .price__badge-sold-out,
+.lush-product-tab .price--on-sale .price__regular,
+.lush-product-tab .price--on-sale .price__availability {
+  display: none;
+}
+
+.lush-product-tab .price--sold-out .price__badge-sold-out,
+.lush-product-tab .price--on-sale .price__badge-sale {
+  display: inline-block;
+}
+
+.lush-product-tab .price--on-sale .price__sale {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.lush-product-tab .price--center {
+  display: initial;
+  justify-content: center;
+}
+
+.lush-product-tab .price--on-sale .price-item--regular {
+  text-decoration: line-through;
+  transition: all 0.3s linear;
+}
+
+.lush-product-tab .unit-price {
+  display: block;
+  font-size: 1.1rem;
+  letter-spacing: 0.04rem;
+  line-height: calc(1 + 0.2 / var(--font-body-scale));
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.lush-product-tab .card-information .price {
+  font-family: var(--font-additional-family);
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.lush-product-tab .quick-add-modal {
+  display: none;
+}
+
+.lush-product-tab price-item.price-item--sale.price-item--last {
+  transition: all 0.3s linear;
+}
+
+.lush-product-tab .widget.product-sidebar-type-collection .product-list-style span.price-item.price-item--sale.price-item--last {
+  display: block;
+}
+
+.lush-product-tab span.price-item.price-item--sale.price-item--last {
+  display: block;
+}

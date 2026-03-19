@@ -1,0 +1,11 @@
+[      24ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:9292/pages/wishlist:0
+[     369ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:9292/favicon.ico:0
+[   26444ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   26448ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:9292/pages/wishlist:0
+[   26955ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:9292/favicon.ico:0
+[   27111ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   27116ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:9292/pages/wishlist:0
+[   28526ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   30481ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://canetas-crown-n1.myshopify.com https://canetas-crown-n1.account.myshopify.com https://www.canetascrown.com.br https://canetascrown.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[   31331ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304

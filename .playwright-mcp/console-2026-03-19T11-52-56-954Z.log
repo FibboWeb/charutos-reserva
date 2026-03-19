@@ -1,0 +1,62 @@
+[     517ms] ReferenceError: options is not defined
+    at http://127.0.0.1:9292/collections/charutos-cubanos:2111:42
+[    1166ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[    1490ms] ReferenceError: options is not defined
+    at http://127.0.0.1:9292/collections/charutos-cubanos:2111:42
+[    2610ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  135796ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  136786ms] ReferenceError: options is not defined
+    at http://127.0.0.1:9292/collections/charutos-cubanos:2111:42
+[  138134ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  142995ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  143733ms] ReferenceError: options is not defined
+    at http://127.0.0.1:9292/collections/charutos-cubanos:2111:42
+[  144619ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  159216ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  159567ms] ReferenceError: options is not defined
+    at http://127.0.0.1:9292/collections/charutos-cubanos:2111:42
+[  160447ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  162424ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  162737ms] ReferenceError: options is not defined
+    at http://127.0.0.1:9292/collections/charutos-cubanos:2113:42
+[  163623ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  168616ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  168639ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:9292/collections/charutos-cubanos:0
+[  177479ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  178559ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  190365ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  191567ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  194443ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  195657ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  317472ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  319381ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  320980ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  322600ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  327341ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  329020ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  329256ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  330779ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  368720ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  370033ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  484686ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  486097ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  486901ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  488445ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  501273ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  502649ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0

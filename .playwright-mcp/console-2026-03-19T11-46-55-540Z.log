@@ -1,0 +1,48 @@
+[     261ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://canetas-crown-n1.myshopify.com https://canetas-crown-n1.account.myshopify.com https://www.canetascrown.com.br https://canetascrown.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[     347ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[    1122ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://canetas-crown-n1.myshopify.com https://canetas-crown-n1.account.myshopify.com https://www.canetascrown.com.br https://canetascrown.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  195808ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  195809ms] [ERROR] Failed to load resource: net::ERR_INCOMPLETE_CHUNKED_ENCODING @ http://127.0.0.1:9292/:0
+[  198810ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  198810ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  201812ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  201812ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  204813ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  204813ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  207815ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  207815ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  210817ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  210817ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  213819ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  213819ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  216820ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  216820ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  219822ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  219822ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  222823ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  222823ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  225825ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  225825ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  228826ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  228826ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  231828ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  231828ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  234829ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  234829ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  237831ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  237831ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  240834ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  240834ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  243836ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  243836ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  246839ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  246839ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  249845ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  249845ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  252846ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  252846ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  255848ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  255848ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0
+[  264961ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ chrome-error://chromewebdata/:0

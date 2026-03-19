@@ -1,0 +1,23 @@
+---
+description: Uso do Context7 MCP para documentação Shopify
+alwaysApply: true
+---
+
+# Context7 - Documentação Shopify
+
+## Library IDs
+
+- **Shopify Themes**: `/websites/shopify_dev_storefronts_themes` (arquitetura, sections, blocks)
+- **Liquid API**: `/websites/shopify_dev_api_liquid` (tags, filters, objects)
+
+## Fluxo
+
+1. Se não souber o ID: `resolve-library-id` com `libraryName: "Shopify"` ou `"Liquid"`
+2. Consultar: `query-docs` com `libraryId` e `query` específico
+
+## Quando Usar
+
+- Dúvidas sobre APIs, tags, filters, schemas
+- Best practices de sections e blocks
+- Novos input types em schema
+- Limites e comportamentos de Liquid

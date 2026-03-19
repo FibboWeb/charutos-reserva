@@ -1,0 +1,107 @@
+{{ 'page-compare.css' | asset_url | stylesheet_tag }}
+{%  style %}
+ .breadcrumb a{color: rgba(var(--color-foreground),1);}  
+ .breadcrumb a:hover{ color: rgb(var(--color-base-outline-button-labels));}
+ .breadcrumb{padding-top:{{settings.breadcrumb_padding_top}}px;padding-bottom:{{settings.breadcrumb_padding_bottom}}px;margin-bottom:{{settings.breadcrumb_margin_bottom}}px;position: relative;z-index: 1;}  
+ .breadcrumb .breadcrumb_title{margin:0; font-weight: 500;font-size: 4rem;}
+ .breadcrumb a, .breadcrumb span{display: inline-block;margin-top:1rem;font-size:1.8rem;font-weight:400; padding: 0 0.4rem;} 
+ .breadcrumb.text-center{text-align:center;}  
+ .breadcrumb.text-start{text-align:left;}  
+ .breadcrumb.text-end{text-align:right;}
+ .breadcrumb:before { position: absolute; content: "";  display: block;  width: 100%;  height: 100%;  left: 0;  top: 0;  z-index: -1;background:url({{ settings.breadcrumb_image | image_url: width: 1920 }});opacity:.{{settings.image_overlay_opacity}};}  
+/*  span.breadcrumb__sep:after {
+    content: '\f105';
+    color: var(--color-icon);
+    font-family: 'FontAwesome';
+} */
+   span.breadcrumb__sep svg {
+    width: 1rem;
+    height: 1rem;
+    fill: rgba(var(--color-base-accent-1),0.6);
+}
+ @media screen and (max-width: 990px) {  
+ .breadcrumb{padding-top:calc( {{settings.breadcrumb_padding_top}}px / 2 );padding-bottom:calc( {{settings.breadcrumb_padding_bottom}}px / 2 );margin-bottom:calc( {{settings.breadcrumb_margin_bottom}}px / 2 );}   
+ }  
+  @media screen and (max-width: 480px) { 
+    .breadcrumb .breadcrumb_title{font-size: 2.6rem;}
+    .breadcrumb a, .breadcrumb span{font-size:1.4rem;}
+  }
+{% endstyle %}
+<nav class="breadcrumb text-{{ settings.breadcrumb_style }}"  aria-label="breadcrumbs {{ request.page_type }}">
+   <div class="page-width">
+    <div class="row"> 
+    <h1 class="breadcrumb_title">{{ page.title }}</h1> 
+    <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+
+    <span aria-hidden="true" class="breadcrumb__sep">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
+    </span>
+    <span>{{ page.title }}</span>
+    </div>
+   </div>
+</nav>
+<div class="page-width compare compare-wrapper">
+  <dtx-compare-grid grid_type="compareList">
+    <div class="dtx-grid-empty">
+       <h2>{{ 'products.compare.no_records' | t }}</h2>
+    <img src="{{ "empty-cart.png" | asset_url }}" alt="{{ 'products.compare.no_records' | t }}" height="150" width="150" loading="lazy" />
+      <a href="{{ routes.all_products_collection_url }}" class=" button button--primary">
+        {{ 'general.continue_shopping' | t }}
+      </a>
+    </div>    
+    <table class="dtx-table" id="compareSwiper">
+      <tbody class="slick-wrapper">
+      <th class="product-title"> product </th>
+         <th>Product Title</th> 
+        <th>Price</th>       
+        <th>{{ 'products.product.stock_status' | t }}</th>
+        <th>Vendor</th>
+        <th>Type</th>
+        <th>Sku</th>
+        <th>Add to Cart</th>
+        <th>Remove</th>
+        <tr id="row_{item.product_handle}" class="grid_template" style="display: none;">
+          <td class="product-thumbnail">
+            <a href="{item.product_url}">
+              <img loading="lazy" src="{item.product_image}" alt="{item.product_title}" width="" height="">
+            </a>
+          </td>
+          <td class="product-name">
+            <a href="{item.product_url}">{item.product_title}</a>
+          </td>
+          <td class="product-price-cart">
+            {item.money_price}
+          </td>
+          <td class="product-availability-cart">
+            {item.available}
+          </td>
+           <td class="product-vendor-cart">
+            {item.product_vendor}
+          </td>
+           <td class="product-type-cart">
+            {item.product_type}
+          </td>
+           <td class="product-sku-cart">
+            {item.product_sku}
+          </td>
+          <!-- <td class="product-description-cart">
+            {item.product_description}
+          </td>           -->
+          <td class="product-wishlist-cart">
+             <a href="{item.product_url}" data-product-variant-id="{item.variant_id}" class="dt-sc-btn button product-cart">
+              Select Options
+            </a> 
+             
+          </td>
+          <td>
+            <dtx-remove-compare-item grid_type="compareList">
+              <a href="javascript:void(0);" data-product_handle="{item.product_handle}" class="remove-item product-cart">
+               <span> Remove </span>{% render 'icon-remove' %}
+              </a>
+            </dtx-remove-compare-item>  
+          </td>
+        </tr>        
+      </tbody>       
+    </table>
+  </dtx-compare-grid>
+</div>

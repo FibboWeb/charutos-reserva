@@ -1,0 +1,63 @@
+.instagram-demo .section-template--21701471240498__fc6b2837-c805-4fa1-8713-abdc1fdc3cde-padding.isolate{width:100%}
+
+
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.two-column {display:grid; grid-template-columns:repeat(2,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.three-column {display:grid; grid-template-columns:repeat(3,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.four-column {display:grid; grid-template-columns:repeat(4,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.five-column {display:grid; grid-template-columns:repeat(5,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.six-column {display:grid; grid-template-columns:repeat(6,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section {column-gap:0; row-gap:0;}
+.anamika-insta-gallery .insta-gallery-wrapper .swiper {cursor:grab;}
+.anamika-insta-gallery .title-wrapper-with-link{margin-bottom:0;}
+@media screen and (max-width: 1199px) and (min-width:751px) {
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.four-column {display:grid; grid-template-columns:repeat(2,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.five-column {display:grid; grid-template-columns:repeat(3, 1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.six-column {display:grid; grid-template-columns:repeat(3, 1fr);}
+}
+
+@media screen and (max-width: 750px) {
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.two-column {display:grid; grid-template-columns:repeat(1,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.three-column {display:grid; grid-template-columns:repeat(1,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.four-column {display:grid; grid-template-columns:repeat(1,1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.five-column {display:grid; grid-template-columns:repeat(2, 1fr);}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.six-column {display:grid; grid-template-columns:repeat(1,1fr);}
+}
+
+@media screen and (max-width: 480px) {
+.anamika-insta-gallery .insta-gallery .insta-gallery-section.five-column {display:grid; grid-template-columns:repeat(1,1fr);}
+}
+
+.anamika-insta-gallery .insta-gallery .title-wrapper-with-link.content-align--left {align-items:flex-start;}
+.anamika-insta-gallery .insta-gallery .title-wrapper-with-link.content-align--center {align-items:center;}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section .insta-gallery-wrapper .insta-gallery-block-image img.insta-gallery-image {width:100%; height:100%; object-fit:cover; transition:all 0.3s linear;}
+.anamika-insta-gallery .insta-gallery-inner.banner--content-align-center {align-items:center; text-align:center;}
+.anamika-insta-gallery .insta-gallery-inner.banner--content-align-right {align-items:flex-end; text-align:right;}
+.anamika-insta-gallery .insta-gallery-inner.banner--content-align-left {align-items:flex-start; text-align:left;}
+.anamika-insta-gallery .insta-gallery .insta-gallery-section:not(.background-none) .insta-gallery-wrapper {background:rgb(var(--color-background));}
+.anamika-insta-gallery .insta-gallery .dt-sc-insta-gallery-section.background-primary .insta-gallery-wrapper {background:rgb(var(--color-background)) linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));}
+.anamika-insta-gallery .insta-gallery-section .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner h4.main-title a {color:var(--color-foreground);}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper {height:250px; position:relative;}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-block-image {width:100%; height:100%;}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner {position:absolute; top:0px; bottom:0px; margin:auto; left:0px; right:0px; background:rgba(var(--color-base-accent-1),0.7); transition:all 0.3s linear; opacity:0;}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner {display:flex; flex-direction:column; padding:30px; align-items:center; justify-content:center;}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper {transition:all 0.3s linear; overflow:hidden; will-change:transform;}
+.anamika-insta-gallery .custom-insta {padding:0 20px;}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner .banner-button svg {width:35px; height:35px; color:var(--gradient-base-accent-1); transition:var(--duration-long);}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner .banner-button svg:hover {color:rgba(var(--color-base-outline-button-labels));}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner .sub-title, .anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner .sub-title {margin:0; margin-right:auto; font-weight:500; letter-spacing:2.6px;}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner .description {margin:0; text-align:left;}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner .banner-button {display:flex;width:55px;height:55px;border-radius:50px;justify-content:center;align-items:center;background: var(--gradient-base-background-1);}
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper:hover .insta-gallery-content .insta-gallery-inner {opacity:1}
+.anamika-insta-gallery .insta-gallery-section.overlay p.icon-svg svg {width:30px; height:30px;}
+.anamika-insta-gallery .insta-gallery .insta_bottom {padding-top:0px;}
+.anamika-insta-gallery .insta-gallery .insta_bottom {margin:0; padding:0;}
+
+@media screen and (max-width: 1540px) {
+.anamika-insta-gallery .insta-gallery-section.overlay .insta-gallery-wrapper .insta-gallery-content .insta-gallery-inner {padding:20px;}
+}
+
+.anamika-insta-gallery .demo1-instafeed .grid--6-col-desktop .grid__item {width:16.66%; max-width:16.66%;}
+
+@media screen and (max-width: 480px) {
+.anamika-insta-gallery .demo1-instafeed .insta-gallery-wrapper .swiper {margin-left:20px; margin-right:20px;}
+}

@@ -1,0 +1,145 @@
+.cartrek-product-tab {margin-top:140px;}
+.cartrek-product-tab .tabs {display:flex; justify-content:center; flex-wrap:wrap; margin-bottom:3rem;}
+.cartrek-product-tab .tabs .tablinks {color:var(--color-base-accent-1); cursor:pointer; padding:2.5rem 2.5rem; margin:-1px 0 0; display:flex; align-items:center; justify-content:center; position:relative; background-color:var(--gradient-base-background-1); border:1px solid var(--gradient-base-background-1); border-right:none; box-shadow:inset 0 0 0 var(--gradient-base-background-2); transition:all 0.3s linear; font-weight:600; font-family:var(--font-heading-family);}
+.cartrek-product-tab .tabs .tablinks:hover, .cartrek-product-tab .tabs .tablinks.active {color:rgba(var(--color-base-outline-button-labels)); box-shadow:none;}
+.cartrek-product-tab .tabs_container {position:relative; width:100%;}
+.cartrek-product-tab .list-style-none {list-style:none !important;}
+.cartrek-product-tab .text-align-left {text-align:left !important; align-items:flex-start;}
+.cartrek-product-tab .text-align-center {text-align:center !important; align-items:center;}
+.cartrek-product-tab .tabs_container .product-tab-carousel {width:100%; transition:all 0.3s linear; padding-bottom:40px;}
+.cartrek-product-tab .tabs_container .product-tab-carousel:not(:first-child, :only-child), .cartrek-product-tab .tabs_container .dt-sc-tabs-content:not(:first-child, :only-child) {left:0; top:0;}
+.cartrek-product-tab .tabs_container .product-tab-carousel:not(.active), .cartrek-product-tab .tabs_container .dt-sc-tabs-content:not(.active) {opacity:0; pointer-events:none;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid {justify-content:space-between; margin:0; width:100%; padding:0;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item {max-width:calc(50% - 18px); width:calc(50% - 18px);}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item[class*="tab-template--"]:not(:only-child) {max-width:calc(50% - 18px); width:calc(50% - 18px);}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item:only-child {max-width:100%; width:100%;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:not(:only-child) .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(2, 1fr);}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:not(:only-child) .tabs_container .dt-sc-column.five-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:not(:only-child) .tabs_container .dt-sc-column.six-column {grid-template-columns:repeat(3, 1fr);}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item, .cartrek-product-tab .product-tab-wrapper .template-search .grid__item {padding:0;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media {height:100%; background:none; width:100%;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media>img {height:100%; position:relative; min-height:295px;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading {display:flex; flex-wrap:wrap; padding:5rem; z-index:1;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading.vertical_top {align-content:flex-start;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading.vertical_middle {align-content:center;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading.vertical_bottom {align-content:flex-end;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading>* {width:100%; margin:0;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading>*:not(.button) {line-height:50px; margin-bottom:1rem;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading>.button {width:auto; margin-bottom:0; margin-top:1.5rem;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading>.image-block-main-heading {font-family:var(--font-body-family);}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading>.image-block-sub-heading {font-family:var(--font-additional-family);}
+.cartrek-product-tab .product-tab-wrapper .collection>.grid.image-with-text__grid.image-with-text__grid--reverse {flex-direction:row-reverse;}
+.cartrek-product-tab .product-tab-wrapper .collection>.grid.image-with-text__grid.image-with-text__grid--reverse .grid__item>.media {float:right;}
+.cartrek-product-tab .tabs_container .dt-sc-tabs-content-Details:not(.active) {opacity:0; pointer-events:none; display:none;}
+/* .suggested-product-tab .card .card__inner{width:117px;height:87px;} */
+.product-tab-wrapper.suggested-product-tab .collection .tabs .tablinks{font-size:1.4rem;margin:0;column-gap:25px;}
+.cartrek-product-tab .product-tab-wrapper .collection .tabs_container .product-tab-carousel .swiper-container .card .card__inner{ width:117px;height:87px;}
+
+
+
+
+@media screen and (min-width: 1201px) and (max-width:1440px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item[class*="tab-template--"]:not(:only-child) .tabs_container .dt-sc-column {grid-template-columns:repeat(2, 1fr);}
+}
+
+@media screen and (max-width: 1200px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid[class*="tab-template--"]:not(:only-child) {display:grid; grid-template-columns:1fr;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item[class*="tab-template--"]:not(:only-child) {margin-bottom:50px; max-width:100%; width:100%;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.three-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(2, 1fr);}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.five-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.six-column {grid-template-columns:repeat(2, 1fr);}
+#dtx-quickview-content .product .product__title {font-size:calc(0.4 * var(--heading_font_size));}
+}
+
+@media screen and (max-width: 750px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item[class*="tab-template--"]:not(:only-child) .tabs_container .dt-sc-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:not(:only-child) .tabs_container .dt-sc-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.five-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.six-column {grid-template-columns:repeat(2, 1fr);}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading {padding:3rem;}
+}
+
+@media screen and (max-width: 575px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item[class*="tab-template--"]:not(:only-child) .tabs_container .dt-sc-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:not(:only-child) .tabs_container .dt-sc-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.five-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.six-column {grid-template-columns:1fr;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item>.media .image-block-heading {}
+.cartrek-product-tab .tabs .tablinks {width:100%; padding:1.5rem 2rem;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.three-column, .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(1, 1fr);}
+}
+
+.cartrek-product-tab .tabs .tablinks {padding:0.8rem 2.5rem; box-shadow:none; border:1px solid rgba(var(--color-base-text), 0.6);border-radius:30px;}
+.cartrek-product-tab .tabs .tablinks:hover, .cartrek-product-tab .tabs .tablinks.active {box-shadow:none; color:rgba(var(--color-base-outline-button-labels));}
+.cartrek-product-tab .tabs .tablinks:not(:last-child) {margin-right:22px;}
+.cartrek-product-tab .tabs_container .card:not(.ratio) {display:grid; grid-template-columns:1.5fr 5.1fr;}
+ /* background:var(--gradient-base-accent-2); */}
+.cartrek-product-tab .product-tab-wrapper .collection .grid {grid-gap:14px;}
+.cartrek-product-tab .tabs_container .card .product-icons, .cartrek-product-tab .card-wrapper .card__inner .quick-add.button-quick-add {display:none;}
+.cartrek-product-tab .card_style-button_width_icons .card .card__information .vendor {font-size:10px; font-weight:500; color:var(--gradient-base-accent-1); margin:0;}
+.cartrek-product-tab .tabs_container .card__information .card__heading a {font-size: clamp(1.3rem, 1.2rem + 0.5vw, 1.8rem); margin:0;}
+.cartrek-product-tab .tabs_container .card__information .card__heading {margin:0;padding-right: 0;}
+.cartrek-product-tab .tabs_container .price {font-size: clamp(1.2rem, 1.12rem + 0.4vw, 1.6rem); font-weight:500; margin-top:8px;}
+.cartrek-product-tab .tabs_container .card--card.card--media>.card__content {padding:0 20px; text-align:left;display:flex;align-items:center;}
+.cartrek-product-tab .tabs_container .card__badge.top-left .badge {display:none;}
+/* .cartrek-product-tab .tabs_container .card__badge, .cartrek-product-tab .tabs_container .price--on-sale .price-item--regular {display:none;} */
+.cartrek-product-tab .tabs {position:absolute; top:0; right:6%;}
+.suggested-product-tab .swiper-grid-column > .swiper-wrapper{flex-direction:row;row-gap:30px;}
+.suggested-product-tab .swiper-grid-column > .swiper-wrapper .swiper-slide .card .card__inner .card__media img{ object-fit:cover; object-position:center; }
+/* @media screen and (min-width: 1600px) {
+.cartrek-product-tab .tabs_container .price {position:absolute; top:48%; transform:translateY(-50%);}
+} */
+
+
+@media screen and (max-width: 1540px) {
+.cartrek-product-tab .collection .title-wrapper-with-link {margin:0 0 30px; align-items:center;position: absolute;}
+}
+
+@media screen and (max-width: 1440px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(3, 1fr);}
+  .suggested-product-tab .tabs_container{margin-top:100px;}
+  .suggested-product-tab .swiper-grid-column > .swiper-wrapper .swiper-slide{/* width:30% !important; */}
+  .cartrek-product-tab {margin:100px 0 50px 0;}
+}
+@media screen and (max-width: 1200px) {
+.cartrek-product-tab .collection .title-wrapper-with-link, .cartrek-product-tab .collection .tabs{position:unset;}
+.suggested-product-tab .collection .tabs{justify-content:center;}
+  .suggested-product-tab .tabs_container{margin-top:40px;}
+   .cartrek-product-tab {margin:50px 0 0px 0;}
+}
+@media screen and (max-width: 1024px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(2, 1fr);}
+}
+
+@media screen and (max-width: 990px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(2, 1fr);}
+.cartrek-product-tab .tabs .tablinks {padding:0.8rem 2rem; margin-bottom:10px;}
+.cartrek-product-tab .tabs .tablinks:not(:last-child) {margin-right:10px;}
+}
+@media screen and (max-width:780px){
+  .suggested-product-tab .swiper-wrapper{/* width:100% !important; */}
+}
+@media screen and (max-width: 575px) {
+.cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(1, 1fr);}
+.cartrek-product-tab .product-tab-wrapper .tabs .tablinks {width:auto;}
+.cartrek-product-tab .product-tab-wrapper .collection .grid__item{row-gap:0;}
+.cartrek-product-tab .tabs_container .card:not(.ratio) {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+}
+  .suggested-product-tab .card .card__inner {
+    width: 117px;
+    height: 87px;
+    justify-self: end;
+}
+}
+@media screen and (max-width: 480px){
+.cartrek-product-tab .tabs_container .card:not(.ratio) {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+}
+  
+}
+@media screen and (max-width: 425px){
+.cartrek-product-tab .tabs_container .card:not(.ratio) {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+}
+  
+}
+
+.cartrek-product-tab .card__content ul[class*=variant-option-color] {
+    display: none;
+}
