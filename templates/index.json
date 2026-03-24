@@ -12,6 +12,46 @@
     "22208e64-dcc3-4578-b425-207fdf5259a3": {
       "type": "slideshow",
       "blocks": {
+        "slide_MCzxVi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/rei-charuto-behike.jpg",
+            "mobile_image": "shopify://shop_images/rei-charuto-banner-mobile-site-1080x1350-behike.png",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "text": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_KPxBnL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/rei-chauto-cohiba-robusto.jpg",
+            "mobile_image": "shopify://shop_images/rei-charuto-banner-mobile-site-1080x1350-robusto.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Image sub heading",
+            "text": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
         "slide_gfFGJt": {
           "type": "slide",
           "settings": {
@@ -34,6 +74,8 @@
         }
       },
       "block_order": [
+        "slide_MCzxVi",
+        "slide_KPxBnL",
         "slide_gfFGJt"
       ],
       "settings": {
@@ -191,6 +233,7 @@
         "heading_size": "h0",
         "sub_heading": "",
         "description": "Charutos Reserva reúne marcas selecionadas que representam tradição, excelência e uma experiência única em cada detalhe.",
+        "image_width": "half",
         "button_label": "",
         "button_link": "",
         "button_style_secondary": false,
