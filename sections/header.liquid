@@ -59,7 +59,11 @@
   }
   .header__icons .header__icon--wishlist,
   .header__icons .header__icon--compare {
-    color: #fff;
+    color: #1a322c;
+  }
+  .header__icons .header__icon--wishlist svg,
+  .header__icons .header__icon--compare svg {
+    color: #1a322c;
   }
   .header__icons .header__icon--wishlist:hover,
   .header__icons .header__icon--compare:hover,
@@ -77,7 +81,7 @@
     .header__inline-menu {
       display: none !important;
     }
-    /* Drawer dentro de .header__icons: mesmo grupo à direita, menu imediatamente antes do carrinho (ordem no DOM) */
+    /* Drawer dentro de .header__icons: carrinho antes do hamburger (ordem no DOM) */
     .header__icons header-drawer {
       display: flex !important;
       align-items: center;
@@ -666,6 +670,26 @@ display: inline-flex;
             </a>
           {%- endif -%}
         </div>
+  {%- if section.settings.show_header_cart -%}
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+        {%- liquid
+          if cart == empty
+            render 'header-cart'
+          else
+            render 'header-cart'
+          endif
+        -%}
+        <span class="icon__fallback-text {% if section.settings.header_icon_type =="icon"  %} hidden {% endif %}">{{ 'templates.cart.cart' | t }}</span>
+        {%- if cart != empty -%}
+          <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%}
+              <span aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+        {%- endif -%}
+      </a>
+ {%- endif -%}
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="tablet">      
         <details id="Details-menu-drawer-container" class="menu-drawer-container">
@@ -883,27 +907,6 @@ display: inline-flex;
         </details>
       </header-drawer>
     {%- endif -%}
-     
-  {%- if section.settings.show_header_cart -%}   
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-        {%- liquid
-          if cart == empty
-            render 'header-cart'
-          else
-            render 'header-cart'
-          endif
-        -%}
-        <span class="icon__fallback-text {% if section.settings.header_icon_type =="icon"  %} hidden {% endif %}">{{ 'templates.cart.cart' | t }}</span>
-        {%- if cart != empty -%}
-          <div class="cart-count-bubble">
-            {%- if cart.item_count < 100 -%}
-              <span aria-hidden="true">{{ cart.item_count }}</span>
-            {%- endif -%}
-            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-          </div>
-        {%- endif -%}
-      </a>
- {%- endif -%}
          {% comment %}        
      {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
        {%- if customer -%} 

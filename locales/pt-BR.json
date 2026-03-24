@@ -181,7 +181,9 @@
       "include_taxes": "Tributo incluído.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Frete</a> calculado no checkout.",
       "choose_options": "Escolher opções",
-      "choose_product_options": "Escolha opções para {{ product_name }}"
+      "choose_product_options": "Escolha opções para {{ product_name }}",
+      "wishlist": "Lista de desejos",
+      "compare": "Comparar"
     },
     "modal": {
       "label": "Galeria de mídia"
