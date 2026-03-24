@@ -75,6 +75,10 @@
       "of": "de",
       "next_slide": "Deslizar para a direita",
       "previous_slide": "Deslizar para a esquerda"
+    },
+    "rte_read_more": {
+      "expand": "Ver mais",
+      "collapse": "Ver menos"
     }
   },
   "newsletter": {

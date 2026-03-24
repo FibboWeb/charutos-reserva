@@ -122,6 +122,16 @@ border:1px solid rgba(var(--color-base-accent-1),.1);
   line-height:normal;
   margin-top:0.5rem;
 }
+
+@media screen and (max-width: 749px) {
+  .card__content .rte.grid-view-hidden {
+    display: block;
+    position: relative;
+    margin: 0.5rem 0 0;
+    line-height: normal;
+    max-width: 100%;
+  }
+}
 .card--media .card__inner .card__content {
   padding: calc(var(--card-image-padding) + 1rem);
   position: relative;

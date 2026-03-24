@@ -81,6 +81,10 @@
       "next_slide": "Slide right",
       "previous_slide": "Slide left"
     },
+    "rte_read_more": {
+      "expand": "Read more",
+      "collapse": "Read less"
+    },
     "breadcrumbs": {
       "home": "Home",
       "home_link_title": "Back to the frontpage",

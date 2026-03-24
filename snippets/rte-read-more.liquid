@@ -1,0 +1,29 @@
+{%- comment -%}
+  Conteúdo RTE completo no HTML (SEO). Colapso apenas visual via CSS + checkbox (sem JS).
+  @param html {String} HTML do editor rico
+  @param id_base {String} base única para id do input (ex.: section.id)
+  @param outer_class {String} classes opcionais no wrapper externo
+{%- endcomment -%}
+{%- liquid
+  assign html = html | default: ''
+  assign plain = html | strip_html | strip
+  assign plain_len = plain.size
+  assign uid = id_base | default: 'rte-rm'
+-%}
+{%- if html == blank -%}
+{%- elsif plain_len < 320 -%}
+  <div class="rte-read-more rte-read-more--static{% if outer_class != blank %} {{ outer_class }}{% endif %} rte">
+    {{ html }}
+  </div>
+{%- else -%}
+  <div class="rte-read-more{% if outer_class != blank %} {{ outer_class }}{% endif %}">
+    <input type="checkbox" id="rte-rm-{{ uid }}" class="rte-read-more__state visually-hidden">
+    <div class="rte rte-read-more__viewport">
+      {{ html }}
+    </div>
+    <div class="rte-read-more__actions">
+      <label for="rte-rm-{{ uid }}" class="rte-read-more__label rte-read-more__label--more">{{ 'general.rte_read_more.expand' | t }}</label>
+      <label for="rte-rm-{{ uid }}" class="rte-read-more__label rte-read-more__label--less">{{ 'general.rte_read_more.collapse' | t }}</label>
+    </div>
+  </div>
+{%- endif -%}

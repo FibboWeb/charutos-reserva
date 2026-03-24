@@ -1,5 +1,6 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'collection-description-rte.css' | asset_url | stylesheet_tag }}
+{{ 'rte-read-more.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -297,7 +298,7 @@
   </div>
 </div>
   {%- if section.settings.show_collection_description and collection.description != blank -%}
-    <div class="collection-page-description rte">{{ collection.description }}</div>
+    {% render 'rte-read-more', html: collection.description, id_base: section.id, outer_class: 'collection-page-description' %}
   {%- endif -%}
 </div>
 

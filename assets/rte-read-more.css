@@ -1,0 +1,116 @@
+/* "Ver mais" sem JS: HTML completo no DOM; colapso só visual (checkbox + CSS) */
+
+.rte-read-more__viewport {
+  position: relative;
+  transition: max-height 0.35s ease;
+}
+
+/* Fade-out na base (só quando colapsado): texto some gradualmente */
+.rte-read-more__state:not(:checked) ~ .rte-read-more__viewport::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4.5rem;
+  pointer-events: none;
+  z-index: 1;
+  /* Fallback (navegadores sem rgb / alpha) */
+  background: linear-gradient(to bottom, transparent 0%, rgb(var(--color-background)) 100%);
+  transition: opacity 0.3s ease;
+}
+
+@supports (color: rgb(0 0 0 / 0.5)) {
+  .rte-read-more__state:not(:checked) ~ .rte-read-more__viewport::after {
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--color-background) / 0) 0%,
+      rgb(var(--color-background) / 0.45) 45%,
+      rgb(var(--color-background) / 0.92) 78%,
+      rgb(var(--color-background)) 100%
+    );
+  }
+}
+
+.rte-read-more__state:not(:checked) ~ .rte-read-more__viewport {
+  max-height: 9em;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 749px) {
+  .rte-read-more__state:not(:checked) ~ .rte-read-more__viewport {
+    max-height: 17em;
+  }
+
+  .rte-read-more__state:not(:checked) ~ .rte-read-more__viewport::after {
+    height: 6rem;
+  }
+}
+
+.rte-read-more__state:checked ~ .rte-read-more__viewport::after {
+  opacity: 0;
+}
+
+.rte-read-more__state:checked ~ .rte-read-more__viewport {
+  max-height: none;
+  overflow: visible;
+}
+
+.rte-read-more__actions {
+  margin-top: 1rem;
+}
+
+.rte-read-more__label {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--buttons-radius, 4px);
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.25;
+  color: #fff;
+  background-color: #1a322c;
+  border: 2px solid #1a322c;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.rte-read-more__label:hover {
+  background-color: #d4b064;
+  border-color: #d4b064;
+  color: #1a322c;
+}
+
+.rte-read-more__label:focus-visible {
+  outline: 2px solid #1a322c;
+  outline-offset: 3px;
+}
+
+.rte-read-more__label:focus-visible:hover {
+  outline-color: #1a322c;
+}
+
+.rte-read-more__state:not(:checked) ~ .rte-read-more__actions .rte-read-more__label--less {
+  display: none;
+}
+
+.rte-read-more__state:checked ~ .rte-read-more__actions .rte-read-more__label--more {
+  display: none;
+}
+
+@media print {
+  .rte-read-more__state:not(:checked) ~ .rte-read-more__viewport {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .rte-read-more__viewport::after {
+    display: none !important;
+  }
+
+  .rte-read-more__actions {
+    display: none !important;
+  }
+}
