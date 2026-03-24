@@ -148,6 +148,9 @@ if ($(".collection #AjaxinatePagination").length > 0) {
 
 InitCustomFunctions();
 function InitCustomFunctions() {
+  if (typeof window.__initCollectionAvailabilitySort === 'function') {
+    window.__initCollectionAvailabilitySort();
+  }
   $('.facet-checkbox input:checkbox').each(function () {
   if($(this).is(':checked')){
        $(this).parent('.facet-checkbox').addClass('active');
@@ -225,7 +228,7 @@ function InitCustomFunctions() {
         .removeClass("active");
     }
   });
-  $("body").on("click", ".color-values-plus a", function (e) {
+  $("body").on("click", ".color-values-plus .color-values-plus-toggle", function (e) {
     $(this)
       .parents(".variant-option-color")
       .find(".show-on-click")

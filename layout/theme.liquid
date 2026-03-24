@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="theme-color" content="#1a322c">
     <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="robots" content="{% if template.name == 'search' or template.name == 'cart' or request.path contains '/account' or request.path contains '/checkout' %}noindex,nofollow{% else %}index,follow{% endif %}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     {%- if settings.favicon != blank -%}
@@ -28,10 +29,10 @@
     {% endif %}
 
     {% render 'meta-tags' %}    
-    <script src="{{ 'jquery.min.js' | asset_url }}"></script>        
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
-    <script  src="{{ 'jquery-cookie-min.js' | asset_url }}"></script>
+    <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'jquery-cookie-min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'wow.min.js' | asset_url }}"></script>
     {{ content_for_header }}   
     {% style %}      
@@ -421,5 +422,10 @@
         </div>
       </div>
     </div>
+    {% comment %} Konfidency integration {% endcomment %}
+    <script async src="https://reviews.konfidency.com.br/reidoscharutos/loader.js"></script>
+    {% if template contains 'product' %}
+      <script src="{{ 'konfidency-product-page.js' | asset_url }}"></script>
+    {% endif %}
   </body>
 </html>

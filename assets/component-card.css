@@ -332,6 +332,24 @@ ul.product-icons.top-aligned {
   
 }
 
+/* Flag de desconto sobre a imagem (cards em promoção) */
+.card__discount-flag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  padding: 0.375rem 0.75rem;
+  background: #c62828;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  border-radius: 9999px;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
 .card__badge {
   align-self: flex-end;
   grid-row-start: 3;
@@ -893,7 +911,8 @@ tooltip.tooltip:before {
 .optional-sidebar ul.product-list-style .card__badge .badge {
   display: none;
 }
-li.color-values-plus a {
+li.color-values-plus a,
+li.color-values-plus .color-values-plus-toggle {
   font-size: 12px;
   min-width: auto;
   min-height: 20px;
@@ -901,6 +920,11 @@ li.color-values-plus a {
   align-items: center;
   justify-content: center;
   color: var(--color-icon);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
 #swiper-sidebar-carousel {
   overflow: hidden;

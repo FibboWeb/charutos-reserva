@@ -2,6 +2,10 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{%- assign first_slide = section.blocks.first -%}
+{%- if first_slide.settings.image != blank -%}
+  <link rel="preload" as="image" href="{{ first_slide.settings.image | image_url: width: 1500 }}">
+{%- endif -%}
 {%- style -%}
 {%- if section.blocks.first.settings.image != blank -%}
   
@@ -89,7 +93,8 @@
               {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
               sizes="100vw"
               src="{{ block.settings.image | image_url: width: 3000 }}"
-              loading="lazy"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              {% if forloop.first %}fetchpriority="high"{% endif %}
               alt="{{ block.settings.image.alt | escape }}"
               width="{{ block.settings.image.width }}"
               height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round }}"
@@ -117,7 +122,7 @@
               {{ block.settings.mobile_image | image_url }} {{ block.settings.mobile_image.width }}w"
               sizes="100vw"
               src="{{ block.settings.mobile_image | image_url: width: 1500 }}"
-              loading="lazy"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
               alt="{{ block.settings.mobile_image.alt | escape }}"
               width="{{ block.settings.mobile_image.width }}"
               height="{{ block.settings.mobile_image.width | divided_by: block.settings.mobile_image.aspect_ratio | round }}"

@@ -30,9 +30,18 @@
 .cartrek-product-tab .product-tab-wrapper .collection>.grid.image-with-text__grid.image-with-text__grid--reverse {flex-direction:row-reverse;}
 .cartrek-product-tab .product-tab-wrapper .collection>.grid.image-with-text__grid.image-with-text__grid--reverse .grid__item>.media {float:right;}
 .cartrek-product-tab .tabs_container .dt-sc-tabs-content-Details:not(.active) {opacity:0; pointer-events:none; display:none;}
-/* .suggested-product-tab .card .card__inner{width:117px;height:87px;} */
 .product-tab-wrapper.suggested-product-tab .collection .tabs .tablinks{font-size:1.4rem;margin:0;column-gap:25px;}
-.cartrek-product-tab .product-tab-wrapper .collection .tabs_container .product-tab-carousel .swiper-container .card .card__inner{ width:117px;height:87px;}
+/* Cards em coluna: imagem em destaque (evita miniatura 117px + grid horizontal quebrado) */
+.cartrek-product-tab .tabs_container .card:not(.ratio) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.cartrek-product-tab .tabs_container .product-tab-carousel .swiper-container .card .card__inner {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
 
 
 
@@ -64,8 +73,6 @@
 .cartrek-product-tab .tabs .tablinks {padding:0.8rem 2.5rem; box-shadow:none; border:1px solid rgba(var(--color-base-text), 0.6);border-radius:30px;}
 .cartrek-product-tab .tabs .tablinks:hover, .cartrek-product-tab .tabs .tablinks.active {box-shadow:none; color:rgb(var(--color-base-accent-1)) !important;}
 .cartrek-product-tab .tabs .tablinks:not(:last-child) {margin-right:22px;}
-.cartrek-product-tab .tabs_container .card:not(.ratio) {display:grid; grid-template-columns:1.5fr 5.1fr;}
- /* background:var(--gradient-base-accent-2); */}
 .cartrek-product-tab .product-tab-wrapper .collection .grid {grid-gap:14px;}
 /* product-icons (compare, quickview, wishlist) visíveis */
 /* Botão add-to-cart visível com contraste (referência layout tênis) */
@@ -98,12 +105,56 @@
 .cartrek-product-tab .tabs_container .card__information .card__heading a {font-size: clamp(1.3rem, 1.2rem + 0.5vw, 1.8rem); margin:0;}
 .cartrek-product-tab .tabs_container .card__information .card__heading {margin:0;padding-right: 0;}
 .cartrek-product-tab .tabs_container .price {font-size: clamp(1.2rem, 1.12rem + 0.4vw, 1.6rem); font-weight:500; margin-top:8px;}
-.cartrek-product-tab .tabs_container .card--card.card--media>.card__content {padding:0 20px; text-align:left;display:flex;align-items:center;}
+.cartrek-product-tab .tabs_container .card--card.card--media > .card__inner > .card__content { padding: 0 8px; text-align: left; display: flex; align-items: center; }
+.cartrek-product-tab .tabs_container .card--card.card--media > .card__content { padding: 1.2rem 0 0; text-align: left; }
 .cartrek-product-tab .tabs_container .card__badge.top-left .badge {display:none;}
 /* .cartrek-product-tab .tabs_container .card__badge, .cartrek-product-tab .tabs_container .price--on-sale .price-item--regular {display:none;} */
 .cartrek-product-tab .tabs {position:absolute; top:0; right:6%;}
 .suggested-product-tab .swiper-grid-column > .swiper-wrapper{flex-direction:row;row-gap:30px;}
 .suggested-product-tab .swiper-grid-column > .swiper-wrapper .swiper-slide .card .card__inner .card__media img{ object-fit:cover; object-position:center; }
+/* Título duplicado no overlay do card — oculto quando só resta badge */
+.product-tab-wrapper.suggested-product-tab .card__inner > .card__content > .card__information {
+  display: none;
+}
+
+/* Sugestões: imagem à esquerda, título/preço à direita (card horizontal) */
+.product-tab-wrapper.suggested-product-tab .tabs_container .card.card--media:not(.ratio) {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.product-tab-wrapper.suggested-product-tab .tabs_container .product-tab-carousel .swiper-container .card.card--media > .card__inner {
+  flex: 0 0 clamp(96px, 30%, 152px);
+  width: clamp(96px, 30%, 152px);
+  max-width: 152px;
+  min-width: 96px;
+  align-self: center;
+}
+
+.product-tab-wrapper.suggested-product-tab .tabs_container .card.card--media > .card__content {
+  flex: 1;
+  min-width: 0;
+  padding: 0.35rem 0;
+  text-align: left;
+}
+
+@media screen and (max-width: 479px) {
+  .product-tab-wrapper.suggested-product-tab .tabs_container .card.card--media:not(.ratio) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .product-tab-wrapper.suggested-product-tab .tabs_container .product-tab-carousel .swiper-container .card.card--media > .card__inner {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    align-self: stretch;
+  }
+  .product-tab-wrapper.suggested-product-tab .tabs_container .card.card--media > .card__content {
+    padding-top: 0.75rem;
+  }
+}
 /* @media screen and (min-width: 1600px) {
 .cartrek-product-tab .tabs_container .price {position:absolute; top:48%; transform:translateY(-50%);}
 } */
@@ -141,29 +192,6 @@
 .cartrek-product-tab .product-tab-wrapper .collection .grid>.grid__item:only-child .tabs_container .dt-sc-column.four-column {grid-template-columns:repeat(1, 1fr);}
 .cartrek-product-tab .product-tab-wrapper .tabs .tablinks {width:auto;}
 .cartrek-product-tab .product-tab-wrapper .collection .grid__item{row-gap:0;}
-.cartrek-product-tab .tabs_container .card:not(.ratio) {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-}
-  .suggested-product-tab .card .card__inner {
-    width: 117px;
-    height: 87px;
-    justify-self: end;
-}
-}
-@media screen and (max-width: 480px){
-.cartrek-product-tab .tabs_container .card:not(.ratio) {
-    display: grid;
-    grid-template-columns: 1fr 250px;
-}
-  
-}
-@media screen and (max-width: 425px){
-.cartrek-product-tab .tabs_container .card:not(.ratio) {
-    display: grid;
-    grid-template-columns: 1fr 220px;
-}
-  
 }
 
 .cartrek-product-tab .card__content ul[class*=variant-option-color] {

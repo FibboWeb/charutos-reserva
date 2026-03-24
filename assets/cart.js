@@ -87,12 +87,20 @@ class CartItems extends HTMLElement {
         if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
         if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
 
-        this.getSectionsToRender().forEach((section => {
+        this.getSectionsToRender().forEach((section) => {
+          if (section.id === 'cart-icon-bubble') {
+            const inner = this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+            document.querySelectorAll('.js-cart-icon-bubble').forEach((el) => {
+              const elementToReplace = el.querySelector(section.selector) || el;
+              elementToReplace.innerHTML = inner;
+            });
+            return;
+          }
           const elementToReplace =
             document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
           elementToReplace.innerHTML =
             this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
-        }));
+        });
 
         this.updateLiveRegions(line, parsedState.item_count);
         const lineItem =  document.getElementById(`CartItem-${line}`) || document.getElementById(`CartDrawer-Item-${line}`);

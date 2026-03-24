@@ -103,8 +103,7 @@ quick-add-modal .product__media-wrapper .deferred-media.media {
   display: flex !important;
   align-items: center;
   justify-content: center;
-  padding-top: 0 !important;
-  min-height: 260px;
+  min-height: 280px;
 }
 quick-add-modal .product__media-wrapper .product__media img,
 quick-add-modal .product__media-wrapper .deferred-media img {
@@ -377,8 +376,17 @@ quick-add-modal .product-form__buttons {
 .main-product_info.quick-add-modal-in-progress .grid__item:before { transform-origin:bottom; transform:scaleY(1); height:100%; transition:all 1s linear, top 0 linear .5s;}
 .main-product_info.quick-add-modal-in-progress .grid__item:last-child:before { transition-delay:.3s;}
 .main-product_info.quick-add-modal-in-progress .grid__item {  opacity: 1;}
-.quick-add-modal .grid__item{height:0;}
-.quick-add-modal[open] .grid__item{height:100%;padding:0;}
+.quick-add-modal:not([open]) .main-product_info .grid__item {
+  height: 0;
+}
+.quick-add-modal[open] .main-product_info > .grid__item {
+  height: auto !important;
+  min-height: 0;
+  padding: 0;
+}
+.quick-add-modal[open] .main-product_info > .grid__item.product__media-wrapper {
+  min-height: 300px;
+}
 .quick-add-modal .product__info-wrapper.grid__item .product__info-container,
 .quick-add-modal .grid__item.product__media-wrapper media-gallery{background:#fff;}
 
@@ -541,4 +549,62 @@ quick-add-modal button.product-form__submit.button.button--full-width.button--se
 .quick-add-modal .product-form__input .quantity {
   border-color: #efefef !important;
   background-color: #fff !important;
+}
+
+/* Espaçamento e botões no quick view */
+.quick-add-modal .product__info-container > * + * {
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+}
+.quick-add-modal .product__info-container .product-form,
+.quick-add-modal .product__info-container .product-form form {
+  max-width: 100% !important;
+  width: 100%;
+}
+.quick-add-modal .product-form__buttons {
+  gap: 1.2rem;
+  margin-top: 1.6rem;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 100% !important;
+  width: 100%;
+}
+.quick-add-modal .product-form__submit.button {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  align-self: stretch;
+  box-sizing: border-box;
+  min-height: 4.8rem;
+  font-size: 1.45rem;
+  padding: 1.1rem 1.6rem;
+}
+
+/* Compre já: visível sem hover (fora da PDP não há .main-product-template) */
+.quick-add-modal .shopify-payment-button__button--unbranded {
+  background-color: #d4b064 !important;
+  color: #1a322c !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.quick-add-modal .shopify-payment-button__button--unbranded:hover,
+.quick-add-modal .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  background-color: #c79b2f !important;
+  color: #1a322c !important;
+}
+
+/* Garantir imagem visível (ratio + posicionamento) */
+quick-add-modal .product__modal-opener--image .product__media img {
+  opacity: 1 !important;
+  position: absolute !important;
+  inset: 0;
+  margin: auto;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }

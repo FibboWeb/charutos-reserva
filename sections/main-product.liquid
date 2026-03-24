@@ -615,8 +615,9 @@
                         </span>
                       </p>
                     {%- endif -%}
+                    <div class="konfidency-reviews-summary" data-sku="{{ product.id }}"></div>
                      {%- when 'fake_sales' -%}
-                    {% render 'social-proof-sales', block: block %}  
+                    {% render 'social-proof-sales', block: block %}
                   </div>
                  
                   {%- when 'price' -%}
@@ -1806,6 +1807,13 @@
               }{% unless forloop.last %},{% endunless %}
             {%- endfor -%}
           ]
+          {%- if product.metafields.reviews.rating.value != blank and product.metafields.reviews.rating_count != blank -%}
+          ,"aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ product.metafields.reviews.rating.value.rating }}",
+            "reviewCount": "{{ product.metafields.reviews.rating_count }}"
+          }
+          {%- endif -%}
         }
       </script>
     </div>

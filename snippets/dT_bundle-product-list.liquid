@@ -43,7 +43,7 @@
     {% endif %}
   </li>
 
-  <li><a href="#" class="button dT_bundleProductToggle" data-bundle-product-handle="{{ product.handle  }}" data-bundle-product-id="{{ product.id }}">  {{ 'upsell.general.select_option' | t}}</a></li>
+  <li><button type="button" class="button dT_bundleProductToggle" data-bundle-product-handle="{{ product.handle  }}" data-bundle-product-id="{{ product.id }}">{{ 'upsell.general.select_option' | t}}</button></li>
 </ul>
 <div class="varient-options dT_varientBWrap dT_varientOptions_{{ product.id }}">
   {% unless product.has_only_default_variant %}

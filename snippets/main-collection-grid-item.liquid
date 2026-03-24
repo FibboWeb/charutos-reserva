@@ -1,0 +1,78 @@
+{%- comment -%}
+  Item do grid de produtos em páginas de collection (main-collection-product-grid).
+  @param product {Object}
+  @param section {Object}
+  @param skip_li_wrapper {Boolean} — quando true, renderiza só o card (ex.: product-card-embed com <li> externo)
+{%- endcomment -%}
+{%- unless skip_li_wrapper -%}
+<li
+  class="grid__item"
+  data-product-id="{{ product.id }}"
+  data-product-handle="{{ product.handle }}"
+>
+{%- endunless -%}
+  {% case settings.card_style %}
+    {% when 'standard' %}
+      {% render 'card-product',
+        card_product: product,
+        media_aspect_ratio: section.settings.image_ratio,
+        show_secondary_image: section.settings.show_secondary_image,
+        show_vendor: section.settings.show_vendor,
+        show_rating: section.settings.show_rating,
+        show_quick_add: settings.enable_quickadd,
+        show_quick_view: settings.enable_quickview,
+        show_new_tag: section.settings.show_new_tag,
+        section_id: section.id
+      %}
+    {% when 'button_width_icons' %}
+      {% render 'card-product-2',
+        card_product: product,
+        media_aspect_ratio: section.settings.image_ratio,
+        show_secondary_image: section.settings.show_secondary_image,
+        show_vendor: section.settings.show_vendor,
+        show_rating: section.settings.show_rating,
+        show_quick_add: settings.enable_quickadd,
+        show_quick_view: settings.enable_quickview,
+        show_new_tag: section.settings.show_new_tag,
+        section_id: section.id
+      %}
+    {% when 'card_with_icons' %}
+      {% render 'card-product-3',
+        card_product: product,
+        media_aspect_ratio: section.settings.image_ratio,
+        show_secondary_image: section.settings.show_secondary_image,
+        show_vendor: section.settings.show_vendor,
+        show_rating: section.settings.show_rating,
+        show_quick_add: settings.enable_quickadd,
+        show_quick_view: settings.enable_quickview,
+        show_new_tag: section.settings.show_new_tag,
+        section_id: section.id
+      %}
+    {% when 'card_with_buttons' %}
+      {% render 'card-product-4',
+        card_product: product,
+        media_aspect_ratio: section.settings.image_ratio,
+        show_secondary_image: section.settings.show_secondary_image,
+        show_vendor: section.settings.show_vendor,
+        show_rating: section.settings.show_rating,
+        show_quick_add: settings.enable_quickadd,
+        show_quick_view: settings.enable_quickview,
+        show_new_tag: section.settings.show_new_tag,
+        section_id: section.id
+      %}
+    {% when 'card_with_overlay' %}
+      {% render 'card-product-5',
+        card_product: product,
+        media_aspect_ratio: section.settings.image_ratio,
+        show_secondary_image: section.settings.show_secondary_image,
+        show_vendor: section.settings.show_vendor,
+        show_rating: section.settings.show_rating,
+        show_quick_add: settings.enable_quickadd,
+        show_quick_view: settings.enable_quickview,
+        show_new_tag: section.settings.show_new_tag,
+        section_id: section.id
+      %}
+  {% endcase %}
+{%- unless skip_li_wrapper -%}
+</li>
+{%- endunless -%}

@@ -37,23 +37,50 @@ button.header-drawer__close.close_icon_button:hover{color: rgb(var(--color-base-
 .mega-menu {
   position: static;
 }
-ul.dt-nav li >.megamenu_megamenu>div.sub-menu-block {
-    background-color: rgb(var(--color-background));
-    border-left: 0;
-    border-radius: 0;
-    border-right: 0;
-    left: 0;
-    overflow-y: auto;
-    padding-bottom: 3rem;
-    padding-top: 3rem;
-    position: absolute;
-    right: 0;
-    top: 100%;
-  opacity:0;
-  visibility:hidden;
-  transition:all 0.3s linear;
-  /* pointer-events:none; */
- }
+/* Base: todos os painéis sob .megamenu_megamenu */
+ul.dt-nav li > .megamenu_megamenu > div.sub-menu-block {
+  background-color: rgb(var(--color-background));
+  border-left: 0;
+  border-radius: 0;
+  border-right: 0;
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s linear;
+}
+
+/* Megamenu largo: scroll só quando o painel ultrapassa a viewport */
+ul.dt-nav li > .megamenu_megamenu.mega-menu > div.sub-menu-block {
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+}
+
+/* Dropdown simples (sem mega): sem scroll forçado; largura acompanha o texto */
+ul.dt-nav li > .megamenu_megamenu:not(.mega-menu) > div.sub-menu-block {
+  left: 0;
+  right: auto;
+  overflow: visible;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-width: 200px;
+  width: max-content;
+  max-width: min(100vw - 2rem, 360px);
+}
+
+ul.dt-nav
+  li
+  > .megamenu_megamenu:not(.mega-menu)
+  > div.sub-menu-block
+  .sub-menu-lists
+  > li
+  > a {
+  overflow-wrap: break-word;
+}
 .mega-menu__content{     padding: 1.2rem 2.6rem; }
 @media screen and (max-width: 1449px) {
   .mega-menu__content {
@@ -277,7 +304,9 @@ ul.dt-sc-list-inline > li:not(.has-mega-menu) ul.sub-menu-lists > li > ul {
   visibility: hidden;
   position: absolute;
   margin-top: 0px;
-  width: 200px;
+  width: max-content;
+  min-width: 200px;
+  max-width: min(100vw - 2rem, 360px);
   left: 100%;
   top: 0;
   box-sizing: border-box;
@@ -330,6 +359,195 @@ ul.dt-sc-list-inline > li.has-mega-menu ul.sub-menu-lists .headding {
   text-transform: capitalize; /* border-bottom: 1px solid var(--DTColor_Border);*/
   color: var(--gradient-base-accent-2);
 }
+
+/* Megamenu em colunas: 3 níveis (nível 2 = título da coluna, nível 3 = lista) */
+ul.dt-nav
+  > li.has-mega-menu
+  .megamenu_megamenu.mega-menu
+  ul.sub-menu-lists.dt-sc-column {
+  align-items: start;
+}
+
+ul.dt-nav
+  > li.has-mega-menu
+  .megamenu_megamenu.mega-menu
+  ul.sub-menu-lists.dt-sc-column
+  > li.mega-menu__column {
+  min-width: 0;
+  padding-right: 2rem;
+}
+
+/* Colunas seguintes: divisor vertical (funciona mesmo com promo/banner antes) */
+ul.dt-nav
+  > li.has-mega-menu
+  .megamenu_megamenu.mega-menu
+  ul.sub-menu-lists.dt-sc-column
+  > li.mega-menu__column
+  + li.mega-menu__column {
+  padding-left: 2rem;
+  border-left: 1px solid rgba(var(--color-foreground), 0.12);
+}
+
+ul.dt-sc-list-inline
+  > li.has-mega-menu
+  ul.sub-menu-lists.dt-sc-column
+  > li.mega-menu__column
+  > a.headding.mega-menu__link--level-2 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(var(--color-foreground));
+  margin: 0 0 1rem;
+  padding: 0 0 0.85rem !important;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.14);
+  text-decoration: none;
+}
+
+ul.dt-sc-list-inline
+  > li.has-mega-menu
+  ul.sub-menu-lists.dt-sc-column
+  > li.mega-menu__column
+  > a.headding.mega-menu__link--level-2:hover {
+  color: rgb(var(--color-base-outline-button-labels));
+}
+
+ul.dt-nav
+  > li.has-mega-menu
+  .megamenu_megamenu.mega-menu
+  ul.sub-menu-lists.dt-sc-column
+  .mega-menu__sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+ul.dt-nav
+  > li.has-mega-menu
+  .megamenu_megamenu.mega-menu
+  ul.sub-menu-lists.dt-sc-column
+  .mega-menu__sublist
+  > li
+  > a {
+  display: block;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0 !important;
+  color: rgba(var(--color-foreground), 0.88);
+  text-decoration: none;
+}
+
+ul.dt-nav
+  > li.has-mega-menu
+  .megamenu_megamenu.mega-menu
+  ul.sub-menu-lists.dt-sc-column
+  .mega-menu__sublist
+  > li
+  > a:hover {
+  color: rgb(var(--color-base-outline-button-labels));
+}
+
+/* Menu principal com 3 níveis nativos (sem bloco mega): colunas com mesma largura; painel limitado a 1080px (ver media query) */
+ul.dt-nav
+  > li.dt-sc-nav-three-level
+  .megamenu_megamenu
+  > div.sub-menu-block
+  .dt-sc--main-menu--mega
+  > ul.dt-sc-nav-auto-columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  column-gap: 2rem;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+ul.dt-nav
+  > li.dt-sc-nav-three-level
+  .megamenu_megamenu
+  ul.sub-menu-lists.dt-sc-nav-auto-columns
+  > li.mega-menu__column {
+  min-width: 0;
+}
+
+ul.dt-sc-list-inline
+  > li.has-mega-menu.dt-sc-nav-three-level
+  ul.sub-menu-lists.dt-sc-nav-auto-columns
+  > li.mega-menu__column
+  > a.headding.mega-menu__link--level-2 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(var(--color-foreground));
+  margin: 0 0 1rem;
+  padding: 0 0 0.85rem !important;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.14);
+  text-decoration: none;
+}
+
+ul.dt-sc-list-inline
+  > li.has-mega-menu.dt-sc-nav-three-level
+  ul.sub-menu-lists.dt-sc-nav-auto-columns
+  > li.mega-menu__column
+  > a.headding.mega-menu__link--level-2:hover {
+  color: rgb(var(--color-base-outline-button-labels));
+}
+
+ul.dt-nav
+  > li.dt-sc-nav-three-level
+  .megamenu_megamenu
+  ul.sub-menu-lists.dt-sc-nav-auto-columns
+  .mega-menu__sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+ul.dt-nav
+  > li.dt-sc-nav-three-level
+  .megamenu_megamenu
+  ul.sub-menu-lists.dt-sc-nav-auto-columns
+  .mega-menu__sublist
+  > li
+  > a {
+  display: block;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0 !important;
+  color: rgba(var(--color-foreground), 0.88);
+  text-decoration: none;
+}
+
+ul.dt-nav
+  > li.dt-sc-nav-three-level
+  .megamenu_megamenu
+  ul.sub-menu-lists.dt-sc-nav-auto-columns
+  .mega-menu__sublist
+  > li
+  > a:hover {
+  color: rgb(var(--color-base-outline-button-labels));
+}
+
 ul.dt-sc-list-inline > li ul.sub-menu-lists > li > ul a {
   position: relative;
   display: inline-block;
@@ -896,6 +1114,13 @@ ul.dt-nav>li .megamenu_megamenu.mega-menu>div.sub-menu-block .dt-sc--main-menu--
     padding:1.2rem 0;
     transform: translateY(-1.5rem); 
   }
+
+  /* Dropdown simples: largura mínima fixa, pode crescer com o título (evita scroll horizontal) */
+  ul.dt-nav li > .megamenu_megamenu:not(.mega-menu) > div.sub-menu-block {
+    width: max-content;
+    min-width: 200px;
+    max-width: min(100vw - 2rem, 360px);
+  }
 }
 ul.dt-nav li:hover > .megamenu_megamenu > div.sub-menu-block {
   opacity: 1;
@@ -908,8 +1133,152 @@ ul.dt-nav > li .megamenu_megamenu > div.sub-menu-block .dt-sc--main-menu--mega >
   padding: 30px;
 }
 /*   ul.dt-nav > li.has-mega-menu > div.sub-menu-block .dt-sc--main-menu--mega{padding:30px;background-color: rgb(var(--color-background));box-shadow: 0 1px 5px rgb(0 0 0 / 10%);border-radius:var(--buttons-radius);} */
-ul.dt-nav > li.has-mega-menu > div.sub-menu-block {
+/* Megamenu: DOM é li > .megamenu_megamenu > .sub-menu-block (seletor antigo não aplicava) */
+/* Menu mega POR BLOCO (Charutos + banner): não misturar com .dt-sc-nav-three-level (também tem .has-mega-menu) */
+ul.dt-nav
+  > li.has-mega-menu:not(.dt-sc-nav-three-level)
+  > .megamenu_megamenu
+  > div.sub-menu-block {
   width: var(--page-width);
+  max-width: var(--page-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 990px) {
+  .header
+    nav#AccessibleNav.container_width_dropdown
+    ul.dt-desktop-menu.dt-nav
+    > li.has-mega-menu:not(.dt-sc-nav-three-level)
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    width: min(100%, var(--page-width));
+    max-width: var(--page-width);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header
+    nav#AccessibleNav.fullwidth_dropdown
+    ul.dt-desktop-menu.dt-nav
+    > li.has-mega-menu:not(.dt-sc-nav-three-level)
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    width: 100vw;
+    max-width: 100vw;
+    left: 50%;
+    right: auto;
+    margin-left: 0;
+    transform: translate(-50%, -1.5rem);
+    box-sizing: border-box;
+  }
+
+  .header
+    nav#AccessibleNav.fullwidth_dropdown
+    ul.dt-nav
+    li.has-mega-menu:not(.dt-sc-nav-three-level):hover
+    > .megamenu_megamenu
+    > div.sub-menu-block,
+  .header
+    nav#AccessibleNav.fullwidth_dropdown
+    ul.dt-nav
+    li.has-mega-menu:not(.dt-sc-nav-three-level).active
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    transform: translate(-50%, 0);
+  }
+
+  /* 2º nav com mesmo data-menu (id duplicado): mesmas regras fullwidth/container */
+  .header
+    nav[data-menu="dt-main-menu"].container_width_dropdown
+    ul.dt-desktop-menu.dt-nav
+    > li.has-mega-menu:not(.dt-sc-nav-three-level)
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    width: min(100%, var(--page-width));
+    max-width: var(--page-width);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header
+    nav[data-menu="dt-main-menu"].fullwidth_dropdown
+    ul.dt-desktop-menu.dt-nav
+    > li.has-mega-menu:not(.dt-sc-nav-three-level)
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    width: 100vw;
+    max-width: 100vw;
+    left: 50%;
+    right: auto;
+    margin-left: 0;
+    transform: translate(-50%, -1.5rem);
+    box-sizing: border-box;
+  }
+
+  .header
+    nav[data-menu="dt-main-menu"].fullwidth_dropdown
+    ul.dt-nav
+    li.has-mega-menu:not(.dt-sc-nav-three-level):hover
+    > .megamenu_megamenu
+    > div.sub-menu-block,
+  .header
+    nav[data-menu="dt-main-menu"].fullwidth_dropdown
+    ul.dt-nav
+    li.has-mega-menu:not(.dt-sc-nav-three-level).active
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    transform: translate(-50%, 0);
+  }
+
+  /* Menu 3 níveis NATIVO: fixed + central na viewport (não herda left:50%/100vw do mega por bloco) */
+  .header
+    nav[data-menu="dt-main-menu"]
+    ul.dt-desktop-menu.dt-nav
+    > li.dt-sc-nav-three-level {
+    position: relative;
+    z-index: 3;
+  }
+
+  .header
+    nav[data-menu="dt-main-menu"]
+    ul.dt-desktop-menu.dt-nav
+    > li.has-mega-menu.dt-sc-nav-three-level
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: var(--dt-nav-three-top, 120px);
+    width: min(1080px, calc(100vw - 64px)) !important;
+    max-width: 1080px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    bottom: auto;
+    padding: 1.2rem 32px 3rem;
+    box-sizing: border-box;
+    transform: translateY(-10px);
+    z-index: 30;
+  }
+
+  .header
+    nav[data-menu="dt-main-menu"]
+    ul.dt-nav
+    > li.dt-sc-nav-three-level:hover
+    > .megamenu_megamenu
+    > div.sub-menu-block,
+  .header
+    nav[data-menu="dt-main-menu"]
+    ul.dt-nav
+    > li.dt-sc-nav-three-level.active
+    > .megamenu_megamenu
+    > div.sub-menu-block {
+    transform: translateY(0);
+  }
 }
 ul.dt-nav {
   /* position: relative; */

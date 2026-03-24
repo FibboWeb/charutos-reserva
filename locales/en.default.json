@@ -159,6 +159,7 @@
       "inventory_out_of_stock_continue_selling": "In stock",
       "reviews": "Reviews",
       "on_sale": "OFF",
+      "discount_flag": "-{{ percent }}%",
       "sale": "Sale",
       "total": "Sub total",
       "product_variants": "Product variants",

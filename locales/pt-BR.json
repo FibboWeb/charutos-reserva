@@ -130,6 +130,7 @@
       "description": "Descrição",
       "reviews": "Avaliações",
       "on_sale": "Promoção",
+      "discount_flag": "-{{ percent }}%",
       "product_variants": "Variantes do produto",
       "quantity": {
         "label": "Quantidade",

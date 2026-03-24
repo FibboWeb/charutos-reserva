@@ -1,0 +1,58 @@
+{%- comment -%}
+  Resposta mínima para ?view=card (ordenar collection por disponibilidade no cliente).
+  Ajuste as settings desta seção no template product.card para combinar com o grid da collection.
+{%- endcomment -%}
+<li
+  class="grid__item"
+  data-product-id="{{ product.id }}"
+  data-product-handle="{{ product.handle }}"
+>
+  {% render 'main-collection-grid-item',
+    product: product,
+    section: section,
+    skip_li_wrapper: true
+  %}
+</li>
+
+{% schema %}
+{
+  "name": "Product card (embed)",
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "square",
+      "label": "Image ratio"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "Show secondary image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "Show vendor"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_new_tag",
+      "default": true,
+      "label": "Show new tag"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": true,
+      "label": "Show rating"
+    }
+  ]
+}
+{% endschema %}

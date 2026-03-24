@@ -118,7 +118,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--gradient-base-accent-1);
+  background-color: rgb(var(--color-background));
 }
 
 .no-js .menu-drawer__navigation {

@@ -39,6 +39,11 @@ html.no-js .no-js-hidden {
 *::after {
   box-sizing: inherit;
 }
+
+/* Evita scroll horizontal por grids/sliders que ultrapassam a viewport */
+#MainContent {
+  overflow-x: clip;
+}
 #shopify-section-template--21701471240498__a9f7c4e0-0bee-4499-b8cd-1f36c7f56d21 .curtainex-grid-banner .grid-banner{
   background:transparent;
 }
@@ -4296,3 +4301,13 @@ span.text_color {
       margin-right: 30px;
     }
     }
+
+button.wishlist-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+}

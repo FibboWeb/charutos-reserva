@@ -50,6 +50,16 @@
         when 6
         assign column = 'six-column'
         endcase
+
+        assign strip_card_chrome = false
+        if section.settings.custom_class_name contains 'suggested-product-tab'
+          assign strip_card_chrome = true
+        endif
+
+        assign card_show_secondary_image = section.settings.show_secondary_image
+        if section.settings.custom_class_name contains 'suggested-product-tab'
+          assign card_show_secondary_image = true
+        endif
         %}
 <div class="cartrek-product-tab">
 <div class="product-tab-wrapper {{ section.settings.custom_class_name }} color-{{ section.settings.color_scheme }} gradient">
@@ -152,23 +162,8 @@
           <div class="slider-mobile-gutter product-tab-carousel dt-sc-tabs-content-Details"  data-tab="dT_tab-{{ forloop.index }}">
           <div class="swiper-container " data-tab-carousel="swiper-tab-carousel-{{ section.id }}" data-items="{{ section.settings.products_per_row }}" data-section-id="swiper-tab-{{ forloop.index }}-{{ block.id }}" id="swiper-{{ forloop.index }}-{{ block.id }}-carousel">
             <div class="swiper-wrapper color-{{ section.settings.color_scheme }} gradient " role="list">
-              {%- for product in collections[block.settings.collection].products limit: section.settings.products_to_show -%}
-              <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
-             
-            {% render 'cartrek-card-product',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-        
-              </div>
-              {%- else -%}
+              {%- assign tab_coll = collections[block.settings.collection] -%}
+              {%- if tab_coll == blank or tab_coll.products.size == 0 -%}
               {%- for i in (1..section.settings.products_to_show) -%}
                   <div class="swiper-slide">
                   {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
@@ -176,7 +171,31 @@
                   {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
                   </div>
                   {%- endfor -%}
+              {%- else -%}
+              {%- assign tab_shown = 0 -%}
+              {%- for product in tab_coll.products -%}
+                {%- if product.available -%}
+                  {%- if tab_shown >= section.settings.products_to_show -%}{% break %}{%- endif -%}
+                  {%- assign tab_shown = tab_shown | plus: 1 -%}
+              <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
+             
+            {% render 'cartrek-card-product',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: card_show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              show_quick_add: settings.enable_quickadd,
+              show_quick_view: settings.enable_quickview,
+              show_new_tag: section.settings.show_new_tag,
+              section_id: section.id,
+              strip_card_chrome: strip_card_chrome
+            %}
+        
+              </div>
+                {%- endif -%}
               {%- endfor -%}
+              {%- endif -%}
             </div>       
             {%- if section.settings.enable_arrows -%}
             <div class="swiper-button-next" id="product-tab-{{ forloop.index }}-{{ block.id }}-next"><span> </span></div>
@@ -258,29 +277,38 @@
           {% else %}          
           {% for block in section.blocks %}          
           <ul class="grid dt-sc-column {{ column }} dt-sc-tabs-content-Details" data-tab="dT_tab-{{ forloop.index }}">
-            {% for product in collections[block.settings.collection].products limit: section.settings.products_to_show %}
-            <li class="color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
-          
-            {% render 'cartrek-card-product',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-        
-            </li>
-            {%- else -%}
+            {%- assign tab_coll = collections[block.settings.collection] -%}
+            {%- if tab_coll == blank or tab_coll.products.size == 0 -%}
             {%- for i in (1..section.settings.products_to_show) -%}
             <li class="color-{{ section.settings.color_scheme }} product-card-placeholder">
               {% render 'product-card-placeholder' %}
             </li>
             {%- endfor -%}
-            {% endfor %}
+            {%- else -%}
+            {%- assign tab_shown = 0 -%}
+            {%- for product in tab_coll.products -%}
+              {%- if product.available -%}
+                {%- if tab_shown >= section.settings.products_to_show -%}{% break %}{%- endif -%}
+                {%- assign tab_shown = tab_shown | plus: 1 -%}
+            <li class="color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
+          
+            {% render 'cartrek-card-product',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: card_show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              show_quick_add: settings.enable_quickadd,
+              show_quick_view: settings.enable_quickview,
+              show_new_tag: section.settings.show_new_tag,
+              section_id: section.id,
+              strip_card_chrome: strip_card_chrome
+            %}
+        
+            </li>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- endif -%}
           </ul>
           {% endfor %}
           {% endif %}

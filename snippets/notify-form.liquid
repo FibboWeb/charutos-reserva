@@ -6,13 +6,13 @@
     <p class="accent-text"> {{ section.settings.notify_text }}</p>
     {% else %}
       
-    <a id="notify-me" href="#">
+    <button type="button" id="notify-me">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
        <circle class="hand-tap-2" cx="89.43" cy="69.55" r="29.61"/>
        <circle class="hand-tap-1" cx="89.43" cy="69.55" r="19.46"/>
        <path class="hand-double" d="M139.93,107.76l-41.12-6.93V70.28A9.25,9.25,0,0,0,89.56,61h0a9.25,9.25,0,0,0-9.25,9.25v57.36L71,116.85c-3.61-3.61-8.44-3.89-13.08,0,0,0-7.24,5.84-3.83,9.25l34,34h42.63a9.25,9.25,0,0,0,9.07-7.43l6.82-34.09A9.28,9.28,0,0,0,139.93,107.76Z"/>
      </svg>
-      <strong>{{ 'products.notify.text1' | t }}</strong></a>
+      <strong>{{ 'products.notify.text1' | t }}</strong></button>
       <p class="notify-text">{{ 'products.notify.text2' | t }} {{ product.title }} {{ 'products.notify.text3' | t }}.</p>
     {% endif %}
     {% if form.errors %}
@@ -103,6 +103,6 @@
 	}
 }
   #notify-me svg{display:inline-block;width:40px;height:40px;}
-  #notify-me{color:rgb(var(--color-link)); display: flex;align-items: center;}
+  #notify-me{color:rgb(var(--color-link)); display: flex;align-items: center;background:none;border:0;padding:0;cursor:pointer;font:inherit;text-align:left;}
   #sold-out p.notify-text {margin: 0px;}
 </style>

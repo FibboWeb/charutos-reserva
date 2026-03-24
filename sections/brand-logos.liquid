@@ -22,6 +22,7 @@
 {%- endstyle -%}
 
 {%- liquid
+  assign brand_logo_image_width = section.settings.image_width | default: 'half'
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
   assign show_mobile_slider = false
   if section.settings.swipe_on_mobile 
@@ -81,7 +82,7 @@
           <li id="Slide-{{ section.id }}-{{ forloop.index }}" class=" color-{{ section.settings.block_color_scheme }} gradient {% unless enable_slider %} brand-logos-list__item grid__item {% if section.settings.swipe_on_desktop %} slider__slide{% endif %} {% else %} swiper-slide{% endunless %} center {{ empty_column }}" {{ block.shopify_attributes }}>
             <a class="link animate-arrow" {% if block.settings.link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.link }}"{% endif %}>
            
-                <div class="brand-logos-card__image-wrapper  brand-logos-card__image-wrapper--{{ section.settings.image_width }}-width">
+                <div class="brand-logos-card__image-wrapper brand-logos-card__image-wrapper--{{ brand_logo_image_width }}-width">
              
             {%- if block.settings.image != blank -%}        
                  <img
@@ -198,6 +199,17 @@
       "id": "description",
       "default": "Use This Text To Share The Information Which You Like!.",   
       "label": "t:sections.all.description.label"
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "label": "Largura da imagem da marca",
+      "default": "half",
+      "options": [
+        { "value": "third", "label": "Pequena (33%)" },
+        { "value": "half", "label": "Média (50%)" },
+        { "value": "full", "label": "Grande (100%)" }
+      ]
     },
     {
       "type": "text",

@@ -1,4 +1,5 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'collection-description-rte.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -246,73 +247,25 @@
   assign column_width = "grid grid--6-col-desktop  grid--2-col-tablet-down"
   endif 
   %}
-            <ul id="product-grid" data-id="{{ section.id }}" class="grid product-grid  view-mode  grid-view-filter  grid--{{ section.settings.columns_mobile }}-col-mobile {{ column_width }} {% unless section.settings.pagination == 'numbers' %} AjaxinateContainer {% endunless %} card_style-{{ settings.card_style }}">
+            <ul
+              id="product-grid"
+              data-id="{{ section.id }}"
+              data-availability-sort="{% if section.settings.prioritize_oos_last_globally and section.settings.pagination == 'numbers' %}true{% else %}false{% endif %}"
+              data-collection-handle="{{ collection.handle }}"
+              data-products-per-page="{{ section.settings.products_per_page }}"
+              data-default-sort="{{ collection.default_sort_by | default: 'manual' }}"
+              class="grid product-grid  view-mode  grid-view-filter  grid--{{ section.settings.columns_mobile }}-col-mobile {{ column_width }} {% unless section.settings.pagination == 'numbers' %} AjaxinateContainer {% endunless %} card_style-{{ settings.card_style }}"
+            >
+              {%- comment -%} Disponíveis primeiro; sem estoque ao final (ordem relativa preservada em cada grupo). {%- endcomment -%}
               {%- for product in collection.products -%}
-                {%- assign lazy_load = true -%}                
-               <li class="grid__item">
-       {%  case settings.card_style %}
-          {%  when 'standard' %}  
-            {% render 'card-product',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-        {%  when 'button_width_icons' %}  
-             {% render 'card-product-2',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-        {%  when 'card_with_icons' %} 
-             {% render 'card-product-3',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-        {%  when 'card_with_buttons' %}  
-             {% render 'card-product-4',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-        {%  when 'card_with_overlay' %}  
-             {% render 'card-product-5',
-              card_product: product,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              show_quick_add: settings.enable_quickadd,
-              show_quick_view: settings.enable_quickview,
-              show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
-            %}
-        {%  endcase %}
-                </li>
+                {%- if product.available -%}
+                  {% render 'main-collection-grid-item', product: product, section: section %}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- for product in collection.products -%}
+                {%- unless product.available -%}
+                  {% render 'main-collection-grid-item', product: product, section: section %}
+                {%- endunless -%}
               {%- endfor -%}
             </ul>
              {% if section.settings.pagination == 'numbers' %}
@@ -338,11 +291,19 @@
             {% endunless %}
           </div>
         {%- endif -%}
+      {% render 'collection-json-ld', collection: collection %}
       {%- endpaginate -%}
     </div>
   </div>
 </div>
+  {%- if section.settings.show_collection_description and collection.description != blank -%}
+    <div class="collection-page-description rte">{{ collection.description }}</div>
+  {%- endif -%}
 </div>
+
+{%- if section.settings.prioritize_oos_last_globally and section.settings.pagination == 'numbers' -%}
+  <script src="{{ 'collection-availability-sort.js' | asset_url }}" defer></script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -355,7 +316,7 @@
       "min": 8,
       "max": 24,
       "step": 4,
-      "default": 16,
+      "default": 24,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },    
     
@@ -367,6 +328,13 @@
       "step": 1,
       "default": 4,
       "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.show_collection_description.label",
+      "info": "t:sections.main-collection-product-grid.settings.show_collection_description.info"
     },
     {
       "type": "checkbox",
@@ -493,6 +461,13 @@
   }
   ]
   },
+    {
+      "type": "checkbox",
+      "id": "prioritize_oos_last_globally",
+      "default": true,
+      "label": "Esgotados só nas últimas páginas",
+      "info": "Paginação numérica, sem filtros ativos e ordenação padrão da collection. Sincronize as opções do card no template product.card (seção Product card embed) com este grid."
+    },
     {
       "type": "header",
       "content": "t:sections.main-collection-product-grid.settings.header_mobile.content"

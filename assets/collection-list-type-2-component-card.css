@@ -142,7 +142,8 @@ tooltip.tooltip:before {left:10px; border-top:6px solid rgba(var(--color-hover-b
 .collection-list-type-2 .card__badge.top-left .badge {top:12px; left:12px;}
 .collection-list-type-2 .cart-drawer .cart-items thead th {opacity:1; font-weight:700; font-size:calc(var(--font-base-size) - 2px);}
 .collection-list-type-2 .optional-sidebar ul.product-list-style .card__badge .badge {display:none;}
-li.color-values-plus a {font-size:calc(var(--font-base-size) - 4px); min-width:auto; min-height:20px; display:flex; align-items:center; justify-content:center; color:var(--color-icon);}
+li.color-values-plus a,
+li.color-values-plus .color-values-plus-toggle {font-size:calc(var(--font-base-size) - 4px); min-width:auto; min-height:20px; display:flex; align-items:center; justify-content:center; color:var(--color-icon); background:none; border:0; padding:0; cursor:pointer; font-family:inherit;}
 #swiper-sidebar-carousel {overflow:hidden;}
 .collection-list-type-2 .widget.product-sidebar-type-collection .product-list-style .quick-add {position:absolute; left:0;}
 .collection-list-type-2 .widget.product-sidebar-type-collection ul.product-list-style li:not(:last-child) {margin-bottom:20px;}

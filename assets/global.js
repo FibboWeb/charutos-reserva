@@ -1941,7 +1941,7 @@ function handleSwatchGroups(container) {
         }
       });
 
-      const toggleBtn = swatchGroup.querySelector('.color-values-plus a');
+      const toggleBtn = swatchGroup.querySelector('.color-values-plus .color-values-plus-toggle');
       if (toggleBtn && !toggleBtn.dataset.bound) {
         toggleBtn.dataset.bound = "true";
         toggleBtn.addEventListener('click', function (e) {

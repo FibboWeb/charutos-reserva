@@ -811,7 +811,8 @@
 .arnold .optional-sidebar ul.product-list-style .card__badge .badge {
     display: none;
 } 
-.arnold li.color-values-plus a {
+.arnold li.color-values-plus a,
+.arnold li.color-values-plus .color-values-plus-toggle {
     font-size: 12px;
     min-width: auto;
     min-height: 20px;
@@ -819,6 +820,11 @@
     align-items: center;
     justify-content: center;
     color: var(--color-icon);
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
 }
 .arnold #swiper-sidebar-carousel {
     overflow: hidden;

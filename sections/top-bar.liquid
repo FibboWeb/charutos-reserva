@@ -17,7 +17,7 @@
               {% render 'social-icons' %}
             </ul>
           {%- endif -%}
-          {%- if section.settings.enable_language_selector or section.settings.enable_country_selector or section.settings.show_account or section.settings.show_wishlist or section.settings.show_compare %}
+          {%- if section.settings.enable_language_selector or section.settings.enable_country_selector or section.settings.show_account or section.settings.show_wishlist or section.settings.show_compare or section.settings.show_cart %}
             <div class="currency_and_account">
               <div class="currency_language">
                 {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -192,6 +192,30 @@
                   </dtx-compare-count>
                 </a>
               {%- endif -%}
+              {%- if section.settings.show_cart -%}
+                <a
+                  href="{{ routes.cart_url }}"
+                  class="link focus-inset top-bar__icon top-bar__icon--cart top-bar__icon--cart-compact js-cart-icon-bubble"
+                  aria-label="{{ 'templates.cart.cart' | t }}"
+                >
+                  {%- liquid
+                    if cart == empty
+                      render 'header-cart'
+                    else
+                      render 'header-cart'
+                    endif
+                  -%}
+                  <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                  {%- if cart != empty -%}
+                    <div class="cart-count-bubble">
+                      {%- if cart.item_count < 100 -%}
+                        <span aria-hidden="true">{{ cart.item_count }}</span>
+                      {%- endif -%}
+                      <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                    </div>
+                  {%- endif -%}
+                </a>
+              {%- endif -%}
              {%- if shop.customer_accounts_enabled and section.settings.show_account -%}
                {%- if customer -%} 
               <div class="myaccount-links">
@@ -283,7 +307,13 @@
       .dt-sc-header-top-bar .top-bar__icon:hover{color:#d4b064;}
       .dt-sc-header-top-bar .top-bar__icon--search{background:none;border:none;cursor:pointer;}
       .dt-sc-header-top-bar .top-bar__icon svg{width:1.8rem;height:1.8rem;}
+      .dt-sc-header-top-bar .top-bar__icon--cart-compact .cart-icon svg{width:1.8rem;height:1.8rem;}
       .dt-sc-header-top-bar .top-bar__icon .cart-count-bubble{top:-2px;right:-2px;}
+      /* Carrinho na top bar: visível só em 750px–1399px (no header principal fica o ícone ≥1400px e no mobile) */
+      .dt-sc-header-top-bar .top-bar__icon--cart-compact { display: none !important; }
+      @media screen and (min-width: 750px) and (max-width: 1399px) {
+        .dt-sc-header-top-bar .top-bar__icon--cart-compact { display: flex !important; }
+      }
       .dt-sc-header-top-bar .top-bar-count .grid-count-bubble{min-width:1.6rem;height:1.6rem;font-size:1rem;background:#d4b064;color:#1a322c;border-radius:50%;display:flex;align-items:center;justify-content:center;}
       .dt-sc-header-top-bar .list-social__link:hover,.dt-sc-header-top-bar .list-social__link:hover svg{color:#d4b064;}
       .dt-sc-header-top-bar .disclosure__link,.dt-sc-header-top-bar .disclosure__button{color:#fff;}
@@ -494,6 +524,13 @@
     "id": "show_compare",
     "label": "Exibir Compare",
     "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "show_cart",
+    "label": "Exibir carrinho na barra superior (telas 750px–1399px)",
+    "default": true,
+    "info": "Ao lado de login; em telas maiores o carrinho permanece no header."
   },
    {
      "type": "header",

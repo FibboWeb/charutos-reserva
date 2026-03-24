@@ -370,7 +370,7 @@
           "show_secondary_menu": false,
           "secondary_menu": "",
           "mobile_screen_width": "1249",
-          "menu_collapse_width": "1180",
+          "menu_collapse_width": "1400",
           "show_line_separator": false,
           "enable_sticky_header": false,
           "enable_transparent_header": false,
@@ -395,7 +395,8 @@
           "enable_hot": false,
           "hot_txt": "Hot",
           "hot_tags": "",
-          "dropdown_style": "fullwidth_dropdown"
+          "dropdown_style": "fullwidth_dropdown",
+          "menu_type_desktop": "mega"
         }
       },
       "footer": {
@@ -589,6 +590,7 @@
           "show_account": true,
           "show_wishlist": true,
           "show_compare": true,
+          "show_cart": true,
           "enable_country_selector": true,
           "enable_language_selector": true
         }

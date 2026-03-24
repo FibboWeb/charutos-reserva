@@ -16,7 +16,7 @@ Ao alterar **header**, **top-bar**, **navegação** ou qualquer UI visível no s
    browser_navigate → url: https://charutosreserva.com.br/
    ```
 
-2. **Redimensionar** para desktop (≥1280px):
+2. **Redimensionar** para viewport desejada (ex.: 1280px para layout “tablet largo” com hamburger se `menu_collapse_width` for 1400):
    ```
    browser_resize → width: 1280, height: 800
    ```
@@ -36,7 +36,7 @@ Ao alterar **header**, **top-bar**, **navegação** ou qualquer UI visível no s
 - Ícone de pesquisa visível no desktop (quando `search_style == 'search_icon'`)
 - Menu entre logo e ícones (layout `heading | navigation | icons`)
 - Wishlist e Compare na top bar (quando habilitados)
-- Hamburger em viewport < 1180px
+- Hamburger em viewport abaixo de `menu_collapse_width` (padrão atual do tema: &lt; 1400px)
 
 ## Nota
 

@@ -87,11 +87,25 @@
       <div class="swiper" data-swiper-slider>
       {%- endunless -%}
       <div id="Slider-{{ section.id }}" class="product-grid contains-card {% if enable_slider %} swiper-wrapper{% else %} grid grid--{{ section.settings.columns_desktop }}-col-desktop{% if section.settings.collection == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}{% endif %}" role="list" aria-label="{{ 'sections.featured_collection.slider' | t }}">
-        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-          <div id="Slide-{{ section.id }}-{{ forloop.index }}" class="{% if enable_slider %} swiper-slide{% else %} grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% endif %} card_style-{{ settings.card_style }}">
+        {%- assign feat_coll = section.settings.collection -%}
+        {%- if feat_coll == blank or feat_coll.products.size == 0 -%}
+          {%- for i in (1..4) -%}
+            <div class="swiper-slide">
+              {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                        {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+              {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          {%- assign feat_displayed = 0 -%}
+          {%- for product in feat_coll.products -%}
+            {%- if product.available -%}
+              {%- if feat_displayed >= section.settings.products_to_show -%}{% break %}{%- endif -%}
+              {%- assign feat_displayed = feat_displayed | plus: 1 -%}
+          <div id="Slide-{{ section.id }}-{{ feat_displayed }}" class="{% if enable_slider %} swiper-slide{% else %} grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% endif %} card_style-{{ settings.card_style }}">
           {%  case settings.card_style %}
           {%  when 'standard' %}  
-            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+            {%- assign placeholder_image_index = feat_displayed | minus: 1 | modulo: 4 | plus: 1 -%}
                         {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
             {% render 'card-product',
               card_product: product,
@@ -155,15 +169,9 @@
             %}
         {%  endcase %}
           </div>
-        {%- else -%}
-          {%- for i in (1..4) -%}
-            <div class="swiper-slide">
-              {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-                        {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-              {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
-            </div>
+            {%- endif -%}
           {%- endfor -%}
-        {%- endfor -%}
+        {%- endif -%}
       </div>
       {% unless enable_slider %}
       {%- if show_mobile_slider or show_desktop_slider -%}

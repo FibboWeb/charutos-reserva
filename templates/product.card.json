@@ -1,0 +1,16 @@
+{
+  "layout": false,
+  "sections": {
+    "card": {
+      "type": "product-card-embed",
+      "settings": {
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_new_tag": true,
+        "show_rating": true
+      }
+    }
+  },
+  "order": ["card"]
+}

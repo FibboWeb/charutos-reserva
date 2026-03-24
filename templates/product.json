@@ -331,6 +331,10 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "reviews": {
+      "type": "konfidency-products",
+      "settings": {}
     }
   },
   "order": [
@@ -338,6 +342,7 @@
     "main",
     "product-recommendations",
     "5972627f-f079-45a8-a80e-251d5fe7d45b",
-    "17189596966c74f455"
+    "17189596966c74f455",
+    "reviews"
   ]
 }

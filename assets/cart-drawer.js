@@ -8,18 +8,19 @@ class CartDrawer extends HTMLElement {
   }
 
   setHeaderCartIconAccessibility() {
-    const cartLink = document.querySelector('#cart-icon-bubble');
-    cartLink.setAttribute('role', 'button');
-    cartLink.setAttribute('aria-haspopup', 'dialog');
-    cartLink.addEventListener('click', (event) => {
-      event.preventDefault();
-      this.open(cartLink)
-    });
-    cartLink.addEventListener('keydown', (event) => {
-      if (event.code.toUpperCase() === 'SPACE') {
+    document.querySelectorAll('.js-cart-icon-bubble').forEach((cartLink) => {
+      cartLink.setAttribute('role', 'button');
+      cartLink.setAttribute('aria-haspopup', 'dialog');
+      cartLink.addEventListener('click', (event) => {
         event.preventDefault();
         this.open(cartLink);
-      }
+      });
+      cartLink.addEventListener('keydown', (event) => {
+        if (event.code.toUpperCase() === 'SPACE') {
+          event.preventDefault();
+          this.open(cartLink);
+        }
+      });
     });
   }
 
@@ -63,11 +64,18 @@ class CartDrawer extends HTMLElement {
   renderContents(parsedState) {
     this.querySelector('.drawer__inner').classList.contains('is-empty') && this.querySelector('.drawer__inner').classList.remove('is-empty');
     this.productId = parsedState.id;
-    this.getSectionsToRender().forEach((section => {
+    this.getSectionsToRender().forEach((section) => {
+      const html = parsedState.sections[section.id];
+      if (section.id === 'cart-icon-bubble' && !section.selector) {
+        const inner = this.getSectionInnerHTML(html, section.selector);
+        document.querySelectorAll('.js-cart-icon-bubble').forEach((el) => {
+          el.innerHTML = inner;
+        });
+        return;
+      }
       const sectionElement = section.selector ? document.querySelector(section.selector) : document.getElementById(section.id);
-      sectionElement.innerHTML =
-          this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
-    }));
+      sectionElement.innerHTML = this.getSectionInnerHTML(html, section.selector);
+    });
 
     setTimeout(() => {
       this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));

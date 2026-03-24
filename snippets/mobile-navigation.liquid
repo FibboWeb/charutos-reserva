@@ -126,13 +126,13 @@
         
         {% unless blockType == "tab" %}
         {%- if link.links != blank -%}
-        {%- for child_link in link.links  limit: 5  -%}
-        <li class="{% if child_link.active %}active{% endif %}">
-         <a class="headding" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+        {%- for child_link in link.links -%}
+        <li class="mega-menu__column{% if child_link.active %} active{% endif %}">
+         <a class="headding mega-menu__link--level-2" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
           {{ child_link.title }}
           </a>
         {%- if child_link.links != blank -%}
-        <ul>
+        <ul class="mega-menu__sublist">
           {%- for grandchild_link in child_link.links -%}
           <li class="{% if grandchild_link.active %}active{% endif %}">
             <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>

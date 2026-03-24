@@ -763,6 +763,21 @@
         "margin_bottom": {
           "label": "Margem inferior"
         },
+        "dropdown_style": {
+          "label": "Largura do submenu / megamenu",
+          "options__1": {
+            "label": "Padrão (largura do cabeçalho)"
+          },
+          "options__2": {
+            "label": "Largura total da tela (full width)"
+          },
+          "options__3": {
+            "label": "Largura do container (page width)"
+          },
+          "options__4": {
+            "label": "Largura personalizada (blocos do megamenu)"
+          }
+        },
         "menu_type_desktop": {
           "label": "Tipo de menu para desktop",
           "info": "O tipo de menu é otimizado automaticamente para dispositivos móveis.",
@@ -1236,6 +1251,10 @@
       "settings": {
         "products_per_page": {
           "label": "Produtos por página"
+        },
+        "show_collection_description": {
+          "label": "Mostrar descrição da coleção",
+          "info": "Exibe a descrição da coleção abaixo da vitrine de produtos (Admin → Produtos → Coleções → Descrição). Desative se o banner da coleção já mostrar o mesmo texto."
         },
         "enable_filtering": {
           "label": "Habilitar filtragem",
