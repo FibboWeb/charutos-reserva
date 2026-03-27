@@ -177,11 +177,13 @@
                     data-sold-out-message="true"
                     {% if card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                   >
-                    <span>
+                    <span class="quick-add__submit-inner">
                       {%- if card_product.selected_or_first_available_variant.available -%}
-                         {% render 'icon-cart' %}
+                        {% render 'icon-cart' %}
+                        <span class="quick-add__label">{{ 'products.product.buy_short' | t }}</span>
                       {%- else -%}
-                         {% render 'icon-cart' %}
+                        {% render 'icon-cart' %}
+                        <span class="quick-add__label">{{ 'products.product.sold_out' | t }}</span>
                       {%- endif -%}
                     </span>
                     <span class="sold-out-message hidden">

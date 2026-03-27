@@ -1,0 +1,52 @@
+[     311ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:14608
+[     334ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:14618
+[     424ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19660:9
+[     505ms] ReferenceError: Swiper is not defined
+    at SlideshowComponent.init (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:723:22)
+    at new SlideshowComponent (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:670:10)
+    at http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:731:16
+[     507ms] ReferenceError: Swiper is not defined
+    at SwiperSlider.init (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1038:17)
+    at new SwiperSlider (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:968:14)
+    at http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1044:16
+[     507ms] ReferenceError: Swiper is not defined
+    at SwiperSlider.init (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1038:17)
+    at new SwiperSlider (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:968:14)
+    at http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1044:16
+[     576ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:0
+[     594ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:0
+[     893ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:0
+[     894ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:0
+[    1018ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6751:26
+[    1035ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9172:26
+[    1141ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:14608
+[    1217ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:14618
+[    1218ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:14618
+[    1218ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:14618
+[    1301ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19660:9
+[    1361ms] ReferenceError: Swiper is not defined
+    at SlideshowComponent.init (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:723:22)
+    at new SlideshowComponent (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:670:10)
+    at http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:731:16
+[    1361ms] ReferenceError: Swiper is not defined
+    at SwiperSlider.init (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1038:17)
+    at new SwiperSlider (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:968:14)
+    at http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1044:16
+[    1362ms] ReferenceError: Swiper is not defined
+    at SwiperSlider.init (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1038:17)
+    at new SwiperSlider (http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:968:14)
+    at http://127.0.0.1:9292/cdn/shop/t/28/assets/global.js?v=58238781474220001921774536631:1044:16
+[    3535ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:9292/favicon.ico:0
+[    3536ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[   19367ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   19437ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:0
+[   19438ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2976' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/:0
+[   19783ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6750:26
+[   19843ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9171:26

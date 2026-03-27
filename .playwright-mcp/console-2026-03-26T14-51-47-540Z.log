@@ -1,0 +1,105 @@
+[   55598ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   56135ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2977' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:1121
+[   56402ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2977' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:4594
+[   56496ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6786:26
+[   56553ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9243:26
+[   57174ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2977' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14751
+[   57189ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2977' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14761
+[   57340ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19803:9
+[   57420ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2977' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:20239
+[   57816ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2977' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[   59370ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[   59780ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   59907ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2978' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:510
+[   60182ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6786:26
+[   60220ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9243:26
+[   60209ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2978' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:9545
+[   60424ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2978' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14751
+[   60509ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2978' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14761
+[   60616ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19803:9
+[   60852ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2978' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[   60853ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2978' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[   62354ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[   64080ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   64428ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2979' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:6554
+[   64440ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6786:26
+[   64512ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9243:26
+[   64498ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2979' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:9330
+[   64745ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2979' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14751
+[   64806ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2979' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14761
+[   64909ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19803:9
+[   65057ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2979' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[   65554ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2979' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[   66775ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[   73543ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   73893ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2981' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:2966
+[   74120ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6787:26
+[   74147ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9244:26
+[   74134ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2981' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:9331
+[   74352ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2981' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14752
+[   74406ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2981' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14762
+[   74534ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19804:9
+[   74681ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2981' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[   74682ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2981' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[   76176ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  146547ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  147025ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2990' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:1122
+[  147358ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6787:26
+[  147324ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2990' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:7356
+[  147495ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9244:26
+[  147997ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2990' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14752
+[  148017ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2990' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14762
+[  148131ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19798:9
+[  148282ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2990' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[  148766ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2990' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:0
+[  150038ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  283515ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  284149ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2993' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:511
+[  284150ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2993' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:511
+[  284892ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6787:26
+[  285008ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9244:26
+[  285636ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2993' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14752
+[  285676ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2993' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14762
+[  285704ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2993' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14762
+[  285730ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2993' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14762
+[  285971ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19798:9
+[  289797ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0
+[  289896ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[  290337ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2995' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:1116
+[  290772ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:6787:26
+[  290569ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2995' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:7074
+[  290832ms] ReferenceError: Swiper is not defined
+    at http://127.0.0.1:9292/:9244:26
+[  291195ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-section-product-tab.css?v=2995' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14752
+[  291260ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-card.css?v=2995' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:14762
+[  291444ms] TypeError: $.cookie is not a function
+    at http://127.0.0.1:9292/:19798:9
+[  291534ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-template-collection.css?v=2995' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:20224
+[  291536ms] [ERROR] Refused to apply style from 'http://127.0.0.1:9292/cdn/shop/t/28/assets/cartrek-component-price.css?v=2995' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://127.0.0.1:9292/#shopify-section-arnold-featured-blog:20224
+[  294544ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://rei-dos-charutos.myshopify.com https://rei-dos-charutos.account.myshopify.com https://reidoscharutos.com.br https://www.reidoscharutos.com.br https://charutosreserva.com.br https://www.charutosreserva.com.br https://shopify.com". The request has been blocked.
+ @ :0

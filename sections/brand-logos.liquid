@@ -65,7 +65,7 @@
     <slider-component class="slider-mobile-gutter">
       {% else %}
     <swiper-slider>
-      <div data-slider-options='{"loop": "{%- if section.settings.centered_slide -%}1{%- else -%}2{%- endif -%}","desktop": "{{ section.settings.desktop_column }}", "tablet": "{{ section.settings.tablet_column }}","mobile": "{{ section.settings.mobile_column }}","auto_play": "{{ section.settings.auto_play }}"}'>
+      <div data-slider-options='{"loop": "{%- if section.settings.centered_slide -%}1{%- else -%}2{%- endif -%}","desktop": "{{ section.settings.desktop_column }}", "laptop": "{{ section.settings.desktop_column }}", "tablet": "{{ section.settings.tablet_column }}","mobile": "{{ section.settings.mobile_column }}","auto_play": "{{ section.settings.auto_play }}"}'>
       <div class="swiper" data-swiper-slider>
       {%- endunless -%}
       <ul class="brand-logos-list slider contains-content-container {% if enable_slider %} swiper-wrapper{% else %} grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% endif %}{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}"

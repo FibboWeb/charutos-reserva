@@ -1018,20 +1018,19 @@ class SwiperSlider extends HTMLElement {
                     480: {
                         slidesPerView: t.tablet,
                         slidesPerColumn: 1,
-                        // centeredSlides: true,
-                        loop: true,
+                        loop: l,
                     },
                     992: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1,
-                        centeredSlides: true,
-                        loop: true,
+                        centeredSlides: false,
+                        loop: l,
                     },
                     1200: {
                         slidesPerView: t.desktop,
                         slidesPerColumn: 1,
-                        centeredSlides: true,
-                        loop: true,
+                        centeredSlides: false,
+                        loop: l,
                     }
                 }
             }, t.options),
@@ -1100,7 +1099,7 @@ class FeaturedSwiperSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     781: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1256,7 +1255,7 @@ class CollectionSwiperSlider extends HTMLElement {
                          spaceBetween: 30
                     },
                     900: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1,
                          spaceBetween: 30
                     },
@@ -1404,7 +1403,7 @@ class InstaSlider extends HTMLElement {
                         slidesPerColumn: 1,
                     },
                     992: {
-                        slidesPerView: i.laptop,
+                        slidesPerView: i.laptop ?? i.desktop,
                         slidesPerColumn: 3,
                     },
                     1440: {
@@ -1546,7 +1545,7 @@ class RecommendationSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     990: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1
                     },
                     1541: {
@@ -1628,7 +1627,7 @@ class MultiSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     991: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1701,7 +1700,7 @@ class BlogSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     990: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1774,7 +1773,7 @@ class SupportSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     992: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1847,7 +1846,7 @@ class GridSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                      991: {
-                        slidesPerView: t.laptop,
+                        slidesPerView: t.laptop ?? t.desktop,
                         slidesPerColumn: 1
                     },
                     1200: {

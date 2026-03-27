@@ -77,7 +77,7 @@
       "previous_slide": "Deslizar para a esquerda"
     },
     "rte_read_more": {
-      "expand": "Ver mais",
+      "expand": "Ler mais",
       "collapse": "Ver menos"
     }
   },
@@ -130,6 +130,7 @@
   "products": {
     "product": {
       "add_to_cart": "Adicionar ao carrinho",
+      "buy_short": "Comprar",
       "quick_buy": "Visualização rápida",
       "description": "Descrição",
       "reviews": "Avaliações",

@@ -1410,7 +1410,7 @@ p.rating-count.caption span {
   background-color: #f5f5f5 !important;
 }
 
-/* 3. Botão Adicionar ao carrinho - cor dourada da marca, canto inferior direito */
+/* 3. Botão Comprar — verde, ícone + texto, canto inferior direito na mídia */
 .card-wrapper .quick-add.button-quick-add,
 .card-wrapper .card__inner .quick-add.button-quick-add {
   display: flex !important;
@@ -1426,19 +1426,21 @@ p.rating-count.caption span {
 }
 .card-wrapper .quick-add__submit.button,
 .card-wrapper .quick-add .quick-add__submit.button {
-  width: 56px !important;
-  min-width: 56px !important;
+  width: auto !important;
+  min-width: 7.5rem !important;
   height: 40px !important;
   min-height: 40px !important;
-  padding: 0 16px !important;
+  padding: 0 14px !important;
   border-radius: 20px !important;
-  background-color: #d4b064 !important;
+  background-color: #2a7a52 !important;
   color: #ffffff !important;
   border: none;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 0;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
   margin: 0 !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   position: relative;
@@ -1446,21 +1448,36 @@ p.rating-count.caption span {
 }
 .card-wrapper .quick-add__submit.button:hover,
 .card-wrapper .quick-add .quick-add__submit.button:hover {
-  background-color: #c79b2f !important;
+  background-color: #236b47 !important;
+}
+.card-wrapper .quick-add__submit-inner {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.card-wrapper .quick-add__label {
+  line-height: 1.2;
+}
+.card-wrapper .quick-add__submit.button .quick-add__submit-inner,
+.card-wrapper .quick-add__submit.button .quick-add__label {
+  height: auto !important;
+  min-height: 0;
 }
 .card-wrapper .quick-add__submit.button span:not(.sold-out-message):not(.loading-overlay__spinner),
 .card-wrapper .quick-add .quick-add__submit.button span:not(.sold-out-message):not(.loading-overlay__spinner) {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 100%;
+  width: auto;
 }
 .card-wrapper .quick-add__submit.button svg,
 .card-wrapper .quick-add .quick-add__submit.button svg {
   width: 20px;
   height: 20px;
   fill: currentColor;
-  margin: 0 auto;
+  margin: 0;
   flex-shrink: 0;
 }
 /* Card estrutura - info área branca */
@@ -1491,18 +1508,21 @@ p.rating-count.caption span {
 }
 .card-info-row .quick-add__submit.button,
 .card-info-row .card-add-to-cart-btn {
-  width: 56px !important;
-  min-width: 56px !important;
+  width: auto !important;
+  min-width: 7.5rem !important;
   height: 40px !important;
   min-height: 40px !important;
-  padding: 0 16px !important;
+  padding: 0 14px !important;
   border-radius: 20px !important;
-  background-color: #d4b064 !important;
+  background-color: #2a7a52 !important;
   color: #ffffff !important;
   border: none;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
   margin: 0 !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   position: relative;
@@ -1510,14 +1530,15 @@ p.rating-count.caption span {
 }
 .card-info-row .quick-add__submit.button:hover,
 .card-info-row .card-add-to-cart-btn:hover {
-  background-color: #c79b2f !important;
+  background-color: #236b47 !important;
 }
 .card-info-row .quick-add__submit.button .icon-wrap,
 .card-info-row .card-add-to-cart-btn .icon-wrap {
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 100%;
+  gap: 0.4rem;
+  width: auto;
   margin: 0;
 }
 .card-info-row .quick-add__submit.button .icon-wrap svg,
@@ -1525,7 +1546,7 @@ p.rating-count.caption span {
   width: 20px;
   height: 20px;
   fill: currentColor;
-  margin: 0 auto;
+  margin: 0;
   flex-shrink: 0;
 }
 .card-info-row .quick-add__submit.button .loading-overlay__spinner,
@@ -1537,8 +1558,60 @@ p.rating-count.caption span {
   justify-content: center;
 }
 
-
-
+/* Vitrines / grids de produto: mesma altura; preço + CTA no rodapé do bloco de info */
+.product-grid.contains-card > .grid__item,
+.product-grid.contains-card.swiper-wrapper > .swiper-slide,
+ul.product-grid > li.grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: auto;
+}
+.product-grid.contains-card > .grid__item > .card-wrapper,
+.product-grid.contains-card.swiper-wrapper > .swiper-slide > .card-wrapper,
+ul.product-grid > li.grid__item > .card-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+}
+/* Carrosséis (ex.: abas de produto) sem classe product-grid no wrapper */
+.swiper-slide:has(> .card-wrapper) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: auto;
+}
+.swiper-slide > .card-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+}
+.product-grid.contains-card .card.card--card.card--media {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.card--card.card--media > .card__content.for-arrow-alignment {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.card--card.card--media > .card__content.for-arrow-alignment > .card__information {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.card--card.card--media > .card__content.for-arrow-alignment .card__information > .price,
+.card--card.card--media > .card__content.for-arrow-alignment .card__information > .card-info-row {
+  margin-top: auto;
+}
 
 
 

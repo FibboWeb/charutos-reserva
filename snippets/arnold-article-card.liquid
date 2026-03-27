@@ -72,10 +72,7 @@
            
             </div>
            </div>
-        {%- endif -%}   
-         <div class="read-more-btn">
-            <a href="{{ article.url }}" class="blog__button button">Read More</a>
-         </div>
+        {%- endif -%}
        </div>
       
       <div class="card__content">
@@ -106,8 +103,9 @@
                 {%- endif -%}
               </p>
             {%- endif -%}
-      
-              
+            <a href="{{ article.url }}" class="blog__button button article-card__read-more">
+              {{- 'general.rte_read_more.expand' | t -}}
+            </a>
             <div class="article-card__footer">
                  {%- if show_author -%}
             <p class="blog-svg">{% render 'user-icon' %}</p>

@@ -146,12 +146,15 @@
                     data-sold-out-message="true"
                     {% if card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                   >
-                    <span>
-                      {%- if card_product.selected_or_first_available_variant.available -%}
-                        {{ 'products.product.add_to_cart' | t }}
-                      {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
-                      {%- endif -%}
+                    <span class="quick-add__submit-inner">
+                      {% render 'icon-cart' %}
+                      <span class="quick-add__label">
+                        {%- if card_product.selected_or_first_available_variant.available -%}
+                          {{ 'products.product.buy_short' | t }}
+                        {%- else -%}
+                          {{ 'products.product.sold_out' | t }}
+                        {%- endif -%}
+                      </span>
                     </span>
                     <span class="sold-out-message hidden">
                       {{ 'products.product.sold_out' | t }}

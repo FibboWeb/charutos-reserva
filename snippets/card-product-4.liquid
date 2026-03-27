@@ -178,7 +178,10 @@
                     data-sold-out-message="true"
                     {% if card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                   >
-                    <span class="icon-wrap">{% render 'icon-cart' %}</span>
+                    <span class="icon-wrap quick-add__submit-inner">
+                      {% render 'icon-cart' %}
+                      <span class="quick-add__label">{{ 'products.product.buy_short' | t }}</span>
+                    </span>
                     <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
                     <div class="loading-overlay__spinner hidden">
                       <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
