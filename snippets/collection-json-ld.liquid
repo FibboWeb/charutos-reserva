@@ -14,16 +14,14 @@
   {%- for product in collection.products -%}
     {%- if product.available -%}
       {%- assign pos = pos | plus: 1 -%}
-      {%- if json_items != '' -%},{%- endif -%}
-      {%- capture piece -%}{"@type":"ListItem","position":{{ pos }},"name":{{ product.title | json }},"url":{{ request.origin | append: product.url | json }}}{%- endcapture -%}
+      {%- capture piece -%}{%- if json_items != '' -%},{%- endif -%}{"@type":"ListItem","position":{{ pos }},"name":{{ product.title | json }},"url":{{ request.origin | append: product.url | json }}}{%- endcapture -%}
       {%- assign json_items = json_items | append: piece -%}
     {%- endif -%}
   {%- endfor -%}
   {%- for product in collection.products -%}
     {%- unless product.available -%}
       {%- assign pos = pos | plus: 1 -%}
-      {%- if json_items != '' -%},{%- endif -%}
-      {%- capture piece -%}{"@type":"ListItem","position":{{ pos }},"name":{{ product.title | json }},"url":{{ request.origin | append: product.url | json }}}{%- endcapture -%}
+      {%- capture piece -%}{%- if json_items != '' -%},{%- endif -%}{"@type":"ListItem","position":{{ pos }},"name":{{ product.title | json }},"url":{{ request.origin | append: product.url | json }}}{%- endcapture -%}
       {%- assign json_items = json_items | append: piece -%}
     {%- endunless -%}
   {%- endfor -%}
