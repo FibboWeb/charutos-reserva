@@ -1404,3 +1404,69 @@ form[action="/cart"] .product-form__submit.button--primary {
   fill: #FFFFFF !important;
   stroke: #FFFFFF !important;
 }
+
+/* =====================================================
+   Charutos Reserva — Cart hover: evita herança de cor dourada
+   ===================================================== */
+.header__icon--cart:hover,
+.header__icon--cart:hover * {
+  color: #FFFFFF !important;
+}
+.header__icon--cart:hover svg,
+.header__icon--cart:hover svg path {
+  fill: #FFFFFF !important;
+  stroke: none !important;
+}
+.header__icon--cart:hover .cart-count-bubble {
+  background-color: #1A322C !important;
+  color: #FFFFFF !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Botão Adicionar ao Carrinho: texto branco
+   ===================================================== */
+.quick-add__submit,
+button.quick-add__submit,
+.product-form__submit,
+button.product-form__submit,
+button[name="add"],
+.btn-addtocart,
+.add-to-cart-btn {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+}
+
+.quick-add__submit:hover,
+.product-form__submit:hover,
+button[name="add"]:hover {
+  background-color: #12221f !important;
+  color: #FFFFFF !important;
+}
+
+.quick-add__submit svg,
+.product-form__submit svg,
+button[name="add"] svg {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Quick View Modal: overlay escuro com blur
+   ===================================================== */
+.details-modal,
+.modal-overlay,
+[id*="QuickAdd-"] ~ .overlay,
+.product-popup-modal__overlay,
+.product-popup-modal .overlay,
+body.overflow-hidden::before {
+  background-color: rgba(26, 50, 44, 0.55) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+}
+
+/* Overlay do modal de quick add gerado via JS */
+.product-popup-modal {
+  --overlay-color: rgba(26, 50, 44, 0.55);
+}
