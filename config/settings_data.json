@@ -423,7 +423,7 @@
             "type": "link_list",
             "settings": {
               "heading": "Minha Conta",
-              "menu": "",
+              "menu": "customer-account-main-menu",
               "alignment": "left",
               "list_style": "vertical",
               "column_width": 18
