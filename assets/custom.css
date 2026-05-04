@@ -1157,11 +1157,17 @@ a:not(.button):not(.header a):not(.footer a):hover {
 /* =====================================================
    Charutos Reserva — Tabs Em Destaque do Dia (dt-product-tab)
    ===================================================== */
+.lush-product-tab .tabs {
+  gap: 8px !important;
+}
+
 .lush-product-tab .tabs .tablinks {
   background-color: transparent !important;
   border: 2px solid #1A322C !important;
+  border-right: 2px solid #1A322C !important;
   color: #1A322C !important;
   border-radius: 4px !important;
+  margin: 0 !important;
 }
 
 .lush-product-tab .tabs .tablinks.active,
@@ -1189,29 +1195,65 @@ a:not(.button):not(.header a):not(.footer a):hover {
 }
 
 /* =====================================================
-   Charutos Reserva — Botões do Header (pesquisa e cart) em Dourado
+   Charutos Reserva — Botões do Header (cart e search)
    ===================================================== */
-.header__icon--cart,
-.header__icon--search,
-.header__icon--account,
-.header .header__icon {
-  background-color: #C49A3C !important;
-  border-radius: 4px !important;
-  color: #FFFFFF !important;
-}
 
-.header__icon--cart svg,
-.header__icon--search svg,
-.header__icon--account svg,
-.header .header__icon svg {
+/* Cart: full rounded (pill) com fundo dourado */
+.header__icon--cart {
+  background-color: #C49A3C !important;
+  border-radius: 50px !important;
+  color: #FFFFFF !important;
+  padding: 6px 10px !important;
+}
+.header__icon--cart svg {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
   stroke: #FFFFFF !important;
 }
-
-.header__icon--cart:hover,
-.header__icon--search:hover,
-.header__icon--account:hover,
-.header .header__icon:hover {
+.header__icon--cart:hover {
   background-color: #A07E2A !important;
+}
+
+/* Search: ícone limpo, sem fundo extra */
+.header__icon--search {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  color: #FFFFFF !important;
+}
+.header__icon--search svg {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+.header__icon--search:hover {
+  color: #C49A3C !important;
+}
+.header__icon--search:hover svg {
+  color: #C49A3C !important;
+  fill: #C49A3C !important;
+  stroke: #C49A3C !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Conta no Topbar: sem fundo dourado
+   ===================================================== */
+.top-bar .header__icon--account,
+.top-bar a.header__icon,
+.announcement-bar .header__icon--account,
+#shopify-section-top-bar .header__icon--account,
+#shopify-section-top-bar a[href*="account"],
+#shopify-section-top-bar .user-icon,
+.top-bar__account,
+.top-bar .icon-account,
+.topbar .header__icon--account {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  color: #1A322C !important;
+}
+#shopify-section-top-bar .header__icon--account svg,
+#shopify-section-top-bar a[href*="account"] svg,
+.top-bar .header__icon--account svg {
+  color: #1A322C !important;
+  fill: #1A322C !important;
+  stroke: #1A322C !important;
 }
