@@ -5,7 +5,7 @@
 .collection-hero-banner {
   position: relative;
   width: 100%;
-  min-height: 420px;
+  min-height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,7 +59,7 @@
 
 @media screen and (max-width: 749px) {
   .collection-hero-banner {
-    min-height: 260px;
+    min-height: 160px;
   }
 
   .collection-hero-banner__title {
