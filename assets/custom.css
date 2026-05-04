@@ -1553,3 +1553,55 @@ ul.dt-nav li .megamenu_megamenu a:hover,
 ul.dt-nav li .sub-menu-lists a:hover {
   color: #C49A3C !important;
 }
+
+/* Collection SEO text block */
+.collection-seo-text {
+  max-width: 900px;
+  margin: 48px auto 16px;
+  padding: 0 24px;
+  position: relative;
+}
+.collection-seo-text__inner {
+  transition: max-height 0.4s ease;
+  line-height: 1.8;
+  color: #333;
+  font-size: 1.5rem;
+}
+.collection-seo-text__inner p { margin-bottom: 1.2em; }
+.collection-seo-text__inner h1,
+.collection-seo-text__inner h2,
+.collection-seo-text__inner h3 {
+  color: #1A322C;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.collection-seo-text__fade {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #ffffff);
+  pointer-events: none;
+}
+.collection-seo-text__btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px auto 0;
+  background: none;
+  border: 2px solid #1A322C;
+  color: #1A322C;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.collection-seo-text__btn:hover {
+  background: #1A322C;
+  color: #ffffff;
+}
+.collection-seo-text__btn svg { transition: transform 0.3s; }
+.collection-seo-text__btn[aria-expanded="true"] svg { transform: rotate(180deg); }

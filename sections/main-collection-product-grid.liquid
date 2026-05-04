@@ -361,6 +361,52 @@
             {% endunless %}
           </div>
         {%- endif -%}
+      {%- if collection.description != blank -%}
+      <div class="collection-seo-text">
+        <div class="collection-seo-text__inner rte" id="collection-seo-inner-{{ section.id }}">
+          {{ collection.description }}
+        </div>
+        <div class="collection-seo-text__fade" id="collection-seo-fade-{{ section.id }}"></div>
+        <button class="collection-seo-text__btn" id="collection-seo-btn-{{ section.id }}" aria-expanded="false">
+          Ver mais
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <script>
+          (function() {
+            var inner = document.getElementById('collection-seo-inner-{{ section.id }}');
+            var fade  = document.getElementById('collection-seo-fade-{{ section.id }}');
+            var btn   = document.getElementById('collection-seo-btn-{{ section.id }}');
+            if (!inner || !btn) return;
+
+            // measure collapsed height = first paragraph
+            var firstP = inner.querySelector('p');
+            var collapsedH = firstP ? (firstP.offsetTop + firstP.offsetHeight) : 120;
+            collapsedH = Math.max(collapsedH, 80);
+
+            function collapse() {
+              inner.style.maxHeight = collapsedH + 'px';
+              inner.style.overflow  = 'hidden';
+              fade.style.display    = 'block';
+              btn.setAttribute('aria-expanded', 'false');
+              btn.innerHTML = 'Ver mais <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+            }
+
+            function expand() {
+              inner.style.maxHeight = inner.scrollHeight + 'px';
+              inner.style.overflow  = 'visible';
+              fade.style.display    = 'none';
+              btn.setAttribute('aria-expanded', 'true');
+              btn.innerHTML = 'Ver menos <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+            }
+
+            collapse();
+            btn.addEventListener('click', function() {
+              btn.getAttribute('aria-expanded') === 'true' ? collapse() : expand();
+            });
+          })();
+        </script>
+      </div>
+      {%- endif -%}
       {%- endpaginate -%}
     </div>
   </div>
