@@ -1264,12 +1264,11 @@ a:not(.button):not(.header a):not(.footer a):hover {
 /* =====================================================
    Charutos Reserva — Search no Header: sem fundo branco
    ===================================================== */
+/* Icon span wrapper */
 .header__icons .icon-search,
 .header__icons #dT_TopStickySearchBtn,
 .search-icon .icon-search,
 .search-icon #dT_TopStickySearchBtn,
-.header .icon-search,
-header .icon-search,
 span.icon-search,
 span#dT_TopStickySearchBtn {
   background-color: transparent !important;
@@ -1278,11 +1277,24 @@ span#dT_TopStickySearchBtn {
   box-shadow: none !important;
 }
 
-.header__icons .icon-search svg,
-.header__icons #dT_TopStickySearchBtn svg,
-.search-icon .icon-search svg,
-.search-icon #dT_TopStickySearchBtn svg,
-header .icon-search svg {
+/* Submit button inside search form (field__button is the white oval) */
+button.search__button,
+button.field__button.search__button,
+.search__button.field__button,
+.search-modal__form .search__button,
+.header .search__button,
+.header .field__button {
+  background-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+button.search__button svg,
+.search__button.field__button svg,
+.header .field__button svg,
+header .icon-search svg,
+.header__icons #dT_TopStickySearchBtn svg {
   color: #FFFFFF !important;
   fill: none !important;
   stroke: #FFFFFF !important;
