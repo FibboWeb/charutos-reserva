@@ -1434,6 +1434,7 @@ button[name="add"],
 .add-to-cart-btn {
   background-color: #1A322C !important;
   border-color: #1A322C !important;
+  border: 2px solid #1A322C !important;
   color: #FFFFFF !important;
 }
 
@@ -1441,6 +1442,7 @@ button[name="add"],
 .product-form__submit:hover,
 button[name="add"]:hover {
   background-color: #12221f !important;
+  border-color: #12221f !important;
   color: #FFFFFF !important;
 }
 
@@ -1502,17 +1504,18 @@ body.overflow-hidden::before {
   }
 }
 
-/* Info interna: preenche toda a altura, sem scroll */
+/* Info interna: preenche toda a altura, scroll somente se necessário */
 .quick-add-modal__content-info {
   height: 100% !important;
   max-height: 100% !important;
-  overflow: hidden !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 /* Grid interno do produto: ocupa o espaço disponível */
 .quick-add-modal__content-info > * {
-  height: 100% !important;
-  overflow: hidden !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 /* Imagens do produto: ajuste de altura proporcional */
