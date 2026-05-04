@@ -1,0 +1,462 @@
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #cos-{{ section.id }} {
+    --cos-card-height: {{ section.settings.card_height }}px;
+    --cos-card-radius: {{ section.settings.card_radius }}px;
+    --cos-border-color: {{ section.settings.active_border_color }};
+    --cos-border-width: {{ section.settings.active_border_width }}px;
+    --cos-active-scale: {{ section.settings.active_scale | divided_by: 100.0 }};
+    --cos-gap: {{ section.settings.cards_gap }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 1023px) and (min-width: 576px) {
+    #cos-{{ section.id }} {
+      --cos-card-height: {{ section.settings.card_height | times: 0.82 | round: 0 }}px;
+      --cos-card-radius: {{ section.settings.card_radius | times: 0.88 | round: 0 }}px;
+      padding-top: {{ section.settings.padding_top | times: 0.7 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.7 | round: 0 }}px;
+    }
+  }
+  @media screen and (max-width: 575px) {
+    #cos-{{ section.id }} {
+      --cos-card-height: {{ section.settings.card_height | times: 0.62 | round: 0 }}px;
+      --cos-card-radius: {{ section.settings.card_radius | times: 0.72 | round: 0 }}px;
+      --cos-active-scale: {{ section.settings.active_scale | divided_by: 100.0 | times: 0.96 }};
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+  }
+
+  #cos-{{ section.id }} .cos-outer {
+    overflow: hidden;
+  }
+  #cos-{{ section.id }} .cos-wrapper {
+    overflow: visible;
+    padding: 48px 0;
+    margin: -48px 0;
+    position: relative;
+  }
+  #cos-{{ section.id }} .cos-swiper {
+    overflow: visible !important;
+  }
+  #cos-{{ section.id }} .cos-swiper .swiper-wrapper {
+    align-items: center;
+  }
+  #cos-{{ section.id }} .cos-swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #cos-{{ section.id }} .cos-card {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: var(--cos-card-height);
+    border-radius: var(--cos-card-radius);
+    overflow: hidden;
+    background-color: var(--cos-bg, #5a3328);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    outline: 0px solid transparent;
+    outline-offset: 6px;
+    transition:
+      outline 0.3s ease,
+      box-shadow 0.3s ease;
+    text-decoration: none;
+  }
+  #cos-{{ section.id }} .cos-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #cos-{{ section.id }} .cos-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 16px;
+    border-radius: inherit;
+  }
+  #cos-{{ section.id }} .cos-card-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  }
+  #cos-{{ section.id }} .cos-swiper .swiper-slide-active {
+    transform: scale(var(--cos-active-scale));
+    z-index: 2;
+  }
+  #cos-{{ section.id }} .cos-swiper .swiper-slide-active .cos-card {
+    outline: var(--cos-border-width) solid var(--cos-border-color);
+    box-shadow:
+      0 0 0 calc(var(--cos-border-width) + 4px) rgba(0,0,0,0.10),
+      0 16px 48px rgba(0,0,0,0.35);
+  }
+
+  /* Navigation arrows */
+  #cos-{{ section.id }} .cos-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  #cos-{{ section.id }} .cos-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.12);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  #cos-{{ section.id }} .cos-btn:hover {
+    background: rgba(0,0,0,0.18);
+  }
+  #cos-{{ section.id }} .cos-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #cos-{{ section.id }} .swiper-button-disabled {
+    opacity: 0.35;
+    pointer-events: none;
+  }
+{%- endstyle -%}
+
+<section id="cos-{{ section.id }}" class="color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <div class="cos-heading" style="text-align:{{ section.settings.heading_align }}; margin-bottom: 32px;">
+        <h2 class="h2">{{ section.settings.title }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="cos-outer">
+      <div class="cos-wrapper">
+        <category-oval-slider
+          data-autoplay="{{ section.settings.autoplay }}"
+          data-loop="{{ section.settings.loop }}"
+          data-gap="{{ section.settings.cards_gap }}"
+        >
+          <div class="cos-swiper swiper">
+            <div class="swiper-wrapper">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'category' -%}
+                  <div class="swiper-slide" {{ block.shopify_attributes }}>
+                    <a
+                      class="cos-card"
+                      href="{{ block.settings.link | default: '#' }}"
+                      style="--cos-bg: {{ block.settings.bg_color }};"
+                      aria-label="{{ block.settings.title }}"
+                    >
+                      {%- if block.settings.image != blank -%}
+                        <img
+                          src="{{ block.settings.image | image_url: width: 600 }}"
+                          alt="{{ block.settings.title | escape }}"
+                          loading="lazy"
+                          width="600"
+                          height="{{ 600 | times: section.settings.card_height | divided_by: 212 | round }}"
+                        >
+                      {%- endif -%}
+                      <div class="cos-card-overlay">
+                        {%- if block.settings.title != blank -%}
+                          <p class="cos-card-title">{{ block.settings.title }}</p>
+                        {%- endif -%}
+                      </div>
+                    </a>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+
+          {%- if section.settings.show_navigation -%}
+            <div class="cos-nav">
+              <button class="cos-btn cos-prev" aria-label="Anterior">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button class="cos-btn cos-next" aria-label="Próximo">
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          {%- endif -%}
+        </category-oval-slider>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  class CategoryOvalSlider extends HTMLElement {
+    connectedCallback() {
+      if (typeof Swiper === 'undefined') {
+        window.addEventListener('load', () => this._init(), { once: true });
+      } else {
+        this._init();
+      }
+    }
+
+    _init() {
+      const container  = this.querySelector('.cos-swiper');
+      if (!container) return;
+      const autoplayMs = parseInt(this.dataset.autoplay || '0', 10);
+      const loop       = this.dataset.loop !== 'false';
+      const gap        = parseInt(this.dataset.gap || '56', 10);
+      const autoplay   = autoplayMs > 0
+        ? { delay: autoplayMs, disableOnInteraction: false }
+        : false;
+
+      const prevBtn = this.querySelector('.cos-prev');
+      const nextBtn = this.querySelector('.cos-next');
+
+      this._swiper = new Swiper(container, {
+        init: false,
+        slidesPerView: 1.5,
+        centeredSlides: true,
+        spaceBetween: Math.round(gap * 0.5),
+        loop: loop,
+        autoplay: autoplay,
+        speed: 620,
+        grabCursor: true,
+        navigation: {
+          nextEl: nextBtn || null,
+          prevEl: prevBtn || null,
+        },
+        pagination: false,
+        breakpoints: {
+          576: {
+            slidesPerView: 3,
+            spaceBetween: Math.round(gap * 0.75),
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: gap,
+          },
+        },
+      });
+
+      this._swiper.on('init', () => this._swiper.update());
+      this._swiper.init();
+    }
+  }
+
+  if (!customElements.get('category-oval-slider')) {
+    customElements.define('category-oval-slider', CategoryOvalSlider);
+  }
+})();
+</script>
+
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Category Oval Slider",
+  "tag": "div",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título da seção"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Alinhamento do título",
+      "options": [
+        { "value": "left",   "label": "Esquerda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right",  "label": "Direita" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de cores",
+      "default": "background-1"
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "label": "Altura do card (px)",
+      "min": 200,
+      "max": 600,
+      "step": 10,
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Raio oval do card (px)",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 170
+    },
+    {
+      "type": "range",
+      "id": "cards_gap",
+      "label": "Espaçamento entre cards (px)",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "active_scale",
+      "label": "Escala do card ativo (%)",
+      "min": 100,
+      "max": 140,
+      "step": 2,
+      "default": 118
+    },
+    {
+      "type": "color",
+      "id": "active_border_color",
+      "label": "Cor da borda do card ativo",
+      "default": "#8b5e3c"
+    },
+    {
+      "type": "range",
+      "id": "active_border_width",
+      "label": "Espessura da borda ativa (px)",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Mostrar botões de navegação",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop infinito",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay",
+      "label": "Autoplay (ms, 0 = desativado)",
+      "min": 0,
+      "max": 8000,
+      "step": 500,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Espaçamento superior (px)",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Espaçamento inferior (px)",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Categoria",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Nome da categoria",
+          "default": "Categoria"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem de fundo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Cor de fundo (sem imagem)",
+          "default": "#5a3328"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Oval Slider",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Charutos Cubanos",
+            "bg_color": "#6b2d2d"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Charutos Brasileiros",
+            "bg_color": "#3d5a2d"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Charutos Premium",
+            "bg_color": "#2d3d5a"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Cigarrilhas",
+            "bg_color": "#5a4a2d"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Acessórios",
+            "bg_color": "#3d2d5a"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
