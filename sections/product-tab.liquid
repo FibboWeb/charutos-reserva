@@ -44,7 +44,22 @@
       padding-bottom: 0px;
     }
 }
-.product-tab-demo .swiper-grid-column>.swiper-wrapper .swiper-slide{margin-top:0 !important;}  
+.product-tab-demo .swiper-grid-column>.swiper-wrapper .swiper-slide{margin-top:0 !important;}
+
+/* Charutos Reserva — Tab links: cores da marca */
+#shopify-section-{{ section.id }} .product-tab-wrapper .collection .tabs .tablinks {
+  color: #1A322C !important;
+  background-color: transparent !important;
+  border: 2px solid #1A322C !important;
+  border-radius: 4px !important;
+}
+#shopify-section-{{ section.id }} .product-tab-wrapper .collection .tabs .tablinks:hover,
+#shopify-section-{{ section.id }} .product-tab-wrapper .collection .tabs .tablinks.active {
+  background-color: #1A322C !important;
+  background: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+}
 {%- endstyle -%}
 
 {% liquid

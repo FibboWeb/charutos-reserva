@@ -452,3 +452,17 @@
 
 .product-tab-with-carousel .product-tab-demo .tabs.center{ margin-block:1.5rem; }
 .product-tab-with-carousel .product-tab-demo .collection .title-wrapper-with-link{ margin:0; }
+
+/* Charutos Reserva — Tab links: verde escuro texto, verde fundo no hover/active */
+.product-tab-wrapper .collection .tabs .tablinks {
+  color: #1A322C !important;
+  background-color: transparent !important;
+  border: 2px solid #1A322C !important;
+  border-radius: 4px !important;
+}
+.product-tab-wrapper .collection .tabs .tablinks:hover,
+.product-tab-wrapper .collection .tabs .tablinks.active {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+}
