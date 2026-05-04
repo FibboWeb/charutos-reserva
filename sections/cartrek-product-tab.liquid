@@ -173,8 +173,10 @@
           <div class="slider-mobile-gutter product-tab-carousel dt-sc-tabs-content-Details"  data-tab="dT_tab-{{ forloop.index }}">
           <div class="swiper-container " data-tab-carousel="swiper-tab-carousel-{{ section.id }}" data-items="{{ section.settings.products_per_row }}" data-section-id="swiper-tab-{{ forloop.index }}-{{ block.id }}" id="swiper-{{ forloop.index }}-{{ block.id }}-carousel">
             <div class="swiper-wrapper color-{{ section.settings.color_scheme }} gradient " role="list">
-              {%- for product in collections[block.settings.collection].products limit: section.settings.products_to_show -%}
-              {%- if product.available -%}
+              {%- assign available_count = 0 -%}
+              {%- for product in collections[block.settings.collection].products -%}
+              {%- if product.available and available_count < section.settings.products_to_show -%}
+              {%- assign available_count = available_count | plus: 1 -%}
               <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
 
             {% render 'cartrek-card-product',
@@ -188,7 +190,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        
+
               </div>
               {%- endif -%}
               {%- else -%}
@@ -281,8 +283,10 @@
           {% else %}          
           {% for block in section.blocks %}          
           <ul class="grid dt-sc-column {{ column }} dt-sc-tabs-content-Details" data-tab="dT_tab-{{ forloop.index }}">
-            {% for product in collections[block.settings.collection].products limit: section.settings.products_to_show %}
-            {%- if product.available -%}
+            {%- assign available_count = 0 -%}
+            {% for product in collections[block.settings.collection].products %}
+            {%- if product.available and available_count < section.settings.products_to_show -%}
+            {%- assign available_count = available_count | plus: 1 -%}
             <li class="color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
 
             {% render 'cartrek-card-product',
@@ -296,7 +300,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        
+
             </li>
             {%- endif -%}
             {%- else -%}

@@ -197,11 +197,13 @@
           <div class="slider-mobile-gutter product-tab-carousel dt-sc-tabs-content-Details"  data-tab="dT_tab-{{ forloop.index }}">
           <div class="swiper-container " data-tab-carousel="swiper-tab-carousel-{{ section.id }}" data-items="{{ section.settings.products_per_row }}" data-section-id="swiper-tab-{{ forloop.index }}-{{ block.id }}" id="swiper-{{ forloop.index }}-{{ block.id }}-carousel">
             <ul class="swiper-wrapper color-{{ section.settings.color_scheme }} gradient " role="list">
-              {%- for product in collections[block.settings.collection].products limit: section.settings.products_to_show -%}
-              {%- if product.available -%}
+              {%- assign available_count = 0 -%}
+              {%- for product in collections[block.settings.collection].products -%}
+              {%- if product.available and available_count < section.settings.products_to_show -%}
+              {%- assign available_count = available_count | plus: 1 -%}
                 <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
                {%  case settings.card_style %}
-          {%  when 'standard' %}  
+          {%  when 'standard' %}
             {% render 'card-product',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -213,7 +215,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'button_width_icons' %}  
+        {%  when 'button_width_icons' %}
              {% render 'card-product-2',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -225,7 +227,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'card_with_icons' %} 
+        {%  when 'card_with_icons' %}
              {% render 'card-product-3',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -237,7 +239,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'card_with_buttons' %}  
+        {%  when 'card_with_buttons' %}
              {% render 'card-product-4',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -249,7 +251,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'card_with_overlay' %}  
+        {%  when 'card_with_overlay' %}
              {% render 'card-product-5',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -365,8 +367,10 @@
           {% else %}          
           {% for block in section.blocks %}          
           <ul class="grid dt-sc-column {{ column }} dt-sc-tabs-content-Details" data-tab="dT_tab-{{ forloop.index }}">
-            {% for product in collections[block.settings.collection].products limit: section.settings.products_to_show %}
-            {%- if product.available -%}
+            {%- assign available_count = 0 -%}
+            {% for product in collections[block.settings.collection].products %}
+            {%- if product.available and available_count < section.settings.products_to_show -%}
+            {%- assign available_count = available_count | plus: 1 -%}
             <li class="color-{{ section.settings.color_scheme }}">
               {% render 'dt-card-product',
               card_product: product,
