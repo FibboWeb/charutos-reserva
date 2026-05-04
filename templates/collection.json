@@ -25,15 +25,9 @@
     },
     "banner": {
       "type": "main-collection-banner",
-      "disabled": true,
       "settings": {
-        "page_full_width": true,
-        "page_full_width_spacing": true,
-        "show_collection_description": true,
-        "show_collection_image": true,
-        "color_scheme": "background-1",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "show_collection_description": false,
+        "min_height": 420
       }
     },
     "9bfefb05-788d-4b28-84ec-6b700ca43576": {
@@ -153,8 +147,8 @@
     }
   },
   "order": [
-    "e73cb67e-4708-4a24-ae19-2f5324b5edd5",
     "banner",
+    "e73cb67e-4708-4a24-ae19-2f5324b5edd5",
     "9bfefb05-788d-4b28-84ec-6b700ca43576",
     "product-grid"
   ]
