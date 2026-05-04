@@ -70,20 +70,3 @@
                     </a>
                   </li>
                   {%- endif -%}
-                  {%- if settings.social_whatsapp_link != blank -%}
-                  {%- if settings.social_whatsapp_link contains 'wa.me' or settings.social_whatsapp_link contains 'whatsapp' -%}
-                    {%- assign whatsapp_url = settings.social_whatsapp_link -%}
-                  {%- else -%}
-                    {%- assign whatsapp_number = settings.social_whatsapp_link | replace: ' ', '' | replace: '-', '' | replace: '+', '' | remove: 'https://wa.me/' -%}
-                    {%- assign paren_open = '(' -%}
-                    {%- assign paren_close = ')' -%}
-                    {%- assign whatsapp_number = whatsapp_number | replace: paren_open, '' | replace: paren_close, '' -%}
-                    {%- assign whatsapp_url = 'https://wa.me/' | append: whatsapp_number -%}
-                  {%- endif -%}
-                  <li class="list-social__item">
-                    <a href="{{ whatsapp_url }}" class="link list-social__link" target="_blank" rel="noopener">
-                      {%- render 'icon-whatsapp' -%}
-                      <span class="icon-text visually-hidden">{{ 'general.social.links.whatsapp' | t }}</span>
-                    </a>
-                  </li>
-                  {%- endif -%}

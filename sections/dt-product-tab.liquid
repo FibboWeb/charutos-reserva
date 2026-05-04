@@ -67,12 +67,6 @@
   margin-top: calc(0rem - var(--card-image-padding));
   padding: 3rem 2rem;
 }
-
-/* Correção de contraste: guia ativa legível em fundo branco (WCAG AA) */
-#shopify-section-{{ section.id }} .lush-product-tab .tabs .tablinks.active,
-#shopify-section-{{ section.id }} .lush-product-tab .tabs .tablinks:hover {
-  color: rgb(var(--color-base-accent-1)) !important;
-}
   
 {%- endstyle -%}
 
@@ -201,30 +195,9 @@
           {% if section.settings.enable_slider %}
           {% for block in section.blocks %}
           <div class="slider-mobile-gutter product-tab-carousel dt-sc-tabs-content-Details"  data-tab="dT_tab-{{ forloop.index }}">
-          <div class="lush-tab-swiper-row">
-            {%- if section.settings.enable_arrows -%}
-            <div class="slider-button swiper-button-prev lush-tab-swiper-nav" id="product-tab-{{ forloop.index }}-{{ block.id }}-prev" role="button" tabindex="0" aria-label="{{ 'general.slider.previous_slide' | t }}"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20" fill="none" aria-hidden="true">
-                <path d="M16 18.6603L1 10L16 1.33975L16 18.6603Z" stroke="black"/>
-                </svg>
-            </div>
-            {%- endif -%}
           <div class="swiper-container " data-tab-carousel="swiper-tab-carousel-{{ section.id }}" data-items="{{ section.settings.products_per_row }}" data-section-id="swiper-tab-{{ forloop.index }}-{{ block.id }}" id="swiper-{{ forloop.index }}-{{ block.id }}-carousel">
             <ul class="swiper-wrapper color-{{ section.settings.color_scheme }} gradient " role="list">
-              {%- assign tab_coll = collections[block.settings.collection] -%}
-              {%- if tab_coll == blank or tab_coll.products.size == 0 -%}
-              {%- for i in (1..section.settings.products_to_show) -%}
-                  <div class="swiper-slide">
-                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-                  {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
-                  </div>
-                  {%- endfor -%}
-              {%- else -%}
-              {%- assign tab_shown = 0 -%}
-              {%- for product in tab_coll.products -%}
-                {%- if product.available -%}
-                  {%- if tab_shown >= section.settings.products_to_show -%}{% break %}{%- endif -%}
-                  {%- assign tab_shown = tab_shown | plus: 1 -%}
+              {%- for product in collections[block.settings.collection].products limit: section.settings.products_to_show -%}
                 <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
                {%  case settings.card_style %}
           {%  when 'standard' %}  
@@ -289,20 +262,31 @@
             %}
         {%  endcase %}
               </div>
-                {%- endif -%}
+              {%- else -%}
+              {%- for i in (1..section.settings.products_to_show) -%}
+                  <div class="swiper-slide">
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+                  {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
+                  </div>
+                  {%- endfor -%}
               {%- endfor -%}
-              {%- endif -%}
             </ul>       
-            {%- if section.settings.enable_dotts -%}
-            <div class="swiper-pagination" id="product-tab-{{ forloop.index }}-{{ block.id }}-pagination"></div>
-            {%- endif -%}   
-          </div>
+           
             {%- if section.settings.enable_arrows -%}
-            <div class="slider-button swiper-button-next lush-tab-swiper-nav" id="product-tab-{{ forloop.index }}-{{ block.id }}-next" role="button" tabindex="0" aria-label="{{ 'general.slider.next_slide' | t }}"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20" fill="none" aria-hidden="true">
+            <div class="slider-button swiper-button-next" id="product-tab-{{ forloop.index }}-{{ block.id }}-next"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20" fill="none">
               <path d="M0.999998 1.33975L16 10L0.999997 18.6603L0.999998 1.33975Z" stroke="black"/>
               </svg>
            </div>
+            <div class="slider-button swiper-button-prev" id="product-tab-{{ forloop.index }}-{{ block.id }}-prev"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 17 20" fill="none">
+                <path d="M16 18.6603L1 10L16 1.33975L16 18.6603Z" stroke="black"/>
+                </svg>
+            </div>
             {%- endif -%}
+        
+            {%- if section.settings.enable_dotts -%}
+            <div class="swiper-pagination" id="product-tab-{{ forloop.index }}-{{ block.id }}-pagination"></div>
+            {%- endif -%}   
           </div>
             <script>       
             $(document).ready(function(){     
@@ -379,19 +363,7 @@
           {% else %}          
           {% for block in section.blocks %}          
           <ul class="grid dt-sc-column {{ column }} dt-sc-tabs-content-Details" data-tab="dT_tab-{{ forloop.index }}">
-            {%- assign tab_coll = collections[block.settings.collection] -%}
-            {%- if tab_coll == blank or tab_coll.products.size == 0 -%}
-            {%- for i in (1..section.settings.products_to_show) -%}
-            <li class="color-{{ section.settings.color_scheme }} product-card-placeholder">
-              {% render 'product-card-placeholder' %}
-            </li>
-            {%- endfor -%}
-            {%- else -%}
-            {%- assign tab_shown = 0 -%}
-            {%- for product in tab_coll.products -%}
-              {%- if product.available -%}
-                {%- if tab_shown >= section.settings.products_to_show -%}{% break %}{%- endif -%}
-                {%- assign tab_shown = tab_shown | plus: 1 -%}
+            {% for product in collections[block.settings.collection].products limit: section.settings.products_to_show %}
             <li class="color-{{ section.settings.color_scheme }}">
               {% render 'dt-card-product',
               card_product: product,
@@ -402,9 +374,13 @@
               show_quick_view: settings.enable_quickview
               %}
             </li>
-              {%- endif -%}
+            {%- else -%}
+            {%- for i in (1..section.settings.products_to_show) -%}
+            <li class="color-{{ section.settings.color_scheme }} product-card-placeholder">
+              {% render 'product-card-placeholder' %}
+            </li>
             {%- endfor -%}
-            {%- endif -%}
+            {% endfor %}
           </ul>
           {% endfor %}
           {% endif %}

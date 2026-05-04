@@ -14,17 +14,6 @@
 .collection-list-type-2 .card__inner {width:100%; overflow:hidden;}
 .collection-list-type-2 .card__content .grid-view-hidden {display:none;}
 .collection-list-type-2 .list-view-filter .card__content .rte.grid-view-hidden {position:relative; margin:0; line-height:3rem; display:block; line-height:normal; margin-bottom:0.5rem; max-width:800px;}
-
-@media screen and (max-width: 749px) {
-  .collection-list-type-2 .card__content .rte.grid-view-hidden {
-    display: block;
-    position: relative;
-    margin: 0.5rem 0 0;
-    line-height: normal;
-    max-width: 100%;
-  }
-}
-
 .collection-list-type-2 .card--media .card__inner .card__content {padding:calc(var(--card-card-image-padding) + 1rem); position:relative; pointer-events:none; overflow:hidden; border-radius:calc(var(--border-radius) - var(--border-width) - var(--card-image-padding));}
 .collection-list-type-2 .card__content {display:grid; grid-template-rows:minmax(0, 1fr) max-content minmax(0, 1fr); padding:1rem; width:100%; flex-grow:1;}
 .collection-list-type-2 .card__content--auto-margins {grid-template-rows:minmax(0, auto) max-content minmax(0, auto);}
@@ -153,8 +142,7 @@ tooltip.tooltip:before {left:10px; border-top:6px solid rgba(var(--color-hover-b
 .collection-list-type-2 .card__badge.top-left .badge {top:12px; left:12px;}
 .collection-list-type-2 .cart-drawer .cart-items thead th {opacity:1; font-weight:700; font-size:calc(var(--font-base-size) - 2px);}
 .collection-list-type-2 .optional-sidebar ul.product-list-style .card__badge .badge {display:none;}
-li.color-values-plus a,
-li.color-values-plus .color-values-plus-toggle {font-size:calc(var(--font-base-size) - 4px); min-width:auto; min-height:20px; display:flex; align-items:center; justify-content:center; color:var(--color-icon); background:none; border:0; padding:0; cursor:pointer; font-family:inherit;}
+li.color-values-plus a {font-size:calc(var(--font-base-size) - 4px); min-width:auto; min-height:20px; display:flex; align-items:center; justify-content:center; color:var(--color-icon);}
 #swiper-sidebar-carousel {overflow:hidden;}
 .collection-list-type-2 .widget.product-sidebar-type-collection .product-list-style .quick-add {position:absolute; left:0;}
 .collection-list-type-2 .widget.product-sidebar-type-collection ul.product-list-style li:not(:last-child) {margin-bottom:20px;}

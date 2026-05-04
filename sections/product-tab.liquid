@@ -165,21 +165,7 @@
           <div class="slider-mobile-gutter product-tab-carousel dt-sc-tabs-content-Details"  data-tab="dT_tab-{{ block.id }}" id="block-tab-{{ forloop.index }}">
           <div class="swiper-container" data-tab-carousel="swiper-tab-carousel-{{ section.id }}" data-items="{{ section.settings.products_per_row }}" data-section-id="swiper-tab-{{ forloop.index }}-{{ block.id }}" id="swiper-{{ forloop.index }}-{{ block.id }}-carousel">
             <div class="swiper-wrapper color-{{ section.settings.color_scheme }} gradient " role="list">
-              {%- assign tab_coll = collections[block.settings.collection] -%}
-              {%- if tab_coll == blank or tab_coll.products.size == 0 -%}
-              {%- for i in (1..section.settings.products_to_show) -%}
-                  <div class="swiper-slide">
-                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-                  {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
-                  </div>
-                  {%- endfor -%}
-              {%- else -%}
-              {%- assign tab_shown = 0 -%}
-              {%- for product in tab_coll.products -%}
-                {%- if product.available -%}
-                  {%- if tab_shown >= section.settings.products_to_show -%}{% break %}{%- endif -%}
-                  {%- assign tab_shown = tab_shown | plus: 1 -%}
+              {%- for product in collections[block.settings.collection].products limit: section.settings.products_to_show -%}
               <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
                {%  case settings.card_style %}
           {%  when 'standard' %}  
@@ -244,9 +230,15 @@
             %}
         {%  endcase %}
               </div>
-                {%- endif -%}
+              {%- else -%}
+              {%- for i in (1..section.settings.products_to_show) -%}
+                  <div class="swiper-slide">
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+                  {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
+                  </div>
+                  {%- endfor -%}
               {%- endfor -%}
-              {%- endif -%}
             </div>       
             {%- if section.settings.enable_arrows -%}
             <div class="swiper-button-next" id="product-tab-{{ forloop.index }}-{{ block.id }}-next">
@@ -348,21 +340,7 @@
           {% else %}          
           {% for block in section.blocks %}          
           <ul class="grid dt-sc-column {{ column }} dt-sc-tabs-content-Details" data-tab="dT_tab-{{ block.id }}">
-            {%- assign tab_coll = collections[block.settings.collection] -%}
-            {%- if tab_coll == blank or tab_coll.products.size == 0 -%}
-              {%- for i in (1..section.settings.products_to_show) -%}
-                  <li class="color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
-                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-                  {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
-                  </li>
-                  {%- endfor -%}
-            {%- else -%}
-            {%- assign tab_shown = 0 -%}
-            {%- for product in tab_coll.products -%}
-              {%- if product.available -%}
-                {%- if tab_shown >= section.settings.products_to_show -%}{% break %}{%- endif -%}
-                {%- assign tab_shown = tab_shown | plus: 1 -%}
+            {% for product in collections[block.settings.collection].products limit: section.settings.products_to_show %}
             <li class="color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
              {%  case settings.card_style %}
           {%  when 'standard' %}  
@@ -427,9 +405,16 @@
             %}
         {%  endcase %}
             </li>
-              {%- endif -%}
-            {%- endfor -%}
-            {%- endif -%}
+            {%- else -%}
+            
+              {%- for i in (1..section.settings.products_to_show) -%}
+                  <div class="swiper-slide">
+                  {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+                  {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
+                  </div>
+                  {%- endfor -%}
+            {% endfor %}
           </ul>
           {% endfor %}
           {% endif %}

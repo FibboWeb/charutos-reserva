@@ -19,23 +19,20 @@
   assign total_active_values = 0
   if results.url
     assign results_url = results.url
-    assign form_action_url = results.url
   else
     assign terms = results.terms | escape
-    assign results_url = routes.search_url | append: '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
-    assign form_action_url = routes.search_url
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
   endif
 -%}
 
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}">
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
-    <facet-filters-form class="facets small-hide {{ filter_type }}">
-      <form id="FacetFiltersForm" class="{% if filter_type == 'horizontal' %}facets__form{% else %}facets__form-vertical{% endif %}" action="{{ form_action_url }}" method="get">
+    <facet-filters-form class="facets medium-hide small-hide {{ section.settings.filter_type }}">
+      <form id="FacetFiltersForm" class="{% if filter_type == 'horizontal' %}facets__form{% else %}facets__form-vertical{% endif %}">
         {%- if results.terms -%}
           <input type="hidden" name="q" value="{{ results.terms | escape }}">
           <input name="options[prefix]" type="hidden" value="last">
         {%- endif -%}
-        <input type="hidden" name="sort_by" value="{{ sort_by }}">
 
         {% if enable_filtering %}
           {% comment %} Heading is the first tabbable element on filter type horizontal {% endcomment %}
@@ -50,7 +47,7 @@
                   {%- unless results.filters == empty -%}
                     <h2 class="facets__heading facets__heading--vertical caption-large text-body" id="verticalTitle" tabindex="-1">{{ 'products.facets.filter_by_label' | t }}</h2>
                   {%- endunless -%}
-                  <facet-remove class="active-facets__button-wrapper js-facet-remove">
+                  <facet-remove class="active-facets__button-wrapper">
                     <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
                       <span>{{ 'products.facets.clear_all' | t }}</span>
                     </a>
@@ -58,7 +55,7 @@
                 </div>
                 {%- for filter in results.filters -%}
                   {%- for value in filter.active_values -%}
-                    <facet-remove class="js-facet-remove">
+                    <facet-remove>
                       <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                         <span class="active-facets__button-inner button button--tertiary">
                           {{ filter.label }}: {{ value.label | escape }}
@@ -70,7 +67,7 @@
                   {%- endfor -%}
                   {% if filter.type == "price_range" %}
                     {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
-                      <facet-remove class="js-facet-remove">
+                      <facet-remove>
                         <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
                           <span class="active-facets__button-inner button button--tertiary">
                             {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
@@ -102,7 +99,7 @@
                     {%- if filter_type != 'vertical' -%}
                       <div class="facets__header">
                         <span class="facets__selected no-js-hidden">{{ 'products.facets.filters_selected' | t: count: filter.active_values.size }}</span>
-                        <facet-remove class="js-facet-remove">
+                        <facet-remove>
                           <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
                             {{ 'products.facets.reset' | t }}
                           </a>
@@ -232,7 +229,7 @@
                       {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
                       <span class="facets__selected">{{ "products.facets.max_price" | t: price: max_price_amount }}</span>
                       {%- if filter_type != 'vertical' -%}
-                        <facet-remove class="js-facet-remove">
+                        <facet-remove>
                           <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
                             {{ 'products.facets.reset' | t }}
                           </a>
@@ -290,7 +287,7 @@
             <div class="active-facets active-facets-desktop">
               {%- for filter in results.filters -%}
                 {%- for value in filter.active_values -%}
-                  <facet-remove class="js-facet-remove">
+                  <facet-remove>
                     <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                       <span class="active-facets__button-inner button button--tertiary">
                         {{ filter.label }}: {{ value.label | escape }}
@@ -302,7 +299,7 @@
                 {%- endfor -%}
                 {% if filter.type == "price_range" %}
                   {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
-                    <facet-remove class="js-facet-remove">
+                    <facet-remove>
                       <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
                         <span class="active-facets__button-inner button button--tertiary">
                           {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
@@ -314,7 +311,7 @@
                   {%- endif -%}
                 {% endif %}
               {%- endfor -%}
-              <facet-remove class="active-facets__button-wrapper js-facet-remove">
+              <facet-remove class="active-facets__button-wrapper">
                 <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
                   <span>{{ 'products.facets.clear_all' | t }}</span>
                 </a>
@@ -374,7 +371,7 @@
     </facet-filters-form>
     {% comment %} Sorting for vertical filter are grouped with filter when no JS{% endcomment %}
     {%- if enable_sorting and filter_type == 'vertical' -%}
-      <facet-filters-form class="small-hide">
+      <facet-filters-form class="medium-hide small-hide">
         <form class="no-js">
           <div class="facet-filters sorting caption">
             <div class="facet-filters__field">
@@ -410,17 +407,12 @@
     {%- endif -%}    
   {%- endif -%}
   <script>
-   (function() {
-     var options = { direction: 'up', mode: 'show' };
+   $( ".menu-opening" ).effect( 'slide', options, 500, callback );
      function callback() {
-       setTimeout(function() {
-         $( ".menu-opening" ).removeAttr( "style" ).hide().fadeIn();
-       }, 1000 );
-     }
-     if ($(".menu-opening").length) {
-       $( ".menu-opening" ).effect( 'slide', options, 500, callback );
-     }
-   })();
+      setTimeout(function() {
+        $( ".menu-opening" ).removeAttr( "style" ).hide().fadeIn();
+      }, 1000 );
+    };
   </script>
   {% comment %}  Drawer and mobile filter {% endcomment %}
   <menu-drawer class="mobile-facets__wrapper{% if filter_type == 'horizontal' or filter_type == 'vertical' %}  large-up-hide{% endif %}" data-breakpoint="mobile">
@@ -447,7 +439,7 @@
       </summary>
       <facet-filters-form>
         <div class="facet-filters-form-expanded-view">
-        <form id="FacetFiltersFormMobile" class="mobile-facets" action="{{ form_action_url }}" method="get">
+        <form id="FacetFiltersFormMobile" class="mobile-facets">
           <div class="mobile-facets__inner gradient">
             <div class="mobile-facets__header">
               <div class="mobile-facets__header-inner">
@@ -522,7 +514,7 @@
                         </ul>
 
                         <div class="no-js-hidden mobile-facets__footer gradient">
-                          <facet-remove class="mobile-facets__clear-wrapper button--primary js-facet-remove">
+                          <facet-remove class="mobile-facets__clear-wrapper  button--primary">
                             <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">{{ 'products.facets.clear' | t }}</a>
                           </facet-remove>
                           <button type="button" class="no-js-hidden  button--primary" onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()">{{ 'products.facets.apply' | t }}</button>
@@ -589,7 +581,7 @@
                           </div>
                         </price-range>
                         <div class="no-js-hidden mobile-facets__footer">
-                          <facet-remove class="mobile-facets__clear-wrapper button--primary js-facet-remove">
+                          <facet-remove class="mobile-facets__clear-wrapper  button--primary">
                             <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">{{ 'products.facets.clear' | t }}</a>
                           </facet-remove>
                           <button type="button" class="no-js-hidden  button--primary" onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()">{{ 'products.facets.apply' | t }}</button>
@@ -620,7 +612,7 @@
               {%- endif -%}
           
               <div class="mobile-facets__footer">
-                <facet-remove class="mobile-facets__clear-wrapper button--primary js-facet-remove">
+                <facet-remove class="mobile-facets__clear-wrapper  button--primary">
                   <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">{{ 'products.facets.clear_all' | t }}</a>
                 </facet-remove>
                 <button type="button" class="no-js-hidden  button--primary" onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()">{{ 'products.facets.apply' | t }}</button>
@@ -646,7 +638,7 @@
   <div class="active-facets active-facets-mobile  large-up-hide">
     {%- for filter in results.filters -%}
       {%- for value in filter.active_values -%}
-        <facet-remove class="js-facet-remove">
+        <facet-remove>
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
             <span class="active-facets__button-inner button button--tertiary">
               {{ filter.label }}: {{ value.label | escape }}
@@ -659,7 +651,7 @@
 
       {%- if filter.type == "price_range" -%}
         {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
-          <facet-remove class="js-facet-remove">
+          <facet-remove>
             <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
               <span class="active-facets__button-inner button button--tertiary">
                 {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
@@ -671,7 +663,7 @@
         {%- endif -%}
       {%- endif -%}
     {%- endfor -%}
-    <facet-remove class="active-facets__button-wrapper js-facet-remove">
+    <facet-remove class="active-facets__button-wrapper">
       <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
         <span>{{ 'products.facets.clear_all' | t }}</span>
       </a>
@@ -756,12 +748,12 @@
               </ul>
    {% endif %}
   {%- if filter_type == 'drawer' -%}
-    <facet-filters-form class="facets facets-pill small-hide">
+    <facet-filters-form class="facets facets-pill medium-hide small-hide">
       <form id="FacetFiltersPillsForm" class="facets__form">
         <div class="active-facets active-facets-desktop">
           {%- for filter in results.filters -%}
             {%- for value in filter.active_values -%}
-              <facet-remove class="js-facet-remove">
+              <facet-remove>
                 <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                   <span class="active-facets__button-inner button button--tertiary">
                     {{ filter.label }}: {{ value.label | escape }}
@@ -774,7 +766,7 @@
 
             {%- if filter.type == "price_range" -%}
               {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
-                <facet-remove class="js-facet-remove">
+                <facet-remove>
                   <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
                     <span class="active-facets__button-inner button button--tertiary">
                       {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
@@ -786,7 +778,7 @@
               {%- endif -%}
             {%- endif -%}
           {%- endfor -%}
-          <facet-remove class="active-facets__button-wrapper js-facet-remove">
+          <facet-remove class="active-facets__button-wrapper">
             <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
               <span>{{ 'products.facets.clear_all' | t }}</span>
             </a>

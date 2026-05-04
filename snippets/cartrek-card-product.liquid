@@ -11,7 +11,6 @@
     - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
     - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
     - show_quick_add: {Boolean} Show the quick add button.
-    - strip_card_chrome: {Boolean} Oculta compare, quick view, wishlist e botão comprar (ex.: carrossel Sugestões).
     - section_id: {String} The ID of the section that contains this card.
     
 
@@ -43,7 +42,6 @@
       <div class="card__inner {% if card_product.featured_media %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
         {%- if card_product.featured_media -%}
           <div class="card__media">
-            {% render 'product-card-discount-flag', card_product: card_product %}
             <div class="media media--transparent media--hover-effect">
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <img
@@ -97,9 +95,13 @@
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.available == false -%}
               <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
+            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+              
+              <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
+              {{ 'products.product.on_sale' | t }} {{ card_product.compare_at_price | minus: card_product.price | times:100 | divided_by: card_product.compare_at_price }}%
+              </span>
             {%- endif -%}
           </div>
-          {%- unless strip_card_chrome -%}
            <ul class="product-icons right-aligned">          
         {%- if settings.enable_compare -%}
         <li><dtx-compare><a href="javascript:void(0);" class="add-compare" data-product_handle="{{ card_product.handle }}"></a></dtx-compare>
@@ -199,7 +201,6 @@
              <tooltip class="tooltip">{{ 'products.product.add_to_cart' | t }}</tooltip>
                {%- endif -%}
           </div>
-          {%- endunless -%}
   
         </div>
   {%  render 'deal-snippet', product: card_product %}

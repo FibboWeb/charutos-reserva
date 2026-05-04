@@ -118,7 +118,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: rgb(var(--color-background));
+  background: var(--gradient-base-accent-1);
 }
 
 .no-js .menu-drawer__navigation {
@@ -268,19 +268,6 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer .list-social:empty {
   display: none;
-}
-
-.menu-drawer .list-social__link,
-.menu-drawer .list-social__link .icon,
-.menu-drawer .list-social__link svg {
-  color: #1a322c;
-}
-
-.menu-drawer .list-social__link:hover,
-.menu-drawer .list-social__link:hover .icon,
-.menu-drawer .list-social__link:hover svg {
-  color: #d4b064;
-  opacity: 1;
 }
 
 ul.dt-nav > li > a span {

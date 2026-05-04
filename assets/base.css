@@ -13,7 +13,7 @@
   padding:0 10px;
 }
 .text-separate-color1{
-  color:#d4b064;
+  color:#FBBF18;
 }
 .no-js:not(html) {
   display: none !important;
@@ -38,11 +38,6 @@ html.no-js .no-js-hidden {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-/* Evita scroll horizontal por grids/sliders que ultrapassam a viewport */
-#MainContent {
-  overflow-x: clip;
 }
 #shopify-section-template--21701471240498__a9f7c4e0-0bee-4499-b8cd-1f36c7f56d21 .curtainex-grid-banner .grid-banner{
   background:transparent;
@@ -94,7 +89,7 @@ html.no-js .no-js-hidden {
 
 
 :root{
-  --caption-color:#d4b064;
+  --caption-color:#FBBF18;
 }
 
 
@@ -2047,6 +2042,9 @@ button.shopify-payment-button__button--unbranded {
       rgba(var(--color-button-text), var(--alpha-button-background));
 } */
 
+.button--secondary:after {
+  --border-opacity: var(--buttons-border-opacity);
+}
 
 .button:focus-visible,
 .button:focus,
@@ -2869,12 +2867,7 @@ input[type="checkbox"] {
   z-index: 1;
   font-weight: 500;
 }
-.grid-count-bubble {
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* .grid-count-bubble {  position: relative;  top: 1px;  left: 1px;} */
 /* section-announcement-bar */
 #shopify-section-announcement-bar {
   z-index: 1; 
@@ -3091,8 +3084,8 @@ input[type="checkbox"] {
   transition: all var(--duration-default) linear;
 }
 .header__icon .icon {
-  height: 32px;
-  width: 32px;
+  height: 2.3rem;
+  width: 2.3rem;
   fill: none;
   vertical-align: middle;
   transition: all var(--duration-default) linear;
@@ -3100,8 +3093,8 @@ input[type="checkbox"] {
 
 .header__icon,
 .header__icon--cart .icon {
-  height: 32px;
-  width: 32px;
+  height: 2.3rem;
+  width: 2.3rem;
 }
 
 .header__icon--cart {
@@ -3792,7 +3785,7 @@ body.overflow-hidden-mobile .shopify-section-header-sticky {
   display: block;
   position: relative;
   font-family: FontAwesome;
-  color: #b8860b;
+  color: #fec42d;
   font-size: 10px;
   font-style: normal;
 }
@@ -4301,13 +4294,3 @@ span.text_color {
       margin-right: 30px;
     }
     }
-
-button.wishlist-btn {
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-  text-align: inherit;
-}

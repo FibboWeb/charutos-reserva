@@ -2,10 +2,6 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
-{%- assign first_slide = section.blocks.first -%}
-{%- if first_slide.settings.image != blank -%}
-  <link rel="preload" as="image" href="{{ first_slide.settings.image | image_url: width: 1500 }}">
-{%- endif -%}
 {%- style -%}
 {%- if section.blocks.first.settings.image != blank -%}
   
@@ -35,12 +31,9 @@
 {%- endif -%}  
 
 
-      {%- unless section.settings.banner_fluid -%}
       .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height}}px;}
-      {%- endunless -%}
       .section-{{ section.id }}-slideshow  .banner--mobile-bottom .slideshow__text-wrapper.banner__content{position:absolute;}
   
-   {%- unless section.settings.banner_fluid -%}
    @media screen and (max-width: 1540px) {   
     .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height_laptop}}px;}
     }
@@ -52,14 +45,6 @@
     .section-{{ section.id }}-slideshow .slide-banner.banner--mobile-bottom{height:100%;}
     .section-{{ section.id }}-slideshow .banner--mobile-bottom .slideshow__text-wrapper.banner__content {position:relative;} 
     }
-   {%- endunless -%}
-
-   {%- if section.settings.banner_fluid and section.blocks.first.settings.image != blank -%}
-   .section-{{ section.id }}-slideshow .slide-banner.swiper-wrapper { height: auto !important; }
-   .section-{{ section.id }}-slideshow .slide-banner .swiper-slide { height: auto; align-self: stretch; }
-   .section-{{ section.id }}-slideshow .slide-banner .swiper-slide .slideshow__media { position: relative; height: auto; }
-   .section-{{ section.id }}-slideshow .slide-banner .swiper-slide .slideshow__media img { height: auto; object-fit: contain; object-position: center; }
-   {%- endif -%}
 
  {%- endstyle -%} 
 
@@ -93,8 +78,7 @@
               {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
               sizes="100vw"
               src="{{ block.settings.image | image_url: width: 3000 }}"
-              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-              {% if forloop.first %}fetchpriority="high"{% endif %}
+              loading="lazy"
               alt="{{ block.settings.image.alt | escape }}"
               width="{{ block.settings.image.width }}"
               height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round }}"
@@ -122,7 +106,7 @@
               {{ block.settings.mobile_image | image_url }} {{ block.settings.mobile_image.width }}w"
               sizes="100vw"
               src="{{ block.settings.mobile_image | image_url: width: 1500 }}"
-              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              loading="lazy"
               alt="{{ block.settings.mobile_image.alt | escape }}"
               width="{{ block.settings.mobile_image.width }}"
               height="{{ block.settings.mobile_image.width | divided_by: block.settings.mobile_image.aspect_ratio | round }}"
@@ -180,7 +164,7 @@
     {
       "type":"checkbox",
       "id":"page_full_width",
-       "default": true,
+       "default": false,
       "label": "t:sections.all.page_full_width.label"
     },
     {
@@ -188,12 +172,6 @@
       "id":"page_full_width_spacing",
        "default": false,
       "label": "t:sections.all.page_full_width_spacing.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "banner_fluid",
-      "default": true,
-      "label": "Banner fluido (altura proporcional à imagem, sem corte)"
     },
       {
       "type": "header",

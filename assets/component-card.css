@@ -122,16 +122,6 @@ border:1px solid rgba(var(--color-base-accent-1),.1);
   line-height:normal;
   margin-top:0.5rem;
 }
-
-@media screen and (max-width: 749px) {
-  .card__content .rte.grid-view-hidden {
-    display: block;
-    position: relative;
-    margin: 0.5rem 0 0;
-    line-height: normal;
-    max-width: 100%;
-  }
-}
 .card--media .card__inner .card__content {
   padding: calc(var(--card-image-padding) + 1rem);
   position: relative;
@@ -340,24 +330,6 @@ ul.product-icons.top-aligned {
     padding-top: 2.5rem;
   } */
   
-}
-
-/* Flag de desconto sobre a imagem (cards em promoção) */
-.card__discount-flag {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 3;
-  padding: 0.375rem 0.75rem;
-  background: #c62828;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  border-radius: 9999px;
-  pointer-events: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .card__badge {
@@ -921,8 +893,7 @@ tooltip.tooltip:before {
 .optional-sidebar ul.product-list-style .card__badge .badge {
   display: none;
 }
-li.color-values-plus a,
-li.color-values-plus .color-values-plus-toggle {
+li.color-values-plus a {
   font-size: 12px;
   min-width: auto;
   min-height: 20px;
@@ -930,11 +901,6 @@ li.color-values-plus .color-values-plus-toggle {
   align-items: center;
   justify-content: center;
   color: var(--color-icon);
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
 }
 #swiper-sidebar-carousel {
   overflow: hidden;
@@ -1382,236 +1348,10 @@ p.rating-count.caption span {
 .card-heading{ display:flex;gap:10px; justify-content: space-between; align-items: center;}
 .collection .card-heading .quick-add .quick-add__submit.button{ margin:0; }
 
-/* ===== CORREÇÃO CARDS PRODUTO - Referência layout tênis ===== */
-/* 1. Corrige sobreposição de texto nos títulos */
-.card__information .card__heading,
-.card__content .card__information .card__heading {
-  line-height: 1.4 !important;
-  min-height: auto !important;
-  margin: 0 0 0.5rem 0 !important;
-  overflow: visible;
-}
-.card__content .card__information {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  min-height: auto;
-}
-.card__content .card__information .card__heading a {
-  display: block;
-  line-height: 1.4;
-  font-weight: 700;
-  color: #1a322c;
-}
 
-/* 2. Área da imagem com fundo cinza claro (referência) */
-.card__media,
-.card__media .media {
-  background-color: #f5f5f5 !important;
-}
 
-/* 3. Botão Comprar — verde, ícone + texto, canto inferior direito na mídia */
-.card-wrapper .quick-add.button-quick-add,
-.card-wrapper .card__inner .quick-add.button-quick-add {
-  display: flex !important;
-  justify-content: flex-end;
-  align-items: center;
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  top: auto;
-  margin: 0;
-  pointer-events: all;
-  z-index: 2;
-}
-.card-wrapper .quick-add__submit.button,
-.card-wrapper .quick-add .quick-add__submit.button {
-  width: auto !important;
-  min-width: 7.5rem !important;
-  height: 40px !important;
-  min-height: 40px !important;
-  padding: 0 14px !important;
-  border-radius: 20px !important;
-  background-color: #2a7a52 !important;
-  color: #ffffff !important;
-  border: none;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.35rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  margin: 0 !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  position: relative;
-  transition: background-color 0.25s ease;
-}
-.card-wrapper .quick-add__submit.button:hover,
-.card-wrapper .quick-add .quick-add__submit.button:hover {
-  background-color: #236b47 !important;
-}
-.card-wrapper .quick-add__submit-inner {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.4rem;
-  white-space: nowrap;
-}
-.card-wrapper .quick-add__label {
-  line-height: 1.2;
-}
-.card-wrapper .quick-add__submit.button .quick-add__submit-inner,
-.card-wrapper .quick-add__submit.button .quick-add__label {
-  height: auto !important;
-  min-height: 0;
-}
-.card-wrapper .quick-add__submit.button span:not(.sold-out-message):not(.loading-overlay__spinner),
-.card-wrapper .quick-add .quick-add__submit.button span:not(.sold-out-message):not(.loading-overlay__spinner) {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: auto;
-}
-.card-wrapper .quick-add__submit.button svg,
-.card-wrapper .quick-add .quick-add__submit.button svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  margin: 0;
-  flex-shrink: 0;
-}
-/* Card estrutura - info área branca */
-.card--card.card--media > .card__content {
-  background: #ffffff;
-  padding: 1rem 1rem 3rem 1rem !important;
-}
-/* Espaçamento preço */
-.card__content .price {
-  margin: 0;
-  font-weight: 600;
-  color: #1a322c;
-}
-/* Layout linha título + preço + botão (referência) */
-.card-info-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-  position: relative;
-  padding-right: 0;
-}
-.card-info-row .quick-add {
-  position: static !important;
-  margin: 0 !important;
-  flex-shrink: 0;
-}
-.card-info-row .quick-add__submit.button,
-.card-info-row .card-add-to-cart-btn {
-  width: auto !important;
-  min-width: 7.5rem !important;
-  height: 40px !important;
-  min-height: 40px !important;
-  padding: 0 14px !important;
-  border-radius: 20px !important;
-  background-color: #2a7a52 !important;
-  color: #ffffff !important;
-  border: none;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  margin: 0 !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  position: relative;
-  transition: background-color 0.25s ease;
-}
-.card-info-row .quick-add__submit.button:hover,
-.card-info-row .card-add-to-cart-btn:hover {
-  background-color: #236b47 !important;
-}
-.card-info-row .quick-add__submit.button .icon-wrap,
-.card-info-row .card-add-to-cart-btn .icon-wrap {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.4rem;
-  width: auto;
-  margin: 0;
-}
-.card-info-row .quick-add__submit.button .icon-wrap svg,
-.card-info-row .card-add-to-cart-btn .icon-wrap svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  margin: 0;
-  flex-shrink: 0;
-}
-.card-info-row .quick-add__submit.button .loading-overlay__spinner,
-.card-info-row .card-add-to-cart-btn .loading-overlay__spinner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Vitrines / grids de produto: mesma altura; preço + CTA no rodapé do bloco de info */
-.product-grid.contains-card > .grid__item,
-.product-grid.contains-card.swiper-wrapper > .swiper-slide,
-ul.product-grid > li.grid__item {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  height: auto;
-}
-.product-grid.contains-card > .grid__item > .card-wrapper,
-.product-grid.contains-card.swiper-wrapper > .swiper-slide > .card-wrapper,
-ul.product-grid > li.grid__item > .card-wrapper {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  width: 100%;
-}
-/* Carrosséis (ex.: abas de produto) sem classe product-grid no wrapper */
-.swiper-slide:has(> .card-wrapper) {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  height: auto;
-}
-.swiper-slide > .card-wrapper {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  width: 100%;
-}
-.product-grid.contains-card .card.card--card.card--media {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-.card--card.card--media > .card__content.for-arrow-alignment {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-.card--card.card--media > .card__content.for-arrow-alignment > .card__information {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-.card--card.card--media > .card__content.for-arrow-alignment .card__information > .price,
-.card--card.card--media > .card__content.for-arrow-alignment .card__information > .card-info-row {
-  margin-top: auto;
-}
+
 
 
 

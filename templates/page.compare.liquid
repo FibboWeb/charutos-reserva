@@ -51,15 +51,15 @@
     </div>    
     <table class="dtx-table" id="compareSwiper">
       <tbody class="slick-wrapper">
-      <th class="product-title">{{ 'products.compare.product' | t }}</th>
-         <th>{{ 'products.compare.product_title' | t }}</th> 
-        <th>{{ 'products.compare.price' | t }}</th>       
-        <th>{{ 'products.product.stock_status' | t }}</th>
-        <th>{{ 'products.compare.vendor' | t }}</th>
-        <th>{{ 'products.compare.type' | t }}</th>
-        <th>{{ 'products.compare.sku' | t }}</th>
-        <th>{{ 'products.compare.add_to_cart' | t }}</th>
-        <th>{{ 'products.compare.remove' | t }}</th>
+      <th class="product-title"> product </th>
+         <th>Product Title</th> 
+        <th>Price</th>       
+        <th>Availability</th>
+        <th>Vendor</th>
+        <th>Type</th>
+        <th>Sku</th>
+        <th>Add to Cart</th>
+        <th>Remove</th>
         <tr id="row_{item.product_handle}" class="grid_template" style="display: none;">
           <td class="product-thumbnail">
             <a href="{item.product_url}">
@@ -89,14 +89,14 @@
           </td>           -->
           <td class="product-wishlist-cart">
              <a href="{item.product_url}" data-product-variant-id="{item.variant_id}" class="dt-sc-btn button product-cart">
-              {{ 'products.compare.select_options' | t }}
+              Select Options
             </a> 
              
           </td>
           <td>
             <dtx-remove-compare-item grid_type="compareList">
               <a href="javascript:void(0);" data-product_handle="{item.product_handle}" class="remove-item product-cart">
-               <span> {{ 'products.compare.remove' | t }} </span>{% render 'icon-remove' %}
+               <span> Remove </span>{% render 'icon-remove' %}
               </a>
             </dtx-remove-compare-item>  
           </td>

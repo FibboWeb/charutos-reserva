@@ -161,6 +161,7 @@
                 </div>
               </form>
             </main-search>
+        {% render 'search-tags-collections', headerType: section.settings.logo_position, line: 'line-70' %}                  
         {%- if settings.predictive_search_enabled -%}
           </predictive-search>
         {%- endif -%}
@@ -178,7 +179,7 @@
     {%- endif -%}
   </div>
   {%- if search.performed -%}
-    {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
+    {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' and search.filters != empty -%}
       <facet-filters-form class="facets facets-vertical-sort small-hide no-js-hidden">
              <div class="product-count-vertical light" role="status">
             <h2 class="product-count__text text-body">
@@ -275,10 +276,12 @@
           </facet-filters-form>
     {%- endif -%}
     <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical  {{ section.settings.sidebar_settings }}{% endif %}">
-      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
-        <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %} {% unless section.settings.filter_type == 'horizontal' %} sidebar-sticky {% endunless %}" id="main-search-filters" data-id="{{ section.id }}">
-          {% render 'facets', results: search, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
-        </aside>
+      {%- if search.filters != empty -%}
+        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+          <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %} {% unless section.settings.filter_type == 'horizontal' %} sidebar-sticky {% endunless %}" id="main-search-filters" data-id="{{ section.id }}">
+            {% render 'facets', results: search, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
+          </aside>
+        {%- endif -%}
       {%- endif -%}
       <div class="product-grid-container" id="ProductGridContainer">
         {%- if search.results.size == 0 and search.filters != empty -%}

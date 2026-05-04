@@ -82,7 +82,7 @@
 
 .price--on-sale .price-item--regular {
   text-decoration: line-through;
-  color: #8b6914;
+  color: var(--gradient-base-accent-2);
   font-size: clamp(1.4rem, 1.32rem + 0.4vw, 1.8rem); 
   transition:all 0.3s linear;
 }

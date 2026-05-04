@@ -99,14 +99,8 @@ endcase
 <div class="dT_vDynamicPWrap-{{ section.id }} dT_vProdWrap wow">
 
 <div class="isotope-grid {{ section.id }} grid">          
-{%- assign iso_coll = collections[section.settings.tab] -%}
-{%- if iso_coll != blank -%}
-{%- assign iso_shown = 0 -%}
-{%- for product in iso_coll.products -%}
-  {%- if product.available -%}
-    {%- if iso_shown >= section.settings.products_to_show -%}{% break %}{%- endif -%}
-    {%- assign iso_shown = iso_shown | plus: 1 -%}
-    <div id="Slide-{{ section.id }}-{{ iso_shown }}" class="isotope-selector  {% for tag in product.tags %} {{ tag | handle | uniq | join: ' ' }}{% endfor %} grid__item">     
+{% for product in collections[section.settings.tab].products limit: section.settings.products_to_show %}
+    <div id="Slide-{{ section.id }}-{{ forloop.index }}" class="isotope-selector  {% for tag in product.tags %} {{ tag | handle | uniq | join: ' ' }}{% endfor %} grid__item">     
     {% render 'isotope-grid-item',
       card_product: product,
       media_aspect_ratio: section.settings.image_ratio,
@@ -118,9 +112,7 @@ endcase
       section_id: section.id
     %}
     </div>
-  {%- endif -%}
 {%- endfor -%}
-{%- endif -%}
 </div>
 </div>
 </div>

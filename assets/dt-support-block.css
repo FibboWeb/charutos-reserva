@@ -5,8 +5,8 @@
   background:transparent;
 }
 .support-block-demo .section-template--21701471240498__dc0a4aad-bf52-40df-bcae-8dff429e05c1-padding.isolate .slider-mobile-gutter .support-block-list{border:none;}
-.support-block.support-block-demo.gradient{
-  background: var(--accent, #d4b064);
+.support-block.support-block-demo.color-background-1.gradient{
+  background:rgb(225, 104, 11);
 }
 .lush06-support-block .support-block.no-heading .title {display:none;}
 .lush06-support-block .support-block .title-wrapper-with-link {margin-top:0;}

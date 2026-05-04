@@ -94,7 +94,9 @@
 /* .facets-vertical.sidebar-right aside {
     padding-left: 3rem;
    } */
-/* Filtros devem aparecer mesmo com no-sidebar - removido display:none que ocultava filtros e ordenação */
+.facets-vertical.no-sidebar aside.facets-wrapper {
+  display: none;
+}
 
 facet-filters-form.facets.facets-vertical-sort {
   margin-bottom: 40px;

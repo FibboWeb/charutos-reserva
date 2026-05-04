@@ -1,10 +1,8 @@
 <link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'rte-read-more.css' | asset_url }}" media="print" onload="this.media='all'">
 
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'rte-read-more.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -30,15 +28,15 @@
         {{ 'sections.page.title' | t }}
       {%- endif -%}
     </h2>
-    {%- if section.settings.page.content != blank -%}
-      {% render 'rte-read-more', html: section.settings.page.content, id_base: section.id %}
-    {%- else -%}
-      <div class="rte">
-        <div class="page-placeholder-wrapper placeholder">
+    <div class="rte">
+      {%- if section.settings.page.content != blank -%}
+        {{ section.settings.page.content }}
+      {%- else -%}
+        <div class='page-placeholder-wrapper placeholder'>
           {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
         </div>
-      </div>
-    {%- endif -%}
+      {%- endif -%}
+    </div>
   </div>
 </div>
 </div>

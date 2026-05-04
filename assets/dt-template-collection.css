@@ -94,7 +94,9 @@
   flex-direction: row-reverse;
 }
 
-/* Filtros devem aparecer mesmo com no-sidebar - removido display:none que ocultava filtros e ordenação */
+.lush-product-tab .facets-vertical.no-sidebar aside.facets-wrapper {
+  display: none;
+}
 
 .lush-product-tab facet-filters-form.facets.facets-vertical-sort {
   margin-bottom: 70px;

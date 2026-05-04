@@ -1018,19 +1018,20 @@ class SwiperSlider extends HTMLElement {
                     480: {
                         slidesPerView: t.tablet,
                         slidesPerColumn: 1,
-                        loop: l,
+                        // centeredSlides: true,
+                        loop: true,
                     },
                     992: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1,
-                        centeredSlides: false,
-                        loop: l,
+                        centeredSlides: true,
+                        loop: true,
                     },
                     1200: {
                         slidesPerView: t.desktop,
                         slidesPerColumn: 1,
-                        centeredSlides: false,
-                        loop: l,
+                        centeredSlides: true,
+                        loop: true,
                     }
                 }
             }, t.options),
@@ -1099,7 +1100,7 @@ class FeaturedSwiperSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     781: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1255,7 +1256,7 @@ class CollectionSwiperSlider extends HTMLElement {
                          spaceBetween: 30
                     },
                     900: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1,
                          spaceBetween: 30
                     },
@@ -1403,7 +1404,7 @@ class InstaSlider extends HTMLElement {
                         slidesPerColumn: 1,
                     },
                     992: {
-                        slidesPerView: i.laptop ?? i.desktop,
+                        slidesPerView: i.laptop,
                         slidesPerColumn: 3,
                     },
                     1440: {
@@ -1545,7 +1546,7 @@ class RecommendationSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     990: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1
                     },
                     1541: {
@@ -1627,7 +1628,7 @@ class MultiSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     991: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1700,7 +1701,7 @@ class BlogSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     990: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1773,7 +1774,7 @@ class SupportSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                     992: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1846,7 +1847,7 @@ class GridSlider extends HTMLElement {
                         slidesPerColumn: 1
                     },
                      991: {
-                        slidesPerView: t.laptop ?? t.desktop,
+                        slidesPerView: t.laptop,
                         slidesPerColumn: 1
                     },
                     1200: {
@@ -1940,7 +1941,7 @@ function handleSwatchGroups(container) {
         }
       });
 
-      const toggleBtn = swatchGroup.querySelector('.color-values-plus .color-values-plus-toggle');
+      const toggleBtn = swatchGroup.querySelector('.color-values-plus a');
       if (toggleBtn && !toggleBtn.dataset.bound) {
         toggleBtn.dataset.bound = "true";
         toggleBtn.addEventListener('click', function (e) {

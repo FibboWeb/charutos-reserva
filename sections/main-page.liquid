@@ -1,10 +1,8 @@
 <link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'rte-read-more.css' | asset_url }}" media="print" onload="this.media='all'">
 
 <noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'rte-read-more.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -24,7 +22,9 @@
   <h1 class="main-page-title page-title visually-hidden h0">
     {{ page.title | escape }}
   </h1>
-  {% render 'rte-read-more', html: page.content, id_base: section.id %}
+  <div class="rte">
+    {{ page.content }}
+  </div>
 </div>
 </div>  
 

@@ -1,24 +1,3 @@
-/* Charutos Reserva - Design Tokens (produção) */
-:root {
-  --charutos-dark: #1a322c;
-  --charutos-accent: #d4b064;
-  --charutos-accent-hover: #c79b2f;
-  --charutos-success: #64cd82;
-  --charutos-sale: #e93d3d;
-  --charutos-gray: #959595;
-  --charutos-sand: #fafafa;
-  --charutos-border: #efefef;
-  --main_h1: 32px;
-  --main_h2: 24px;
-  --main_h3: 21px;
-  --main_h4: 18px;
-  --mob_h1: 22px;
-  --mob_h2: 22px;
-  --mob_h3: 22px;
-  --mob_h4: 15px;
-  --btn_br: 4px;
-}
-
 .bg-color-sandal {
   background-color: #a89166;
   border-color: #a89166;

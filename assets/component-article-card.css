@@ -53,32 +53,9 @@
  
     font-size: 3rem;
 }
-.article-card a.blog__button.button {
-  margin-bottom: 0;
-  min-height: 3rem;
-  width: fit-content;
-  max-width: 100%;
-  font-size: 1.2rem;
-}
-
-/* Leia mais: evita fill/texto do botão do tema com baixo contraste (ex.: overlay na mídia) */
-.article-card .read-more-btn .blog__button.button,
-.article-card .card__information .blog__button.button {
-  background-color: rgb(var(--color-foreground));
-  color: rgb(var(--color-background));
-}
-
-.article-card .read-more-btn .blog__button.button:hover,
-.article-card .card__information .blog__button.button:hover {
-  background-color: rgba(var(--color-foreground), 0.88);
-  color: rgb(var(--color-background));
-}
-
-.article-card .read-more-btn .blog__button.button::after,
-.article-card .card__information .blog__button.button::after {
-  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-      rgba(var(--color-background), 0.35),
-    0 0 0 var(--buttons-border-width) rgb(var(--color-foreground));
+.article-card a.blog__button.button{ margin-bottom:0;min-height: 30px;
+    width: 30px;
+    font-size: 1.2rem;
 }
 .blog .card .card__content{padding:20px 0 0;}
 .blog .blog-list-style .card.article-card .card__content{padding:20px;}

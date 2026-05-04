@@ -42,7 +42,6 @@
       <div class="card__inner {% if card_product.featured_media %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
         {%- if card_product.featured_media -%}
           <div class="card__media">
-          {% render 'product-card-discount-flag', card_product: card_product %}
           <a href="{{ card_product.url }}">
             <div class="media media--transparent media--hover-effect">
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
@@ -100,6 +99,11 @@
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.available == false -%}
               <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
+            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+              
+              <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
+              {{ card_product.compare_at_price | minus: card_product.price | times:100 | divided_by: card_product.compare_at_price }}% 
+              </span>
             {%- endif -%}
           </div>
            <ul class="product-icons right-aligned">          
@@ -217,15 +221,12 @@
                     data-sold-out-message="true"
                     {% if card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                   >
-                    <span class="quick-add__submit-inner">
-                      {% render 'icon-cart' %}
-                      <span class="quick-add__label">
-                        {%- if card_product.selected_or_first_available_variant.available -%}
-                          {{ 'products.product.buy_short' | t }}
-                        {%- else -%}
-                          {{ 'products.product.sold_out' | t }}
-                        {%- endif -%}
-                      </span>
+                    <span>
+                      {%- if card_product.selected_or_first_available_variant.available -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
                     </span>
                     <span class="sold-out-message hidden">
                       {{ 'products.product.sold_out' | t }}
@@ -299,6 +300,10 @@
         <div class="card__badge {{ settings.badge_position }}">
           {%- if card_product.available == false -%}
             <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span>
+          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            <span class="badge badge--bottom-left a color-{{ settings.sale_badge_color_scheme }}">
+            {{ card_product.compare_at_price | minus: card_product.price | times:100 | divided_by: card_product.compare_at_price }}% {{ 'products.product.on_sale' | t }}
+            </span>
           {%- endif -%}
         </div>        
          

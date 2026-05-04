@@ -79,7 +79,7 @@
   {% if lowercase_value contains 'color' %}  
   {% if itemOption.values.size > 4 %}
   <li class="color-values-plus">
-    <span><button type="button" class="color-values-plus-toggle">+{{ itemOption.values.size | minus : 4 }}</button></span>
+    <span><a href="#">+{{ itemOption.values.size | minus : 4 }}</a></span>
   </li>
   {% endif %}
   {% endif %}

@@ -1,7 +1,5 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
-{{ 'collection-description-rte.css' | asset_url | stylesheet_tag }}
-{{ 'rte-read-more.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -46,8 +44,8 @@
         {{- collection.title | escape -}}
       </h1>
       {%- endif -%}
-      {%- if section.settings.show_collection_description and collection.description != blank -%}
-        {% render 'rte-read-more', html: collection.description, id_base: section.id, outer_class: 'collection-hero__description' %}
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
       {%- endif -%}
     </div>
   </div>
