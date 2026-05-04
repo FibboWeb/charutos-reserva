@@ -1462,161 +1462,309 @@ button[name="add"] svg {
 }
 
 /* =====================================================
-   Charutos Reserva — Quick View Modal: overlay escuro com blur
-   ===================================================== */
-.details-modal,
-.modal-overlay,
-[id*="QuickAdd-"] ~ .overlay,
-.product-popup-modal__overlay,
-.product-popup-modal .overlay,
-body.overflow-hidden::before {
-  background-color: rgba(26, 50, 44, 0.55) !important;
-  backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-}
-
-/* Overlay do modal de quick add gerado via JS */
-.product-popup-modal {
-  --overlay-color: rgba(26, 50, 44, 0.55);
-}
-
-/* =====================================================
-   Charutos Reserva — Quick View Modal: layout, overflow, cores
+   Charutos Reserva — Quick View Modal (REWRITE COMPLETO)
    ===================================================== */
 
-/* Overlay do modal */
+/* 1. OVERLAY — fundo escuro com blur */
 .quick-add-modal {
   background: rgba(26, 50, 44, 0.6) !important;
-  backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
 }
 
-/* Container do conteúdo:
-   - height: fit-content so it shrinks to actual product content
-   - max-height: 90vh so it never overflows the viewport
-   - overflow: visible so the close button is not clipped
-   - background: white (override the transparent set in quick-add.css)
-   - centered vertically with top/bottom auto margin via flexbox on overlay */
+/* 2. OVERLAY ABERTO — centraliza via flexbox */
 .quick-add-modal[open] {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
-.quick-add-modal__content {
+/* 3. CONTAINER DO CONTEÚDO — reset total de posição, animação limpa */
+.quick-add-modal__content,
+.quick-add-modal .quick-add-modal__content,
+.quick-add-modal[open] .quick-add-modal__content {
   position: relative !important;
   top: auto !important;
   bottom: auto !important;
   left: auto !important;
   right: auto !important;
-  height: auto !important;
-  max-height: 90vh !important;
-  overflow: visible !important;
+  margin: 0 !important;
   background-color: #ffffff !important;
+  background: #ffffff !important;
   border-radius: 12px !important;
-  margin: auto !important;
-}
-
-/* When open, keep background white (quick-add.css sets it to transparent) */
-.quick-add-modal[open] .quick-add-modal__content {
-  background-color: #ffffff !important;
-}
-
-/* Largura do modal */
-@media screen and (min-width: 991px) {
-  .quick-add-modal__content {
-    width: 88% !important;
-    max-width: 900px !important;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .quick-add-modal__content {
-    width: 80% !important;
-    max-width: 900px !important;
-  }
-}
-
-/* Info interna: scroll vertical quando o conteúdo exceder */
-.quick-add-modal__content-info {
-  height: auto !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden !important;
+  transform: none !important;
+  transition: opacity 0.3s ease !important;
+  width: calc(100% - 2rem) !important;
+  max-width: 900px !important;
   max-height: 90vh !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
+  height: auto !important;
 }
 
-/* Grid interno do produto */
-.quick-add-modal__content-info > * {
+/* 4. CONTENT-INFO — wrapper flex, scroll interno */
+.quick-add-modal__content-info,
+.quick-add-modal .quick-add-modal__content-info {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   height: auto !important;
-  overflow: visible !important;
-}
-
-/* Corrige grid__item que tem height: 0 (quick-add.css) e height: 100% (conflito).
-   O grid__item de mídia define a altura; o info wrapper usa position:relative para
-   que o product__info-container (position:absolute) seja contido nele. */
-.quick-add-modal[open] .grid__item {
-  height: auto !important;
+  max-height: 85vh !important;
+  overflow: hidden !important;
   padding: 0 !important;
 }
 
-/* Info wrapper precisa de position:relative para conter o info-container absoluto */
-.quick-add-modal .product__info-wrapper.grid__item {
-  position: relative !important;
-  min-height: 300px !important;
+/* 5. GRID — reset das alturas 0/100% do tema */
+.quick-add-modal .grid__item,
+.quick-add-modal[open] .grid__item {
+  height: auto !important;
+  padding: 0 !important;
+  min-height: 0 !important;
 }
 
-/* Imagens do produto: contidas, sem corte */
+/* 6. MEDIA (imagem) — metade esquerda, sem corte */
 .quick-add-modal .product__media-wrapper,
+.quick-add-modal .product__media-wrapper.grid__item {
+  flex: 0 0 50% !important;
+  max-width: 50% !important;
+  max-height: 85vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  background: #f8f8f6 !important;
+  position: relative !important;
+  min-height: auto !important;
+}
+
 .quick-add-modal .product__media-list {
-  max-height: 75vh !important;
+  max-height: 85vh !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.quick-add-modal .product__media-item img,
+.quick-add-modal .product__media-item .product__media img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 80vh !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* 7. INFO (direita) — metade direita, scroll vertical */
+.quick-add-modal .product__info-wrapper,
+.quick-add-modal .product__info-wrapper.grid__item {
+  flex: 0 0 50% !important;
+  max-width: 50% !important;
+  position: relative !important;
+  min-height: auto !important;
   overflow: hidden !important;
 }
 
-.quick-add-modal .product__media-item img {
-  object-fit: contain !important;
-  max-height: 70vh !important;
-  width: 100% !important;
+/* Reset do position:absolute que o quick-add.css aplica no info-container */
+.quick-add-modal .product__info-wrapper.grid__item .product__info-container,
+.quick-add-modal .product__info-container {
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: 85vh !important;
+  padding: 28px 32px !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
-/* Botão fechar: visível, com contraste sobre o modal branco */
+/* Scrollbar customizada */
+.quick-add-modal .product__info-container::-webkit-scrollbar {
+  width: 4px !important;
+}
+.quick-add-modal .product__info-container::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+.quick-add-modal .product__info-container::-webkit-scrollbar-thumb {
+  background: rgba(26, 50, 44, 0.25) !important;
+  border-radius: 4px !important;
+}
+.quick-add-modal .product__info-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 50, 44, 0.5) !important;
+}
+
+/* 8. BOTÃO FECHAR — círculo verde no canto, z-index alto */
 .quick-add-modal__toggle {
   position: absolute !important;
-  top: 1rem !important;
-  right: 1rem !important;
-  z-index: 10 !important;
-  width: 3.2rem !important;
-  height: 3.2rem !important;
+  top: 12px !important;
+  right: 12px !important;
+  z-index: 20 !important;
+  width: 36px !important;
+  height: 36px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   background-color: #1A322C !important;
   border-radius: 50% !important;
+  border: none !important;
   color: #ffffff !important;
   cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
-
 .quick-add-modal__toggle svg {
-  width: 1.4rem !important;
-  height: 1.4rem !important;
+  width: 14px !important;
+  height: 14px !important;
   color: #ffffff !important;
-  fill: currentColor !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
 }
-
 .quick-add-modal__toggle:hover {
-  background-color: #C49A3C !important;
+  background-color: #12221f !important;
 }
 
-/* Seletor de quantidade: borda verde da marca, não dourada */
+/* 9. TIPOGRAFIA dentro do modal */
+.quick-add-modal .product__title {
+  font-size: 2.4rem !important;
+  font-weight: 600 !important;
+  color: #1A322C !important;
+  margin-bottom: 8px !important;
+}
+.quick-add-modal .product__title h2 {
+  font-size: 2.4rem !important;
+  font-weight: 600 !important;
+  color: #1A322C !important;
+}
+.quick-add-modal .product__text {
+  font-size: 1.4rem !important;
+  line-height: 1.6 !important;
+  color: #555 !important;
+}
+.quick-add-modal .price-item {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: #1A322C !important;
+}
+
+/* 10. SELETOR DE QUANTIDADE — borda verde */
+.quick-add-modal .quantity,
+.quick-add-modal quantity-input.quantity {
+  border: 1.5px solid #1A322C !important;
+  border-radius: 6px !important;
+}
+.quick-add-modal .quantity::after,
+.quick-add-modal .quantity::before,
 .quick-add-modal .quantity:after,
 .quick-add-modal .quantity:before {
   border-color: #1A322C !important;
-  box-shadow: 0 0 0 0.1rem rgba(26, 50, 44, 0.3) !important;
+  box-shadow: none !important;
+}
+.quick-add-modal .quantity__button {
+  color: #1A322C !important;
+}
+.quick-add-modal .quantity__input {
+  color: #1A322C !important;
+  font-weight: 600 !important;
+  border-color: #1A322C !important;
 }
 
-/* Corrige a borda dourada global da quantity (vem de --color-foreground → accent-1 = #C49A3C) */
-.quick-add-modal .quantity:after {
+/* 11. BOTÃO ADICIONAR AO CARRINHO no modal */
+.quick-add-modal .product-form__submit,
+.quick-add-modal .product-form__submit.button--secondary,
+.quick-add-modal .product-form__submit.button--primary {
+  background-color: #1A322C !important;
   border-color: #1A322C !important;
-  box-shadow: 0 0 0 0.1rem rgba(26, 50, 44, 0.25) !important;
+  color: #FFFFFF !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  padding: 12px 24px !important;
+  font-size: 1.5rem !important;
+}
+.quick-add-modal .product-form__submit:hover {
+  background-color: #12221f !important;
+}
+
+/* 12. COMPRE JÁ no modal */
+.quick-add-modal .shopify-payment-button__button--unbranded {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+  border-radius: 6px !important;
+}
+.quick-add-modal .shopify-payment-button__button--unbranded:hover {
+  background-color: #12221f !important;
+}
+
+/* 13. LINK "Ver informações completas" */
+.quick-add-modal .product__view-details {
+  color: #1A322C !important;
+  font-weight: 600 !important;
+  font-size: 1.3rem !important;
+  margin-top: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.quick-add-modal .product__view-details:hover {
+  color: #C49A3C !important;
+}
+
+/* 14. BADGE "Esgotado" */
+.quick-add-modal .badge.price__badge-sold-out {
+  background-color: #dc3545 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  font-size: 1.2rem !important;
+  padding: 2px 8px !important;
+}
+
+/* 15. RESPONSIVO — mobile */
+@media screen and (max-width: 749px) {
+  .quick-add-modal__content,
+  .quick-add-modal .quick-add-modal__content,
+  .quick-add-modal[open] .quick-add-modal__content {
+    max-width: 95vw !important;
+    max-height: 95vh !important;
+    border-radius: 8px !important;
+  }
+  .quick-add-modal__content-info,
+  .quick-add-modal .quick-add-modal__content-info {
+    flex-direction: column !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+  .quick-add-modal .product__media-wrapper,
+  .quick-add-modal .product__media-wrapper.grid__item {
+    flex: 0 0 auto !important;
+    max-width: 100% !important;
+    max-height: 40vh !important;
+  }
+  .quick-add-modal .product__info-wrapper,
+  .quick-add-modal .product__info-wrapper.grid__item {
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+  .quick-add-modal .product__info-container {
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 20px !important;
+  }
+}
+
+/* 16. Esconde elementos desnecessários no modal */
+.quick-add-modal .product-attributes.product_type,
+.quick-add-modal .product-attributes.product_vendor,
+.quick-add-modal .product__sku,
+.quick-add-modal .product__inventory,
+.quick-add-modal .product__payment,
+.quick-add-modal .html-sections-product,
+.quick-add-modal .dt-sc-enquiry-form,
+.quick-add-modal .icon-with-text,
+.quick-add-modal .complementary-products,
+.quick-add-modal .social-proof-sales,
+.quick-add-modal .rating-fake-sales,
+.quick-add-modal .product__accordion {
+  display: none !important;
 }
 
 /* =====================================================
