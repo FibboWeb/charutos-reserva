@@ -412,8 +412,8 @@
           "3408e200-d33a-433c-bdd0-1d9c73fff07e": {
             "type": "link_list",
             "settings": {
-              "heading": "Shop",
-              "menu": "",
+              "heading": "Institucional",
+              "menu": "footer",
               "alignment": "left",
               "list_style": "vertical",
               "column_width": 18
@@ -422,7 +422,7 @@
           "8c88a831-9d3f-4039-9e74-6f7b20caa8ff": {
             "type": "link_list",
             "settings": {
-              "heading": "Customer",
+              "heading": "Minha Conta",
               "menu": "",
               "alignment": "left",
               "list_style": "vertical",
@@ -545,7 +545,7 @@
         "settings": {
           "color_scheme": "accent-2",
           "modal_bg_opacity": "0.6",
-          "enable_newsletter_modal": true,
+          "enable_newsletter_modal": false,
           "cookie_expires": 1,
           "cookie_modal_delay": "5000",
           "block_text_align": "text-start",
