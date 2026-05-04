@@ -433,7 +433,7 @@
             "type": "newsletter",
             "settings": {
               "heading": "",
-              "newsletter_subtext": "<span class=\"text-separate-color\">Sign up to be the first to know about new collections.</span>",
+              "newsletter_subtext": "<span class=\"text-separate-color\">Inscreva-se para receber novidades e promoções</span>",
               "alignment": "left",
               "button_style": "icon",
               "column_width": 35
