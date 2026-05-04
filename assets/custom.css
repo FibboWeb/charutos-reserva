@@ -1007,3 +1007,91 @@ label.bg-color-white { border: 1px solid #e3e0e0 !important;}
   display: grid;
 }
 
+
+
+/* =====================================================
+   Charutos Reserva — Brand Button Overrides
+   Botões: fundo dourado (#C49A3C), texto/ícones brancos
+   Hover: dourado escuro (#A07E2A)
+   ===================================================== */
+
+/* Botões primários */
+.button, .button--primary,
+.shopify-payment-button__button--unbranded,
+a.button, button.button {
+  background-color: #C49A3C !important;
+  border-color: #C49A3C !important;
+  color: #FFFFFF !important;
+}
+
+/* Hover */
+.button:hover, .button--primary:hover,
+.shopify-payment-button__button--unbranded:hover,
+a.button:hover, button.button:hover {
+  background-color: #A07E2A !important;
+  border-color: #A07E2A !important;
+  color: #FFFFFF !important;
+}
+
+/* Ícones e SVGs dentro de botões */
+.button svg, .button .icon, .button .icon-wrap,
+.button--primary svg, .button--primary .icon {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Botões outline/secondary */
+.button--secondary {
+  background-color: transparent !important;
+  border-color: #C49A3C !important;
+  color: #C49A3C !important;
+}
+.button--secondary:hover {
+  background-color: #C49A3C !important;
+  color: #FFFFFF !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Header Verde Escuro
+   ===================================================== */
+.header-wrapper,
+.header,
+header.header,
+.shopify-section-header-sticky .header,
+.shopify-section-header-scrolled .header {
+  background-color: #1A322C !important;
+  border-bottom-color: #1A322C !important;
+}
+
+/* Ícones, links e textos do header */
+.header a,
+.header .header__heading-link,
+.header nav a,
+.header__menu-item,
+.header .list-menu__item a {
+  color: #FFFFFF !important;
+}
+.header svg,
+.header .icon {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+}
+
+/* Cart count bubble */
+.header .cart-count-bubble {
+  background-color: #C49A3C !important;
+  color: #FFFFFF !important;
+}
+
+/* Menu hover */
+.header a:hover,
+.header .header__menu-item:hover {
+  color: #C49A3C !important;
+}
+
+/* Sticky header */
+.shopify-section-header-sticky,
+.header-wrapper--border-bottom {
+  background-color: #1A322C !important;
+}

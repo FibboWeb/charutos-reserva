@@ -143,3 +143,18 @@
 .cartrek-product-tab .card__content ul[class*=variant-option-color] {
     display: none;
 }
+
+/* Charutos Reserva — Tabs Sugestões Para Você */
+.cartrek-product-tab .tabs .tablinks {
+  background-color: transparent !important;
+  border: 2px solid #1A322C !important;
+  color: #1A322C !important;
+  border-radius: 4px !important;
+}
+
+.cartrek-product-tab .tabs .tablinks.active,
+.cartrek-product-tab .tabs .tablinks:hover {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+}

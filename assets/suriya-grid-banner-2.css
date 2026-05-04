@@ -110,7 +110,7 @@
   .suriya-grid-banner-2 .home-custom-grid-banner-1 .grid-banner-section .grid-banner-wrapper {padding:50px;}
   .suriya-grid-banner-2 .grid-banner.home-custom-grid-banner-1 .grid-banner-section.five-column .grid-banner-wrapper:last-child {margin:auto; grid-column:1/3; width:50%;}
 }
-.suriya-grid-banner-2 .swiper .swiper-slide.swiper-slide-active .grid-banner-block-image {border: 5px solid rgba(var(--color-base-solid-button-labels),0.8); border-radius: 10em;box-sizing: border-box;}
+.suriya-grid-banner-2 .swiper .swiper-slide.swiper-slide-active .grid-banner-block-image {border: 5px solid #C49A3C; border-radius: 10em;box-sizing: border-box;}
 @media screen and (min-width: 992px) {
   .suriya-grid-banner-2 .swiper .swiper-slide.swiper-slide-active {transition: all .5s linear;}
   .suriya-grid-banner-2 .swiper .swiper-slide .grid-banner-block-image {border: 5px solid transparent; border-radius: 10em;}

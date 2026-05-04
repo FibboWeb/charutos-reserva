@@ -391,9 +391,47 @@
     mask-image: url({{ section.settings.mask_image |  image_url: width: 1920 }});
    -webkit-mask-image: url({{ section.settings.mask_image |  image_url: width: 1920 }});
     mask-repeat: no-repeat; background:rgb(var(--color-background)); -webkit-mask-repeat: no-repeat; width: 100%; height: 100%; top: -30px; bottom: 0; transition:all 0.3s linear;
-  }    
+  }
   {%  endunless %}
 {%- endstyle -%}
+
+<style>
+  /* Charutos Reserva — Footer Verde Escuro (style4) */
+  .footer-style4 {
+    background-color: #1A322C !important;
+    color: #FFFFFF !important;
+  }
+  .footer-style4 a,
+  .footer-style4 p,
+  .footer-style4 span,
+  .footer-style4 h2,
+  .footer-style4 h3,
+  .footer-style4 li,
+  .footer-style4 .footer__heading {
+    color: #FFFFFF !important;
+  }
+  .footer-style4 svg,
+  .footer-style4 .icon,
+  .footer-style4 .list-social__link svg {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+  }
+  .footer-style4 a:hover {
+    color: #C49A3C !important;
+  }
+  .footer-style4 .footer__list-social .list-social__link:hover svg {
+    color: #C49A3C !important;
+    fill: #C49A3C !important;
+  }
+  .footer-style4 .footer-block__newsletter .newsletter-form__field-wrapper input {
+    background-color: rgba(255,255,255,0.1) !important;
+    border-color: rgba(255,255,255,0.3) !important;
+    color: #FFFFFF !important;
+  }
+  .footer-style4 .footer-block__newsletter .newsletter-form__field-wrapper input::placeholder {
+    color: rgba(255,255,255,0.6) !important;
+  }
+</style>
 {% schema %}
 {
   "name": "t:sections.footer-style4.name",
