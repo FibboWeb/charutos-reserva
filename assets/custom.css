@@ -1212,6 +1212,12 @@ a:not(.button):not(.header a):not(.footer a):hover {
 }
 .header__icon--cart:hover {
   background-color: #A07E2A !important;
+  color: #FFFFFF !important;
+}
+.header__icon--cart:hover svg {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 /* Search: ícone limpo, sem fundo extra */
@@ -1256,4 +1262,43 @@ a:not(.button):not(.header a):not(.footer a):hover {
   color: #1A322C !important;
   fill: #1A322C !important;
   stroke: #1A322C !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Search no Header: sem fundo branco
+   ===================================================== */
+.header__icons .icon-search,
+.header__icons #dT_TopStickySearchBtn,
+.search-icon .icon-search,
+.search-icon #dT_TopStickySearchBtn,
+.header .icon-search,
+header .icon-search,
+span.icon-search,
+span#dT_TopStickySearchBtn {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.header__icons .icon-search svg,
+.header__icons #dT_TopStickySearchBtn svg,
+.search-icon .icon-search svg,
+.search-icon #dT_TopStickySearchBtn svg,
+header .icon-search svg {
+  color: #FFFFFF !important;
+  fill: none !important;
+  stroke: #FFFFFF !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Cart Drawer Overlay: verde escuro + blur
+   ===================================================== */
+cart-drawer-overlay,
+.cart-drawer__overlay,
+.drawer__overlay,
+#CartDrawer-Overlay {
+  background-color: rgba(26, 50, 44, 0.6) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
 }
