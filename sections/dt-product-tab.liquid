@@ -198,6 +198,7 @@
           <div class="swiper-container " data-tab-carousel="swiper-tab-carousel-{{ section.id }}" data-items="{{ section.settings.products_per_row }}" data-section-id="swiper-tab-{{ forloop.index }}-{{ block.id }}" id="swiper-{{ forloop.index }}-{{ block.id }}-carousel">
             <ul class="swiper-wrapper color-{{ section.settings.color_scheme }} gradient " role="list">
               {%- for product in collections[block.settings.collection].products limit: section.settings.products_to_show -%}
+              {%- if product.available -%}
                 <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
                {%  case settings.card_style %}
           {%  when 'standard' %}  
@@ -262,6 +263,7 @@
             %}
         {%  endcase %}
               </div>
+              {%- endif -%}
               {%- else -%}
               {%- for i in (1..section.settings.products_to_show) -%}
                   <div class="swiper-slide">
@@ -364,6 +366,7 @@
           {% for block in section.blocks %}          
           <ul class="grid dt-sc-column {{ column }} dt-sc-tabs-content-Details" data-tab="dT_tab-{{ forloop.index }}">
             {% for product in collections[block.settings.collection].products limit: section.settings.products_to_show %}
+            {%- if product.available -%}
             <li class="color-{{ section.settings.color_scheme }}">
               {% render 'dt-card-product',
               card_product: product,
@@ -374,6 +377,7 @@
               show_quick_view: settings.enable_quickview
               %}
             </li>
+            {%- endif -%}
             {%- else -%}
             {%- for i in (1..section.settings.products_to_show) -%}
             <li class="color-{{ section.settings.color_scheme }} product-card-placeholder">
@@ -385,9 +389,9 @@
           {% endfor %}
           {% endif %}
         </div>
-      </div>  
+      </div>
     </div>
-   </div> 
+   </div>
       {%- if section.settings.show_view_all  -%}
       <div class="center collection__view-all">
         <a href="{{ routes.all_products_collection_url }}"

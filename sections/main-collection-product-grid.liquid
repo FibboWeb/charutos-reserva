@@ -262,7 +262,7 @@
             <ul id="product-grid" data-id="{{ section.id }}" class="grid product-grid  view-mode  grid-view-filter  grid--{{ section.settings.columns_mobile }}-col-mobile {{ column_width }} {% unless section.settings.pagination == 'numbers' %} AjaxinateContainer {% endunless %} card_style-{{ settings.card_style }}">
               {%- for product in collection.products -%}
                 {%- assign lazy_load = true -%}                
-               <li class="grid__item">
+               <li class="grid__item" data-available="{{ product.available }}">
        {%  case settings.card_style %}
           {%  when 'standard' %}  
             {% render 'card-product',
@@ -328,6 +328,16 @@
                 </li>
               {%- endfor -%}
             </ul>
+            <script>
+              (function() {
+                var grid = document.getElementById('product-grid');
+                if (!grid) return;
+                var items = Array.from(grid.querySelectorAll('li[data-available]'));
+                var available = items.filter(function(li) { return li.dataset.available === 'true'; });
+                var unavailable = items.filter(function(li) { return li.dataset.available !== 'true'; });
+                unavailable.forEach(function(li) { grid.appendChild(li); });
+              })();
+            </script>
              {% if section.settings.pagination == 'numbers' %}
             {%- if paginate.pages > 1 -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
