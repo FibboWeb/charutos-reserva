@@ -1095,3 +1095,61 @@ header.header,
 .header-wrapper--border-bottom {
   background-color: #1A322C !important;
 }
+
+/* =====================================================
+   Charutos Reserva — Textos da Página Verde Escuro
+   ===================================================== */
+body,
+p,
+li,
+span,
+label,
+.rte,
+.rte p,
+.page-width p,
+.section-padding p,
+article p,
+.product__description p,
+.product__description li,
+.cart__empty-text,
+.card__information p,
+.card__badge,
+.price,
+.price__regular,
+.price__sale,
+.price-item,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4,
+.card__heading,
+.card__heading a {
+  color: #1A322C;
+}
+
+/* Preservar cores em fundos escuros (accent-1 / verde) */
+.color-accent-1 body,
+.color-accent-1 p,
+.color-accent-1 li,
+.color-accent-1 span,
+.color-accent-1 h1,
+.color-accent-1 h2,
+.color-accent-1 h3,
+.color-accent-1 h4,
+.color-accent-1 h5,
+.color-accent-1 h6,
+.color-accent-1 .h1,
+.color-accent-1 .h2,
+.color-accent-1 .h3,
+.color-accent-1 .h4,
+[class*="color-accent-1"] p,
+[class*="color-accent-1"] h2,
+[class*="color-accent-1"] span {
+  color: #FFFFFF;
+}
+
+/* Links padrão fora do header/footer */
+a:not(.button):not(.header a):not(.footer a) {
+  color: #1A322C;
+}
+a:not(.button):not(.header a):not(.footer a):hover {
+  color: #C49A3C;
+}
