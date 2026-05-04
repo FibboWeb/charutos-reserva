@@ -1153,3 +1153,65 @@ a:not(.button):not(.header a):not(.footer a) {
 a:not(.button):not(.header a):not(.footer a):hover {
   color: #C49A3C;
 }
+
+/* =====================================================
+   Charutos Reserva — Tabs Em Destaque do Dia (dt-product-tab)
+   ===================================================== */
+.lush-product-tab .tabs .tablinks {
+  background-color: transparent !important;
+  border: 2px solid #1A322C !important;
+  color: #1A322C !important;
+  border-radius: 4px !important;
+}
+
+.lush-product-tab .tabs .tablinks.active,
+.lush-product-tab .tabs .tablinks:hover {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Tabs Sugestões Para Você (cartrek-product-tab)
+   ===================================================== */
+.cartrek-product-tab .tabs .tablinks {
+  background-color: transparent !important;
+  border: 2px solid #1A322C !important;
+  color: #1A322C !important;
+  border-radius: 4px !important;
+}
+
+.cartrek-product-tab .tabs .tablinks.active,
+.cartrek-product-tab .tabs .tablinks:hover {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Botões do Header (pesquisa e cart) em Dourado
+   ===================================================== */
+.header__icon--cart,
+.header__icon--search,
+.header__icon--account,
+.header .header__icon {
+  background-color: #C49A3C !important;
+  border-radius: 4px !important;
+  color: #FFFFFF !important;
+}
+
+.header__icon--cart svg,
+.header__icon--search svg,
+.header__icon--account svg,
+.header .header__icon svg {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+.header__icon--cart:hover,
+.header__icon--search:hover,
+.header__icon--account:hover,
+.header .header__icon:hover {
+  background-color: #A07E2A !important;
+}
