@@ -1393,14 +1393,20 @@ form[action="/cart"] .product-form__submit:not(.button--primary),
   color: #FFFFFF !important;
 }
 
-/* Botão "Adicionar ao Carrinho" */
+/* Botão "Adicionar ao Carrinho" — primary e secondary (depende do Dynamic Checkout) */
 .product-form__submit.button--primary,
+.product-form__submit.button--secondary,
 .product-form .button--primary,
-form[action="/cart"] .product-form__submit.button--primary {
+.product-form .button--secondary,
+form[action="/cart"] .product-form__submit {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
   color: #FFFFFF !important;
 }
 .product-form__submit.button--primary svg,
-.product-form .button--primary svg {
+.product-form__submit.button--secondary svg,
+.product-form .button--primary svg,
+.product-form .button--secondary svg {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
   stroke: #FFFFFF !important;
