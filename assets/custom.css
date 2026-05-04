@@ -1475,7 +1475,7 @@ body.overflow-hidden::before {
 }
 
 /* =====================================================
-   Charutos Reserva — Quick View Modal: maior, sem scroll, overlay verde/blur
+   Charutos Reserva — Quick View Modal: layout, overflow, cores
    ===================================================== */
 
 /* Overlay do modal */
@@ -1485,50 +1485,132 @@ body.overflow-hidden::before {
   -webkit-backdrop-filter: blur(5px) !important;
 }
 
-/* Container do conteúdo: altura máxima sem scroll */
-.quick-add-modal__content {
-  height: 90vh !important;
-  max-height: 90vh !important;
-  overflow: hidden !important;
-  border-radius: 12px !important;
+/* Container do conteúdo:
+   - height: fit-content so it shrinks to actual product content
+   - max-height: 90vh so it never overflows the viewport
+   - overflow: visible so the close button is not clipped
+   - background: white (override the transparent set in quick-add.css)
+   - centered vertically with top/bottom auto margin via flexbox on overlay */
+.quick-add-modal[open] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
+.quick-add-modal__content {
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  height: auto !important;
+  max-height: 90vh !important;
+  overflow: visible !important;
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  margin: auto !important;
+}
+
+/* When open, keep background white (quick-add.css sets it to transparent) */
+.quick-add-modal[open] .quick-add-modal__content {
+  background-color: #ffffff !important;
+}
+
+/* Largura do modal */
 @media screen and (min-width: 991px) {
   .quick-add-modal__content {
     width: 88% !important;
+    max-width: 900px !important;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .quick-add-modal__content {
     width: 80% !important;
+    max-width: 900px !important;
   }
 }
 
-/* Info interna: preenche toda a altura, scroll somente se necessário */
+/* Info interna: scroll vertical quando o conteúdo exceder */
 .quick-add-modal__content-info {
-  height: 100% !important;
-  max-height: 100% !important;
+  height: auto !important;
+  max-height: 90vh !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
 }
 
-/* Grid interno do produto: ocupa o espaço disponível */
+/* Grid interno do produto */
 .quick-add-modal__content-info > * {
   height: auto !important;
   overflow: visible !important;
 }
 
-/* Imagens do produto: ajuste de altura proporcional */
+/* Corrige grid__item que tem height: 0 (quick-add.css) e height: 100% (conflito).
+   O grid__item de mídia define a altura; o info wrapper usa position:relative para
+   que o product__info-container (position:absolute) seja contido nele. */
+.quick-add-modal[open] .grid__item {
+  height: auto !important;
+  padding: 0 !important;
+}
+
+/* Info wrapper precisa de position:relative para conter o info-container absoluto */
+.quick-add-modal .product__info-wrapper.grid__item {
+  position: relative !important;
+  min-height: 300px !important;
+}
+
+/* Imagens do produto: contidas, sem corte */
 .quick-add-modal .product__media-wrapper,
 .quick-add-modal .product__media-list {
-  max-height: 80vh !important;
+  max-height: 75vh !important;
   overflow: hidden !important;
 }
 
 .quick-add-modal .product__media-item img {
   object-fit: contain !important;
-  max-height: 75vh !important;
+  max-height: 70vh !important;
+  width: 100% !important;
+}
+
+/* Botão fechar: visível, com contraste sobre o modal branco */
+.quick-add-modal__toggle {
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  z-index: 10 !important;
+  width: 3.2rem !important;
+  height: 3.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #1A322C !important;
+  border-radius: 50% !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+}
+
+.quick-add-modal__toggle svg {
+  width: 1.4rem !important;
+  height: 1.4rem !important;
+  color: #ffffff !important;
+  fill: currentColor !important;
+}
+
+.quick-add-modal__toggle:hover {
+  background-color: #C49A3C !important;
+}
+
+/* Seletor de quantidade: borda verde da marca, não dourada */
+.quick-add-modal .quantity:after,
+.quick-add-modal .quantity:before {
+  border-color: #1A322C !important;
+  box-shadow: 0 0 0 0.1rem rgba(26, 50, 44, 0.3) !important;
+}
+
+/* Corrige a borda dourada global da quantity (vem de --color-foreground → accent-1 = #C49A3C) */
+.quick-add-modal .quantity:after {
+  border-color: #1A322C !important;
+  box-shadow: 0 0 0 0.1rem rgba(26, 50, 44, 0.25) !important;
 }
 
 /* =====================================================
@@ -1567,6 +1649,9 @@ ul.dt-nav li .sub-menu-lists a:hover {
   color: #333;
   font-size: 1.5rem;
 }
+.collection-seo-text__inner h2 {
+  font-size: 3rem;
+}
 .collection-seo-text__inner p { margin-bottom: 1.2em; }
 .collection-seo-text__inner h1,
 .collection-seo-text__inner h2,
@@ -1574,6 +1659,7 @@ ul.dt-nav li .sub-menu-lists a:hover {
   color: #1A322C;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+  font-weight: 700;
 }
 .collection-seo-text__fade {
   position: absolute;
