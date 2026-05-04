@@ -232,7 +232,7 @@
           </facet-filters-form>
         {%- endif -%}
   
-      {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- paginate collection.products by 250 -%}
         {%- if collection.products.size == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
@@ -246,7 +246,7 @@
         {%- else -%}
           <div class="collection">
             <div class="loading-overlay gradient"></div>
-    {% liquid 
+    {% liquid
   if  section.settings.columns_desktop == 2
   assign column_width = "grid grid--2-col-desktop  grid--2-col-tablet-down"
   elsif section.settings.columns_desktop == 3
@@ -257,14 +257,17 @@
   assign column_width = "grid grid--5-col-desktop  grid--2-col-tablet-down"
   elsif section.settings.columns_desktop == 6
   assign column_width = "grid grid--6-col-desktop  grid--2-col-tablet-down"
-  endif 
+  endif
   %}
-            <ul id="product-grid" data-id="{{ section.id }}" class="grid product-grid  view-mode  grid-view-filter  grid--{{ section.settings.columns_mobile }}-col-mobile {{ column_width }} {% unless section.settings.pagination == 'numbers' %} AjaxinateContainer {% endunless %} card_style-{{ settings.card_style }}">
-              {%- for product in collection.products -%}
-                {%- assign lazy_load = true -%}                
-               <li class="grid__item" data-available="{{ product.available }}">
+            {%- assign available_products = collection.products | where: "available", true -%}
+            {%- assign unavailable_products = collection.products | where: "available", false -%}
+            <ul id="product-grid" data-id="{{ section.id }}" data-per-page="{{ section.settings.products_per_page }}" class="grid product-grid view-mode grid-view-filter grid--{{ section.settings.columns_mobile }}-col-mobile {{ column_width }} card_style-{{ settings.card_style }}">
+              {%- comment -%}— Produtos disponíveis primeiro —{%- endcomment -%}
+              {%- for product in available_products -%}
+                {%- assign lazy_load = true -%}
+                <li class="grid__item" data-available="true">
        {%  case settings.card_style %}
-          {%  when 'standard' %}  
+          {%  when 'standard' %}
             {% render 'card-product',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -276,7 +279,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'button_width_icons' %}  
+        {%  when 'button_width_icons' %}
              {% render 'card-product-2',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -288,7 +291,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'card_with_icons' %} 
+        {%  when 'card_with_icons' %}
              {% render 'card-product-3',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -300,7 +303,7 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'card_with_buttons' %}  
+        {%  when 'card_with_buttons' %}
              {% render 'card-product-4',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -312,7 +315,75 @@
               show_new_tag: section.settings.show_new_tag,
               section_id: section.id
             %}
-        {%  when 'card_with_overlay' %}  
+        {%  when 'card_with_overlay' %}
+             {% render 'card-product-5',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              show_quick_add: settings.enable_quickadd,
+              show_quick_view: settings.enable_quickview,
+              show_new_tag: section.settings.show_new_tag,
+              section_id: section.id
+            %}
+        {%  endcase %}
+                </li>
+              {%- endfor -%}
+              {%- comment -%}— Produtos sem estoque por último —{%- endcomment -%}
+              {%- for product in unavailable_products -%}
+                {%- assign lazy_load = true -%}
+                <li class="grid__item" data-available="false">
+       {%  case settings.card_style %}
+          {%  when 'standard' %}
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              show_quick_add: settings.enable_quickadd,
+              show_quick_view: settings.enable_quickview,
+              show_new_tag: section.settings.show_new_tag,
+              section_id: section.id
+            %}
+        {%  when 'button_width_icons' %}
+             {% render 'card-product-2',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              show_quick_add: settings.enable_quickadd,
+              show_quick_view: settings.enable_quickview,
+              show_new_tag: section.settings.show_new_tag,
+              section_id: section.id
+            %}
+        {%  when 'card_with_icons' %}
+             {% render 'card-product-3',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              show_quick_add: settings.enable_quickadd,
+              show_quick_view: settings.enable_quickview,
+              show_new_tag: section.settings.show_new_tag,
+              section_id: section.id
+            %}
+        {%  when 'card_with_buttons' %}
+             {% render 'card-product-4',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: section.settings.show_rating,
+              show_quick_add: settings.enable_quickadd,
+              show_quick_view: settings.enable_quickview,
+              show_new_tag: section.settings.show_new_tag,
+              section_id: section.id
+            %}
+        {%  when 'card_with_overlay' %}
              {% render 'card-product-5',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
@@ -328,37 +399,60 @@
                 </li>
               {%- endfor -%}
             </ul>
+            <div id="collection-js-pagination-{{ section.id }}" class="collection-js-pagination"></div>
             <script>
-              (function() {
-                var grid = document.getElementById('product-grid');
-                if (!grid) return;
-                var items = Array.from(grid.querySelectorAll('li[data-available]'));
-                var available = items.filter(function(li) { return li.dataset.available === 'true'; });
-                var unavailable = items.filter(function(li) { return li.dataset.available !== 'true'; });
-                unavailable.forEach(function(li) { grid.appendChild(li); });
-              })();
+(function() {
+  var grid = document.getElementById('product-grid');
+  var paginationEl = document.getElementById('collection-js-pagination-{{ section.id }}');
+  if (!grid || !paginationEl) return;
+
+  var perPage = parseInt(grid.dataset.perPage) || {{ section.settings.products_per_page }};
+  var items = Array.from(grid.querySelectorAll('li.grid__item'));
+  var total = items.length;
+  var totalPages = Math.ceil(total / perPage);
+  var currentPage = 1;
+
+  if (totalPages <= 1) return; // no pagination needed
+
+  function showPage(page) {
+    var start = (page - 1) * perPage;
+    var end = start + perPage;
+    items.forEach(function(item, i) {
+      item.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+    currentPage = page;
+    renderPagination();
+    // scroll to top of grid
+    grid.closest('.collection') && grid.closest('.collection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function renderPagination() {
+    var html = '<nav class="pagination" role="navigation" aria-label="Paginação">';
+    html += '<ul class="pagination__list list-unstyled">';
+    if (currentPage > 1) {
+      html += '<li><button class="pagination__item pagination__item--prev" onclick="crPg_{{ section.id }}(' + (currentPage - 1) + ')">&#8592; Anterior</button></li>';
+    }
+    var start = Math.max(1, currentPage - 2);
+    var end = Math.min(totalPages, currentPage + 2);
+    if (start > 1) html += '<li><button class="pagination__item" onclick="crPg_{{ section.id }}(1)">1</button></li>';
+    if (start > 2) html += '<li><span class="pagination__item">…</span></li>';
+    for (var i = start; i <= end; i++) {
+      html += '<li><button class="pagination__item' + (i === currentPage ? ' pagination__item--current' : '') + '" onclick="crPg_{{ section.id }}(' + i + ')">' + i + '</button></li>';
+    }
+    if (end < totalPages - 1) html += '<li><span class="pagination__item">…</span></li>';
+    if (end < totalPages) html += '<li><button class="pagination__item" onclick="crPg_{{ section.id }}(' + totalPages + ')">' + totalPages + '</button></li>';
+    if (currentPage < totalPages) {
+      html += '<li><button class="pagination__item pagination__item--next" onclick="crPg_{{ section.id }}(' + (currentPage + 1) + ')">Próxima &#8594;</button></li>';
+    }
+    html += '</ul></nav>';
+    paginationEl.innerHTML = html;
+  }
+
+  window['crPg_{{ section.id }}'] = function(page) { showPage(page); };
+
+  showPage(1);
+})();
             </script>
-             {% if section.settings.pagination == 'numbers' %}
-            {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
-            {%- endif -%}
-             {% endif %}   
-             {% unless section.settings.pagination == 'numbers' %}
-            <div id="AjaxinatePagination" class="pagination-method-{{- section.settings.pagination -}}">
-            <div class="custom-page-progress-bar" data-page-items-count='{{collection.products_count }}'>
-            {%- assign productSize = collection.products.size | plus: paginate.current_offset -%}
-            <p>{{ 'general.pagination.count_text' | t:current_count:productSize,total_count:collection.products_count}}</p>
-            <div class="progress-bar">
-            <div class="active-bar" style="width: {{productSize | times:100.0 | divided_by: collection.products_count}}%"></div>
-            </div>
-            </div>
-            
-            {% if paginate.next %}
-            <div class="load_more_btn"><a class="dt-sc-btn button text-center" href="{{ paginate.next.url }}">{{ 'general.pagination.load_more' | t}}</a></div>
-            {% endif %} 
-            
-            </div>
-            {% endunless %}
           </div>
         {%- endif -%}
       {%- if collection.description != blank -%}

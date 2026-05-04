@@ -1690,4 +1690,13 @@ ul.dt-nav li .sub-menu-lists a:hover {
   color: #ffffff;
 }
 .collection-seo-text__btn svg { transition: transform 0.3s; }
+
+/* Collection client-side pagination */
+.collection-js-pagination { margin: 32px 0; text-align: center; }
+.collection-js-pagination .pagination__list { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.collection-js-pagination .pagination__item { background: none; border: 1px solid #1A322C; color: #1A322C; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 1.4rem; font-weight: 600; transition: background 0.2s, color 0.2s; }
+.collection-js-pagination .pagination__item:hover { background: #1A322C; color: #fff; }
+.collection-js-pagination .pagination__item--current { background: #1A322C; color: #fff; }
+.collection-js-pagination .pagination__item--prev,
+.collection-js-pagination .pagination__item--next { border-color: #1A322C; }
 .collection-seo-text__btn[aria-expanded="true"] svg { transform: rotate(180deg); }
