@@ -1011,16 +1011,16 @@ label.bg-color-white { border: 1px solid #e3e0e0 !important;}
 
 /* =====================================================
    Charutos Reserva — Brand Button Overrides
-   Botões: fundo dourado (#C49A3C), texto/ícones brancos
-   Hover: dourado escuro (#A07E2A)
+   Botões primários: fundo verde escuro (#1A322C), texto branco
+   Hover: verde mais escuro (#12221f)
    ===================================================== */
 
 /* Botões primários */
 .button, .button--primary,
 .shopify-payment-button__button--unbranded,
 a.button, button.button {
-  background-color: #C49A3C !important;
-  border-color: #C49A3C !important;
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
   color: #FFFFFF !important;
 }
 
@@ -1028,8 +1028,8 @@ a.button, button.button {
 .button:hover, .button--primary:hover,
 .shopify-payment-button__button--unbranded:hover,
 a.button:hover, button.button:hover {
-  background-color: #A07E2A !important;
-  border-color: #A07E2A !important;
+  background-color: #12221f !important;
+  border-color: #12221f !important;
   color: #FFFFFF !important;
 }
 
@@ -1053,15 +1053,15 @@ a.button:hover, button.button:hover {
 }
 
 /* =====================================================
-   Charutos Reserva — Header Verde Escuro
+   Charutos Reserva — Header Branco
    ===================================================== */
 .header-wrapper,
 .header,
 header.header,
 .shopify-section-header-sticky .header,
 .shopify-section-header-scrolled .header {
-  background-color: #1A322C !important;
-  border-bottom-color: #1A322C !important;
+  background-color: #FFFFFF !important;
+  border-bottom-color: #D4C5A9 !important;
 }
 
 /* Ícones, links e textos do header */
@@ -1070,17 +1070,17 @@ header.header,
 .header nav a,
 .header__menu-item,
 .header .list-menu__item a {
-  color: #FFFFFF !important;
+  color: #1A322C !important;
 }
 .header svg,
 .header .icon {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
+  color: #1A322C !important;
+  fill: #1A322C !important;
 }
 
 /* Cart count bubble */
 .header .cart-count-bubble {
-  background-color: #C49A3C !important;
+  background-color: #1A322C !important;
   color: #FFFFFF !important;
 }
 
@@ -1093,7 +1093,7 @@ header.header,
 /* Sticky header */
 .shopify-section-header-sticky,
 .header-wrapper--border-bottom {
-  background-color: #1A322C !important;
+  background-color: #FFFFFF !important;
 }
 
 /* =====================================================
@@ -1195,9 +1195,9 @@ a:not(.button):not(.header a):not(.footer a):hover {
    Charutos Reserva — Botões do Header (cart e search)
    ===================================================== */
 
-/* Cart: full rounded (pill) com fundo dourado */
+/* Cart: full rounded (pill) com fundo verde escuro no header branco */
 .header__icon--cart {
-  background-color: #C49A3C !important;
+  background-color: #1A322C !important;
   border-radius: 50px !important;
   color: #FFFFFF !important;
   padding: 6px 10px !important;
@@ -1208,25 +1208,26 @@ a:not(.button):not(.header a):not(.footer a):hover {
   stroke: #FFFFFF !important;
 }
 .header__icon--cart:hover {
-  background-color: #A07E2A !important;
+  background-color: #12221f !important;
   color: #FFFFFF !important;
 }
-.header__icon--cart:hover svg {
+.header__icon--cart:hover svg,
+.header__icon--cart:hover * {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
   stroke: #FFFFFF !important;
 }
 
-/* Search: ícone limpo, sem fundo extra */
+/* Search: ícone verde, sem fundo, header branco */
 .header__icon--search {
   background-color: transparent !important;
   border-radius: 0 !important;
-  color: #FFFFFF !important;
+  color: #1A322C !important;
 }
 .header__icon--search svg {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
-  stroke: #FFFFFF !important;
+  color: #1A322C !important;
+  fill: #1A322C !important;
+  stroke: #1A322C !important;
 }
 .header__icon--search:hover {
   color: #C49A3C !important;
@@ -1251,14 +1252,14 @@ a:not(.button):not(.header a):not(.footer a):hover {
 .topbar .header__icon--account {
   background-color: transparent !important;
   border-radius: 0 !important;
-  color: #1A322C !important;
+  color: #FFFFFF !important;
 }
 #shopify-section-top-bar .header__icon--account svg,
 #shopify-section-top-bar a[href*="account"] svg,
 .top-bar .header__icon--account svg {
-  color: #1A322C !important;
-  fill: #1A322C !important;
-  stroke: #1A322C !important;
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 /* =====================================================
@@ -1295,9 +1296,9 @@ button.search__button svg,
 .header .field__button svg,
 header .icon-search svg,
 .header__icons #dT_TopStickySearchBtn svg {
-  color: #FFFFFF !important;
+  color: #1A322C !important;
   fill: none !important;
-  stroke: #FFFFFF !important;
+  stroke: #1A322C !important;
 }
 
 /* =====================================================

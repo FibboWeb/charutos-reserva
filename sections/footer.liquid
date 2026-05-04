@@ -155,8 +155,6 @@
                         style="max-width: min(100%, {{ block.settings.image_width }}px);"
                       >
                       </a>
-                    {%- else -%}
-                      {{ 'logo' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
                     {%- endif -%}
                   <div class="footer-block__details-content rte {{ block.settings.alignment }}">
                     {{ block.settings.subtext }}
@@ -399,17 +397,21 @@
     color: #FFFFFF !important;
   }
   .footer svg,
-  .footer .icon,
-  .footer .list-social__link svg {
+  .footer .icon {
     color: #FFFFFF !important;
     fill: #FFFFFF !important;
+  }
+  /* Ícones sociais: verde no círculo branco */
+  .footer .list-social__link svg {
+    color: #1A322C !important;
+    fill: #1A322C !important;
   }
   .footer a:hover {
     color: #C49A3C !important;
   }
   .footer__list-social .list-social__link:hover svg {
-    color: #C49A3C !important;
-    fill: #C49A3C !important;
+    color: #8B5E3C !important;
+    fill: #8B5E3C !important;
   }
   .footer-block__newsletter .newsletter-form__field-wrapper input {
     background-color: rgba(255,255,255,0.1) !important;

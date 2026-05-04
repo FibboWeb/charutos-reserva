@@ -33,6 +33,27 @@
       padding-bottom: 0px;
     }
   }
+
+  /* Tabs: Sugestões Para Você — brand styling */
+  #shopify-section-{{ section.id }} .cartrek-product-tab .tabs .tablinks,
+  #shopify-section-{{ section.id }} .tabs .tablinks {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: 2px solid #1A322C !important;
+    color: #1A322C !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+  }
+  #shopify-section-{{ section.id }} .cartrek-product-tab .tabs .tablinks.active,
+  #shopify-section-{{ section.id }} .tabs .tablinks.active,
+  #shopify-section-{{ section.id }} .cartrek-product-tab .tabs .tablinks:hover,
+  #shopify-section-{{ section.id }} .tabs .tablinks:hover {
+    background-color: #1A322C !important;
+    background: #1A322C !important;
+    border-color: #1A322C !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
+  }
 {%- endstyle -%}
 
 {% liquid

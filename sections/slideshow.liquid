@@ -31,20 +31,28 @@
 {%- endif -%}  
 
 
-      .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height}}px;}
-      .section-{{ section.id }}-slideshow  .banner--mobile-bottom .slideshow__text-wrapper.banner__content{position:absolute;}
-  
-   @media screen and (max-width: 1540px) {   
-    .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height_laptop}}px;}
+  {%- if section.settings.natural_image_height -%}
+    /* Altura natural baseada na imagem */
+    .section-{{ section.id }}-slideshow .slide-banner { height: auto !important; }
+    .section-{{ section.id }}-slideshow .slideshow__media { height: auto !important; position: static !important; }
+    .section-{{ section.id }}-slideshow .slideshow__media img { width: 100% !important; height: auto !important; object-fit: unset !important; position: static !important; display: block !important; }
+    .section-{{ section.id }}-slideshow .swiper, .section-{{ section.id }}-slideshow .swiper-wrapper { height: auto !important; }
+    .section-{{ section.id }}-slideshow .swiper-slide { height: auto !important; }
+  {%- else -%}
+    .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height}}px;}
+    .section-{{ section.id }}-slideshow  .banner--mobile-bottom .slideshow__text-wrapper.banner__content{position:absolute;}
+    @media screen and (max-width: 1540px) {
+      .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height_laptop}}px;}
     }
-   @media screen and (max-width: 990px) { 
-    .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height_tab}}px;}
+    @media screen and (max-width: 990px) {
+      .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height_tab}}px;}
     }
     @media screen and (max-width: 576px) {
-    .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height_mobile}}px;}
-    .section-{{ section.id }}-slideshow .slide-banner.banner--mobile-bottom{height:100%;}
-    .section-{{ section.id }}-slideshow .banner--mobile-bottom .slideshow__text-wrapper.banner__content {position:relative;} 
+      .section-{{ section.id }}-slideshow .slide-banner { height:{{section.settings.slider_image_height_mobile}}px;}
+      .section-{{ section.id }}-slideshow .slide-banner.banner--mobile-bottom{height:100%;}
+      .section-{{ section.id }}-slideshow .banner--mobile-bottom .slideshow__text-wrapper.banner__content {position:relative;}
     }
+  {%- endif -%}
 
  {%- endstyle -%} 
 
@@ -116,6 +124,7 @@
 
           
         </div>
+        {%- if section.settings.show_content_overlay -%}
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
           <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
             {%- if block.settings.subheading != blank -%}
@@ -123,7 +132,7 @@
             {%- endif -%}
             {%- if block.settings.heading != blank -%}
               <h2 class="banner__heading {{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
-            {%- endif -%}           
+            {%- endif -%}
             {%- if block.settings.text != blank -%}
               <div class="banner__text" {{ block.shopify_attributes }}>
                 <span>{{ block.settings.text }}</span>
@@ -136,6 +145,7 @@
             {%- endif -%}
           </div>
         </div>
+        {%- endif -%}
       </div>
     {%- endfor -%}
   </div>
@@ -173,7 +183,23 @@
        "default": false,
       "label": "t:sections.all.page_full_width_spacing.label"
     },
-      {
+    {
+      "type": "header",
+      "content": "Conteúdo e Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "natural_image_height",
+      "label": "Altura natural da imagem (largura 100%, altura automática)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content_overlay",
+      "label": "Mostrar conteúdo de texto sobreposto",
+      "default": false
+    },
+    {
       "type": "header",
       "content": "t:sections.slideshow.settings.slider_image_height_settings.content"
     },
