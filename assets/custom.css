@@ -1470,3 +1470,59 @@ body.overflow-hidden::before {
 .product-popup-modal {
   --overlay-color: rgba(26, 50, 44, 0.55);
 }
+
+/* =====================================================
+   Charutos Reserva — Quick View Modal: maior, sem scroll, overlay verde/blur
+   ===================================================== */
+
+/* Overlay do modal */
+.quick-add-modal {
+  background: rgba(26, 50, 44, 0.6) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+}
+
+/* Container do conteúdo: altura máxima sem scroll */
+.quick-add-modal__content {
+  height: 90vh !important;
+  max-height: 90vh !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+}
+
+@media screen and (min-width: 991px) {
+  .quick-add-modal__content {
+    width: 88% !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .quick-add-modal__content {
+    width: 80% !important;
+  }
+}
+
+/* Info interna: preenche toda a altura, sem scroll */
+.quick-add-modal__content-info {
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Grid interno do produto: ocupa o espaço disponível */
+.quick-add-modal__content-info > * {
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Imagens do produto: ajuste de altura proporcional */
+.quick-add-modal .product__media-wrapper,
+.quick-add-modal .product__media-list {
+  max-height: 80vh !important;
+  overflow: hidden !important;
+}
+
+.quick-add-modal .product__media-item img {
+  object-fit: contain !important;
+  max-height: 75vh !important;
+}
