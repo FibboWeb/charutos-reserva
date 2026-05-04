@@ -1530,3 +1530,27 @@ body.overflow-hidden::before {
   object-fit: contain !important;
   max-height: 75vh !important;
 }
+
+/* =====================================================
+   Charutos Reserva — Dropdown / Mega-menu: fundo branco
+   ===================================================== */
+ul.dt-nav li > .megamenu_megamenu > div.sub-menu-block,
+.megamenu_megamenu .sub-menu-block,
+.header-wrapper .megamenu_megamenu,
+ul.dt-nav li .sub-menu-lists,
+.header nav ul ul,
+.disclosure__list-wrapper {
+  background-color: #FFFFFF !important;
+  border-top: 2px solid #D4C5A9 !important;
+}
+
+/* Links dentro do dropdown */
+ul.dt-nav li .megamenu_megamenu a,
+ul.dt-nav li .sub-menu-lists a {
+  color: #1A322C !important;
+  background-color: transparent !important;
+}
+ul.dt-nav li .megamenu_megamenu a:hover,
+ul.dt-nav li .sub-menu-lists a:hover {
+  color: #C49A3C !important;
+}

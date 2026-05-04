@@ -35,7 +35,8 @@
     /* Altura natural baseada na imagem */
     .section-{{ section.id }}-slideshow .slide-banner { height: auto !important; }
     .section-{{ section.id }}-slideshow .slideshow__media { height: auto !important; position: static !important; }
-    .section-{{ section.id }}-slideshow .slideshow__media img { width: 100% !important; height: auto !important; object-fit: unset !important; position: static !important; display: block !important; }
+    .section-{{ section.id }}-slideshow .slideshow__media img.desktop-slider { width: 100% !important; height: auto !important; object-fit: unset !important; position: static !important; }
+    .section-{{ section.id }}-slideshow .slideshow__media img.mobile-slider { width: 100% !important; height: auto !important; object-fit: unset !important; position: static !important; }
     .section-{{ section.id }}-slideshow .swiper, .section-{{ section.id }}-slideshow .swiper-wrapper { height: auto !important; }
     .section-{{ section.id }}-slideshow .swiper-slide { height: auto !important; }
   {%- else -%}
