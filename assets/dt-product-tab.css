@@ -17,7 +17,6 @@
   position: relative;
   background-color: var(--gradient-base-background-1);
   border: 1px solid var(--gradient-base-background-1);
-  border-right: none;
   box-shadow: none;
   transition: all 0.3s linear;
   font-weight: 700;
@@ -62,19 +61,6 @@
   text-align: center !important;
   align-items: center;
   margin-bottom:2.2rem;
-}
-.lush-product-tab .tabs .product-tab:before {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 23px;
-    background: var(--gradient-base-accent-1);
-    right: 0;
-    left: 5px;
-    margin: auto;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
 }
 .lush-product-tab .product-tab-wrapper .collection .tabs .product-tab .tablinks{text-transform: capitalize;margin:0;padding:10px;}
 .lush-product-tab .tabs_container .product-tab-carousel {

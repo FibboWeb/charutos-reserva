@@ -1154,44 +1154,41 @@ a:not(.button):not(.header a):not(.footer a):hover {
   color: #C49A3C;
 }
 
-/* =====================================================
-   Charutos Reserva — Tabs Em Destaque do Dia (dt-product-tab)
-   ===================================================== */
-.lush-product-tab .tabs {
-  gap: 8px !important;
-}
 
-.lush-product-tab .tabs .tablinks {
-  background-color: transparent !important;
-  border: 2px solid #1A322C !important;
-  border-right: 2px solid #1A322C !important;
-  color: #1A322C !important;
-  border-radius: 4px !important;
-  margin: 0 !important;
-}
-
-.lush-product-tab .tabs .tablinks.active,
-.lush-product-tab .tabs .tablinks:hover {
-  background-color: #1A322C !important;
-  border-color: #1A322C !important;
-  color: #FFFFFF !important;
-}
 
 /* =====================================================
    Charutos Reserva — Tabs Sugestões Para Você (cartrek-product-tab)
    ===================================================== */
-.cartrek-product-tab .tabs .tablinks {
+.cartrek-product-tab .tabs .tablinks,
+.cartrek-product-tab .tabs button.tablinks {
   background-color: transparent !important;
+  background: transparent !important;
   border: 2px solid #1A322C !important;
   color: #1A322C !important;
   border-radius: 4px !important;
 }
 
 .cartrek-product-tab .tabs .tablinks.active,
-.cartrek-product-tab .tabs .tablinks:hover {
+.cartrek-product-tab .tabs .tablinks:hover,
+.cartrek-product-tab .tabs button.tablinks.active,
+.cartrek-product-tab .tabs button.tablinks:hover {
   background-color: #1A322C !important;
+  background: #1A322C !important;
   border-color: #1A322C !important;
   color: #FFFFFF !important;
+}
+
+/* Ver Tudo */
+.cartrek-product-tab .collection__view-all a,
+.cartrek-product-tab .collection__view-all .button {
+  color: #1A322C !important;
+  border-color: #1A322C !important;
+  background-color: transparent !important;
+}
+.cartrek-product-tab .collection__view-all a:hover,
+.cartrek-product-tab .collection__view-all .button:hover {
+  color: #FFFFFF !important;
+  background-color: #1A322C !important;
 }
 
 /* =====================================================
@@ -1301,4 +1298,97 @@ cart-drawer-overlay,
   background-color: rgba(26, 50, 44, 0.6) !important;
   backdrop-filter: blur(4px) !important;
   -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Tabs Em Destaque do Dia (dt-product-tab)
+   ===================================================== */
+.lush-product-tab .tabs,
+.lush-product-tab > .tabs {
+  gap: 8px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.lush-product-tab .tabs .tablinks,
+.lush-product-tab .tabs button.tablinks {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: 2px solid #1A322C !important;
+  color: #1A322C !important;
+  border-radius: 4px !important;
+  margin: 0 4px !important;
+  box-shadow: none !important;
+}
+
+.lush-product-tab .tabs .tablinks.active,
+.lush-product-tab .tabs .tablinks:hover,
+.lush-product-tab .tabs button.tablinks.active,
+.lush-product-tab .tabs button.tablinks:hover {
+  background-color: #1A322C !important;
+  background: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+/* =====================================================
+   Charutos Reserva — Support Block: fundo dourado, texto branco
+   ===================================================== */
+.support-block-demo,
+.section.support-block-demo,
+.shopify-section .support-block-demo {
+  background-color: #C49A3C !important;
+}
+
+.support-block-demo *,
+.support-block-demo p,
+.support-block-demo h2,
+.support-block-demo h3,
+.support-block-demo span,
+.support-block-demo .dt-support-block__text,
+.support-block-demo .rte p {
+  color: #FFFFFF !important;
+}
+
+.support-block-demo svg path,
+.support-block-demo svg rect,
+.support-block-demo svg circle,
+.support-block-demo svg {
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+/* =====================================================
+   Charutos Reserva — Página de Produto: botões comprar e carrinho
+   ===================================================== */
+
+/* Botão "Comprar Agora" */
+.product-form__submit.button--secondary,
+.product__buy-button,
+[name="checkout"],
+form[action="/cart"] .product-form__submit:not(.button--primary),
+.product-form .button[name="checkout"] {
+  background-color: #1A322C !important;
+  border-color: #1A322C !important;
+  color: #FFFFFF !important;
+}
+.product-form__submit.button--secondary:hover,
+.product__buy-button:hover,
+[name="checkout"]:hover {
+  background-color: #12221f !important;
+  color: #FFFFFF !important;
+}
+
+/* Botão "Adicionar ao Carrinho" */
+.product-form__submit.button--primary,
+.product-form .button--primary,
+form[action="/cart"] .product-form__submit.button--primary {
+  color: #FFFFFF !important;
+}
+.product-form__submit.button--primary svg,
+.product-form .button--primary svg {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
