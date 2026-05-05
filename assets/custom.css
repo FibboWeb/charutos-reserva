@@ -1899,3 +1899,17 @@ ul.dt-nav li .sub-menu-lists a:hover {
 .collection-js-pagination .pagination__item--prev,
 .collection-js-pagination .pagination__item--next { border-color: #1A322C; }
 .collection-seo-text__btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+/* Página de produto — remove padding excessivo do section-main-padding */
+.main-product-template .section-template--17831603962036__main-padding,
+[class*="section-"][class*="-padding"].isolate {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+@media screen and (min-width: 750px) {
+  .main-product-template .section-template--17831603962036__main-padding,
+  [class*="section-"][class*="-padding"].isolate {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+}
