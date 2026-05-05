@@ -1714,6 +1714,8 @@ button[name="add"] svg {
 .quick-add-modal quantity-input.quantity {
   border: 1.5px solid #1A322C !important;
   border-radius: 6px !important;
+  --buttons-radius: 6px !important;
+  --buttons-radius-outset: 5px !important;
 }
 .quick-add-modal .quantity::after,
 .quick-add-modal .quantity::before,
@@ -1745,6 +1747,15 @@ button[name="add"] svg {
 }
 .quick-add-modal .product-form__submit:hover {
   background-color: #12221f !important;
+}
+
+/* Remove pill/full-rounded das bordas — forçar 6px em todos os elementos do modal */
+.quick-add-modal .quantity__button,
+.quick-add-modal .quantity__input,
+.quick-add-modal quantity-input {
+  border-radius: 6px !important;
+  --buttons-radius: 6px !important;
+  --buttons-radius-outset: 5px !important;
 }
 
 /* 12. COMPRE JÁ no modal */
