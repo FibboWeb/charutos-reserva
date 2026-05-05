@@ -965,7 +965,7 @@
  
 .arnold .product__info-wrapper .dT_VProdCompareList a:not(.adding).add-compare:before { content:"";-webkit-mask-image:url("compare1.png");mask-image: url("compare1.png"); background: currentColor; width: 15px;  height: 14px; position: absolute; top: 0; bottom: 0; left: 0; margin: auto;}
 .arnold .product__info-wrapper .dT_VProdCompareList a:not(.adding).added.add-compare:before { content:"";-webkit-mask-image:url("compare1.png");mask-image:url("compare1.png"); background: currentColor; width: 15px;  height: 14px; position: absolute;  top: 0; bottom: 0; left: 0; margin: auto;}
-.arnold .product__info-wrapper a.add-compare.button--secondary{position:relative;  display:block;  color: var(--gradient-base-accent-1);}
+.arnold .product__info-wrapper a.add-compare.button--secondary{position:relative;  display:block;  color: var(--gradient-base-accent-1) !important;}
 
 
 .arnold #collections .collection-list .card--card.card--media:hover>.card__content {

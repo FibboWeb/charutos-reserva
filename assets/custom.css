@@ -1099,31 +1099,6 @@ header.header,
 /* =====================================================
    Charutos Reserva — Textos da Página Verde Escuro
    ===================================================== */
-body,
-p,
-li,
-span,
-label,
-.rte,
-.rte p,
-.page-width p,
-.section-padding p,
-article p,
-.product__description p,
-.product__description li,
-.cart__empty-text,
-.card__information p,
-.card__badge,
-.price,
-.price__regular,
-.price__sale,
-.price-item,
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4,
-.card__heading,
-.card__heading a {
-  color: #1A322C;
-}
 
 /* Preservar cores em fundos escuros (accent-1 / verde) */
 .color-accent-1 body,
@@ -1382,14 +1357,12 @@ cart-drawer-overlay,
 [name="checkout"],
 form[action="/cart"] .product-form__submit:not(.button--primary),
 .product-form .button[name="checkout"] {
-  background-color: #1A322C !important;
   border-color: #1A322C !important;
   color: #FFFFFF !important;
 }
 .product-form__submit.button--secondary:hover,
 .product__buy-button:hover,
 [name="checkout"]:hover {
-  background-color: #12221f !important;
   color: #FFFFFF !important;
 }
 
@@ -1399,7 +1372,6 @@ form[action="/cart"] .product-form__submit:not(.button--primary),
 .product-form .button--primary,
 .product-form .button--secondary,
 form[action="/cart"] .product-form__submit {
-  background-color: #1A322C !important;
   border-color: #1A322C !important;
   color: #FFFFFF !important;
 }
@@ -1712,7 +1684,6 @@ button[name="add"] svg {
 /* 10. SELETOR DE QUANTIDADE — borda verde */
 .quick-add-modal .quantity,
 .quick-add-modal quantity-input.quantity {
-  border: 1.5px solid #1A322C !important;
   border-radius: 6px !important;
   --buttons-radius: 6px !important;
   --buttons-radius-outset: 5px !important;
@@ -1740,7 +1711,6 @@ button[name="add"] svg {
   background-color: #1A322C !important;
   border-color: #1A322C !important;
   color: #FFFFFF !important;
-  border-radius: 6px !important;
   font-weight: 600 !important;
   padding: 12px 24px !important;
   font-size: 1.5rem !important;
