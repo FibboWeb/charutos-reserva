@@ -648,19 +648,29 @@
                   {%- when 'custom_liquid' -%}
                     {{ block.settings.custom_liquid }}
                    {%- when 'vendor' -%}
-                <div class="product-attributes product_vendor">
-                  <p class="product-label">{{ 'products.product.vendor' | t }}</p>
-                  <span class="product-attributes-value">{{ product.vendor | link_to_vendor }}</span>
-                </div>
-                
-                {%- when 'sku' -%}              
-               <div class="product__sku product-attributes no-js-hidden{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}" id="Sku-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                <p class="product-label">{{ 'products.product.sku' | t }}</p>
-                 <span class="product-attributes-value"> {{- product.selected_or_first_available_variant.sku -}}</span>
-              </div>
-                {%- when 'type' -%}
-                <div class="product-attributes product_type">
-                  <p class="product-label">{{ 'products.product.type' | t }}</p> <span class="product-attributes-value">{{ product.type }}</span>
+                {%- comment -%}Fabricante removido conforme solicitado{%- endcomment -%}
+
+                {%- when 'sku' -%}
+                <div class="product-meta-sku-row">
+                  <div class="product-meta-inline no-js-hidden{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}" id="Sku-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                    <span class="product-meta-label">SKU</span>
+                    <span class="product-meta-value">{{- product.selected_or_first_available_variant.sku -}}</span>
+                  </div>
+                  <div class="product-meta-actions">
+                    {% if section.settings.show_wishlist %}
+                      {%- if product.handle != blank -%}
+                        <dtx-wishlist>
+                          <a href="javascript:void(0);" class="product-meta-wish-btn add-wishlist" data-product_handle="{{ product.handle }}" title="Lista de desejos">
+                            {%- render 'icon-wishlist' -%}
+                          </a>
+                        </dtx-wishlist>
+                      {%- endif -%}
+                    {% endif %}
+                    {% if section.settings.show_share %}
+                      {%- assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin -%}
+                      <div class="product-meta-share-wrap">{%- render 'product-share-button', share_url: share_url -%}</div>
+                    {% endif %}
+                  </div>
                 </div>
                    {%- when 'deal' -%}
                     {% render 'deal-snippet', product: product %}
@@ -807,7 +817,7 @@
                   {%- when 'size-popup' -%}
                   <div class="size-chart"> 
                   <svg xmlns="http://www.w3.org/2000/svg" class="popup-svg" width="16.432" height="28.2" viewBox="0 0 16.432 28.2">
-                  <g id="Component_46_1" data-name="Component 46 – 1" transform="translate(0.6 0.6)">
+                  <g id="Component_46_1" data-name="Component 46 - 1" transform="translate(0.6 0.6)">
                   <rect id="Rectangle_8800" data-name="Rectangle 8800" width="8" height="27" rx="1" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
                   <line id="Line_302" data-name="Line 302" x2="3" transform="translate(5 3.5)" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
                   <line id="Line_303" data-name="Line 303" x2="2" transform="translate(6 5.5)" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
@@ -1154,32 +1164,6 @@
                         {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
                       {%- endif -%}
                   
-                       <div class="icon-with-text">   
-                          {% if section.settings.show_wishlist %}
-                          <div class="dT_VProdWishList">
-                          {%- if product.handle != blank -%}
-                          <div>
-                          <dtx-wishlist
-                          > <a
-                          href="javascript:void(0);"
-                          class=" add-wishlist button--secondary"
-                          data-product_handle="{{ product.handle }}"
-                          ></a
-                          ></dtx-wishlist>
-                          </div>
-                          {%- endif -%}
-                          </div>
-                          {% endif %}
-                          <div class="dT_VProdCompareList">
-                          {%- if product.handle != blank -%}
-                          <div><dtx-compare><a href="javascript:void(0);" class="add-compare button--secondary" data-product_handle="{{ product.handle }}"></a></dtx-compare></div>
-                          {%- endif -%}                  
-                          </div>
-                        {%  if section.settings.show_share %}
-                       {% assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin %}                        
-                        {%  render 'product-share-button', share_url: share_url %}
-                           {%- endif -%}         
-                       </div>
                      {%- form 'product',
                           product,
                           id: product_form_id,

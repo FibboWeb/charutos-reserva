@@ -142,6 +142,9 @@ border:1px solid rgba(var(--color-base-accent-1),.1);
 
 .card__information {
   grid-row-start: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   /*   padding: 1.3rem 1rem; */
 }
 /* .card__content{
@@ -1063,7 +1066,7 @@ li.color-values-plus a {
   content: "";
   -webkit-mask-image: url("wishlist-icon.svg");
   mask-image: url("wishlist-icon.svg");
-  background: currentColor;
+  background: rgb(var(--color-base-accent-1));
   width: 15px;
   height: 15px;
   position: absolute;
@@ -1071,7 +1074,7 @@ li.color-values-plus a {
   bottom: 0;
   left: 0;
   margin: auto;
-   -webkit-mask-repeat: no-repeat;   
+   -webkit-mask-repeat: no-repeat;
 }
 .product__info-wrapper
   .dT_VProdWishList
@@ -1079,7 +1082,7 @@ li.color-values-plus a {
   content: "";
   -webkit-mask-image: url("wishlist-fill.svg");
   mask-image: url("wishlist-fill.svg");
-  background: currentColor;
+  background: rgb(var(--color-base-accent-1));
   width: 15px;
   height: 15px;
   position: absolute;
@@ -1087,7 +1090,14 @@ li.color-values-plus a {
   bottom: 0;
   left: 0;
   margin: auto;
-  -webkit-mask-repeat: no-repeat;      
+  -webkit-mask-repeat: no-repeat;
+}
+.product__info-wrapper .dT_VProdWishList a.add-wishlist:after {
+  color: rgb(var(--color-base-accent-1));
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-base-accent-1), var(--border-opacity)),
+    0 0 0 var(--buttons-border-width)
+      rgba(var(--color-base-accent-1), var(--alpha-button-background));
 }
 .product__info-wrapper a.add-wishlist.button--secondary {
   position: relative;
@@ -1098,7 +1108,7 @@ li.color-values-plus a {
   content: "";
   -webkit-mask-image: url("compare-icon.svg");
   mask-image: url("compare-icon.svg");
-  background: currentColor;
+  background: rgb(var(--color-base-accent-1));
   width: 15px;
   height: 14px;
   position: absolute;
@@ -1106,7 +1116,7 @@ li.color-values-plus a {
   bottom: 0;
   left: 0;
   margin: auto;
-   -webkit-mask-repeat: no-repeat;   
+   -webkit-mask-repeat: no-repeat;
 }
 .product__info-wrapper
   .dT_VProdCompareList
@@ -1114,7 +1124,7 @@ li.color-values-plus a {
   content: "";
   -webkit-mask-image: url("compare-fill.svg");
   mask-image: url("compare-fill.svg");
-  background: currentColor;
+  background: rgb(var(--color-base-accent-1));
   width: 15px;
   height: 15px;
   position: absolute;
@@ -1122,7 +1132,14 @@ li.color-values-plus a {
   bottom: 0;
   left: 0;
   margin: auto;
-  -webkit-mask-repeat: no-repeat;   
+  -webkit-mask-repeat: no-repeat;
+}
+.product__info-wrapper .dT_VProdCompareList a.add-compare:after {
+  color: rgb(var(--color-base-accent-1));
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-base-accent-1), var(--border-opacity)),
+    0 0 0 var(--buttons-border-width)
+      rgba(var(--color-base-accent-1), var(--alpha-button-background));
 }
 .product__info-wrapper a.add-compare.button--secondary {
   position: relative;
@@ -1347,6 +1364,72 @@ p.rating-count.caption span {
 }
 .card-heading{ display:flex;gap:10px; justify-content: space-between; align-items: center;}
 .collection .card-heading .quick-add .quick-add__submit.button{ margin:0; }
+
+/* Desativa hover/after no botão compare nos cards */
+.product-icons a.add-compare.button--secondary:hover,
+.product-icons a.add-compare.added.button--secondary:hover {
+  background-color: rgba(var(--color-button), var(--alpha-button-background));
+  color: rgba(var(--color-button-text));
+}
+.product-icons a.add-compare.button--secondary:after,
+.product-icons a.add-compare.added.button--secondary:after {
+  box-shadow: none;
+}
+
+/* Card buy action — botão Comprar sempre no fundo do card */
+.card__buy-action {
+  margin-top: auto;
+  padding-top: 1.2rem;
+  width: 100%;
+}
+.card__buy-action .quick-add__submit.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 1rem 1.6rem;
+  font-size: 1.4rem;
+  min-width: unset;
+}
+@media screen and (max-width: 480px) {
+  .card__buy-action .quick-add__submit.button {
+    padding: 0.9rem 1.2rem;
+    font-size: 1.3rem;
+    min-width: unset;
+  }
+}
+
+/* Alturas iguais nos cards das vitrines (product-tab-demo / lush-product-tab-demo) */
+.product-tab-demo .swiper-slide,
+.lush-product-tab-demo .swiper-slide {
+  height: auto;
+}
+
+.product-tab-demo .card-wrapper,
+.lush-product-tab-demo .card-wrapper {
+  height: 100%;
+}
+
+.product-tab-demo .card--card.card--media > .card__content.for-arrow-alignment,
+.lush-product-tab-demo .card--card.card--media > .card__content.for-arrow-alignment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-tab-demo .card__content.for-arrow-alignment > .card__information,
+.lush-product-tab-demo .card__content.for-arrow-alignment > .card__information {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-tab-demo .card__buy-action,
+.lush-product-tab-demo .card__buy-action {
+  margin-top: auto;
+  padding-top: 1.2rem;
+}
 
 
 

@@ -255,3 +255,16 @@
 
 .shopify-section.reveal .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner :is(a.banner-button) { padding: 10px 25px;
     font-size: 18px;     min-height: calc(5rem + var(--buttons-border-width) * 2);   text-transform: capitalize;}
+
+/* Banner horizontal (3º bloco, span 2 colunas): altura automática, sem corte */
+.curtainex-grid-banner .grid-banner-demo .grid-banner-section.overlay .grid-banner-wrapper:last-child {
+  height: auto !important;
+}
+.curtainex-grid-banner .grid-banner-demo .grid-banner-section.overlay .grid-banner-wrapper:last-child .grid-banner-block-image {
+  height: auto;
+}
+.curtainex-grid-banner .grid-banner-demo .grid-banner-section.overlay .grid-banner-wrapper:last-child .grid-banner-block-image img.grid-banner-image {
+  height: auto;
+  object-fit: initial;
+  display: block;
+}

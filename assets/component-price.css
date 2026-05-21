@@ -37,15 +37,20 @@
 }
 
 .price--large {
-  font-size: 1.8rem;
-  line-height: calc(1 + 0.5 / var(--font-body-scale));
-  letter-spacing: 0.13rem;
-   font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.1;
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+}
+
+.price--large .price-item--regular,
+.price--large .price-item--sale.price-item--last {
+  color: rgb(var(--color-base-accent-2));
 }
 
 @media screen and (min-width: 750px) {
   .price--large {
-    font-size: 1.6rem;
+    font-size: 2.8rem;
   }
 }
 

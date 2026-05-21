@@ -1683,7 +1683,7 @@ label.swatch-variant-image {
 .product-form__buttons
   button.product-form__submit.button.button--full-width.button--secondary:hover,
 .product-form__buttons a.button.add-wishlist.button--secondary:hover {
-  background:rgba(var(--color-base-outline-button-labels));
+  background: transparent;
   color:var(--gradient-base-accent-1);
   border: 2px solid var(--gradient-base-accent-1);
 }
@@ -2770,6 +2770,95 @@ label.swatch-variant-image {
   .product__info-bottom.tabs{flex-direction: column; text-align: center;}
 }
       
+/* product meta (sku, vendor) */
+.product-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.product-meta-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.product-meta-label {
+  font-weight: 600;
+  color: rgb(var(--color-base-accent-1));
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.08rem;
+  background: rgba(var(--color-base-accent-1), 0.1);
+  padding: 0.2rem 0.7rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.product-meta-value {
+  color: rgb(var(--color-foreground));
+  font-weight: 400;
+}
+
+.product-meta-sku-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-meta-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Wishlist */
+.product-meta-wish-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 1px solid rgba(var(--color-base-accent-1), 0.4);
+  border-radius: 50%;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+.product-meta-wish-btn:hover {
+  border-color: rgb(var(--color-base-accent-1));
+  background: rgba(var(--color-base-accent-1), 0.08);
+}
+.product-meta-wish-btn svg { width: 1.8rem; height: 1.8rem; }
+
+/* Share — deixa o snippet renderizar normalmente */
+.product-meta-share-wrap { display: contents; }
+.product-meta-share-wrap .share-button__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(var(--color-base-accent-1), 0.4);
+  border-radius: 2rem;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.product-meta-share-wrap .share-button__button:hover {
+  border-color: rgb(var(--color-base-accent-1));
+  background: rgba(var(--color-base-accent-1), 0.08);
+}
+.product-meta-share-wrap .share-button__button svg { width: 1.6rem; height: 1.6rem; }
+
 /popup -sizechart/
 
  .image-sizeguid table {

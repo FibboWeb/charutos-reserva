@@ -421,5 +421,11 @@
         </div>
       </div>
     </div>
+    {% comment %} Konfidency integration {% endcomment %}
+    {% if template == 'product' %}
+      <script src="{{ 'konfidency-product-page.js' | asset_url }}"></script>
+    {% endif %}
+    <script async src="https://reviews.konfidency.com.br/reidoscharutos/loader.js"></script>
+
   </body>
 </html>
