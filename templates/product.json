@@ -25,6 +25,18 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "frete_no_produto_shipping_calculator_ehtziE": {
+          "type": "shopify://apps/frete-no-produto/blocks/shipping_calculator/31419da2-d36b-478b-b343-989a0e842a1c",
+          "settings": {
+            "shipping_calculator": true,
+            "background_color_container": "transparent",
+            "btnshipping": "#ff0000",
+            "color_text": "#ffffff",
+            "padding_external": 16,
+            "text": "Calcular Frete",
+            "pickup": ""
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -147,6 +159,7 @@
         }
       },
       "block_order": [
+        "frete_no_produto_shipping_calculator_ehtziE",
         "title",
         "22daea9f-6daf-487e-b422-cba212ae0998",
         "bcddc1ff-b68c-4e0b-992f-5cee1c432000",
