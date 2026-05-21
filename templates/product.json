@@ -228,7 +228,7 @@
       "settings": {
         "page_full_width": false,
         "page_full_width_spacing": true,
-        "heading": "Recommended Products",
+        "heading": "Produtos Recomendados",
         "heading_size": "h2",
         "products_to_show": 6,
         "desktop_column": 4,
