@@ -1229,6 +1229,16 @@
 
                   {%  endcase %}
                 {%  endfor %}
+                  {%- assign has_app_after_buy = false -%}
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == '@app' and forloop.index0 > buy_buttons_index -%}
+                      {%- assign has_app_after_buy = true -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if has_app_after_buy -%}
+                    <h3 class="frete-section-title">Calcular Frete</h3>
+                  {%- endif -%}
                   {%- for block in section.blocks -%}
                     {%- if block.type == '@app' and forloop.index0 > buy_buttons_index -%}
                       {% render block %}
