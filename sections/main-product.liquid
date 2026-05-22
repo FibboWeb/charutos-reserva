@@ -558,10 +558,19 @@
 
               <div class="dt-zoom-detail"></div>
               {%- assign product_form_id = 'product-form-' | append: section.id -%}
-              {%- for block in section.blocks -%}                                 
-                {%- case block.type -%}                           
+              {%- assign buy_buttons_index = 999 -%}
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'buy_buttons' -%}
+                  {%- assign buy_buttons_index = forloop.index0 -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
                   {%- when '@app' -%}
-                    {% render block %}
+                    {%- if forloop.index0 < buy_buttons_index -%}
+                      {% render block %}
+                    {%- endif -%}
                   {%- when 'text' -%}
                     <p
                       class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -1220,7 +1229,11 @@
 
                   {%  endcase %}
                 {%  endfor %}
-                  
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == '@app' and forloop.index0 > buy_buttons_index -%}
+                      {% render block %}
+                    {%- endif -%}
+                  {%- endfor -%}
                   {% render 'dT-fbt' %}
                       {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
                       {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}

@@ -1913,3 +1913,7 @@ ul.dt-nav li .sub-menu-lists a:hover {
     padding-bottom: 32px !important;
   }
 }
+
+/* Calcular Frete — estilos do botão e container */
+.btCalc { border-radius: 50px !important; }
+#calcFreteFreteNoProduto { display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important; }
