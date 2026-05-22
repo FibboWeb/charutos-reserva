@@ -1915,5 +1915,5 @@ ul.dt-nav li .sub-menu-lists a:hover {
 }
 
 /* Calcular Frete — estilos do botão e container */
-.btCalc { border-radius: 50px !important; }
-#calcFreteFreteNoProduto { display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important; }
+.btCalc { border-radius: 50px !important; margin-top: 0 !important; }
+#calcFreteFreteNoProduto { display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important; gap: 8px !important; }
