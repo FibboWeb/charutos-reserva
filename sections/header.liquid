@@ -219,9 +219,188 @@
   .header .header-row {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1rem;
   }
+  .header .header-row .header__heading {
+    order: 1;
+    margin-right: auto;
+    flex: 0 1 auto;
+    min-width: 0;
+    justify-self: flex-start;
+    text-align: left;
+  }
+  .header .header-row .header__heading-link {
+    justify-content: flex-start;
+  }
+  .header .header-row .header__icons {
+    order: 2;
+    flex: 0 0 auto;
+  }
+  .header .header-row header-drawer {
+    order: 3;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+  .header .header-row .header__heading .header__heading-logo {
+    width: auto;
+    height: auto;
+    max-width: 140px;
+    max-height: 56px;
+  }
+  .header__search-desktop { display: none !important; }
+
+  /* Mobile icons: all flat, brand green, same size, vertically centered */
+  .header .header-row .header__icons,
+  .header .header-row header-drawer {
+    align-self: center;
+  }
+  .header .header-row .header__icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  /* Strip the pill from ALL header icons on mobile */
+  .header__icons:not(.icon__fallback-content) .header__icon:not(.header__icon--summary),
+  .header__icons .header__icon--cart,
+  .header__icons .header__search-mobile {
+    background: transparent !important;
+    min-width: 0 !important;
+    width: 4.4rem !important;
+    height: 4.4rem !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #1A322C !important;
+  }
+  /* Hamburger summary: same footprint as the other icons */
+  .header-row header-drawer summary.header__icon--menu {
+    width: 4.4rem;
+    height: 4.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #1A322C;
+    position: relative;
+  }
+  /* Force every icon SVG inside the header row to the same visual size */
+  .header .header-row .header__icons svg,
+  .header .header-row .header__icons .cart-icon svg,
+  .header .header-row header-drawer .icon-hamburger,
+  .header .header-row .header__search-mobile svg {
+    width: 2.4rem !important;
+    height: 2.4rem !important;
+    color: #1A322C !important;
+    stroke: #1A322C;
+    fill: currentColor;
+    position: static !important;
+    top: auto !important;
+  }
+  /* The search icon is stroke-based, not fill */
+  .header .header-row .header__search-mobile svg { fill: none !important; }
+  .header .header-row .header__search-mobile svg circle,
+  .header .header-row .header__search-mobile svg line { stroke: #1A322C; fill: none; }
+  /* Cart icon paths are fill-based */
+  .header__icons .header__icon--cart svg path { fill: #1A322C !important; }
+  .header__icons .header__icon--cart .cart-count-bubble {
+    background-color: #C49A3C;
+    color: #FFFFFF;
+    top: 0.2rem;
+    right: -0.4rem;
+  }
+
+  /* Search dropdown plumbing */
+  .header__search-mobile-details { position: static; list-style: none; }
+  .header__search-mobile-details > summary { list-style: none; cursor: pointer; }
+  .header__search-mobile-details > summary::-webkit-details-marker { display: none; }
+  .header__search-mobile-icon-close { display: none !important; }
+  .header__search-mobile-details[open] .header__search-mobile-icon-open { display: none !important; }
+  .header__search-mobile-details[open] .header__search-mobile-icon-close { display: block !important; }
+  .header__search-mobile-dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #1A322C;
+    padding: 1.2rem 1.6rem;
+    box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.25);
+    z-index: 999;
+  }
+  .header__search-mobile-form {
+    display: flex;
+    align-items: stretch;
+    gap: 0.8rem;
+    background: #FFFFFF;
+    border-radius: 0.4rem;
+    overflow: hidden;
+  }
+  .header__search-mobile-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    padding: 1rem 1.2rem;
+    font-size: 1.6rem;
+    color: #1A322C;
+    outline: none;
+  }
+  .header__search-mobile-input::placeholder { color: rgba(26,50,44,0.5); }
+  .header__search-mobile-submit {
+    border: 0;
+    background: #C49A3C;
+    color: #FFFFFF;
+    padding: 0 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .header__search-mobile-submit svg { width: 1.8rem; height: 1.8rem; stroke: #FFFFFF; }
+  /* Mobile menu drawer: brand green background + must overlap topbar carousel */
+  #shopify-section-headers,
+  .header-wrapper { position: relative; z-index: 1000; }
+  .menu-drawer-container { z-index: 1001; }
+  .js .menu-drawer,
+  .menu-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    max-width: 36rem;
+    height: 100vh !important;
+    background: #1A322C !important;
+    background-color: #1A322C !important;
+    color: #FFFFFF;
+    z-index: 1001;
+  }
+  .menu-drawer__submenu,
+  .menu-drawer__inner-submenu {
+    background: #1A322C !important;
+    background-color: #1A322C !important;
+    color: #FFFFFF;
+    z-index: 1001;
+  }
+  details[open].menu-opening > .menu-drawer,
+  details[open].menu-opening > .menu-drawer__submenu { z-index: 1001; }
+  /* Backdrop overlay must also sit above the topbar */
+  .js menu-drawer > details > summary::before,
+  .js menu-drawer > details[open]:not(.menu-opening) > summary::before { z-index: 1000; }
+  .menu-drawer a,
+  .menu-drawer .drawer-title,
+  .menu-drawer .menu-drawer__menu-item,
+  .menu-drawer .header-drawer__close { color: #FFFFFF; }
+  .menu-drawer .menu-drawer__menu-item:hover,
+  .menu-drawer .menu-drawer__menu-item--active,
+  .menu-drawer .menu-drawer__close-button:hover { background-color: rgba(255,255,255,0.06); }
+  .menu-drawer-header { border-bottom-color: rgba(255,255,255,0.1); }
+}
+@media screen and (min-width: 990px) {
+  .header__search-mobile { display: none !important; }
 }
 @media screen and (max-width:749px){
    .category-menu-button.header--top-left .header-row .category-menu,
@@ -309,9 +488,9 @@ display: inline-flex;
 }
 
 @media screen and (max-width:350px){
-  .header .header-row .header__heading{ flex-grow:1; }
-  .header .header-row{ justify-content:flex-start; }
-  .header .header-row .header__heading a, .header .header-row .header__heading a img { width:100%; }
+  .header .header-row .header__heading{ flex: 0 1 auto; }
+  .header .header-row{ justify-content:space-between; }
+  .header .header-row .header__heading .header__heading-logo { max-width: 120px; }
 }
   
 
@@ -692,7 +871,36 @@ display: inline-flex;
                     
     <div class="header__icons {% if section.settings.header_icon_type =="text"  %} icon__fallback-content {% endif %} ">
         {%  unless section.settings.logo_position == 'top-center' and  section.settings.search_style == 'search_box' %}
-        {%  render 'header-search' %}      
+        <div class="header__search-desktop">
+          {%  render 'header-search' %}
+        </div>
+        {%  if section.settings.search_style == 'search_box' %}
+        <details class="header__search-mobile-details" id="MobileSearchDropdown">
+          <summary class="header__search-mobile header__icon header__icon--search link focus-inset" aria-label="{{ 'general.search.search' | t }}" aria-haspopup="dialog">
+            <svg class="icon icon-search header__search-mobile-icon-open" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <svg class="icon icon-close header__search-mobile-icon-close" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </summary>
+          <div class="header__search-mobile-dropdown" role="dialog" aria-label="{{ 'general.search.search' | t }}">
+            <form action="{{ routes.search_url }}" method="get" role="search" class="header__search-mobile-form">
+              <input type="hidden" name="options[prefix]" value="last">
+              <label class="visually-hidden" for="MobileSearchInput">{{ 'general.search.search' | t }}</label>
+              <input id="MobileSearchInput" class="header__search-mobile-input" type="search" name="q" placeholder="{{ 'general.search.search' | t }}" autocomplete="off">
+              <button type="submit" class="header__search-mobile-submit" aria-label="{{ 'general.search.search' | t }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </details>
+        {%  endif %}
         {%  endunless %}
               {%- if section.settings.show_header_wishlist -%}        
               <a href="/pages/wishlist" class="header__icon header__icon--wishlist link small-hide">
@@ -1003,6 +1211,27 @@ display: inline-flex;
   }
 
   customElements.define('localization-form', LocalizationForm);
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileSearch = document.getElementById('MobileSearchDropdown');
+    if (!mobileSearch) return;
+    const input = mobileSearch.querySelector('.header__search-mobile-input');
+    mobileSearch.addEventListener('toggle', function() {
+      if (mobileSearch.open && input) {
+        setTimeout(() => input.focus(), 0);
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (mobileSearch.open && !mobileSearch.contains(e.target)) {
+        mobileSearch.open = false;
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileSearch.open) {
+        mobileSearch.open = false;
+      }
+    });
+  });
 
 
 
