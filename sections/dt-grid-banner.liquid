@@ -56,6 +56,9 @@ endif
 @media screen and (max-width: 767px) {
 .curtainex-grid-banner .grid-banner .section-{{ section.id }}-padding .grid-banner-section.overlay .grid-banner-wrapper{ height: {{section.settings.overlay_height_mobile}}px;}
 }
+.curtainex-grid-banner .grid-banner-block-image a.grid-banner-image{display:block;line-height:0;cursor:pointer;}
+.curtainex-grid-banner .grid-banner-block-image a.grid-banner-image img{transition:transform var(--duration-default) ease,opacity var(--duration-default) ease;}
+.curtainex-grid-banner .grid-banner-block-image a.grid-banner-image:hover img{opacity:0.92;}
 
 {%- endstyle -%}
 <div class="curtainex-grid-banner" >
@@ -92,7 +95,7 @@ endif
  {%- for block in section.blocks -%} 
  <div class="{% unless enable_slider %}grid-banner-wrapper{% else %} swiper-slide{% endunless %} {% if block.settings.reverse_column %}reverse-columns{% endif %}">   
    <div class="grid-banner-block-image">
-    {%- if block.settings.enable_title_link %} <a href="{{ block.settings.block_button_link }}" class="grid-banner-image">{% endif %}
+    {%- if block.settings.block_button_link != blank -%}<a href="{{ block.settings.block_button_link }}" class="grid-banner-image"{% if block.settings.block_title != blank %} aria-label="{{ block.settings.block_title | escape }}"{% endif %}>{%- endif -%}
     {% if block.settings.block_image != blank %}
       <img
                 class="grid-banner-image"
@@ -116,10 +119,10 @@ endif
           {% else %}
                 {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
                 {%- assign placeholder_image = 'hero-apparel-' | append: placeholder_image_index -%}
-                 {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }} 
+                 {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
-        {%- if block.settings.enable_title_link %} </a>{% endif %}
-   </div>    
+        {%- if block.settings.block_button_link != blank -%}</a>{%- endif -%}
+   </div>
     <div class="grid-banner-content {% unless block.settings.show_content %}hidden {% endunless %}">
        <div class="grid-banner-inner banner--content-align-{{ block.settings.desktop_content_alignment }}">
           {% if block.settings.block_title != blank %}
