@@ -209,6 +209,18 @@
       "header": {
         "type": "header",
         "blocks": {
+          "nav_group_iwaTTM": {
+            "type": "nav_group",
+            "settings": {
+              "label": "CHARUTOS",
+              "url": "shopify://collections/charutos",
+              "icon": "charutos",
+              "icon_image": "shopify://shop_images/charuto.svg",
+              "submenu": "charutos",
+              "columns": 2,
+              "mega_menu": true
+            }
+          },
           "2b791c78-36aa-4c3c-a4a3-410435975699": {
             "type": "promo_image",
             "settings": {
@@ -353,6 +365,7 @@
           }
         },
         "block_order": [
+          "nav_group_iwaTTM",
           "2b791c78-36aa-4c3c-a4a3-410435975699",
           "dfbc7b57-990f-4de9-bb80-5b941d017fd1",
           "3d73f381-3e65-4806-b200-11cb74b66c19",
@@ -563,40 +576,10 @@
               "text": "Welcome to our store",
               "link": "#"
             }
-          },
-          "info_slide_pix": {
-            "type": "info_slide",
-            "settings": {
-              "icon": "pix",
-              "text_strong": "5% de desconto",
-              "text": "no Pix",
-              "link": ""
-            }
-          },
-          "info_slide_motoboy": {
-            "type": "info_slide",
-            "settings": {
-              "icon": "motoboy",
-              "text_strong": "Motoboy",
-              "text": "para São Paulo",
-              "link": ""
-            }
-          },
-          "info_slide_parcelamento": {
-            "type": "info_slide",
-            "settings": {
-              "icon": "parcelamento",
-              "text_strong": "Parcele",
-              "text": "em até 3x sem juros",
-              "link": ""
-            }
           }
         },
         "block_order": [
-          "announcement_fQfzkG",
-          "info_slide_pix",
-          "info_slide_motoboy",
-          "info_slide_parcelamento"
+          "announcement_fQfzkG"
         ],
         "settings": {
           "disable_announcement_bar": true,
@@ -606,7 +589,7 @@
           "page_full_width_spacing": false,
           "top_bar_color_scheme": "background-2",
           "disable_topbar": false,
-          "disable_topbar_mobile": false,
+          "disable_topbar_mobile": true,
           "top_bar_alignment": "left",
           "header_mail": "",
           "header_phone": "",
