@@ -209,6 +209,42 @@
       "header": {
         "type": "header",
         "blocks": {
+          "nav_group_iwaTTM": {
+            "type": "nav_group",
+            "settings": {
+              "label": "CHARUTOS",
+              "url": "shopify://collections/charutos",
+              "icon": "charutos",
+              "icon_image": "shopify://shop_images/charuto.svg",
+              "submenu": "charutos",
+              "columns": 2,
+              "mega_menu": true
+            }
+          },
+          "nav_group_xTHk4y": {
+            "type": "nav_group",
+            "settings": {
+              "label": "CIGARRILHAS",
+              "url": "shopify://collections/cigarrilhas",
+              "icon": "charutos",
+              "icon_image": "shopify://shop_images/cigarilha.svg",
+              "submenu": "cigarrilhas",
+              "columns": 2,
+              "mega_menu": true
+            }
+          },
+          "nav_group_F7BXa9": {
+            "type": "nav_group",
+            "settings": {
+              "label": "KITS",
+              "url": "shopify://collections/kits",
+              "icon": "charutos",
+              "icon_image": "shopify://shop_images/kits.svg",
+              "submenu": "kits",
+              "columns": 2,
+              "mega_menu": true
+            }
+          },
           "nav_group_mCeURc": {
             "type": "nav_group",
             "settings": {
@@ -289,42 +325,6 @@
               "icon": "charutos",
               "icon_image": "shopify://shop_images/rape.svg",
               "submenu": "rape",
-              "columns": 2,
-              "mega_menu": true
-            }
-          },
-          "nav_group_F7BXa9": {
-            "type": "nav_group",
-            "settings": {
-              "label": "KITS",
-              "url": "shopify://collections/kits",
-              "icon": "charutos",
-              "icon_image": "shopify://shop_images/kits.svg",
-              "submenu": "kits",
-              "columns": 2,
-              "mega_menu": true
-            }
-          },
-          "nav_group_xTHk4y": {
-            "type": "nav_group",
-            "settings": {
-              "label": "CIGARRILHAS",
-              "url": "shopify://collections/cigarrilhas",
-              "icon": "charutos",
-              "icon_image": "shopify://shop_images/cigarilha.svg",
-              "submenu": "cigarrilhas",
-              "columns": 2,
-              "mega_menu": true
-            }
-          },
-          "nav_group_iwaTTM": {
-            "type": "nav_group",
-            "settings": {
-              "label": "CHARUTOS",
-              "url": "shopify://collections/charutos",
-              "icon": "charutos",
-              "icon_image": "shopify://shop_images/charuto.svg",
-              "submenu": "charutos",
               "columns": 2,
               "mega_menu": true
             }
@@ -473,6 +473,9 @@
           }
         },
         "block_order": [
+          "nav_group_iwaTTM",
+          "nav_group_xTHk4y",
+          "nav_group_F7BXa9",
           "nav_group_mCeURc",
           "nav_group_wiC4Qg",
           "nav_group_8pBNRt",
@@ -480,9 +483,6 @@
           "nav_group_niWDMi",
           "nav_group_6QqVdb",
           "nav_group_HP6Xez",
-          "nav_group_F7BXa9",
-          "nav_group_xTHk4y",
-          "nav_group_iwaTTM",
           "2b791c78-36aa-4c3c-a4a3-410435975699",
           "dfbc7b57-990f-4de9-bb80-5b941d017fd1",
           "3d73f381-3e65-4806-b200-11cb74b66c19",
