@@ -1,0 +1,96 @@
+{% doc %}
+  Renderiza ícone SVG para item de categoria no menu de navegação.
+  Mapeia icon_key para ícone correspondente à categoria de charutos/tabaco.
+
+  @param {string} icon_key - Chave do ícone (ex: charutos, cigarrilhas, cachimbos)
+{% enddoc %}
+
+{% assign key = icon_key | downcase | strip %}
+{% case key %}
+
+  {% when 'charutos', 'charuto' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.5c0 0 1-1 2-1s2 1 3 1 2-1 3-1 2 1 3 1"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M2 10.5h16M2 9h16"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 9c0-1 .5-2 1.5-2.5S6 6 7 6s2-.5 3.5-.5S13 6 14 6s2 0 2.5.5S18 8 18 9"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M18 10.5c0 1-.5 2-1.5 2.5"/>
+    </svg>
+
+  {% when 'cigarrilhas', 'cigarrilha' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M2 10.5h12M16 10.5h2"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 9h12a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2V9Z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 9.5h2a1.5 1.5 0 0 1 0 3h-2"/>
+    </svg>
+
+  {% when 'cachimbos', 'cachimbo', 'pipe' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13h8c2 0 3.5-1.5 3.5-3.5V8A2.5 2.5 0 0 1 17 5.5"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 4h2.5v3H15a1.5 1.5 0 0 1 0-3Z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M1 13h4"/>
+    </svg>
+
+  {% when 'tabaco', 'fumo', 'tabaco-picado' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 3c-1 2-3 3-3 5.5 0 2 1.5 3.5 3 3.5s3-1.5 3-3.5c0-2.5-2-3.5-3-5.5Z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 12v5M7 14.5c0 0 1-1 3-1s3 1 3 1"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 7.5c0 0 .5 1 2 1"/>
+    </svg>
+
+  {% when 'acessorios', 'acessórios', 'acessorio' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 3.5c0 0-1 1-1 2.5 0 1 .5 2 1.5 2.5L16 11l1-1-2.5-2.5c.5-.5 1-1.5 1-2.5 0-1.5-1-2.5-1-2.5H13Z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14.5c0 0 .5 1.5 2 2s2.5-.5 2.5-.5l6-6-2-2-6 6Z"/>
+      <circle cx="5" cy="15" r="1" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+
+  {% when 'acendedores', 'isqueiros', 'isqueiro', 'acendedor', 'chama', 'lighter' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 17.5h4a1 1 0 0 0 1-1V9.5H7v7a1 1 0 0 0 1 1Z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 9.5V8A3 3 0 0 1 13 8v1.5"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6c0-1.5 1.5-2 1.5-3.5 0 0 1 .5 1 2s-1 2-1 3"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M9 12h2"/>
+    </svg>
+
+  {% when 'cortadores', 'cortador', 'guilhotina' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5h10v10H5z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M5 10h10"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7l4 3-4 3"/>
+    </svg>
+
+  {% when 'bebidas', 'destilados', 'whisky', 'whiskey', 'uisque', 'uísque', 'vinho', 'spirits' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 3.5h8l-2 6.5a2 2 0 0 0-.1.7V16h-3.8v-5.3a2 2 0 0 0-.1-.7L6 3.5Z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M5.5 16h9"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M6.5 7h7"/>
+    </svg>
+
+  {% when 'humidores', 'humidor', 'estojos', 'estojo' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.5 7h13a1 1 0 0 1 1 1v7.5a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.5 7V5.5a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1V7"/>
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M7 11.5h6M10 9.5v4"/>
+    </svg>
+
+  {% when 'ofertas', 'ofertas-relampago', 'ofertas relâmpago', 'promocoes', 'promoções' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.5 7 11h6l-4 5.5"/>
+    </svg>
+
+  {% when 'menu', 'todos', 'departamentos', 'todas-as-categorias' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h14M3 10h14M3 15h10"/>
+    </svg>
+
+  {% when 'novidades', 'lancamentos', 'lançamentos' %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <polygon stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" points="10 2 12.4 7.5 18 8.3 14 12.1 15 17.5 10 14.8 5 17.5 6 12.1 2 8.3 7.6 7.5 10 2"/>
+    </svg>
+
+  {% else %}
+    <svg class="icon-nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h12M4 10h12M4 14h8"/>
+    </svg>
+
+{% endcase %}

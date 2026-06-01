@@ -75,7 +75,10 @@
     @media screen and (max-width: 767px) {
     .suriya-grid-banner-2 .grid-banner .section-{{ section.id }}-padding .grid-banner-section.overlay .grid-banner-wrapper{ height: {{section.settings.overlay_height_mobile}}px;}
     }
-  
+    .suriya-grid-banner-2 .grid-banner-block-image a.grid-banner-image-link{display:block;line-height:0;cursor:pointer;width:100%;height:100%;}
+    .suriya-grid-banner-2 .grid-banner-block-image a.grid-banner-image-link img{transition:opacity var(--duration-default) ease;}
+    .suriya-grid-banner-2 .grid-banner-block-image a.grid-banner-image-link:hover img{opacity:0.92;}
+
 {%- endstyle -%}
  <div class="suriya-grid-banner-2">
 <div class="grid-banner color-{{ section.settings.color_scheme }} gradient{% if section.settings.title == blank %} no-heading{% endif %} {{ section.settings.custom_class_name }} {% if section.settings.bg_image != blank %}section-{{ section.id }}-bg{% endif %}">
@@ -99,8 +102,20 @@
           {%- endif -%}
           </div>
     {%- endunless -%}
-  <div class="grid-banner-wrapper">
-   
+  <div class="grid-banner-wrapper{% if section.settings.banner_overlay_title != blank or section.settings.banner_overlay_link != blank %} has-banner-overlay{% endif %}">
+    {%- if section.settings.banner_overlay_title != blank or section.settings.banner_overlay_link != blank -%}
+      <div class="banner-section-overlay">
+        {%- if section.settings.banner_overlay_title != blank -%}
+          <p class="banner-overlay-title">{{ section.settings.banner_overlay_title | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.banner_overlay_subtitle != blank -%}
+          <p class="banner-overlay-subtitle">{{ section.settings.banner_overlay_subtitle | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.banner_overlay_link != blank -%}
+          <a href="{{ section.settings.banner_overlay_link }}" class="banner-overlay-link" aria-label="{{ section.settings.banner_overlay_title | default: 'Ver mais' | escape }}"></a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
        {% unless enable_slider %}
      <div class="grid-banner-section {{ column }} {{ section.settings.banner_style }} {% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}">
           {% else %}
@@ -112,9 +127,9 @@
        {%- for block in section.blocks -%} 
        <div class="{% unless enable_slider %}grid-banner-wrapper{% else %} swiper-slide{% endunless %} {% if block.settings.reverse_column %}reverse-columns{% endif %}">   
          <div class="grid-banner-block-image">
-          {%- if block.settings.enable_title_link %} <a href="{{ block.settings.block_button_link }}" class="grid-banner-image">{% endif %}
-          {% if block.settings.block_image != blank and block.settings.image_link %}
-            <a href="{{ block.settings.image_link }}">
+          {%- assign image_target_link = block.settings.image_link | default: block.settings.block_button_link -%}
+          {%- if image_target_link != blank -%}<a href="{{ image_target_link }}" class="grid-banner-image-link"{% if block.settings.block_title != blank %} aria-label="{{ block.settings.block_title | escape }}"{% endif %}>{%- endif -%}
+          {% if block.settings.block_image != blank %}
             <img
                       class="grid-banner-image"
                       srcset="{%- if block.settings.block_image.width >= 375 -%}{{ block.settings.block_image | image_url: width: 375 }} 375w,{%- endif -%}
@@ -129,30 +144,29 @@
                       {{ block.settings.block_image | image_url: width: 1500 }} {{ block.settings.block_image.width }}w"
                       sizes="100vw"
                       src="{{ block.settings.block_image | image_url: width: 1500 }}"
-                      loading="lazy"              
-                      alt="{{ block.settings.block_image.alt | escape }}"
+                      loading="lazy"
+                      alt="{{ block.settings.block_title | default: block.settings.block_image.alt | escape }}"
                       width="{{ block.settings.block_image.width }}"
                       height="{{ block.settings.block_image.width | divided_by: block.settings.block_image.aspect_ratio | round }}"
-                    >  
-              {% else %}
+                    >
+            {% else %}
               {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-                {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-                 {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }} 
-            </a>
+              {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+              {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
             {% endif %}
-          </a>
-         </div>    
+          {%- if image_target_link != blank -%}</a>{%- endif -%}
+         </div>
           <div class="grid-banner-content {% unless block.settings.show_content %}hidden {% endunless %}">
              <div class="grid-banner-inner banner--content-align-{{ block.settings.desktop_content_alignment }}">
                 {% if block.settings.block_title != blank %}
-                  <a href="{{ block.settings.image_link }}">
-                    <h4 class="main-title h5">
-                    {% if block.settings.enable_title_link %}<a href="{{ block.settings.block_button_link }}">{% endif %}
-                    {{ block.settings.block_title }}
-                    {% if block.settings.enable_title_link %}</a>{% endif %}
-                    </h4>
-                  </a>
-                    {% endif %}
+                  <h4 class="main-title h5">
+                    {%- if image_target_link != blank -%}
+                      <a href="{{ image_target_link }}">{{ block.settings.block_title }}</a>
+                    {%- else -%}
+                      {{ block.settings.block_title }}
+                    {%- endif -%}
+                  </h4>
+                {% endif %}
                     {% if block.settings.block_sub_title != blank %}
                     <h5 class="sub-title">{{ block.settings.block_sub_title }}</h5>
                     {% endif %}
@@ -279,6 +293,25 @@
       "default": false,
       "label": "t:sections.all.button_style_secondary.label"
       },
+    {
+      "type": "header",
+      "content": "Overlay do Banner"
+    },
+    {
+      "type": "text",
+      "id": "banner_overlay_title",
+      "label": "Título sobre o banner"
+    },
+    {
+      "type": "text",
+      "id": "banner_overlay_subtitle",
+      "label": "Subtítulo sobre o banner"
+    },
+    {
+      "type": "url",
+      "id": "banner_overlay_link",
+      "label": "Link do banner (torna o banner clicável)"
+    },
     {
       "type": "select",
       "id": "column_alignment",
@@ -561,7 +594,8 @@
     {
     "type": "url",
     "id": "image_link",
-    "label": "t:sections.grid-banner.blocks.text.settings.image_link.label"
+    "label": "Link da imagem",
+    "info": "URL de destino quando o usuário clicar na imagem (categoria, produto, página, etc.)"
     },
     {
     "type": "checkbox",

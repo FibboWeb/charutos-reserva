@@ -1,0 +1,254 @@
+{% doc %}
+  Barra de benefícios no topo do header (3 colunas: ícone + texto bold + texto sub).
+  Cada item é um bloco topbar_item configurado no admin.
+  No mobile: exibe um item por vez em carrossel rotativo.
+
+  @param {object} section - Seção do header (para acessar section.blocks)
+{% enddoc %}
+
+{%- assign topbar_blocks = section.blocks | where: 'type', 'topbar_item' -%}
+
+<div class="cr-topbar" role="region" aria-label="Benefícios da loja">
+  <div class="cr-topbar__inner" id="cr-topbar-inner">
+
+    {%- if topbar_blocks.size > 0 -%}
+      {%- for block in topbar_blocks -%}
+        <div class="cr-topbar__item{% if forloop.first %} cr-topbar__item--active{% endif %}" {{ block.shopify_attributes }}>
+          <span class="cr-topbar__icon" aria-hidden="true">
+            {%- if block.settings.icon_image != blank -%}
+              {%- assign _tb_icon_url = block.settings.icon_image | image_url: width: 40 -%}
+              <div class="cr-topbar__icon-img"
+                role="img"
+                aria-label="{{ block.settings.text_bold | escape }}"
+                style="mask-image:url('{{ _tb_icon_url }}');-webkit-mask-image:url('{{ _tb_icon_url }}')">
+              </div>
+            {%- else -%}
+              {%- case block.settings.icon -%}
+                {%- when 'truck' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="12" height="10" rx="1"/>
+                    <path d="M13 7h3l2 4v3h-5V7z"/>
+                    <circle cx="4.5" cy="15.5" r="1.5"/>
+                    <circle cx="15.5" cy="15.5" r="1.5"/>
+                  </svg>
+                {%- when 'credit-card' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="16" height="12" rx="1.5"/>
+                    <path d="M2 8h16M6 12h.01M9 12h.01M12 12h.01"/>
+                  </svg>
+                {%- when 'percent' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 5l-10 10M7 6a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM16 14a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                  </svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 2l7 4v5a7 7 0 0 1-7 7 7 7 0 0 1-7-7V6l7-4z"/>
+                    <path d="M7 10l2 2 4-4"/>
+                  </svg>
+                {%- when 'lock' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="9" width="14" height="9" rx="2"/>
+                    <path d="M7 9V6a3 3 0 0 1 6 0v3"/>
+                  </svg>
+                {%- when 'headphones' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 14v-4a7 7 0 0 1 14 0v4"/>
+                    <path d="M17 15a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 13 15v-2a1.5 1.5 0 0 1 1.5-1.5h2.5z"/>
+                    <path d="M3 15a1.5 1.5 0 0 0 1.5 1.5h1A1.5 1.5 0 0 0 7 15v-2a1.5 1.5 0 0 0-1.5-1.5H3z"/>
+                  </svg>
+                {%- when 'star' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="10 2 12.4 7.5 18 8.3 14 12.1 15 17.5 10 14.8 5 17.5 6 12.1 2 8.3 7.6 7.5 10 2"/>
+                  </svg>
+                {%- when 'gift' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="17 10 17 18 3 18 3 10"/>
+                    <rect x="1" y="6" width="18" height="4" rx="1"/>
+                    <line x1="10" y1="18" x2="10" y2="6"/>
+                    <path d="M10 6H6.5a2 2 0 0 1 0-4C9 2 10 6 10 6z"/>
+                    <path d="M10 6h3.5a2 2 0 0 0 0-4C11 2 10 6 10 6z"/>
+                  </svg>
+                {%- when 'motoboy' -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="5" cy="14" r="2"/>
+                    <circle cx="15" cy="14" r="2"/>
+                    <path d="M1 14h2M13 14h-.5L10 9H6l-3 3h1"/>
+                    <path d="M10 9l2-4h4l1 4h-5"/>
+                    <path d="M17 14h2"/>
+                  </svg>
+                {%- else -%}
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="10" cy="10" r="8"/>
+                    <path d="M10 6v4l3 3"/>
+                  </svg>
+              {%- endcase -%}
+            {%- endif -%}
+          </span>
+          <span class="cr-topbar__text">
+            {%- if block.settings.text_bold != blank -%}
+              <strong class="cr-topbar__text-bold">{{ block.settings.text_bold }}</strong>
+            {%- endif -%}
+            {%- if block.settings.text_sub != blank -%}
+              <span class="cr-topbar__text-sub">{{ block.settings.text_sub }}</span>
+            {%- endif -%}
+          </span>
+        </div>
+      {%- endfor -%}
+
+    {%- else -%}
+      <div class="cr-topbar__item cr-topbar__item--active">
+        <span class="cr-topbar__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="14" r="2"/><circle cx="15" cy="14" r="2"/>
+            <path d="M1 14h2M13 14h-.5L10 9H6l-3 3h1"/><path d="M10 9l2-4h4l1 4h-5"/>
+          </svg>
+        </span>
+        <span class="cr-topbar__text">
+          <strong class="cr-topbar__text-bold">ENTREGA VIA MOTOBOY</strong>
+          <span class="cr-topbar__text-sub">em toda São Paulo</span>
+        </span>
+      </div>
+      <div class="cr-topbar__item">
+        <span class="cr-topbar__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="16" height="12" rx="1.5"/>
+            <path d="M2 8h16M6 12h.01M9 12h.01M12 12h.01"/>
+          </svg>
+        </span>
+        <span class="cr-topbar__text">
+          <strong class="cr-topbar__text-bold">PAGUE EM ATÉ 12X</strong>
+          <span class="cr-topbar__text-sub">no cartão de crédito</span>
+        </span>
+      </div>
+      <div class="cr-topbar__item">
+        <span class="cr-topbar__icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 2l7 4v5a7 7 0 0 1-7 7 7 7 0 0 1-7-7V6l7-4z"/>
+            <path d="M7 10l2 2 4-4"/>
+          </svg>
+        </span>
+        <span class="cr-topbar__text">
+          <strong class="cr-topbar__text-bold">SITE SEGURO</strong>
+          <span class="cr-topbar__text-sub">sua compra garantida</span>
+        </span>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .cr-topbar {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(26, 50, 44, 0.1);
+    padding: 0.6rem var(--page-margin, 20px);
+    overflow: hidden;
+  }
+
+  .cr-topbar__inner {
+    width: 100%;
+    max-width: var(--page-width, 1620px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .cr-topbar__item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex: 1;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+
+  .cr-topbar__item + .cr-topbar__item {
+    border-left: 1px solid rgba(26, 50, 44, 0.15);
+  }
+
+  .cr-topbar__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: #1A322C;
+  }
+
+  .cr-topbar__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cr-topbar__icon-img {
+    width: 1.75rem;
+    height: 1.75rem;
+    display: block;
+    flex-shrink: 0;
+    background-color: #1A322C;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+
+  .cr-topbar__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .cr-topbar__text-bold {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1A322C;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .cr-topbar__text-sub {
+    font-size: 0.6875rem;
+    color: #555;
+    font-weight: 400;
+  }
+
+  @media (max-width: 767px) {
+    .cr-topbar__item {
+      display: none;
+      border-left: none !important;
+    }
+    .cr-topbar__item--active {
+      display: flex;
+      justify-content: center;
+    }
+    .cr-topbar__inner {
+      justify-content: center;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    var inner = document.getElementById('cr-topbar-inner');
+    if (!inner) return;
+    var items = inner.querySelectorAll('.cr-topbar__item');
+    if (items.length < 2) return;
+
+    var isMobile = function () { return window.innerWidth < 768; };
+    var current = 0;
+
+    function rotate() {
+      if (!isMobile()) return;
+      items[current].classList.remove('cr-topbar__item--active');
+      current = (current + 1) % items.length;
+      items[current].classList.add('cr-topbar__item--active');
+    }
+
+    setInterval(rotate, 7000);
+  })();
+{% endjavascript %}

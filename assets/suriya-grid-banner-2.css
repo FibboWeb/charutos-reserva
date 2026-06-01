@@ -1,9 +1,12 @@
 .suriya-grid-banner-2 .home-custom-grid-banner .title-wrapper-with-link .description{max-width:61rem;padding-top:13px;}
-.suriya-grid-banner-2 .home-custom-grid-banner .main-title {position:absolute;bottom:71px;left:0; right:0; color:#ffff;} 
+.suriya-grid-banner-2 .home-custom-grid-banner .main-title {position:absolute;bottom:71px;left:0; right:0; color:#ffffff; padding-left:22%; padding-right:22%;}
+.suriya-grid-banner-2 .home-custom-grid-banner .main-title a,
+.suriya-grid-banner-2 .home-custom-grid-banner .main-title a:hover {color:#ffffff !important;}
 .suriya-grid-banner-2 .home-custom-grid-banner .grid-banner-block-image {width:100%; margin:auto; position:relative;}
 .suriya-grid-banner-2 .home-custom-grid-banner .grid-banner-block-image {
     height: 390px;
 }
+.suriya-grid-banner-2 .home-custom-grid-banner .grid-banner-section.one-column .grid-banner-block-image {height:auto;}
 .suriya-grid-banner-2 .home-custom-grid-banner .swiper-slide .grid-banner-block-image img.grid-banner-image,
 .suriya-grid-banner-2 .home-custom-grid-banner .swiper-slide .grid-banner-block-image svg.placeholder-svg
 {
@@ -58,6 +61,8 @@
 .suriya-grid-banner-2 .grid-banner .grid-banner-section:not(.background-none) .grid-banner-wrapper {background-color:transparent;}
 .suriya-grid-banner-2 .grid-banner-block-image {display:flex; width:100%;}
 .suriya-grid-banner-2 .grid-banner-block-image img {width:100%;}
+.suriya-grid-banner-2 .grid-banner .grid-banner-section.one-column .grid-banner-wrapper .grid-banner-block-image {height:auto; width:100%;}
+.suriya-grid-banner-2 .grid-banner .grid-banner-section.one-column .grid-banner-wrapper .grid-banner-block-image img.grid-banner-image {width:100%; height:auto; object-fit:unset; display:block;}
 .suriya-grid-banner-2 .grid-banner-inner h4.main-title {margin:0;}
 .suriya-grid-banner-2 .grid-banner-inner h4.main-title a {color:var(--gradient-base-accent-1);}
 .suriya-grid-banner-2 .grid-banner-inner h4.main-title a:hover {color:var(--gradient-base-background-1);}
@@ -182,4 +187,44 @@
 .suriya-grid-banner-2 .grid-banner.home-custom-grid-banner .grid-banner-block-image a {
     display: block;
     width: 100%;
+}
+.suriya-grid-banner-2 .grid-banner-wrapper.has-banner-overlay {
+  position: relative;
+}
+
+.suriya-grid-banner-2 .banner-section-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  pointer-events: none;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.suriya-grid-banner-2 .banner-section-overlay .banner-overlay-link {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.suriya-grid-banner-2 .banner-overlay-title {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.suriya-grid-banner-2 .banner-overlay-subtitle {
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  margin: 0;
 }

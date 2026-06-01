@@ -398,6 +398,32 @@
   .menu-drawer .menu-drawer__menu-item--active,
   .menu-drawer .menu-drawer__close-button:hover { background-color: rgba(255,255,255,0.06); }
   .menu-drawer-header { border-bottom-color: rgba(255,255,255,0.1); }
+  /* Conta no drawer */
+  .menu-drawer__account {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #FFFFFF !important;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+  }
+  .menu-drawer__account svg { width: 2rem; height: 2rem; flex-shrink: 0; }
+  /* Ícones sociais no drawer */
+  .menu-drawer__utility-links .list-social { display: flex; gap: 1rem; padding: 1rem 0 0; }
+  .menu-drawer__utility-links .list-social__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12) !important;
+    color: #FFFFFF !important;
+  }
+  .menu-drawer__utility-links .list-social__link svg { width: 1.8rem; height: 1.8rem; }
 }
 @media screen and (min-width: 990px) {
   .header__search-mobile { display: none !important; }
@@ -492,7 +518,138 @@ display: inline-flex;
   .header .header-row{ justify-content:space-between; }
   .header .header-row .header__heading .header__heading-logo { max-width: 120px; }
 }
-  
+
+/* CR: Header layout - search center, no inline-nav */
+@media screen and (min-width: 990px) {
+  /* Esconde a navegação inline — substituída pela cr-main-nav abaixo do header */
+  .header__inline-menu { display: none !important; }
+
+  /* Esconde a busca dentro de header__icons — ela está agora no centro */
+  .header__search-desktop { display: none !important; }
+
+  /* Grid: colunas simétricas 1fr — logo | busca fixa no centro | ícones */
+  .header--middle-left .header-row,
+  .header--middle .header-row {
+    grid-template-areas: "heading center-search icons" !important;
+    grid-template-columns: 1fr auto 1fr !important;
+    gap: 0 1.5rem;
+    align-items: center;
+  }
+
+  /* Logo alinhado à esquerda dentro do 1fr */
+  .header--middle-left .header-row .header__heading,
+  .header--middle .header-row .header__heading {
+    justify-self: start;
+  }
+
+  /* Ícones alinhados à direita dentro do 1fr */
+  .header--middle-left .header-row .header__icons,
+  .header--middle .header-row .header__icons {
+    justify-self: end;
+  }
+
+  /* Container central da busca — tamanho fixo, centrado pelo grid */
+  .header__center-search {
+    grid-area: center-search;
+    display: flex;
+    align-items: center;
+    width: 560px;
+  }
+
+  /* Form e predictive-search ocupam toda a largura (override max-width do tema) */
+  .header__center-search predictive-search,
+  .header__center-search .search-modal__form {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .header__center-search form {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0;
+  }
+
+  .header__center-search .field {
+    width: 100% !important;
+    max-width: none !important;
+    border: 1.5px solid rgba(26, 50, 44, 0.2);
+    border-radius: 25px;
+    overflow: hidden;
+    background: #f8f5f0;
+    display: flex;
+    align-items: center;
+  }
+
+  .header__center-search .search__input,
+  .header__center-search .field__input {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    color: #1A322C;
+    width: 100% !important;
+    min-height: 46px;
+    flex: 1;
+  }
+
+  .header__center-search .search__input::placeholder,
+  .header__center-search .field__input::placeholder { color: rgba(26,50,44,0.45); }
+
+  .header__center-search .search__button,
+  .header__center-search .field__button[type="submit"] {
+    background: #C49A3C;
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.25rem;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.2s ease;
+  }
+
+  .header__center-search .search__button:hover,
+  .header__center-search .field__button[type="submit"]:hover { background: #1A322C; }
+
+  .header__center-search .search__button svg,
+  .header__center-search .field__button[type="submit"] svg {
+    width: 1rem; height: 1rem; color: #fff; stroke: #fff;
+  }
+
+  /* Botão reset */
+  .header__center-search .reset__button { display: none; }
+
+
+  /* Ícone de login com texto */
+  .header__icon--account-cr {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    color: #1A322C;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+  .header__icon--account-cr:hover { color: #C49A3C; }
+  .header__icon--account-cr svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .header__account-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: inherit;
+    line-height: 1;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .header__center-search { display: none; }
+  .header__icon--account-cr { display: none !important; }
+}
 
 </style>
 
@@ -579,6 +736,7 @@ display: inline-flex;
 {%- endif -%}
 <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
 {% render 'icon-search' %}
+{% render 'top-bar', section: section %}
 <{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} id="shopify-section-headers" class="header-wrapper {% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
   <header id="header" class=" animate__animated fadeInLeft {% if request.page_type == 'index' %}{%- if section.settings.enable_transparent_header -%}index-header {% endif %}{% endif %} header header--{{ section.settings.logo_position }}  {%- if section.settings.show_secondary_menu -%} secondary-menu-enabled {%- endif -%}    {% if section.settings.menu != blank %} header--has-menu{% endif %} color-{{ section.settings.color_scheme }} {%- if section.settings.show_category_menu -%} category-menu-button {%- endif -%} ">
    <div class="{% if section.settings.page_full_width %} page-full-width {% else %} page-width {% endif %} {% if section.settings.page_full_width_spacing %} page-full-width_spacing {% endif %}">
@@ -620,7 +778,7 @@ display: inline-flex;
             </div>
              <div class="menu-drawer__utility-links">
                   {%- if shop.customer_accounts_enabled -%}
-                    <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5 small-hide">
+                    <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5">
                       {% render 'icon-account' %}
                       {%- liquid
                         if customer
@@ -731,14 +889,6 @@ display: inline-flex;
                         </a>
                       </li>
                     {%- endif -%}
-                    {%- if settings.social_facebook_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
-                          {%- render 'icon-facebook' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
                     {%- if settings.social_pinterest_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
@@ -826,6 +976,10 @@ display: inline-flex;
     {%- if request.page_type == 'index' -%}
       </h1>
     {%- endif -%}
+
+    <div class="header__center-search">
+      {%- render 'header-search' -%}
+    </div>
 
      {%- if section.settings.menu != blank -%}
               <div class="header__inline-menu">
@@ -929,7 +1083,21 @@ display: inline-flex;
               </a>          
               {%- endif -%}
    
-  {%- if section.settings.show_header_cart -%}   
+  <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+     class="header__icon--account-cr"
+     aria-label="{%- if customer -%}Minha Conta{%- else -%}Entrar{%- endif -%}">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+         aria-hidden="true">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </svg>
+    <span class="header__account-label">
+      {%- if customer -%}{{ customer.first_name | default: 'Minha Conta' }}{%- else -%}Entrar{%- endif -%}
+    </span>
+  </a>
+
+  {%- if section.settings.show_header_cart -%}
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- liquid
           if cart == empty
@@ -1067,6 +1235,7 @@ display: inline-flex;
  </div>
   </header>
 </{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %}>
+{% render 'main-nav', section: section, menu: section.settings.menu %}
 {%- if settings.cart_type == "notification" -%}
   {%- render 'cart-notification', color_scheme: section.settings.color_scheme -%}
 {%- endif -%}
@@ -2409,7 +2578,114 @@ display: inline-flex;
 "content": "Tab Colors"
 }
 ]
+},
+{
+  "type": "topbar_item",
+  "name": "Benefício da topbar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_bold",
+      "label": "Texto principal (negrito)",
+      "default": "BENEFÍCIO"
+    },
+    {
+      "type": "text",
+      "id": "text_sub",
+      "label": "Texto secundário",
+      "default": "descrição do benefício"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Ícone personalizado (PNG transparente 40×40px)"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Ícone predefinido",
+      "default": "truck",
+      "options": [
+        { "value": "truck",        "label": "Entrega / Motoboy" },
+        { "value": "credit-card",  "label": "Cartão de Crédito" },
+        { "value": "percent",      "label": "Desconto / Porcentagem" },
+        { "value": "shield",       "label": "Segurança / Escudo" },
+        { "value": "lock",         "label": "Cadeado" },
+        { "value": "headphones",   "label": "Suporte / Fone" },
+        { "value": "star",         "label": "Estrela" },
+        { "value": "gift",         "label": "Presente" },
+        { "value": "motoboy",      "label": "Motoboy (ícone de moto)" }
+      ]
+    }
+  ]
+},
+{
+  "type": "nav_group",
+  "name": "Item do menu de navegação",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label do item",
+      "default": "Categoria"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "URL do item"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Ícone",
+      "default": "charutos",
+      "options": [
+        { "value": "charutos",     "label": "Charutos" },
+        { "value": "cigarrilhas",  "label": "Cigarrilhas" },
+        { "value": "cachimbos",    "label": "Cachimbos" },
+        { "value": "tabaco",       "label": "Tabaco / Fumo" },
+        { "value": "acessorios",   "label": "Acessórios" },
+        { "value": "acendedores",  "label": "Acendedores / Isqueiros" },
+        { "value": "cortadores",   "label": "Cortadores" },
+        { "value": "bebidas",      "label": "Bebidas / Destilados" },
+        { "value": "humidores",    "label": "Humidores / Estojos" },
+        { "value": "ofertas",      "label": "Ofertas / Promoções" },
+        { "value": "novidades",    "label": "Novidades / Lançamentos" },
+        { "value": "menu",         "label": "Menu / Todas as Categorias" },
+        { "value": "generic",      "label": "Genérico" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Ícone personalizado (PNG transparente 32×32px)",
+      "info": "Substitui o ícone selecionado acima quando preenchido."
+    },
+    {
+      "type": "link_list",
+      "id": "submenu",
+      "label": "Submenu (link list)",
+      "info": "Selecione o menu cadastrado no Shopify admin para este item."
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 2,
+      "label": "Colunas do dropdown"
+    },
+    {
+      "type": "checkbox",
+      "id": "mega_menu",
+      "label": "Usar mega menu (painel lateral)",
+      "default": false,
+      "info": "Exibe categorias de 1º nível na lateral e subitens à direita ao hover."
+    }
+  ]
 }
 ]
 }
 {% endschema %}
+

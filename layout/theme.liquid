@@ -318,8 +318,7 @@
     {%- if settings.cart_type == 'drawer' -%}
     {%- render 'cart-drawer' -%}
     {%- endif -%}       
-    {% section 'announcement-bar' %}   
-    {% section 'top-bar' %}   
+    {% section 'announcement-bar' %}
     {% section 'header' %}    
     {%- if shop.customer_accounts_enabled  -%}
        {%  render 'login-modal' %}
