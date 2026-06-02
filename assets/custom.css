@@ -1921,3 +1921,30 @@ ul.dt-nav li .sub-menu-lists a:hover {
 
 /* Título da seção Calcular Frete */
 .frete-section-title { font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin: 16px 0 8px; color: rgba(var(--color-foreground), 0.75); }
+
+/* ── Mobile drawer submenu — fundo verde ── */
+.menu-drawer__inner-submenu {
+  background: #1A322C !important;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__menu-item,
+.menu-drawer__inner-submenu summary.menu-drawer__menu-item,
+.menu-drawer__inner-submenu a.menu-drawer__menu-item {
+  color: #ffffff !important;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__menu-item:hover,
+.menu-drawer__inner-submenu summary.menu-drawer__menu-item:hover {
+  color: #C49A3C !important;
+}
+
+.menu-drawer__inner-submenu svg,
+.menu-drawer__inner-submenu .icon,
+.menu-drawer__inner-submenu .icon-caret {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.menu-drawer__inner-submenu li {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}

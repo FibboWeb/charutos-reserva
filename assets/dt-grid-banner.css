@@ -268,3 +268,38 @@
   object-fit: initial;
   display: block;
 }
+
+/* ── Container 50%, descrição em linha única, botão dourado ── */
+.curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner {
+  max-width: 50% !important;
+}
+
+.curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner p.description {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner a.banner-button {
+  background: #C49A3C !important;
+  color: #ffffff !important;
+  border-color: #C49A3C !important;
+}
+
+.curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner a.banner-button:hover {
+  background: #a8832f !important;
+  border-color: #a8832f !important;
+  color: #ffffff !important;
+}
+
+@media screen and (max-width: 575px) {
+  .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner {
+    max-width: 100% !important;
+  }
+  .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner p.description {
+    white-space: normal !important;
+  }
+}
