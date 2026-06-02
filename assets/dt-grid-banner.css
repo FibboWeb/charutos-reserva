@@ -269,6 +269,17 @@
   display: block;
 }
 
+/* ── Overlay via ::after (evita display:none em divs extras) ── */
+.curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper.gb-has-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--gb-ovr, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* ── Container 50%, descrição em linha única, botão dourado ── */
 .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner {
   max-width: 50% !important;

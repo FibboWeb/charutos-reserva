@@ -94,8 +94,12 @@ endif
 <div class="swiper" data-swiper-slider>
   <div class="swiper-wrapper">
    {%- endunless -%}
- {%- for block in section.blocks -%} 
- <div class="{% unless enable_slider %}grid-banner-wrapper{% else %} swiper-slide{% endunless %} {% if block.settings.reverse_column %}reverse-columns{% endif %}">   
+ {%- for block in section.blocks -%}
+ {%- assign gb_alpha = block.settings.overlay_opacity | times: 0.01 -%}
+ {%- assign gb_r = block.settings.overlay_color.red -%}
+ {%- assign gb_g = block.settings.overlay_color.green -%}
+ {%- assign gb_b = block.settings.overlay_color.blue -%}
+ <div class="{% unless enable_slider %}grid-banner-wrapper{% else %} swiper-slide{% endunless %}{% if block.settings.reverse_column %} reverse-columns{% endif %}{% if block.settings.overlay_opacity > 0 %} gb-has-overlay{% endif %}"{% if block.settings.overlay_opacity > 0 %} style="--gb-ovr: rgba({{ gb_r }},{{ gb_g }},{{ gb_b }},{{ gb_alpha }})"{% endif %}>
    <div class="grid-banner-block-image">
     {%- if block.settings.block_button_link != blank -%}<a href="{{ block.settings.block_button_link }}" class="grid-banner-image"{% if block.settings.block_title != blank %} aria-label="{{ block.settings.block_title | escape }}"{% endif %}>{%- endif -%}
     {% if block.settings.block_image != blank %}
@@ -125,9 +129,6 @@ endif
       {% endif %}
         {%- if block.settings.block_button_link != blank -%}</a>{%- endif -%}
    </div>
-    {%- if block.settings.overlay_opacity > 0 -%}
-      <div class="gb-img-overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba({{ block.settings.overlay_color.red }},{{ block.settings.overlay_color.green }},{{ block.settings.overlay_color.blue }},{{ block.settings.overlay_opacity | divided_by: 100.0 }});pointer-events:none;z-index:1;"></div>
-    {%- endif -%}
     <div class="grid-banner-content {% unless block.settings.show_content %}hidden {% endunless %}" style="z-index:2;">
        <div class="grid-banner-inner banner--content-align-{{ block.settings.desktop_content_alignment }}">
           {% if block.settings.block_title != blank %}
