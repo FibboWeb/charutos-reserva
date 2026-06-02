@@ -196,6 +196,9 @@
         "button_label": "",
         "button_link": "",
         "button_style_secondary": false,
+        "banner_overlay_title": "",
+        "banner_overlay_subtitle": "",
+        "banner_overlay_link": "",
         "column_alignment": "center",
         "background_style": "primary",
         "banner_style": "grid",
@@ -295,44 +298,44 @@
         "aae95b35-74c9-4108-accb-c5e83c6f63cc": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/cafe-creme630x300_copy.jpg",
+            "block_image": "shopify://shop_images/reserva-630x300-cachimbo_1487eb2e-4dbb-478f-9ae7-1ba8bce06117.jpg",
             "show_content": true,
-            "block_title": "QUALIDADE GARANTIDA!",
+            "block_title": "CACHIMBOS",
             "enable_title_link": false,
             "block_sub_title": "Melhor Qualidade",
-            "block_description": "Charutos cubanos e nacionais originais, direto para você.",
+            "block_description": "Encontre o cachimbo ideal para apreciar seus melhores momentos",
             "block_description_code": "",
             "block_button_text": "Ver todos",
             "block_button_link": "shopify://collections/charutos",
             "desktop_content_alignment": "left",
             "reverse_column": false,
             "overlay_color": "#000000",
-            "overlay_opacity": 35
+            "overlay_opacity": 40
           }
         },
         "f4257e51-1381-4cb6-967f-3caddad14487": {
           "type": "text",
           "settings": {
-            "block_image": "shopify://shop_images/paiol-630x300_copy.jpg",
+            "block_image": "shopify://shop_images/reserva-630x300-caixas.jpg",
             "show_content": true,
-            "block_title": "ENTREGA EM TODO O BRASIL!",
+            "block_title": "CIGARRILHAS",
             "enable_title_link": false,
-            "block_sub_title": "Envio Rápido",
-            "block_description": "Correios SEDEX, PAC, Total Express e motoboy para SP. Frete calculado no checkout.",
+            "block_sub_title": "MELHOR QUALIDADE",
+            "block_description": "Elegância e proteção para preservar seus charutos com qualidade",
             "block_description_code": "",
-            "block_button_text": "Ver Coleção",
-            "block_button_link": "shopify://products/starlight-delight-sneakers",
+            "block_button_text": "Ver Todas",
+            "block_button_link": "shopify://collections/cigarrilhas",
             "desktop_content_alignment": "left",
             "reverse_column": false,
             "overlay_color": "#000000",
-            "overlay_opacity": 35
+            "overlay_opacity": 55
           }
         },
         "6d9ad995-260b-497a-9509-a9230cf681e1": {
           "type": "text",
           "settings": {
             "block_image": "shopify://shop_images/mata-fina-banner-topo-1920x500_copy.jpg",
-            "show_content": true,
+            "show_content": false,
             "block_title": "PARCELE SEM JUROS!",
             "enable_title_link": false,
             "block_sub_title": "Até 3x no cartão",
@@ -343,7 +346,7 @@
             "desktop_content_alignment": "left",
             "reverse_column": false,
             "overlay_color": "#000000",
-            "overlay_opacity": 35
+            "overlay_opacity": 0
           }
         }
       },
@@ -537,6 +540,16 @@
         "page_full_width": true,
         "page_full_width_spacing": false,
         "bg-image": "shopify://shop_images/reserva-banner-1920x300-palheiro_3722321d-ec8d-4c0d-a088-d9d1a14d77fa.jpg",
+        "link": "",
+        "link_title": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "kicker": "",
+        "heading": "CIGARRILHAS",
+        "heading_color": "#ffffff",
+        "description": "",
+        "button_label": "Ver todas",
+        "button_link": "shopify://collections/cigarrilhas",
         "padding_top": 120,
         "padding_bottom": 0
       }
