@@ -296,14 +296,14 @@
           "type": "text",
           "settings": {
             "block_image": "shopify://shop_images/cafe-creme630x300_copy.jpg",
-            "show_content": false,
+            "show_content": true,
             "block_title": "QUALIDADE GARANTIDA!",
             "enable_title_link": false,
             "block_sub_title": "Melhor Qualidade",
             "block_description": "Charutos cubanos e nacionais originais, direto para você.",
             "block_description_code": "",
-            "block_button_text": "",
-            "block_button_link": "shopify://products/sandaun-legend-athletic-sneakers",
+            "block_button_text": "Ver todos",
+            "block_button_link": "shopify://collections/charutos",
             "desktop_content_alignment": "left",
             "reverse_column": false
           }
@@ -312,7 +312,7 @@
           "type": "text",
           "settings": {
             "block_image": "shopify://shop_images/paiol-630x300_copy.jpg",
-            "show_content": false,
+            "show_content": true,
             "block_title": "ENTREGA EM TODO O BRASIL!",
             "enable_title_link": false,
             "block_sub_title": "Envio Rápido",
@@ -328,7 +328,7 @@
           "type": "text",
           "settings": {
             "block_image": "shopify://shop_images/mata-fina-banner-topo-1920x500_copy.jpg",
-            "show_content": false,
+            "show_content": true,
             "block_title": "PARCELE SEM JUROS!",
             "enable_title_link": false,
             "block_sub_title": "Até 3x no cartão",
