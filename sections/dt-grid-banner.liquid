@@ -68,22 +68,24 @@ endif
 <div class="grid-banner-wrapper">
 {%- unless section.settings.title == blank -%}
 <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin content-align--{{ section.settings.column_alignment }}">
-   {%- if section.settings.sub_heading != blank -%}  
+   {%- if section.settings.sub_heading != blank -%}
    <h6 class="sub-heading">{{ section.settings.sub_heading }}</h6>
-   {%- endif -%} 
-   {%- if section.settings.title != blank -%}  
+   {%- endif -%}
+   {%- if section.settings.title != blank -%}
     <h2 class="title {{ section.settings.heading_size }}">
       {{ section.settings.title }}
     </h2>
-    {%- endif -%} 
-    {%- if section.settings.description != blank -%}  
+    {%- endif -%}
+    {%- if section.settings.description != blank -%}
     <p class="description">{{ section.settings.description }}</p>
-    {%- endif -%}   
-    {%- if section.settings.button_label != blank -%}
-      <a {% if section.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.button_link }}"{% endif %} class="button{% if section.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}">{{ section.settings.button_label | escape }}</a>
     {%- endif -%}
     </div>
 {%- endunless -%}
+{%- if section.settings.button_label != blank -%}
+  <div class="cr-section-btn-wrapper">
+    <a {% if section.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.button_link }}"{% endif %} class="button{% if section.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}">{{ section.settings.button_label | escape }}</a>
+  </div>
+{%- endif -%}
  {% unless enable_slider %}
 <div class="grid-banner-section {{ column }} {{ section.settings.banner_style }} {% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}">
     {% else %}
@@ -137,10 +139,7 @@ endif
               {% endif %}
               {% if block.settings.block_description != blank %}
               <p class="description">{{ block.settings.block_description }}</p>
-              {% endif %}      
-              {% if block.settings.block_description_code != blank %}
-              <span class="description_code">{{ block.settings.block_description_code }}</span>
-              {% endif %}      
+              {% endif %}
               {% if block.settings.block_button_link != blank and block.settings.block_button_text != blank %}
               <a href="{{ block.settings.block_button_link }}" class="banner-button button button--primary">{{ block.settings.block_button_text }}</a>
            {% endif %}
