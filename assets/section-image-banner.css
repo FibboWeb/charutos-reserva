@@ -15,6 +15,22 @@
 .banner__box >*:not(:last-child){
   /* margin-bottom:15px; */
 }
+
+.banner__badge {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  margin-bottom: 12px;
+}
 .slideshow__text-wrapper .slideshow__text .banner__text{width:100%;max-width:80%;text-transform:capitalize;font-weight:500;}
 @media only screen and (max-width: 749px) {
   .banner--content-align-mobile-right .banner__box {
