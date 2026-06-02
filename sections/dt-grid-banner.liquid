@@ -124,8 +124,11 @@ endif
                  {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
         {%- if block.settings.block_button_link != blank -%}</a>{%- endif -%}
+    {%- if block.settings.overlay_opacity > 0 -%}
+      <div class="gb-img-overlay" style="background:rgba({{ block.settings.overlay_color.red }},{{ block.settings.overlay_color.green }},{{ block.settings.overlay_color.blue }},{{ block.settings.overlay_opacity | divided_by: 100.0 }});position:absolute;inset:0;pointer-events:none;z-index:1;"></div>
+    {%- endif -%}
    </div>
-    <div class="grid-banner-content {% unless block.settings.show_content %}hidden {% endunless %}">
+    <div class="grid-banner-content {% unless block.settings.show_content %}hidden {% endunless %}" style="z-index:2;">
        <div class="grid-banner-inner banner--content-align-{{ block.settings.desktop_content_alignment }}">
           {% if block.settings.block_title != blank %}
               {% if block.settings.block_sub_title != blank %}
@@ -586,13 +589,33 @@ $(this).closest('.dt-sc-grid-banner').find('video').trigger('pause');
 "label": "t:sections.grid-banner.blocks.text.settings.desktop_content_alignment.label"
 },
 
-{	
-"type": "checkbox",	
-"id": "reverse_column",	
-"label": "t:sections.grid-banner.blocks.text.settings.reverse_column.label",	
+{
+"type": "checkbox",
+"id": "reverse_column",
+"label": "t:sections.grid-banner.blocks.text.settings.reverse_column.label",
 "info" :"Only worked for list style",
-"default": false	
-}    
+"default": false
+},
+{
+"type": "header",
+"content": "Filtro sobre a imagem"
+},
+{
+"type": "color",
+"id": "overlay_color",
+"label": "Cor do filtro",
+"default": "#000000"
+},
+{
+"type": "range",
+"id": "overlay_opacity",
+"min": 0,
+"max": 80,
+"step": 5,
+"unit": "%",
+"label": "Opacidade do filtro",
+"default": 30
+}
 ]
 }
 ],

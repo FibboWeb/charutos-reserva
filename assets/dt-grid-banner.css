@@ -40,7 +40,7 @@
 .curtainex-grid-banner .grid-banner-inner.banner--content-align-right { align-items: flex-end !important; text-align: right;}
 .curtainex-grid-banner .grid-banner-inner.banner--content-align-left { align-items: flex-start !important; text-align: left;}
 .curtainex-grid-banner .grid-banner .grid-banner-section:not(.background-none) .grid-banner-wrapper {  background: rgb(var(--color-background));}
-.curtainex-grid-banner .grid-banner-block-image { display: flex;width:100%;}
+.curtainex-grid-banner .grid-banner-block-image { display: flex; width: 100%; position: relative; }
 .curtainex-grid-banner .grid-banner-block-image img{width:100%;}
 .curtainex-grid-banner .grid-banner-inner h4.main-title{margin:0;}
 .curtainex-grid-banner .grid-banner-section .dt-sc-grid-banner-section.background-primary .grid-banner-wrapper { background: rgb(var(--color-background)) linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));}
@@ -75,7 +75,7 @@
  /* color: var(--gradient-base-background-3); */
 }
 .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner .sub-title{font-size: clamp(1.2rem, 1.12rem + 0.4vw, 1.6rem);font-weight: 500;letter-spacing:10px;text-transform:uppercase;color: var(--caption-color);}
-.curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner p.description{font-size: clamp(1.2rem, 1.12rem + 0.4vw, 1.6rem);    font-weight: 400;color: inherit; margin-bottom: 0rem;}
+.curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner p.description{font-size: clamp(1.2rem, 1.12rem + 0.4vw, 1.6rem); font-weight: 400; color: #fff !important; margin-bottom: 0rem;}
 .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner a.banner-button{margin-top: 3rem;}
 /* .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper .grid-banner-content .grid-banner-inner.banner--content-align-left{
   /* display: grid; grid-template-columns: 1fr; grid-template-rows: auto auto auto auto;align-content: center; justify-items: start;row-gap: 0;padding: 2rem 3rem; */

@@ -305,7 +305,9 @@
             "block_button_text": "Ver todos",
             "block_button_link": "shopify://collections/charutos",
             "desktop_content_alignment": "left",
-            "reverse_column": false
+            "reverse_column": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 35
           }
         },
         "f4257e51-1381-4cb6-967f-3caddad14487": {
@@ -321,7 +323,9 @@
             "block_button_text": "Ver Coleção",
             "block_button_link": "shopify://products/starlight-delight-sneakers",
             "desktop_content_alignment": "left",
-            "reverse_column": false
+            "reverse_column": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 35
           }
         },
         "6d9ad995-260b-497a-9509-a9230cf681e1": {
@@ -337,7 +341,9 @@
             "block_button_text": "Ver Coleção",
             "block_button_link": "shopify://products/sunlight-lace-up-boots",
             "desktop_content_alignment": "left",
-            "reverse_column": false
+            "reverse_column": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 35
           }
         }
       },
