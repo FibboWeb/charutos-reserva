@@ -216,7 +216,7 @@
    .curtainex-grid-banner .grid-banner-section.overlay .grid-banner-wrapper:last-child .grid-banner-content .grid-banner-inner :is(.main-title.h1){margin:0 auto;}
     .grid-banner-section.overlay.background-none .grid-banner-wrapper .grid-banner-content {
     margin-left:0;
-    background: rgba(var(--color-base-accent-1), 0.5);
+    background: transparent;
       display:flex;
       align-items:center;
 }

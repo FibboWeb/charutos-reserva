@@ -457,6 +457,14 @@ variant-selects .product-form__input .form__label {
 .product__info-container .product__description {
   margin: 2.5rem 0;
 }
+.product__description .rte,
+.product__description .rte *,
+.dt-sc-tabs-content.rte,
+.dt-sc-tabs-content.rte *,
+.accordion__content.rte,
+.accordion__content.rte * {
+  text-align: left !important;
+}
 .product__info-container .product-form {
   margin: 0 0 2.5rem;
 }

@@ -14,6 +14,55 @@
     }
   }
 
+.faq-img-wrapper {
+  position: relative;
+  display: block;
+  width: 552px;
+  height: 821px;
+  border-radius: 25rem;
+  overflow: hidden;
+  line-height: 0;
+}
+
+@media screen and (max-width: 425px) {
+  .faq-img-wrapper {
+    height: 551px;
+  }
+}
+
+.faq-reclame-aqui-badge {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.faq-reclame-aqui-badge span {
+  display: block;
+  line-height: 1.3;
+}
+
+.faq-reclame-aqui-badge span:first-child {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.faq-reclame-aqui-badge span:last-child {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
 .video-popup[style="display: flex;"] {
     animation: fadeIn var(--anim-time) ease both;
 }
@@ -115,6 +164,7 @@ $(document).ready(function () {
               </div> -->
               {% endif %}
                 {%- if section.settings.image != blank -%}
+                <div class="faq-img-wrapper">
                 <img
                   srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | image_url: width: 165 }} 165w,{%- endif -%}
                     {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | image_url: width: 360 }} 360w,{%- endif -%}
@@ -132,6 +182,11 @@ $(document).ready(function () {
                   height="{{ section.settings.image.height }}"
                   class="woofly-img"
                 >
+                <div class="faq-reclame-aqui-badge">
+                  <span>Estamos no Reclame Aqui!</span>
+                  <span>Compre com segurança</span>
+                </div>
+                </div>
                   {% else %}
                     {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder_svg' }}
                 {% endif %} 

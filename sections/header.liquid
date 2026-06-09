@@ -631,18 +631,20 @@ display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    color: #1A322C;
+    color: #1A322C !important;
     text-decoration: none;
     transition: color 0.2s ease;
     white-space: nowrap;
   }
-  .header__icon--account-cr:hover { color: #C49A3C; }
+  .header__icon--account-cr:hover,
+  .header__icon--account-cr:hover .header__account-label { color: #C49A3C !important; }
   .header__icon--account-cr svg { width: 22px; height: 22px; flex-shrink: 0; }
   .header__account-label {
     font-size: 14px;
     font-weight: 600;
-    color: inherit;
+    color: #1A322C !important;
     line-height: 1;
+    transition: color 0.2s ease;
   }
 }
 
