@@ -209,6 +209,31 @@
       "header": {
         "type": "header",
         "blocks": {
+          "topbar_item_69bCXi": {
+            "type": "topbar_item",
+            "settings": {
+              "text_bold": "ENTREGA VIA MOTOBOY",
+              "text_sub": "em toda São Paulo",
+              "icon_image": "shopify://shop_images/icons8-scooter-de-entrega-32.png",
+              "icon": "truck"
+            }
+          },
+          "topbar_item_LebePU": {
+            "type": "topbar_item",
+            "settings": {
+              "text_bold": "PAGUE EM ATÉ 12X",
+              "text_sub": "no cartão de crédito",
+              "icon": "credit-card"
+            }
+          },
+          "topbar_item_tLFbGf": {
+            "type": "topbar_item",
+            "settings": {
+              "text_bold": "SITE SEGURO",
+              "text_sub": "Sua compra garantida",
+              "icon": "shield"
+            }
+          },
           "nav_group_iwaTTM": {
             "type": "nav_group",
             "settings": {
@@ -473,6 +498,9 @@
           }
         },
         "block_order": [
+          "topbar_item_69bCXi",
+          "topbar_item_LebePU",
+          "topbar_item_tLFbGf",
           "nav_group_iwaTTM",
           "nav_group_xTHk4y",
           "nav_group_F7BXa9",
