@@ -780,7 +780,7 @@ display: inline-flex;
             </div>
              <div class="menu-drawer__utility-links">
                   {%- if shop.customer_accounts_enabled -%}
-                    <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5">
+                    <a href="{{ routes.account_url }}" class="menu-drawer__account link focus-inset h5">
                       {% render 'icon-account' %}
                       {%- liquid
                         if customer
@@ -1085,7 +1085,7 @@ display: inline-flex;
               </a>          
               {%- endif -%}
    
-  <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+  <a href="{{ routes.account_url }}"
      class="header__icon--account-cr"
      aria-label="{%- if customer -%}Minha Conta{%- else -%}Entrar{%- endif -%}">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
