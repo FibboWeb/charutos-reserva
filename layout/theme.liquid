@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="theme-color" content="">
+
+    {%- comment -%} Google Tag Manager / Google Analytics {%- endcomment -%}
+    {% render 'google-tag-manager' %}
+
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -304,6 +308,11 @@
   </head>
 
   <body id="{{ page_title | handle }}" class="gradient {% if settings.preloader_enable %}preloader-overflow{% endif %}">
+    {%- if settings.gtm_id != blank -%}
+      {%- comment -%} Google Tag Manager (noscript) {%- endcomment -%}
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ settings.gtm_id }}"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {%- endif -%}
     <div class="dt-custom-overlay"></div>
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
