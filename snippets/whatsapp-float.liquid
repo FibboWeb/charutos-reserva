@@ -1,0 +1,101 @@
+{% comment %}
+  Botão flutuante do WhatsApp.
+  Fica fixo no canto inferior direito e "treme" a cada 5s para chamar atenção.
+{% endcomment %}
+
+{%- assign wa_number = '5511978121234' -%}
+{%- assign wa_message = 'Olá! Gostaria de mais informações.' -%}
+
+<a
+  class="wa-float"
+  href="https://wa.me/{{ wa_number }}?text={{ wa_message | url_encode }}"
+  target="_blank"
+  rel="noopener"
+  aria-label="Fale conosco pelo WhatsApp"
+>
+  <svg class="wa-float__icon" viewBox="0 0 32 32" width="32" height="32" fill="currentColor" aria-hidden="true">
+    <path d="M16.003 3.2C9.052 3.2 3.4 8.85 3.4 15.8c0 2.223.582 4.393 1.687 6.305L3.2 28.8l6.86-1.8a12.57 12.57 0 0 0 5.94 1.512h.005c6.95 0 12.6-5.65 12.603-12.603 0-3.367-1.31-6.532-3.69-8.913A12.52 12.52 0 0 0 16.003 3.2Zm0 22.99h-.004a10.46 10.46 0 0 1-5.33-1.46l-.382-.227-3.97 1.041 1.06-3.868-.25-.397a10.43 10.43 0 0 1-1.598-5.57c.002-5.78 4.705-10.48 10.48-10.48a10.4 10.4 0 0 1 7.41 3.07 10.4 10.4 0 0 1 3.066 7.416c-.003 5.78-4.705 10.48-10.482 10.48Zm5.75-7.844c-.315-.158-1.864-.92-2.153-1.025-.29-.105-.5-.158-.71.158-.21.315-.815 1.025-1 1.235-.183.21-.368.237-.683.08-.315-.158-1.33-.49-2.532-1.562-.936-.835-1.568-1.866-1.752-2.18-.184-.316-.02-.486.138-.643.142-.14.315-.368.473-.552.158-.184.21-.315.315-.526.105-.21.053-.394-.026-.552-.08-.158-.71-1.71-.973-2.34-.256-.614-.517-.53-.71-.54l-.605-.01c-.21 0-.552.079-.84.394-.29.315-1.104 1.078-1.104 2.63 0 1.552 1.13 3.05 1.288 3.26.158.21 2.224 3.395 5.386 4.76.752.325 1.34.52 1.797.665.756.24 1.443.206 1.987.125.606-.09 1.864-.762 2.127-1.498.263-.736.263-1.367.184-1.498-.078-.132-.288-.21-.603-.368Z"/>
+  </svg>
+</a>
+
+{% style %}
+  .wa-float {
+    position: fixed;
+    right: 25px;
+    bottom: 90px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: wa-shake 0.8s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  .wa-float:hover {
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  }
+  .wa-float__icon {
+    display: block;
+  }
+  /* Classe adicionada via JS a cada 5s para disparar a "tremidinha" */
+  .wa-float.wa-float--shake {
+    animation-play-state: running;
+  }
+
+  @keyframes wa-shake {
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(-14deg) scale(1.05); }
+    30%  { transform: rotate(12deg) scale(1.05); }
+    45%  { transform: rotate(-10deg) scale(1.05); }
+    60%  { transform: rotate(8deg) scale(1.05); }
+    75%  { transform: rotate(-4deg) scale(1.02); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @media (max-width: 749px) {
+    .wa-float {
+      right: 18px;
+      bottom: 80px;
+      width: 52px;
+      height: 52px;
+    }
+    .wa-float__icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wa-float,
+    .wa-float.wa-float--shake {
+      animation: none;
+    }
+  }
+{% endstyle %}
+
+<script>
+  (function () {
+    var btn = document.currentScript.previousElementSibling;
+    while (btn && !btn.classList.contains('wa-float')) {
+      btn = btn.previousElementSibling;
+    }
+    if (!btn) { btn = document.querySelector('.wa-float'); }
+    if (!btn) { return; }
+
+    setInterval(function () {
+      btn.classList.add('wa-float--shake');
+    }, 5000);
+
+    btn.addEventListener('animationiteration', function () {
+      btn.classList.remove('wa-float--shake');
+    });
+  })();
+</script>
