@@ -232,7 +232,7 @@
           </facet-filters-form>
         {%- endif -%}
   
-      {%- paginate collection.products by 250 -%}
+      {%- paginate collection.products by section.settings.products_per_page -%}
         {%- if collection.products.size == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
@@ -261,7 +261,7 @@
   %}
             {%- assign available_products = collection.products | where: "available", true -%}
             {%- assign unavailable_products = collection.products | where: "available", false -%}
-            <ul id="product-grid" data-id="{{ section.id }}" data-per-page="{{ section.settings.products_per_page }}" class="grid product-grid view-mode grid-view-filter grid--{{ section.settings.columns_mobile }}-col-mobile {{ column_width }} card_style-{{ settings.card_style }}">
+            <ul id="product-grid" data-id="{{ section.id }}" class="grid product-grid view-mode grid-view-filter grid--{{ section.settings.columns_mobile }}-col-mobile {{ column_width }} card_style-{{ settings.card_style }}">
               {%- comment -%}— Produtos disponíveis primeiro —{%- endcomment -%}
               {%- for product in available_products -%}
                 {%- assign lazy_load = true -%}
@@ -399,60 +399,7 @@
                 </li>
               {%- endfor -%}
             </ul>
-            <div id="collection-js-pagination-{{ section.id }}" class="collection-js-pagination"></div>
-            <script>
-(function() {
-  var grid = document.getElementById('product-grid');
-  var paginationEl = document.getElementById('collection-js-pagination-{{ section.id }}');
-  if (!grid || !paginationEl) return;
-
-  var perPage = parseInt(grid.dataset.perPage) || {{ section.settings.products_per_page }};
-  var items = Array.from(grid.querySelectorAll('li.grid__item'));
-  var total = items.length;
-  var totalPages = Math.ceil(total / perPage);
-  var currentPage = 1;
-
-  if (totalPages <= 1) return; // no pagination needed
-
-  function showPage(page) {
-    var start = (page - 1) * perPage;
-    var end = start + perPage;
-    items.forEach(function(item, i) {
-      item.style.display = (i >= start && i < end) ? '' : 'none';
-    });
-    currentPage = page;
-    renderPagination();
-    // scroll to top of grid
-    grid.closest('.collection') && grid.closest('.collection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function renderPagination() {
-    var html = '<nav class="pagination" role="navigation" aria-label="Paginação">';
-    html += '<ul class="pagination__list list-unstyled">';
-    if (currentPage > 1) {
-      html += '<li><button class="pagination__item pagination__item--prev" onclick="crPg_{{ section.id }}(' + (currentPage - 1) + ')">&#8592; Anterior</button></li>';
-    }
-    var start = Math.max(1, currentPage - 2);
-    var end = Math.min(totalPages, currentPage + 2);
-    if (start > 1) html += '<li><button class="pagination__item" onclick="crPg_{{ section.id }}(1)">1</button></li>';
-    if (start > 2) html += '<li><span class="pagination__item">…</span></li>';
-    for (var i = start; i <= end; i++) {
-      html += '<li><button class="pagination__item' + (i === currentPage ? ' pagination__item--current' : '') + '" onclick="crPg_{{ section.id }}(' + i + ')">' + i + '</button></li>';
-    }
-    if (end < totalPages - 1) html += '<li><span class="pagination__item">…</span></li>';
-    if (end < totalPages) html += '<li><button class="pagination__item" onclick="crPg_{{ section.id }}(' + totalPages + ')">' + totalPages + '</button></li>';
-    if (currentPage < totalPages) {
-      html += '<li><button class="pagination__item pagination__item--next" onclick="crPg_{{ section.id }}(' + (currentPage + 1) + ')">Próxima &#8594;</button></li>';
-    }
-    html += '</ul></nav>';
-    paginationEl.innerHTML = html;
-  }
-
-  window['crPg_{{ section.id }}'] = function(page) { showPage(page); };
-
-  showPage(1);
-})();
-            </script>
+            {% render 'pagination', paginate: paginate, anchor: '#ProductGridContainer' %}
           </div>
         {%- endif -%}
       {%- if collection.description != blank -%}
