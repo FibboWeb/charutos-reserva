@@ -940,12 +940,13 @@ ul.dt-nav {
   border-radius:30px;
   background: rgb(var(--color-foreground),0.2);
   height: calc(4.3rem + var(--inputs-border-width) * 2);
-  color: var(--gradient-base-background-1);
+  color: #1A322C;
 }
 .header .search__input.field__input:not(:focus){border: var(--inputs-border-width) solid rgb(var(--color-foreground),0);}
 .header .search__button svg {
   fill: currentcolor;
 }
+.header .search__input.field__input::selection{background: #1A322C;color: #fff;}
 .header .search__button:hover {
   color: var(--gradient-base-accent-2);
 }
