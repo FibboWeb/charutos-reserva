@@ -85,6 +85,10 @@
  .newsletter__wrapper-right{margin-top:30px;}
 
 .newletter_wrapper-block .field__input{ height: 5rem;background: var(--gradient-base-background-2);}
+.newletter_wrapper-block .newsletter-form.formIntegration .field__input {
+  height: 5rem;
+  background: var(--gradient-base-background-2);
+}
 .newletter_wrapper-block .field:hover.field:after{box-shadow:unset;}
 .newletter_wrapper-block .field__button{ font-family: var(--font-body-family);height:auto;}
 .newletter_wrapper-block .field__button svg{width:16px; height:14px; transition: all .3s linear; fill: var(--gradient-background);}

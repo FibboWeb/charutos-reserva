@@ -51,3 +51,98 @@
 .newsletter .newletter_wrapper-block .field__input {
     background: var(--gradient-base-background-2);
 }
+
+/* Dynamize newsletter form */
+.newsletter-form.formIntegration .newsletter-form__field-wrapper .block {
+  margin-bottom: 1rem;
+}
+
+.newsletter-form.formIntegration .newsletter-form__field-wrapper .block:last-child {
+  margin-bottom: 0;
+}
+
+.newsletter-form.formIntegration .div_PHN.hidden_DDI .div_PHN_DDI {
+  display: none;
+}
+
+.newsletter-form.formIntegration .div_PHN.hidden_DDI .div_PHN_NUM {
+  width: 100%;
+}
+
+.newsletter-form.formIntegration .newsletter-form__submit-block .submit {
+  position: relative;
+  width: 100%;
+}
+
+.newsletter-form.formIntegration .newsletter-form__submit {
+  width: 100%;
+  height: 5rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.newsletter-form.formIntegration .spinner {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  height: 18px;
+}
+
+.newsletter-form.formIntegration .spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: rgb(var(--color-button-text));
+  border-radius: 100%;
+  display: inline-block;
+  animation: dinamize-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.newsletter-form.formIntegration .spinner .bounce1 {
+  animation-delay: -0.32s;
+}
+
+.newsletter-form.formIntegration .spinner .bounce2 {
+  animation-delay: -0.16s;
+}
+
+@keyframes dinamize-bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.newsletter-form.formIntegration .field-error {
+  border-color: rgb(var(--color-foreground)) !important;
+  box-shadow: 0 0 0 0.2rem rgba(var(--color-foreground), 0.3);
+}
+
+.newsletter-form.formIntegration .DinamizeDivMessageSuccess,
+.newsletter-form.formIntegration .DinamizeDivMessageAlert,
+.newsletter-form.formIntegration .DinamizeDivMessageError,
+.newsletter-form.formIntegration .DinamizeDivCaptchaMessage {
+  display: none;
+  margin: 0 0 1rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.4rem;
+  border-radius: 0.4rem;
+}
+
+.newsletter-form.formIntegration .DinamizeDivMessageSuccess {
+  display: none;
+  background-color: rgba(var(--color-foreground), 0.15);
+  color: rgb(var(--color-foreground));
+}
+
+.newsletter-form.formIntegration .DinamizeDivMessageAlert,
+.newsletter-form.formIntegration .DinamizeDivMessageError,
+.newsletter-form.formIntegration .DinamizeDivCaptchaMessage {
+  background-color: rgba(var(--color-foreground), 0.2);
+  color: rgb(var(--color-foreground));
+}
