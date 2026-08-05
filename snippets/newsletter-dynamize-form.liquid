@@ -1,0 +1,120 @@
+{%- liquid
+  assign form_id = form_id | default: section.id
+  assign extra_class = extra_class | default: 'newsletter-form'
+-%}
+<form
+  version="2.0"
+  class="formIntegration formIntegration2 {{ extra_class }}"
+  accept-charset="UTF-8"
+  method="post"
+  onsubmit="return dinForms.ValidateForm(this)"
+  action="https://receiver.emkt.dinamize.com/in/333237/2/bed18/0"
+  target="DinamizeIframeFormIntegration"
+  data-name="Q2FkYXN0cm8gTmV3c2xldHRlciBSZXNlcnZh"
+>
+  <input type="hidden" name="update_mode" value="AS">
+  <input type="hidden" name="form-code" value="9">
+  <input type="hidden" name="isMsg" value="true">
+  <input type="hidden" name="text-confirmation" value="U2V1cyBkYWRvcyBmb3JhbSByZWNlYmlkb3Mh">
+  <input type="hidden" name="text-error" value="">
+  <input type="hidden" name="text-alert" value="">
+  <input type="hidden" name="cmp4" value="news_site">
+  <input type="hidden" name="phase-change" value="off">
+
+  <div class="DinamizeDivCaptchaMessage">Captcha obrigatório</div>
+  <div class="DinamizeDivMessageAlert"></div>
+  <div class="DinamizeDivMessageSuccess">Seus dados foram recebidos!</div>
+  <div class="DinamizeDivMessageError"></div>
+
+  <div class="newsletter-form__field-wrapper">
+    <div class="block">
+      <div class="field">
+        <input
+          id="NewsletterForm-name--{{ form_id }}"
+          type="text"
+          name="cmp2"
+          class="field__input type_VC field-required input-field"
+          maxlength="80"
+          placeholder="Nome"
+          aria-required="true"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="name"
+          required
+        >
+        <label class="field__label visually-hidden" for="NewsletterForm-name--{{ form_id }}">Nome</label>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="field">
+        <input
+          id="NewsletterForm-email--{{ form_id }}"
+          type="text"
+          name="cmp1"
+          class="field__input type_EMAIL field-required input-field"
+          maxlength="80"
+          placeholder="E-mail"
+          aria-required="true"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          required
+        >
+        <label class="field__label visually-hidden" for="NewsletterForm-email--{{ form_id }}">E-mail</label>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="field">
+        <div class="div_PHN hidden_DDI">
+          <div class="div_PHN_DDI">
+            <input
+              type="text"
+              name="cmp10_DDI"
+              hd-name="cmp10"
+              maxlength="5"
+              value="55"
+              class="type_PHN_DDI field-required input-field"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+          </div>
+          <div class="div_PHN_NUM">
+            <input
+              id="NewsletterForm-phone--{{ form_id }}"
+              type="text"
+              name="cmp10_NUM"
+              hd-name="cmp10"
+              maxlength="20"
+              placeholder="(00) 00000-0000"
+              class="field__input type_PHN_NUM field-required input-field"
+              aria-required="true"
+              autocomplete="tel"
+              required
+            >
+          </div>
+          <input type="hidden" name="cmp10">
+        </div>
+        <label class="field__label visually-hidden" for="NewsletterForm-phone--{{ form_id }}">Celular</label>
+      </div>
+    </div>
+
+    <div class="block newsletter-form__submit-block">
+      <div class="submit submit-button-td">
+        <input
+          type="submit"
+          value="Cadastre-se"
+          original-value="Cadastre-se"
+          class="dinSubmit newsletter-form__submit button button--primary"
+          aria-label="Cadastre-se"
+        >
+        <div class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
