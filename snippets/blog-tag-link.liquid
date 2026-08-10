@@ -1,0 +1,14 @@
+{%- comment -%}
+  Renders a blog tag link with localized title and aria-label.
+
+  Accepts:
+  - blog: {Object} Blog
+  - tag: {String} Tag name
+{%- endcomment -%}
+{%- liquid
+  assign tagged_label = 'blogs.sidebar.tagged_articles' | t: tag: tag
+  assign tag_url = blog.url | append: '/tagged/' | append: tag | handle
+-%}
+<a href="{{ tag_url }}" class="blog-tag-link" title="{{ tagged_label | escape }}" aria-label="{{ tagged_label | escape }}">
+  {{- tag -}}
+</a>

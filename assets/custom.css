@@ -1123,11 +1123,55 @@ header.header,
 }
 
 /* Links padrão fora do header/footer */
-a:not(.button):not(.header a):not(.footer a) {
+a:not(.button):not(.header a):not(.footer a):not(.blog-tag-link) {
   color: #1A322C;
 }
-a:not(.button):not(.header a):not(.footer a):hover {
+a:not(.button):not(.header a):not(.footer a):not(.blog-tag-link):hover {
   color: #C49A3C;
+}
+
+/* Tags do blog — contraste fixo (sidebar e fim do post) */
+a.blog-tag-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--buttons-radius, 4px);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: normal;
+  text-decoration: none;
+  color: #1A322C !important;
+  background-color: #C49A3C !important;
+  transition: color 0.2s linear, background-color 0.2s linear;
+}
+
+a.blog-tag-link:hover,
+a.blog-tag-link:focus-visible {
+  color: #FFFFFF !important;
+  background-color: #1A322C !important;
+}
+
+.widget-tags ul.categories li:has(.blog-tag-link) {
+  padding: 0;
+  margin: 0 1rem 1rem 0;
+  background: transparent;
+}
+
+.widget-tags ul.categories li.active {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  margin: 0 1rem 1rem 0;
+  border-radius: var(--buttons-radius, 4px);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: normal;
+  color: #FFFFFF !important;
+  background-color: #1A322C !important;
+}
+
+.share-icon .widget-tags ul.categories li a.blog-tag-link {
+  margin: 0;
 }
 
 

@@ -57,6 +57,7 @@
   
 -%}
 
+{%- if section.settings.collection != blank and section.settings.collection.products_count > 0 -%}
 <div class="color-{{ section.settings.color_scheme }} isolate gradient">
   <div class="collection {% if section.settings.page_full_width %} page-full-width {% else %} page-width {% endif %} {% if section.settings.page_full_width_spacing %} page-full-width_spacing {% endif %} {{ section.settings.custom_class_name }} section-{{ section.id }}-padding">
    <div class="row">
@@ -155,15 +156,8 @@
             %}
         {%  endcase %}
           </div>
-        {%- else -%}
-          {%- for i in (1..4) -%}
-            <div class="swiper-slide">
-              {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-                        {%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-              {% render 'card-product', show_vendor: section.settings.show_vendor, placeholder_image: placeholder_image %}
-            </div>
-          {%- endfor -%}
         {%- endfor -%}
+
       </div>
       {% unless enable_slider %}
       {%- if show_mobile_slider or show_desktop_slider -%}
@@ -203,6 +197,7 @@
   </div>
 </div>
 </div>
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",

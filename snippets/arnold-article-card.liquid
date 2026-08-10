@@ -74,7 +74,7 @@
            </div>
         {%- endif -%}   
          <div class="read-more-btn">
-            <a href="{{ article.url }}" class="blog__button button">Read More</a>
+            <a href="{{ article.url }}" class="blog__button button">{{ 'blogs.article.read_more' | t }}</a>
          </div>
        </div>
       
@@ -86,8 +86,37 @@
           </div>
         
              {%- if show_date -%}
+                {%- liquid
+                  assign published_month = article.published_at | date: '%m'
+                  case published_month
+                    when '01'
+                      assign month_name = 'janeiro'
+                    when '02'
+                      assign month_name = 'fevereiro'
+                    when '03'
+                      assign month_name = 'março'
+                    when '04'
+                      assign month_name = 'abril'
+                    when '05'
+                      assign month_name = 'maio'
+                    when '06'
+                      assign month_name = 'junho'
+                    when '07'
+                      assign month_name = 'julho'
+                    when '08'
+                      assign month_name = 'agosto'
+                    when '09'
+                      assign month_name = 'setembro'
+                    when '10'
+                      assign month_name = 'outubro'
+                    when '11'
+                      assign month_name = 'novembro'
+                    when '12'
+                      assign month_name = 'dezembro'
+                  endcase
+                -%}
                 <div class="date-shown">
-              <span class="circle-divider">{{ article.published_at | date: " %b %Y " }}</span>
+              <span class="circle-divider">{{ article.published_at | date: "%d" }} de {{ month_name }} de {{ article.published_at | date: "%Y" }}</span>
                 </div>
               {%- endif -%}
               <!-- <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">

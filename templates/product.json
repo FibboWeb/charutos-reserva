@@ -38,8 +38,8 @@
           "settings": {
             "minqty": 20,
             "maxqty": 30,
-            "item_sold": "Items",
-            "products": "Vendas nas ultimas",
+            "item_sold": " itens vendidos nas ",
+            "products": "últimas",
             "hours": "horas"
           }
         },

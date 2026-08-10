@@ -18,7 +18,7 @@
              type="text"
              id="ContactFormName"
              name="contact[Name]"
-             placeholder="Name" required
+             placeholder="{{ 'enquiry.form.name' | t }}" required
              />
    </div>
     <div class="field field--with-error">  
@@ -45,38 +45,38 @@
              type="text"
              id="ContactFormPhone"
              name="contact[Phone]"
-             placeholder="Phone"
+             placeholder="{{ 'enquiry.form.phone' | t }}"
              />
     </div>
       <textarea rows="7"
                 type="textarea"
                 id="ContactFormMsg"
                 name="contact[Msg]"
-                placeholder="Subject"></textarea>
+                placeholder="{{ 'enquiry.form.subject' | t }}"></textarea>
      
       <div class="enquiry-choose">
         <input
                type="radio"
                id="ContactViaEmail"
                name="contact[By]"
-               value="Email"
+               value="{{ 'enquiry.form.by_email' | t }}"
                />
         <label for="ContactViaEmail">{{ 'enquiry.form.by_email' | t }}</label>
         <input
                type="radio"
                id="contactFormViaPhone"
                name="contact[By]"
-               value="Phone"
+               value="{{ 'enquiry.form.by_phone' | t }}"
                />
         <label for="contactFormViaPhone">{{ 'enquiry.form.by_phone' | t }}</label>
         <input
                type="radio"
                id="contactFormViaBoth"
                name="contact[By]"
-               value="Both"
+               value="{{ 'enquiry.form.by_both' | t }}"
                />
         <label for="contactFormViaBoth">{{ 'enquiry.form.by_both' | t }}</label>
-         <input  type="hidden" id="Product_name" class="input-full" name="contact[Product_name]" placeholder="{{ 'contact.form.product' | t }}"  value="{{ product.title }} - {{ product.vendor }}">
+         <input  type="hidden" id="Product_name" class="input-full" name="contact[Product_name]" placeholder="{{ 'templates.contact.form.product' | t }}"  value="{{ product.title }} - {{ product.vendor }}">
       </div>
       <button type="submit" class="button button--primary ">{{ 'templates.contact.form.send' | t }}</button>
       {% endform %}

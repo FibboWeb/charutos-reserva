@@ -1,11 +1,8 @@
 {% if settings.enable_scroll_to_top %}
-<a id="to-top" href="#{{ page_title | handle }}" class="dt-sc-to-top">
+<a id="to-top" href="#{{ page_title | handle }}" class="dt-sc-to-top" title="{{ 'accessibility.scroll_to_top' | t }}">
   <div class="arrow">
-  {% render 'scroll-to-top-arrow' %}
-    </div>
-  <div class="text">
-		Back to top
-	</div>     
+    {% render 'scroll-to-top-arrow' %}
+  </div>
 </a>
 {% endif %} 
 

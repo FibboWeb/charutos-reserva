@@ -93,9 +93,11 @@
   <div class="collection">
      {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin text-align-{{ section.settings.column_alignment }}">
+        {%- if section.settings.text != blank -%}
         <h6 class="sub-heading">
           {{ section.settings.text | escape }}
          </h6>
+        {%- endif -%}
         <h2 class="title {{ section.settings.heading_size }}">
           {{ section.settings.title }}
         </h2>
@@ -158,11 +160,13 @@
         
 
         <div class="tabs tab-class">
+          {%- if section.settings.section-main-title != blank -%}
           <div class="section-main-heading">
             <h2 class="section-main-title">
            {{ section.settings.section-main-title | escape }}
            </h2>
           </div>
+          {%- endif -%}
           <div class="product-tab">
             {% for block in section.blocks %}    
           {% assign collection = block.settings.collection %}

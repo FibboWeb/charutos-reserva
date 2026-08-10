@@ -159,13 +159,13 @@
           <div class="grid-banner-content {% unless block.settings.show_content %}hidden {% endunless %}">
              <div class="grid-banner-inner banner--content-align-{{ block.settings.desktop_content_alignment }}">
                 {% if block.settings.block_title != blank %}
-                  <h4 class="main-title h5">
+                  <h3 class="main-title h5">
                     {%- if image_target_link != blank -%}
                       <a href="{{ image_target_link }}">{{ block.settings.block_title }}</a>
                     {%- else -%}
                       {{ block.settings.block_title }}
                     {%- endif -%}
-                  </h4>
+                  </h3>
                 {% endif %}
                     {% if block.settings.block_sub_title != blank %}
                     <h5 class="sub-title">{{ block.settings.block_sub_title }}</h5>

@@ -1,0 +1,15 @@
+{%- comment -%}
+  Traduz labels padrão de filtros do Shopify (Availability/Price) para o idioma da loja.
+  Uso: {% render 'facet-label', label: filter.label %}
+{%- endcomment -%}
+{%- liquid
+  assign label_key = label | downcase | strip
+  case label_key
+    when 'availability'
+      echo 'products.facets.availability' | t
+    when 'price'
+      echo 'products.facets.price' | t
+    else
+      echo label
+  endcase
+-%}

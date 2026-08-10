@@ -283,6 +283,46 @@ $(document).ready(function () {
   </div>
 </div>
 </div>
+
+{%- assign faq_entities = '' -%}
+{%- for block in section.blocks -%}
+  {%- liquid
+    assign faq_question = block.settings.heading | default: block.settings.page.title | strip
+    if block.settings.row_content != blank
+      assign faq_answer = block.settings.row_content | strip_html | strip
+    elsif block.settings.page.content != blank
+      assign faq_answer = block.settings.page.content | strip_html | strip
+    else
+      assign faq_answer = ''
+    endif
+  -%}
+  {%- if faq_question != blank and faq_answer != blank -%}
+    {%- capture faq_item -%}
+      {
+        "@type": "Question",
+        "name": {{ faq_question | json }},
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ faq_answer | json }}
+        }
+      }
+    {%- endcapture -%}
+    {%- if faq_entities != blank -%}
+      {%- assign faq_entities = faq_entities | append: ',' -%}
+    {%- endif -%}
+    {%- assign faq_entities = faq_entities | append: faq_item -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if section.settings.enable_faq_schema and faq_entities != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{{ faq_entities }}]
+    }
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "Collapsible content",
@@ -440,6 +480,13 @@ $(document).ready(function () {
       "id": "open_first_collapsible_row",
       "default": false,
       "label": "t:sections.collapsible_content.settings.open_first_collapsible_row.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_faq_schema",
+      "default": false,
+      "label": "Ativar FAQPage structured data",
+      "info": "Gera JSON-LD FAQPage para SEO (Google rich results)"
     },
     {
       "type": "header",

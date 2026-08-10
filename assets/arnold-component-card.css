@@ -261,8 +261,7 @@
 
 .arnold .card__media .media img {
 /*   height: 100%; */
-  object-fit: cover;
-  object-position: center center;
+  object-fit: contain;
   width: 100%;  
 }
 .arnold .collection .card__media .media .motion-reduce{opacity:0; transition: all var(--duration-default) linear;}

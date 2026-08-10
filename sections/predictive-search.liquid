@@ -118,6 +118,15 @@
       </svg>
     </div>
 
+    {%- liquid
+      assign total_results = predictive_search.resources.products.size | plus: first_column_results_size
+    -%}
+    {%- if total_results == 0 -%}
+      <p class="predictive-search__no-results" role="status">
+        {{ 'templates.search.no_results' | t: terms: predictive_search.terms }}
+      </p>
+    {%- endif -%}
+
     <div id="predictive-search-option-search-keywords" class="predictive-search__search-for-button">
       <button
         class="predictive-search__item predictive-search__item--term link link--text h5 animate-arrow"

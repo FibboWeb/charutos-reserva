@@ -29,7 +29,7 @@
         <div class="drawer__inner-empty">
           <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
-              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              <span class="cart__empty-text">{{ 'sections.cart.empty' | t }}</span>
               <button class="drawer__close close_icon_button" type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
               <a href="{{ routes.all_products_collection_url }}" class="button">
                 {{ 'general.continue_shopping' | t }}
@@ -46,7 +46,7 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <span class="drawer__heading">{{ 'sections.cart.title' | t }}</span>
         <button class="drawer__close close_icon_button"  type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
       </div>     
        <div class="cart__items-widget">
@@ -277,8 +277,8 @@
         <button type="button" class="close link" onclick="this.closest('details').querySelector('summary').click()">
         {%  render 'icon-close' %}
         </button>
-        <input type="text" id="drawer-discount" name="discount" placeholder="Enter discount code..."  class="discount-code" value="">   
-        <button type="button" class="save button" onclick="saveOption(); this.closest('details').querySelector('summary').click();">SAVE</button>
+        <input type="text" id="drawer-discount" name="discount" placeholder="{{ 'sections.cart.discount_code_placeholder' | t }}"  class="discount-code" value="">   
+        <button type="button" class="save button" onclick="saveOption(); this.closest('details').querySelector('summary').click();">{{ 'sections.cart.discount_save' | t }}</button>
         </div>
         </div>                          
         </details>
@@ -299,7 +299,7 @@
 
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
           <div class="totals" role="status">
-            <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
+            <span class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</span>
             <p class="totals__subtotal-value">{{ cart.total_price | money }}</p>
           </div>
 
