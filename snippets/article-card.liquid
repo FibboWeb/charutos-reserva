@@ -68,7 +68,36 @@
            <div class="article-card__info caption-with-letter-spacing h5">
             
           {%- if show_date -%}
-          <span class="article-date">{% render 'icon-calender' %} {{ article.published_at | date: "%b %d" }}</span>
+            {%- liquid
+              assign published_month = article.published_at | date: '%m'
+              case published_month
+                when '01'
+                  assign month_name = 'jan'
+                when '02'
+                  assign month_name = 'fev'
+                when '03'
+                  assign month_name = 'mar'
+                when '04'
+                  assign month_name = 'abr'
+                when '05'
+                  assign month_name = 'mai'
+                when '06'
+                  assign month_name = 'jun'
+                when '07'
+                  assign month_name = 'jul'
+                when '08'
+                  assign month_name = 'ago'
+                when '09'
+                  assign month_name = 'set'
+                when '10'
+                  assign month_name = 'out'
+                when '11'
+                  assign month_name = 'nov'
+                when '12'
+                  assign month_name = 'dez'
+              endcase
+            -%}
+          <span class="article-date">{% render 'icon-calender' %} {{ article.published_at | date: '%d' }} {{ month_name }}</span>
           {%- endif -%}
           {%- if show_author -%}
           <span class="article-author">{% render 'user-icon' %} {{ article.author }}</span>
