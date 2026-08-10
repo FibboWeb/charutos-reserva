@@ -1,0 +1,28 @@
+---
+description: Padrões do tema Shopify Charutos Reserva — seções, snippets, assets e design
+alwaysApply: true
+---
+
+# Tema Shopify — Charutos Reserva
+
+Siga `AGENTS.md` na raiz e `.claude/docs/design-system.md`.
+
+## Estrutura real deste repo
+
+- `sections/`, `snippets/`, `assets/`, `templates/` (JSON OS2.0), `layout/`, `config/`, `locales/`
+- Sem pasta `blocks/`, sem npm, sem `shopify.theme.toml`
+- CSS/JS em `assets/`; custom global em `assets/custom.css` (carregado após `base.css`)
+
+## Regras de implementação
+
+```liquid
+{% render 'snippet-name', product: product %}
+{{ 'section-foo.css' | asset_url | stylesheet_tag }}
+{{ 'chave' | t }}
+```
+
+- Preferir editar seções/snippets/assets; JSON de template/`settings_data.json` pode ser sobrescrito pelo Theme Editor
+- Paleta: `#1A322C`, `#C49A3C`, `#8B5E3C`, `#F5F0E8`, `#D4C5A9` — fonte Inter
+- Blog: `blog-rei-dos-charutos`
+- Não migrar para theme blocks / `{% stylesheet %}` sem pedido explícito
+- Não duplicar jQuery, Swiper, WOW ou bundles já no `layout/theme.liquid`
