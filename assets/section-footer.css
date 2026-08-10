@@ -105,12 +105,66 @@ footer .banner__media.media {
   max-width: 76rem;
   margin: 0 auto;
 }
-.footer-block__newsletter .newsletter-form__field-wrapper .field__input{
-  background:transparent;
-   border: var(--inputs-border-width) solid rgb(var(--color-foreground));
-   color: var(--gradient-base-background-1);
+.footer-block__newsletter .newsletter-form.formIntegration .newsletter-form__field-wrapper .block {
+  margin-bottom: 1rem;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .newsletter-form__submit-block .submit {
+  position: relative;
+  width: 100%;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .newsletter-form__submit {
+  width: 100%;
+  height: 5rem;
+  margin: 0;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .div_PHN.hidden_DDI .div_PHN_DDI {
+  display: none;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .div_PHN.hidden_DDI .div_PHN_NUM {
+  width: 100%;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .spinner {
+  display: none;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: 18px;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivMessageSuccess,
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivMessageAlert,
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivMessageError,
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivCaptchaMessage {
+  display: none;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.4rem;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivMessageSuccess {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivMessageAlert,
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivMessageError,
+.footer-block__newsletter .newsletter-form.formIntegration .DinamizeDivCaptchaMessage {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.footer-block__newsletter .newsletter-form__field-wrapper .field__input {
+  background: transparent;
+  border: var(--inputs-border-width) solid rgb(var(--color-foreground));
+  color: var(--gradient-base-background-1);
   border-radius: 30px;
 }
+
 .footer-block__newsletter .newsletter-form__field-wrapper .field__input:focus{
    border: var(--inputs-border-width) solid var(--gradient-base-accent-2);
 }
