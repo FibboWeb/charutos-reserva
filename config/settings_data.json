@@ -137,7 +137,7 @@
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": true,
-    "search_tags": "featured, trendy, sale, new",
+    "search_tags": "charutos, cigarrilhas, kits, acessórios",
     "search_collection": "new-arrivals",
     "swiper_enable": true,
     "centered_slide": false,
@@ -146,7 +146,8 @@
     "show_secondary_image": true,
     "show_new_tag": true,
     "show_rating": true,
-    "favicon": "shopify://shop_images/Frame_3.png",
+    "favicon": "shopify://shop_images/favicon.png",
+    "favicon_dark": "shopify://shop_images/logo-dark-theme.png",
     "flash-text1": "🔥 Welcome to Framework",
     "flash-text2": "Come back! 🔥",
     "currency_code_enabled": false,
@@ -587,7 +588,8 @@
               "menu": "customer-account-main-menu",
               "alignment": "left",
               "list_style": "vertical",
-              "column_width": 18
+              "column_width": 18,
+              "nofollow_links": true
             }
           },
           "bd27e402-31b6-4bd2-9c8f-b64d9598283f": {
@@ -612,7 +614,7 @@
           "page_full_width_spacing": false,
           "color_scheme": "inverse",
           "show_social": true,
-          "copyright_content": "<p>Charutos Reserva todos os direitos reservados © 2026 N1.AG</p>",
+          "copyright_content": "<p>Charutos Reserva todos os direitos reservados © 2026 <a href='https://www.n1.ag/' target='_blank' title='N1.AG'>N1.AG</a></p>",
           "payment_enable": true,
           "footer_default": false,
           "enable_follow_on_shop": true,

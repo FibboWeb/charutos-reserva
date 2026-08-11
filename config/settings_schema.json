@@ -1579,6 +1579,12 @@
         "info": "t:settings_schema.favicon.settings.favicon.info"
       },
       {
+        "type": "image_picker",
+        "id": "favicon_dark",
+        "label": "t:settings_schema.favicon.settings.favicon_dark.label",
+        "info": "t:settings_schema.favicon.settings.favicon_dark.info"
+      },
+      {
         "type": "text",
         "id": "flash-text1",
         "default": "Welcome to OS!",

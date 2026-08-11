@@ -103,7 +103,10 @@
       <a href="{{ section.settings.link }}" class="banner-img__link"{% if section.settings.link_title != blank %} aria-label="{{ section.settings.link_title | escape }}"{% endif %}>
     {%- endif -%}
     {%- if section.settings.bg-image != blank -%}
-      <img src="{{ section.settings.bg-image | image_url: width: 1920, height: 300 }}" alt="{{ section.settings.link_title | default: section.settings.bg-image.alt | escape }}">
+      {%- liquid
+        assign banner_alt = section.settings.link_title | default: section.settings.heading | default: section.settings.bg-image.alt
+      -%}
+      <img src="{{ section.settings.bg-image | image_url: width: 1920, height: 300 }}" alt="{{ banner_alt | escape }}"{% if banner_alt == blank %} role="presentation"{% endif %}>
     {%- else -%}
       {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder_svg' }}
     {%- endif -%}

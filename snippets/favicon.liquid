@@ -1,0 +1,38 @@
+{%- comment -%}
+  Favicons via Theme settings (PNG/JPG/GIF/WebP).
+  Dois ícones com media query prefers-color-scheme quando favicon_dark está definido.
+{%- endcomment -%}
+{%- liquid
+  assign favicon_light_32 = blank
+  assign favicon_dark_32 = blank
+  assign apple_touch_180 = blank
+
+  if settings.favicon != blank
+    assign favicon_light_32 = settings.favicon | image_url: width: 32, height: 32
+    assign apple_touch_180 = settings.favicon | image_url: width: 180, height: 180
+  endif
+
+  if settings.favicon_dark != blank
+    assign favicon_dark_32 = settings.favicon_dark | image_url: width: 32, height: 32
+    if apple_touch_180 == blank
+      assign apple_touch_180 = settings.favicon_dark | image_url: width: 180, height: 180
+    endif
+  endif
+-%}
+
+{%- if favicon_light_32 != blank and favicon_dark_32 != blank -%}
+  <link rel="icon" href="{{ favicon_light_32 }}" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="{{ favicon_dark_32 }}" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link rel="shortcut icon" href="{{ favicon_light_32 }}" type="image/png" media="(prefers-color-scheme: light)">
+  <link rel="shortcut icon" href="{{ favicon_dark_32 }}" type="image/png" media="(prefers-color-scheme: dark)">
+{%- elsif favicon_light_32 != blank -%}
+  <link rel="icon" href="{{ favicon_light_32 }}" type="image/png" sizes="32x32">
+  <link rel="shortcut icon" href="{{ favicon_light_32 }}" type="image/png">
+{%- elsif favicon_dark_32 != blank -%}
+  <link rel="icon" href="{{ favicon_dark_32 }}" type="image/png" sizes="32x32">
+  <link rel="shortcut icon" href="{{ favicon_dark_32 }}" type="image/png">
+{%- endif -%}
+
+{%- if apple_touch_180 != blank -%}
+  <link rel="apple-touch-icon" href="{{ apple_touch_180 }}" sizes="180x180">
+{%- endif -%}

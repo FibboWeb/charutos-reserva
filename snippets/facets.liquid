@@ -54,11 +54,13 @@
                   </facet-remove>
                 </div>
                 {%- for filter in results.filters -%}
+              {%- capture filter_label -%}{% render 'facet-label', label: filter.label %}{%- endcapture -%}
+              {%- assign filter_label = filter_label | strip -%}
                   {%- for value in filter.active_values -%}
                     <facet-remove>
                       <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                         <span class="active-facets__button-inner button button--tertiary">
-                          {{ filter.label }}: {{ value.label | escape }}
+                          {{ filter_label }}: {{ value.label | escape }}
                           {% render 'icon-close-small' %}
                           <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                         </span>
@@ -85,13 +87,15 @@
             <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
             {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
             {%- for filter in results.filters -%}
+              {%- capture filter_label -%}{% render 'facet-label', label: filter.label %}{%- endcapture -%}
+              {%- assign filter_label = filter_label | strip -%}
               {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
               {% case filter.type %}
               {% when 'boolean' or 'list' %}
                 <details id="Details-{{ forloop.index }}-{{ section.id }}" class=" detail-{{ filter.label | escape }} {% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter" data-index="{{ forloop.index }}" >
-                  <summary class="facets__summary caption-large focus-offset" aria-label="{{ filter.label }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})">
+                  <summary class="facets__summary caption-large focus-offset" aria-label="{{ filter_label }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})">
                     <div>
-                      <span>{{ filter.label | escape }}{%- if filter_type == 'vertical' -%}<span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}"> ({{ filter.active_values.size }})</span>{% endif %}</span>
+                      <span>{{ filter_label | escape }}{%- if filter_type == 'vertical' -%}<span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}"> ({{ filter.active_values.size }})</span>{% endif %}</span>
                       {% render 'icon-caret' %}
                     </div>
                   </summary>
@@ -107,7 +111,7 @@
                       </div>
                     {%- endif -%}
                     <fieldset class="facets-wrap parent-wrap {% if filter_type == 'vertical' %} facets-wrap-vertical{% endif %}">
-                      <legend class="visually-hidden">{{ filter.label | escape }}</legend>
+                      <legend class="visually-hidden">{{ filter_label | escape }}</legend>
                       <ul class="{% if filter_type != 'vertical' %} facets__list{% endif %} list-unstyled no-js-hidden facets__list-{{ filter.label | handle }} role="list">
                  {% assign ColorExists = filter.label | handle %}      
                 {%- for value in filter.values -%}
@@ -220,7 +224,7 @@
                 <details id="Details-{{ forloop.index }}-{{ section.id }}" class="detail-{{ filter.label | escape }} {% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter" data-index="{{ forloop.index }}" {% if filter_type == 'vertical' %} open {% endif %} >
                   <summary class="facets__summary caption-large focus-offset">
                     <div>
-                      <span>{{ filter.label | escape }}</span>
+                      <span>{{ filter_label | escape }}</span>
                       {% render 'icon-caret' %}
                     </div>
                   </summary>
@@ -286,11 +290,13 @@
           {%- if filter_type == 'horizontal' -%}
             <div class="active-facets active-facets-desktop">
               {%- for filter in results.filters -%}
+              {%- capture filter_label -%}{% render 'facet-label', label: filter.label %}{%- endcapture -%}
+              {%- assign filter_label = filter_label | strip -%}
                 {%- for value in filter.active_values -%}
                   <facet-remove>
                     <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                       <span class="active-facets__button-inner button button--tertiary">
-                        {{ filter.label }}: {{ value.label | escape }}
+                        {{ filter_label }}: {{ value.label | escape }}
                         {% render 'icon-close-small' %}
                         <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                       </span>
@@ -471,12 +477,14 @@
             <div class="mobile-facets__main has-submenu gradient">
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}
+              {%- capture filter_label -%}{% render 'facet-label', label: filter.label %}{%- endcapture -%}
+              {%- assign filter_label = filter_label | strip -%}
                   {% case filter.type %}
                   {% when 'boolean' or 'list' %}
                     <details id="Details-Mobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
                       <summary class="mobile-facets__summary focus-inset">
                         <div>
-                          <span>{{ filter.label | escape }}</span>
+                          <span>{{ filter_label | escape }}</span>
                           <span class="mobile-facets__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
                           <noscript>{% render 'icon-caret' %}</noscript>
                         </div>
@@ -484,7 +492,7 @@
                       <div id="FacetMobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__submenu gradient">
                         <button class="mobile-facets__close-button link link--text focus-inset" aria-expanded="true" type="button">
                           {% render 'icon-arrow' %}
-                          {{ filter.label | escape }}
+                          {{ filter_label | escape }}
                         </button>
                         <ul class="mobile-facets__list list-unstyled" role="list">
                           {%- for value in filter.values -%}
@@ -526,7 +534,7 @@
                     <details id="Details-Mobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
                       <summary class="mobile-facets__summary focus-inset">
                         <div>
-                          <span>{{ filter.label | escape }}</span>
+                          <span>{{ filter_label | escape }}</span>
                           <span class="mobile-facets__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
                           <noscript>{% render 'icon-caret' %}</noscript>
                         </div>
@@ -534,7 +542,7 @@
                       <div id="FacetMobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__submenu gradient">
                         <button class="mobile-facets__close-button link link--text focus-inset" aria-expanded="true" type="button">
                           {% render 'icon-arrow' %}
-                          {{ filter.label | escape }}
+                          {{ filter_label | escape }}
                         </button>
 
                         {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
@@ -637,11 +645,13 @@
 
   <div class="active-facets active-facets-mobile  large-up-hide">
     {%- for filter in results.filters -%}
+              {%- capture filter_label -%}{% render 'facet-label', label: filter.label %}{%- endcapture -%}
+              {%- assign filter_label = filter_label | strip -%}
       {%- for value in filter.active_values -%}
         <facet-remove>
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
             <span class="active-facets__button-inner button button--tertiary">
-              {{ filter.label }}: {{ value.label | escape }}
+              {{ filter_label }}: {{ value.label | escape }}
               {% render 'icon-close-small' %}
               <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
             </span>
@@ -752,11 +762,13 @@
       <form id="FacetFiltersPillsForm" class="facets__form">
         <div class="active-facets active-facets-desktop">
           {%- for filter in results.filters -%}
+              {%- capture filter_label -%}{% render 'facet-label', label: filter.label %}{%- endcapture -%}
+              {%- assign filter_label = filter_label | strip -%}
             {%- for value in filter.active_values -%}
               <facet-remove>
                 <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                   <span class="active-facets__button-inner button button--tertiary">
-                    {{ filter.label }}: {{ value.label | escape }}
+                    {{ filter_label }}: {{ value.label | escape }}
                     {% render 'icon-close-small' %}
                     <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                   </span>

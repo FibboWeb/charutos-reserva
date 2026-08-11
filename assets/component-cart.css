@@ -22,7 +22,8 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    left: 80px;
+    margin-left: .5rem;
+    left: auto;
 }
 
 @media screen and (max-width:750px){

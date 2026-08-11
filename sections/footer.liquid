@@ -162,10 +162,26 @@
                  </div>
                 {%- when 'link_list' -%}
                   {%- if block.settings.menu != blank  -%}
+                    {%- liquid
+                      assign footer_menu_nofollow = block.settings.nofollow_links
+                      if block.settings.menu.handle == 'customer-account-main-menu'
+                        assign footer_menu_nofollow = true
+                      endif
+                    -%}
                     <ul class="footer-block__details-content footer_menu {% unless block.settings.list_style == 'vertical' %}list-menu list-menu--inline {% endunless %}list-unstyled {{ block.settings.alignment }}">
                       {%- for link in block.settings.menu.links -%}
+                        {%- liquid
+                          assign footer_link_nofollow = footer_menu_nofollow
+                          if link.url contains '/account/'
+                            assign footer_link_nofollow = true
+                          endif
+                        -%}
                         <li>
-                          <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
+                          <a
+                            href="{{ link.url }}"
+                            class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                            {% if footer_link_nofollow %}rel="nofollow"{% endif %}
+                          >
                             {{ link.title }}
                           </a>
                         </li>
@@ -265,7 +281,7 @@
                   <h2 class="footer-block__heading">{{ section.settings.newsletter_heading  }}</h2>
                   {%- endif -%}
                  <div class="footer-block__details-content-newsletter">
-                    <h5 class="news-letter">{{ block.settings.newsletter_subtext }}</h5>
+                    <span class="news-letter">{{ block.settings.newsletter_subtext }}</span>
                   </div>
                   
                   {% render 'newsletter-dynamize-form', form_id: section.id, extra_class: 'footer__newsletter newsletter-form' %}
@@ -471,7 +487,14 @@
             "unit": "%",
             "label": "t:sections.all.footer.column_width",
             "default": 25
-           }
+           },
+        {
+          "type": "checkbox",
+          "id": "nofollow_links",
+          "default": false,
+          "label": "Adicionar rel=\"nofollow\" nos links",
+          "info": "Indica aos buscadores que não sigam estes links (útil para área de conta/login)."
+        }
       ]
     },
 

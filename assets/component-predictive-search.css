@@ -243,6 +243,14 @@ predictive-search[loading] .predictive-search__results-list:first-child {
 .search-modal  h3.recently_purchased {
     text-align: center;
 }
+.predictive-search__no-results {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.75);
+}
+predictive-search[open] .search-recommendations {
+  display: none;
+}
 .search-modal .search-tags li a {
     display: block;
     padding: 0 10px;

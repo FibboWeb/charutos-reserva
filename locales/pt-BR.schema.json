@@ -146,7 +146,17 @@
       "settings": {
         "favicon": {
           "label": "Imagem de favicon",
-          "info": "Será reduzida para 32 x 32 pixels"
+          "info": "Será reduzida para 32 x 32 pixels. Usada quando o sistema está em tema claro."
+        },
+        "favicon_dark": {
+          "label": "Favicon (tema escuro)",
+          "info": "Alternativa para prefers-color-scheme: dark. Será reduzida para 32 x 32 pixels."
+        },
+        "flash-text1": {
+          "label": "Texto flash 1"
+        },
+        "flash-text2": {
+          "label": "Texto flash 2"
         }
       }
     },

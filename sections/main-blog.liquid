@@ -27,16 +27,14 @@
 <div class="main-blog {{ section.settings.sidebar_settings }}">
   {% unless section.settings.sidebar_settings == 'no-sidebar' %}
 <div class="blog-sidebar facets-vertical sidebar-sticky"> 
-     <button class="toggleFilter"> {% render 'icon-filter' %} Filter</button>
+     <button class="toggleFilter"> {% render 'icon-filter' %} {{ 'products.facets.filter_button' | t }}</button>
 <aside>
   <span class="close-sidebar">{%  render 'icon-close' %}</span>
      {% if section.settings.show_menu %}  
 {% assign sidebar_menu = section.settings.linklist %}
 {% if linklists[sidebar_menu].links.size > 0 %}
 <div class="filter-panel-menu">
-  {%- if section.settings.menu_title != '' -%}
-  <h5 class="sidebar_title">{{ section.settings.menu_title }}</h5>
-  {%- endif -%}
+  <h5 class="sidebar_title">{{ 'blogs.sidebar.categories' | t }}</h5>
   <div class="filter-panel" id="accordian">
     <ul>
       {% for link in linklists[sidebar_menu].links %}
@@ -61,16 +59,14 @@
 {% endif %} 
     {% if section.settings.show_tags %}  
   <div class="widget-tags">
-    {% if section.settings.tags_title != blank %} 
-    <h5 class="sidebar_title">{{ section.settings.tags_title }}</h5>  
-    {% endif %}
+    <h5 class="sidebar_title">{{ 'blogs.sidebar.tags' | t }}</h5>
     <div class="blog-sidebar-panel">
       <ul class="categories">
         {% for tag in blog.all_tags limit: section.settings.limit %}
         {% if current_tags contains tag %}
         <li class="active">{{ tag }}</li>
         {% else %}
-        <li>{{ tag | link_to_tag: tag }}</li>
+        <li>{% render 'blog-tag-link', blog: blog, tag: tag %}</li>
         {% endif %}
         {% endfor %}
       </ul>  
@@ -79,9 +75,7 @@
      {% endif %} 
   {% if section.settings.show_articles %}  
   <div class="widget-articles">
-    {% if section.settings.article_title != blank %} 
-    <h5 class="sidebar_title">{{ section.settings.article_title }}</h5>  
-    {% endif %}
+    <h5 class="sidebar_title">{{ 'blogs.sidebar.recent_posts' | t }}</h5>
     <div class="blog-sidebar-panel">
       <ul class="recent_article">
         {% for article in blogs[blog.handle].articles limit: section.settings.limit %}
@@ -107,10 +101,10 @@
           </div>
           {% endif %}               
           <div class="article-description">
-           <span class="divider">{{ article.published_at | date: "%b %d" }}</span>
-            <h6 class="article-title"><a href="{{ article.url }}">{{ article.title | truncate: 40 }}</a></h6>
+           <span class="divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+            <h3 class="article-title"><a href="{{ article.url }}">{{ article.title | truncate: 40 }}</a></h3>
             {% if section.settings.side_show_excerpts  %}
-            <p>{{ article.content | strip_html | truncatewords: 7 }}</p>
+            <p class="article-excerpt">{{ article.content | strip_html | truncate: 50 }}</p>
             {% endif %}
           </div>
         </li>

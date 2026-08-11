@@ -786,6 +786,7 @@
         "color_scheme": "background-1",
         "container_color_scheme": "accent-1",
         "open_first_collapsible_row": true,
+        "enable_faq_schema": true,
         "enable_address_block": true,
         "image": "shopify://shop_images/reserva-categorais-520x700-04_e169ca5b-3231-47cf-8a1e-03374989d153.jpg",
         "video_url": "",
