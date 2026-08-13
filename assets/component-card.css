@@ -1376,10 +1376,10 @@ p.rating-count.caption span {
   box-shadow: none;
 }
 
-/* Card buy action — botão Comprar sempre no fundo do card */
+/* Card buy action — botão Comprar no fundo, preço imediatamente acima */
 .card__buy-action {
-  margin-top: auto;
-  padding-top: 1.2rem;
+  margin-top: 0;
+  padding-top: 0.4rem;
   width: 100%;
 }
 .card__buy-action .quick-add__submit.button {
@@ -1425,10 +1425,15 @@ p.rating-count.caption span {
   flex-direction: column;
 }
 
+.product-tab-demo .card__information > .price,
+.lush-product-tab-demo .card__information > .price {
+  margin-top: auto;
+}
+
 .product-tab-demo .card__buy-action,
 .lush-product-tab-demo .card__buy-action {
-  margin-top: auto;
-  padding-top: 1.2rem;
+  margin-top: 0;
+  padding-top: 0.4rem;
 }
 
 

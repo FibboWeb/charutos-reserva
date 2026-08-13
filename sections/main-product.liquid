@@ -1776,19 +1776,13 @@
                 "price": {{ variant.price | divided_by: 100.00 | json }},
                 "priceCurrency": {{ cart.currency.iso_code | json }},
                 "url": {{ request.origin | append: variant.url | json }},
-                "shippingDetails": {
-                  "@type": "OfferShippingDetails",
-                  "shippingDestination": {
-                    "@type": "DefinedRegion",
-                    "addressCountry": "BR"
-                  }
-                },
                 "hasMerchantReturnPolicy": {
                   "@type": "MerchantReturnPolicy",
                   "applicableCountry": "BR",
                   "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
                   "merchantReturnDays": 7,
                   "returnMethod": "https://schema.org/ReturnByMail",
+                  "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
                   "url": {{ request.origin | append: '/pages/politicas-de-troca-e-devolucao' | json }}
                 }
               }{% unless forloop.last %},{% endunless %}
