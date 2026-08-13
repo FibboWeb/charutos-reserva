@@ -1989,6 +1989,33 @@ ul.dt-nav li .sub-menu-lists a:hover {
   fill: #ffffff !important;
 }
 
+/* Konfidency Reviews */
+.card-information.review .konfidency-reviews-multi:empty,
+.card-information.review .konfidency-reviews-showcase-rating.empty,
+.card-information.review .konfidency-reviews-multi .empty {
+  display: none;
+}
+
+.product__info-container .konfidency-reviews-summary {
+  margin: 0.4rem 0 0.8rem;
+}
+
+.product__info-container .konfidency-reviews-summary-inner.empty {
+  display: none;
+}
+
+.starsV2 {
+  display: flex;
+}
+
+.konfidency-reviews-details {
+  min-height: 1px;
+}
+
+.footer .konfidency-store-review {
+  margin-top: 1rem;
+}
+
 .menu-drawer__inner-submenu li {
   border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }
