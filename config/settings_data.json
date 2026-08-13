@@ -279,7 +279,7 @@
               "url": "shopify://collections/acessorios",
               "icon": "charutos",
               "icon_image": "shopify://shop_images/acessorios.svg",
-              "submenu": "",
+              "submenu": "acessorios",
               "columns": 2,
               "mega_menu": true
             }

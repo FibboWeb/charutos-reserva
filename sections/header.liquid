@@ -390,10 +390,12 @@
   /* Backdrop overlay must also sit above the topbar */
   .js menu-drawer > details > summary::before,
   .js menu-drawer > details[open]:not(.menu-opening) > summary::before { z-index: 1000; }
-  .menu-drawer a,
+  .menu-drawer__navigation > .menu-drawer__menu > li > a,
+  .menu-drawer__navigation > .menu-drawer__menu > li > details > summary,
   .menu-drawer .drawer-title,
   .menu-drawer .menu-drawer__menu-item,
-  .menu-drawer .header-drawer__close { color: #FFFFFF; }
+  .menu-drawer .header-drawer__close,
+  .menu-drawer__inner-submenu > .menu-drawer__close-button { color: #FFFFFF; }
   .menu-drawer .menu-drawer__menu-item:hover,
   .menu-drawer .menu-drawer__menu-item--active,
   .menu-drawer .menu-drawer__close-button:hover { background-color: rgba(255,255,255,0.06); }
