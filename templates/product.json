@@ -38,7 +38,7 @@
           "settings": {
             "minqty": 20,
             "maxqty": 30,
-            "item_sold": " itens vendidos nas ",
+            "item_sold": "itens vendidos nas",
             "products": "últimas",
             "hours": "horas"
           }
