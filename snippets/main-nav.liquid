@@ -51,15 +51,92 @@
               </a>
 
               {%- if has_sub -%}
-                <div class="cr-main-nav__panel" role="region">
+                {%- liquid
+                  assign panel_has_third = false
+                  for link in sub.links
+                    if link.links.size > 0
+                      assign panel_has_third = true
+                      break
+                    endif
+                  endfor
+                  assign use_mega = false
+                  if block.settings.mega_menu and panel_has_third
+                    assign use_mega = true
+                  endif
+                  assign panel_columns = block.settings.columns | default: 2
+                -%}
+                <div class="cr-main-nav__panel{% if use_mega %} cr-main-nav__panel--mega{% elsif panel_has_third %} cr-main-nav__panel--columns{% endif %}" role="region">
                   <div class="cr-main-nav__panel-inner">
-                    <ul class="cr-main-nav__panel-links">
-                      {%- for link in sub.links -%}
-                        <li{% if forloop.first %} class="cr-main-nav__panel-item--all"{% endif %}>
-                          <a href="{{ link.url }}" class="cr-main-nav__panel-link{% if forloop.first %} cr-main-nav__panel-link--all{% endif %}">{{ link.title }}</a>
-                        </li>
-                      {%- endfor -%}
-                    </ul>
+                    {%- if use_mega -%}
+                      <div class="cr-main-nav__mega" style="--cr-nav-columns: {{ panel_columns }}">
+                        <ul class="cr-main-nav__mega-sidebar" role="menu">
+                          {%- for link in sub.links -%}
+                            {%- assign link_has_children = false -%}
+                            {%- if link.links.size > 0 -%}{%- assign link_has_children = true -%}{%- endif -%}
+                            <li class="cr-main-nav__mega-item{% if link_has_children %} cr-main-nav__mega-item--has-children{% endif %}{% if forloop.first %} cr-main-nav__mega-item--all{% endif %}"
+                                role="none"
+                                data-mega-panel="cr-mega-{{ block.id }}-{{ forloop.index }}">
+                              <a href="{{ link.url }}"
+                                 class="cr-main-nav__mega-link{% if forloop.first %} cr-main-nav__mega-link--all{% endif %}"
+                                 role="menuitem"
+                                 {% if link_has_children %}aria-haspopup="true"{% endif %}>
+                                {{ link.title }}
+                                {%- if link_has_children -%}
+                                  <svg class="cr-main-nav__mega-arrow" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 1l4 4-4 4"/>
+                                  </svg>
+                                {%- endif -%}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                        <div class="cr-main-nav__mega-content">
+                          {%- assign first_mega_panel = true -%}
+                          {%- for link in sub.links -%}
+                            {%- if link.links.size > 0 -%}
+                              <div class="cr-main-nav__mega-subpanel"
+                                   id="cr-mega-{{ block.id }}-{{ forloop.index }}"
+                                   role="menu"
+                                   {% unless first_mega_panel %}hidden{% endunless %}>
+                                <ul class="cr-main-nav__mega-sublist">
+                                  {%- for child in link.links -%}
+                                    <li role="none">
+                                      <a href="{{ child.url }}" class="cr-main-nav__mega-sublink" role="menuitem">{{ child.title }}</a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                              {%- assign first_mega_panel = false -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </div>
+                      </div>
+                    {%- elsif panel_has_third -%}
+                      <ul class="cr-main-nav__panel-columns" style="--cr-nav-columns: {{ panel_columns }}">
+                        {%- for link in sub.links -%}
+                          <li class="cr-main-nav__panel-column{% if forloop.first %} cr-main-nav__panel-column--all{% endif %}">
+                            <a href="{{ link.url }}" class="cr-main-nav__panel-heading{% if forloop.first %} cr-main-nav__panel-heading--all{% endif %}">{{ link.title }}</a>
+                            {%- if link.links.size > 0 -%}
+                              <ul class="cr-main-nav__panel-sublist">
+                                {%- for child in link.links -%}
+                                  <li>
+                                    <a href="{{ child.url }}" class="cr-main-nav__panel-sublink">{{ child.title }}</a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            {%- endif -%}
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- else -%}
+                      <ul class="cr-main-nav__panel-links">
+                        {%- for link in sub.links -%}
+                          <li{% if forloop.first %} class="cr-main-nav__panel-item--all"{% endif %}>
+                            <a href="{{ link.url }}" class="cr-main-nav__panel-link{% if forloop.first %} cr-main-nav__panel-link--all{% endif %}">{{ link.title }}</a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
                   </div>
                 </div>
               {%- endif -%}
@@ -85,15 +162,70 @@
               {%- endif -%}
             </a>
             {%- if has_sub -%}
-              <div class="cr-main-nav__panel" role="region">
+              {%- liquid
+                assign panel_has_third = false
+                for child in link.links
+                  if child.links.size > 0
+                    assign panel_has_third = true
+                    break
+                  endif
+                endfor
+              -%}
+              <div class="cr-main-nav__panel{% if panel_has_third %} cr-main-nav__panel--mega{% endif %}" role="region">
                 <div class="cr-main-nav__panel-inner">
-                  <ul class="cr-main-nav__panel-links">
-                    {%- for child in link.links -%}
-                      <li{% if forloop.first %} class="cr-main-nav__panel-item--all"{% endif %}>
-                        <a href="{{ child.url }}" class="cr-main-nav__panel-link{% if forloop.first %} cr-main-nav__panel-link--all{% endif %}">{{ child.title }}</a>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
+                  {%- if panel_has_third -%}
+                    <div class="cr-main-nav__mega" style="--cr-nav-columns: 2">
+                      <ul class="cr-main-nav__mega-sidebar" role="menu">
+                        {%- for child in link.links -%}
+                          {%- assign child_has_children = false -%}
+                          {%- if child.links.size > 0 -%}{%- assign child_has_children = true -%}{%- endif -%}
+                          <li class="cr-main-nav__mega-item{% if child_has_children %} cr-main-nav__mega-item--has-children{% endif %}{% if forloop.first %} cr-main-nav__mega-item--all{% endif %}"
+                              role="none"
+                              data-mega-panel="cr-mega-fallback-{{ forloop.parentloop.index }}-{{ forloop.index }}">
+                            <a href="{{ child.url }}"
+                               class="cr-main-nav__mega-link{% if forloop.first %} cr-main-nav__mega-link--all{% endif %}"
+                               role="menuitem"
+                               {% if child_has_children %}aria-haspopup="true"{% endif %}>
+                              {{ child.title }}
+                              {%- if child_has_children -%}
+                                <svg class="cr-main-nav__mega-arrow" viewBox="0 0 6 10" fill="none" aria-hidden="true">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 1l4 4-4 4"/>
+                                </svg>
+                              {%- endif -%}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                      <div class="cr-main-nav__mega-content">
+                        {%- assign first_mega_panel = true -%}
+                        {%- for child in link.links -%}
+                          {%- if child.links.size > 0 -%}
+                            <div class="cr-main-nav__mega-subpanel"
+                                 id="cr-mega-fallback-{{ forloop.parentloop.index }}-{{ forloop.index }}"
+                                 role="menu"
+                                 {% unless first_mega_panel %}hidden{% endunless %}>
+                              <ul class="cr-main-nav__mega-sublist">
+                                {%- for grandchild in child.links -%}
+                                  <li role="none">
+                                    <a href="{{ grandchild.url }}" class="cr-main-nav__mega-sublink" role="menuitem">{{ grandchild.title }}</a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            </div>
+                            {%- assign first_mega_panel = false -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  {%- else -%}
+                    <ul class="cr-main-nav__panel-links">
+                      {%- for child in link.links -%}
+                        <li{% if forloop.first %} class="cr-main-nav__panel-item--all"{% endif %}>
+                          <a href="{{ child.url }}" class="cr-main-nav__panel-link{% if forloop.first %} cr-main-nav__panel-link--all{% endif %}">{{ child.title }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
                 </div>
               </div>
             {%- endif -%}
@@ -316,6 +448,200 @@
     color: #C49A3C;
   }
 
+  /* ── Mega menu (sidebar L2 + painel L3) ── */
+  .cr-main-nav__panel--mega .cr-main-nav__panel-inner {
+    padding: 0;
+    max-height: min(70vh, 520px);
+    overflow: hidden;
+  }
+
+  .cr-main-nav__mega {
+    display: flex;
+    align-items: stretch;
+    min-height: 220px;
+    max-height: inherit;
+  }
+
+  .cr-main-nav__mega-sidebar {
+    list-style: none;
+    margin: 0;
+    padding: 0.75rem 0;
+    width: min(280px, 32%);
+    min-width: 220px;
+    flex-shrink: 0;
+    border-right: 1px solid #D4C5A9;
+    overflow-y: auto;
+    max-height: inherit;
+    background: #F5F0E8;
+  }
+
+  .cr-main-nav__mega-item {
+    margin: 0;
+  }
+
+  .cr-main-nav__mega-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    color: #1A322C;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .cr-main-nav__mega-link:hover,
+  .cr-main-nav__mega-item.is-active > .cr-main-nav__mega-link,
+  .cr-main-nav__mega-item--has-children:hover > .cr-main-nav__mega-link,
+  .cr-main-nav__mega-item--has-children:focus-within > .cr-main-nav__mega-link {
+    color: #C49A3C;
+    background-color: rgba(196, 154, 60, 0.08);
+  }
+
+  .cr-main-nav__mega-item--all {
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid #C49A3C;
+  }
+
+  .cr-main-nav__mega-link--all {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .cr-main-nav__mega-arrow {
+    width: 6px;
+    height: 10px;
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .cr-main-nav__mega-item--has-children:hover > .cr-main-nav__mega-link .cr-main-nav__mega-arrow,
+  .cr-main-nav__mega-item.is-active > .cr-main-nav__mega-link .cr-main-nav__mega-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+
+  .cr-main-nav__mega-content {
+    flex: 1;
+    position: relative;
+    padding: 1.25rem 2rem;
+    overflow-y: auto;
+    max-height: inherit;
+    min-width: 0;
+  }
+
+  .cr-main-nav__mega-subpanel {
+    width: 100%;
+  }
+
+  .cr-main-nav__mega-subpanel[hidden] {
+    display: none;
+  }
+
+  .cr-main-nav__mega-sublist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--cr-nav-columns, 2), minmax(0, 1fr));
+    gap: 0.35rem 2rem;
+    align-content: start;
+  }
+
+  .cr-main-nav__mega-sublink {
+    display: block;
+    padding: 0.45rem 0;
+    color: #1A322C;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+    transition: color 0.15s ease;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .cr-main-nav__mega-sublink:hover {
+    color: #C49A3C;
+  }
+
+  /* ── Layout em colunas (L2 heading + L3 lista) ── */
+  .cr-main-nav__panel-columns {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--cr-nav-columns, 2), minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+    align-items: start;
+  }
+
+  .cr-main-nav__panel-column--all {
+    grid-column: 1 / -1;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #C49A3C;
+  }
+
+  .cr-main-nav__panel-heading {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1A322C;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: color 0.15s ease;
+  }
+
+  .cr-main-nav__panel-heading--all {
+    font-size: 18px;
+  }
+
+  .cr-main-nav__panel-heading:hover {
+    color: #C49A3C;
+  }
+
+  .cr-main-nav__panel-sublist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cr-main-nav__panel-sublink {
+    display: block;
+    padding: 0.35rem 0;
+    color: #1A322C;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+
+  .cr-main-nav__panel-sublink:hover {
+    color: #C49A3C;
+  }
+
+  @media (min-width: 1200px) {
+    .cr-main-nav__mega-sidebar {
+      width: min(300px, 28%);
+    }
+
+    .cr-main-nav__mega-content {
+      padding: 1.5rem 2.5rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .cr-main-nav__panel-inner {
+      max-width: 1320px;
+    }
+  }
+
   /* ── Overflow button ── */
   .cr-main-nav__overflow-btn {
     display: flex;
@@ -371,5 +697,73 @@
 
     window.addEventListener('resize', checkOverflow);
     checkOverflow();
+
+    /* Mega menu: alterna painel L3 ao hover/focus na sidebar */
+    nav.querySelectorAll('.cr-main-nav__mega').forEach(function (mega) {
+      var items = mega.querySelectorAll('.cr-main-nav__mega-item--has-children[data-mega-panel]');
+      var panels = mega.querySelectorAll('.cr-main-nav__mega-subpanel');
+      if (!items.length || !panels.length) return;
+
+      var panelMap = {};
+      panels.forEach(function (panel) {
+        panelMap[panel.id] = panel;
+      });
+
+      function showPanel(panelId, activeItem) {
+        panels.forEach(function (panel) {
+          if (panel.id === panelId) {
+            panel.hidden = false;
+          } else {
+            panel.hidden = true;
+          }
+        });
+        items.forEach(function (item) {
+          item.classList.toggle('is-active', item === activeItem);
+        });
+      }
+
+      function showDefaultPanel() {
+        var firstItem = items[0];
+        if (!firstItem) return;
+        showPanel(firstItem.getAttribute('data-mega-panel'), firstItem);
+      }
+
+      items.forEach(function (item) {
+        var panelId = item.getAttribute('data-mega-panel');
+        if (!panelId || !panelMap[panelId]) return;
+
+        item.addEventListener('mouseenter', function () {
+          showPanel(panelId, item);
+        });
+
+        item.addEventListener('focusin', function () {
+          showPanel(panelId, item);
+        });
+      });
+
+      mega.addEventListener('mouseleave', showDefaultPanel);
+      showDefaultPanel();
+    });
+
+    /* aria-expanded nos itens top-level com dropdown */
+    nav.querySelectorAll('.cr-main-nav__item--has-panel').forEach(function (item) {
+      var link = item.querySelector(':scope > .cr-main-nav__link');
+      if (!link) return;
+
+      item.addEventListener('mouseenter', function () {
+        link.setAttribute('aria-expanded', 'true');
+      });
+      item.addEventListener('mouseleave', function () {
+        link.setAttribute('aria-expanded', 'false');
+      });
+      item.addEventListener('focusin', function () {
+        link.setAttribute('aria-expanded', 'true');
+      });
+      item.addEventListener('focusout', function (e) {
+        if (!item.contains(e.relatedTarget)) {
+          link.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
   })();
 {% endjavascript %}
