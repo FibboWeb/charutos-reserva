@@ -1,0 +1,8 @@
+{%- comment -%}
+  Estrelas Konfidency para cards e listagens de produto.
+  @param product {Object} — objeto product/card_product
+  @param show_rating {Boolean} — exibir widget (default: true)
+{%- endcomment -%}
+{%- if show_rating != false and product != blank -%}
+  <div class="konfidency-reviews-multi" data-sku="{{ product.id }}"></div>
+{%- endif -%}

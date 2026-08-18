@@ -1989,6 +1989,64 @@ ul.dt-nav li .sub-menu-lists a:hover {
   fill: #ffffff !important;
 }
 
+/* Konfidency Reviews */
+.card-information.review .konfidency-reviews-multi:empty,
+.card-information.review .konfidency-reviews-showcase-rating.empty,
+.card-information.review .konfidency-reviews-multi .empty {
+  display: none;
+}
+
+.card-wrapper .card-information.review:not(:has(.konfidency-reviews-showcase-rating:not(.empty))) {
+  display: none;
+  margin: 0;
+}
+
+/* Preço sempre imediatamente acima do botão Comprar */
+.card-wrapper .card > .card__content.for-arrow-alignment {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-wrapper .card__content.for-arrow-alignment > .card__information {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-wrapper .card__information > .price {
+  margin-top: auto;
+}
+
+.card-wrapper .card__information > .caption-large:empty {
+  display: none;
+}
+
+.card-wrapper .card__information > .card__buy-action {
+  margin-top: 0;
+  padding-top: 0.4rem;
+}
+
+.product__info-container .konfidency-reviews-summary {
+  margin: 0.4rem 0 0.8rem;
+}
+
+.product__info-container .konfidency-reviews-summary-inner.empty {
+  display: none;
+}
+
+.starsV2 {
+  display: flex;
+}
+
+.konfidency-reviews-details {
+  min-height: 1px;
+}
+
+.footer .konfidency-store-review {
+  margin-top: 1rem;
+}
+
 .menu-drawer__inner-submenu li {
   border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }
