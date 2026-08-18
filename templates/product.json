@@ -38,7 +38,7 @@
           "settings": {
             "minqty": 20,
             "maxqty": 30,
-            "item_sold": " itens vendidos nas ",
+            "item_sold": "itens vendidos nas",
             "products": "últimas",
             "hours": "horas"
           }
@@ -199,7 +199,7 @@
         "tab_style": "tab",
         "show_wishlist": true,
         "show_review_tab": true,
-        "rating_script": "<div style='clear:both'></div>\n  <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'>\n    {{ product.metafields.judgeme.widget }}\n  </div>",
+        "rating_script": "<div class=\"konfidency-reviews-details\" data-sku=\"{{ product.id }}\"></div>",
         "enable_sticky_bar": true,
         "sidebar_settings": "no-sidebar",
         "show_menu": false,

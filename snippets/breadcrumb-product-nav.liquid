@@ -1,0 +1,40 @@
+{%- comment -%}
+  Breadcrumb de produto: Home > Coleção
+  Ignora collections/all quando o produto pertence a outra coleção.
+  Accepts: product, collection
+{%- endcomment -%}
+
+{%- liquid
+  assign breadcrumb_collection = nil
+
+  if collection and collection.handle != 'all'
+    assign breadcrumb_collection = collection
+  endif
+
+  if breadcrumb_collection == nil
+    for col in product.collections
+      unless col.handle == 'all'
+        assign breadcrumb_collection = col
+        break
+      endunless
+    endfor
+  endif
+
+  if breadcrumb_collection == nil
+    if collection
+      assign breadcrumb_collection = collection
+    elsif product.collections.size > 0
+      assign breadcrumb_collection = product.collections.first
+    endif
+  endif
+-%}
+
+<a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+<span aria-hidden="true" class="breadcrumb__sep">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
+</span>
+{%- if breadcrumb_collection -%}
+  <a href="{{ breadcrumb_collection.url }}">{{ breadcrumb_collection.title }}</a>
+{%- else -%}
+  <a href="/collections/all">{{ 'general.breadcrumbs.all' | t }}</a>
+{%- endif -%}
