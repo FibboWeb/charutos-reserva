@@ -5,6 +5,12 @@
   .collection-hero-banner {
     min-height: {{ section.settings.min_height }}px;
   }
+
+  @media screen and (max-width: 749px) {
+    .collection-hero-banner {
+      min-height: {{ section.settings.min_height_mobile }}px;
+    }
+  }
 {%- endstyle -%}
 
 <div class="collection-hero-banner{% if collection.image %} collection-hero-banner--has-image{% endif %}"
@@ -47,6 +53,16 @@
       "unit": "px",
       "label": "Altura mínima",
       "default": 420
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "min": 80,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Altura mínima (mobile)",
+      "default": 160
     }
   ]
 }

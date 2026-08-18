@@ -225,19 +225,7 @@
            {%- for block in section.blocks -%}                                 
                   {%- if block.type == 'breadcrumb' and  block.settings.breadcrumb_position == 'left' -%}                  
                   <div class="{{ block.type }}-main-template">
-                  {% if collection %}
-                  <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a> 
-                  <span aria-hidden="true" class="breadcrumb__sep"> 
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
-                  </span>
-                  {% if collection.handle %}
-                  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-                  {{ collection.title | link_to: url }}  
-                  {% endif %}
-                  {% else %}
-                  {% capture url %}/collections/all{% endcapture %}
-                  <a href="{{ url }}">{{ 'general.breadcrumbs.all' | t }}</a>
-                  {% endif %}
+                  {% render 'breadcrumb-product-nav', product: product, collection: collection %}
                   <span aria-hidden="true" class="breadcrumb__sep">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
                   </span>
@@ -534,19 +522,7 @@
              {%- for block in section.blocks -%}                                 
                   {%- if block.type == 'breadcrumb' and  block.settings.breadcrumb_position == 'right' -%}                  
                   <div class="{{ block.type }}-main-template">
-                  {% if collection %}
-                  <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a> 
-                  <span aria-hidden="true" class="breadcrumb__sep"> 
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
-                  </span>
-                  {% if collection.handle %}
-                  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-                  {{ collection.title | link_to: url }}  
-                  {% endif %}
-                  {% else %}
-                  {% capture url %}/collections/all{% endcapture %}
-                  <a href="{{ url }}">{{ 'general.breadcrumbs.all' | t }}</a>
-                  {% endif %}
+                  {% render 'breadcrumb-product-nav', product: product, collection: collection %}
                   <span aria-hidden="true" class="breadcrumb__sep">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
                   </span>

@@ -1,0 +1,232 @@
+{%- comment -%}
+  Breadcrumb de collection: Home > [Menu pai] > Coleção
+  Cruza a collection com submenus (linklists) e header-menu aninhado.
+  Accepts: collection
+{%- endcomment -%}
+
+{%- liquid
+  assign breadcrumb_menu_parent_title = blank
+  assign breadcrumb_menu_parent_url = blank
+  assign breadcrumb_menu_root_title = blank
+  assign breadcrumb_menu_root_url = blank
+  assign breadcrumb_menu_is_child = false
+  assign breadcrumb_menu_is_parent = false
+  assign target_handle = collection.handle
+  assign nav_submenu_handles = 'charutos,cigarrilhas,kits,fumos,cachimbos,palheiros,zippos,presentes,rape,acessorios' | split: ','
+
+  unless target_handle == blank or target_handle == 'all'
+
+    assign nav_menu = linklists['header-menu']
+
+    if nav_menu != blank and nav_menu.links.size > 0
+      for link in nav_menu.links
+        assign link_handle = blank
+
+        if link.type == 'collection_link' and link.object != blank
+          assign link_handle = link.object.handle
+        elsif link.url contains '/collections/'
+          assign link_handle = link.url | split: '/collections/' | last | split: '?' | first | split: '/' | first
+        endif
+
+        if link.active or link_handle == target_handle
+          assign breadcrumb_menu_is_parent = true
+          break
+        endif
+
+        if link.links.size > 0
+          for child_link in link.links
+            assign child_handle = blank
+
+            if child_link.type == 'collection_link' and child_link.object != blank
+              assign child_handle = child_link.object.handle
+            elsif child_link.url contains '/collections/'
+              assign child_handle = child_link.url | split: '/collections/' | last | split: '?' | first | split: '/' | first
+            endif
+
+            if child_link.active or child_handle == target_handle
+              assign breadcrumb_menu_parent_title = link.title
+              assign breadcrumb_menu_parent_url = link.url
+              assign breadcrumb_menu_is_child = true
+              break
+            endif
+
+            if child_link.links.size > 0
+              for grandchild_link in child_link.links
+                assign grandchild_handle = blank
+
+                if grandchild_link.type == 'collection_link' and grandchild_link.object != blank
+                  assign grandchild_handle = grandchild_link.object.handle
+                elsif grandchild_link.url contains '/collections/'
+                  assign grandchild_handle = grandchild_link.url | split: '/collections/' | last | split: '?' | first | split: '/' | first
+                endif
+
+                if grandchild_link.active or grandchild_handle == target_handle
+                  assign breadcrumb_menu_root_title = link.title
+                  assign breadcrumb_menu_root_url = link.url
+                  assign breadcrumb_menu_parent_title = child_link.title
+                  assign breadcrumb_menu_parent_url = child_link.url
+                  assign breadcrumb_menu_is_child = true
+                  break
+                endif
+              endfor
+            endif
+
+            if breadcrumb_menu_is_child
+              break
+            endif
+          endfor
+        endif
+
+        if breadcrumb_menu_is_child or breadcrumb_menu_is_parent
+          break
+        endif
+      endfor
+    endif
+
+    if breadcrumb_menu_is_child == false and breadcrumb_menu_is_parent == false
+      for submenu_handle in nav_submenu_handles
+        assign submenu = linklists[submenu_handle]
+
+        if submenu == blank or submenu.links.size == 0
+          continue
+        endif
+
+        if submenu_handle == target_handle
+          assign breadcrumb_menu_is_parent = true
+          break
+        endif
+
+        for link in submenu.links
+          assign link_handle = blank
+
+          if link.type == 'collection_link' and link.object != blank
+            assign link_handle = link.object.handle
+          elsif link.url contains '/collections/'
+            assign link_handle = link.url | split: '/collections/' | last | split: '?' | first | split: '/' | first
+          endif
+
+          if link.active or link_handle == target_handle
+            assign parent_collection = collections[submenu_handle]
+
+            if parent_collection != blank
+              assign breadcrumb_menu_parent_title = parent_collection.title
+              assign breadcrumb_menu_parent_url = parent_collection.url
+            else
+              assign breadcrumb_menu_parent_title = linklists[submenu_handle].title
+              assign breadcrumb_menu_parent_url = '/collections/' | append: submenu_handle
+            endif
+
+            assign breadcrumb_menu_is_child = true
+            break
+          endif
+        endfor
+
+        if breadcrumb_menu_is_child or breadcrumb_menu_is_parent
+          break
+        endif
+      endfor
+    endif
+
+    assign header_section = sections['header']
+
+    if header_section != blank
+      for block in header_section.blocks
+        if block.type != 'nav_group'
+          continue
+        endif
+
+        assign parent_url = block.settings.url | default: ''
+        assign parent_handle = parent_url | split: '/collections/' | last | split: '?' | first | split: '/' | first
+
+        if parent_handle == target_handle
+          assign breadcrumb_menu_is_parent = true
+          assign breadcrumb_menu_is_child = false
+          break
+        endif
+
+        unless breadcrumb_menu_is_child
+          continue
+        endunless
+
+        assign submenu_ref = block.settings.submenu
+        assign submenu_key = blank
+
+        if submenu_ref.handle != blank
+          assign submenu_key = submenu_ref.handle
+        elsif submenu_ref != blank
+          assign submenu_key = submenu_ref
+        endif
+
+        if submenu_key == blank
+          continue
+        endif
+
+        assign parent_handle_from_submenu = breadcrumb_menu_parent_url | split: '/collections/' | last | split: '?' | first | split: '/' | first
+
+        if parent_handle == parent_handle_from_submenu or submenu_key == parent_handle_from_submenu
+          if block.settings.label != blank
+            assign breadcrumb_menu_parent_title = block.settings.label
+          endif
+
+          if block.settings.url != blank
+            assign breadcrumb_menu_parent_url = block.settings.url
+          endif
+
+          break
+        endif
+
+        if breadcrumb_menu_root_url == blank
+          continue
+        endif
+
+        assign root_handle = breadcrumb_menu_root_url | split: '/collections/' | last | split: '?' | first | split: '/' | first
+
+        if parent_handle == root_handle
+          if block.settings.label != blank
+            assign breadcrumb_menu_root_title = block.settings.label
+          endif
+
+          if block.settings.url != blank
+            assign breadcrumb_menu_root_url = block.settings.url
+          endif
+
+          break
+        endif
+      endfor
+    endif
+  endunless
+-%}
+
+<a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+<span aria-hidden="true" class="breadcrumb__sep">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
+</span>
+{%- if breadcrumb_menu_is_child -%}
+  {%- if breadcrumb_menu_root_url != blank -%}
+    <a href="{{ breadcrumb_menu_root_url }}">{{ breadcrumb_menu_root_title }}</a>
+    <span aria-hidden="true" class="breadcrumb__sep">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
+    </span>
+  {%- endif -%}
+  {%- if breadcrumb_menu_parent_url != blank -%}
+    <a href="{{ breadcrumb_menu_parent_url }}">{{ breadcrumb_menu_parent_title }}</a>
+    <span aria-hidden="true" class="breadcrumb__sep">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
+    </span>
+  {%- endif -%}
+{%- elsif breadcrumb_menu_is_parent == false -%}
+  <a href="/collections" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.all_collections' | t }}</a>
+  <span aria-hidden="true" class="breadcrumb__sep">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
+  </span>
+{%- endif -%}
+{%- if current_tags -%}
+  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+  {{ collection.title | link_to: url }}
+  <span aria-hidden="true" class="breadcrumb__sep">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg>
+  </span>
+  <span>{{ current_tags | join: " + " }}</span>
+{%- else -%}
+  <span>{{ collection.title }}</span>
+{%- endif -%}
