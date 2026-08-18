@@ -83,7 +83,7 @@
    {% else %} dt-sc-child
    {%endif%}
    {% if link.active %}active{% endif %} {% if primary or secondary or dt_mega %}menu-item-has-children{% endif %}">
-      {%- if link.links != blank or  dt_mega -%}
+      {%- if link.links.size > 1 or dt_mega -%}
 <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                     <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
                       {{ link.title | escape }}

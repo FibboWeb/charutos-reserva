@@ -21,7 +21,8 @@
           {%- if block.type == 'nav_group' -%}
             {%- assign sub = block.settings.submenu -%}
             {%- assign has_sub = false -%}
-            {%- if sub != blank and sub.links.size > 0 -%}
+            {%- comment -%} Só exibe dropdown quando há subcategorias além do "Ver todos" {%- endcomment -%}
+            {%- if sub != blank and sub.links.size > 1 -%}
               {%- assign has_sub = true -%}
             {%- endif -%}
 
@@ -69,7 +70,8 @@
       {%- elsif menu != blank and menu.links.size > 0 -%}
         {%- for link in menu.links -%}
           {%- assign has_sub = false -%}
-          {%- if link.links.size > 0 -%}{%- assign has_sub = true -%}{%- endif -%}
+          {%- comment -%} Só exibe dropdown quando há subcategorias além do "Ver todos" {%- endcomment -%}
+          {%- if link.links.size > 1 -%}{%- assign has_sub = true -%}{%- endif -%}
           <li class="cr-main-nav__item{% if has_sub %} cr-main-nav__item--has-panel{% endif %}">
             <a href="{{ link.url }}" class="cr-main-nav__link">
               <span class="cr-main-nav__icon">
