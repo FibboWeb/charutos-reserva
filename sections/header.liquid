@@ -326,16 +326,23 @@
     left: 0;
     right: 0;
     top: 100%;
-    background: #1A322C;
+    background: #FFFFFF;
     padding: 1.2rem 1.6rem;
-    box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.25);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     z-index: 999;
+  }
+  .header__search-mobile-predictive,
+  .header__search-mobile-form-wrap {
+    display: block;
+    width: 100%;
+    position: relative;
   }
   .header__search-mobile-form {
     display: flex;
     align-items: stretch;
-    gap: 0.8rem;
+    gap: 0.4rem;
     background: #FFFFFF;
+    border: 1.5px solid rgba(26, 50, 44, 0.2);
     border-radius: 0.4rem;
     overflow: hidden;
   }
@@ -350,6 +357,17 @@
     outline: none;
   }
   .header__search-mobile-input::placeholder { color: rgba(26,50,44,0.5); }
+  .header__search-mobile-reset {
+    border: 0;
+    background: transparent;
+    color: #1A322C;
+    padding: 0 0.6rem;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .header__search-mobile-reset.hidden { display: none !important; }
+  .header__search-mobile-reset svg { width: 1.6rem; height: 1.6rem; }
   .header__search-mobile-submit {
     border: 0;
     background: #C49A3C;
@@ -361,6 +379,33 @@
     cursor: pointer;
   }
   .header__search-mobile-submit svg { width: 1.8rem; height: 1.8rem; stroke: #FFFFFF; }
+  .header__search-mobile-dropdown .predictive-search.predictive-search--mobile {
+    display: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    margin-top: 0.8rem;
+    background: #FFFFFF;
+    color: #1A322C;
+    border: 1px solid rgba(26, 50, 44, 0.1);
+    border-radius: 8px;
+    box-shadow: none;
+    z-index: 1;
+  }
+  .header__search-mobile-predictive[open] .predictive-search.predictive-search--mobile,
+  .header__search-mobile-predictive[loading] .predictive-search.predictive-search--mobile {
+    display: block;
+  }
+  .header__search-mobile-dropdown .predictive-search #predictive-search-results {
+    padding: 10px 12px !important;
+  }
+  .header__search-mobile-dropdown .predictive-search__item-heading,
+  .header__search-mobile-dropdown .predictive-search__item {
+    color: #1A322C;
+  }
   /* Mobile menu drawer: brand green background + must overlap topbar carousel */
   #shopify-section-headers,
   .header-wrapper { position: relative; z-index: 1000; }
@@ -575,9 +620,15 @@ display: inline-flex;
     border: 1.5px solid rgba(26, 50, 44, 0.2);
     border-radius: 25px;
     overflow: hidden;
-    background: #f8f5f0;
+    background: #FFFFFF;
     display: flex;
     align-items: center;
+  }
+
+  /* Dropdown predictive: ancorado no form, sem clip pelo field */
+  .header__center-search form.search {
+    position: relative;
+    overflow: visible;
   }
 
   .header__center-search .search__input,
@@ -621,8 +672,29 @@ display: inline-flex;
     width: 1rem; height: 1rem; color: #fff; stroke: #fff;
   }
 
-  /* Botão reset */
-  .header__center-search .reset__button { display: none; }
+  /* Botão reset custom (nativo do input fica oculto no custom.css) */
+  .header__center-search .reset__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
+    width: 2.4rem;
+    height: 2.4rem;
+    min-width: 2.4rem;
+    padding: 0;
+    margin: 0 0.15rem 0 0;
+    background: transparent;
+    border: none;
+    color: #1A322C;
+    cursor: pointer;
+    box-shadow: none;
+  }
+  .header__center-search .reset__button.hidden { display: none !important; }
+  .header__center-search .reset__button svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    color: #1A322C;
+  }
 
 
   /* Ícone de login com texto */
@@ -1043,17 +1115,66 @@ display: inline-flex;
             </svg>
           </summary>
           <div class="header__search-mobile-dropdown" role="dialog" aria-label="{{ 'general.search.search' | t }}">
-            <form action="{{ routes.search_url }}" method="get" role="search" class="header__search-mobile-form">
-              <input type="hidden" name="options[prefix]" value="last">
-              <label class="visually-hidden" for="MobileSearchInput">{{ 'general.search.search' | t }}</label>
-              <input id="MobileSearchInput" class="header__search-mobile-input" type="search" name="q" placeholder="{{ 'general.search.search' | t }}" autocomplete="off">
-              <button type="submit" class="header__search-mobile-submit" aria-label="{{ 'general.search.search' | t }}">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                  <circle cx="11" cy="11" r="7"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </button>
-            </form>
+            {%- if settings.predictive_search_enabled -%}
+              <predictive-search class="header__search-mobile-predictive" data-loading-text="{{ 'accessibility.loading' | t }}">
+            {%- else -%}
+              <search-form class="header__search-mobile-predictive">
+            {%- endif -%}
+              <form action="{{ routes.search_url }}" method="get" role="search" class="header__search-mobile-form-wrap">
+                <div class="header__search-mobile-form">
+                  <input type="hidden" name="options[prefix]" value="last">
+                  <label class="visually-hidden" for="MobileSearchInput">{{ 'general.search.search' | t }}</label>
+                  <input
+                    id="MobileSearchInput"
+                    class="header__search-mobile-input search__input"
+                    type="search"
+                    name="q"
+                    value="{{ search.terms | escape }}"
+                    placeholder="{{ 'general.search.search' | t }}"
+                    {%- if settings.predictive_search_enabled -%}
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-owns="predictive-search-results"
+                      aria-controls="predictive-search-results"
+                      aria-haspopup="listbox"
+                      aria-autocomplete="list"
+                      autocorrect="off"
+                      autocomplete="off"
+                      autocapitalize="off"
+                      spellcheck="false"
+                    {%- else -%}
+                      autocomplete="off"
+                    {%- endif -%}
+                  >
+                  <button type="reset" class="header__search-mobile-reset reset__button{% if search.terms == blank %} hidden{% endif %}" aria-label="{{ 'general.search.reset' | t }}">
+                    <svg class="icon icon-close" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                  <button type="submit" class="header__search-mobile-submit" aria-label="{{ 'general.search.search' | t }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                      <circle cx="11" cy="11" r="7"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+                {%- if settings.predictive_search_enabled -%}
+                  <div class="predictive-search predictive-search--header predictive-search--mobile" tabindex="-1" data-predictive-search>
+                    <div class="predictive-search__loading-state">
+                      <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                  <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+                {%- endif -%}
+              </form>
+            {%- if settings.predictive_search_enabled -%}
+              </predictive-search>
+            {%- else -%}
+              </search-form>
+            {%- endif -%}
           </div>
         </details>
         {%  endif %}
