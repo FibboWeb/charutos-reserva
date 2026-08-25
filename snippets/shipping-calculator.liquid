@@ -1,25 +1,40 @@
-{% unless settings.shipping_calculator == 'Disabled' %}  
+{% liquid
+  assign shipping_submit_setting = settings.shipping_calculator_submit_button_label
+  if shipping_submit_setting == blank or shipping_submit_setting == 'Calculate shipping'
+    assign shipping_submit = 'sections.shipping_calculator.submit' | t
+  else
+    assign shipping_submit = shipping_submit_setting
+  endif
+
+  assign shipping_submit_disabled_setting = settings.shipping_calculator_submit_button_label_disabled
+  if shipping_submit_disabled_setting == blank or shipping_submit_disabled_setting == 'Calculating...'
+    assign shipping_submit_disabled = 'sections.shipping_calculator.submit_disabled' | t
+  else
+    assign shipping_submit_disabled = shipping_submit_disabled_setting
+  endif
+%}
+{% unless settings.shipping_calculator == 'Disabled' %}
   <div class="cart-drawer-detail">
 <div id="shipping-calculator" class="drawer-details">
   <div  id="shipping-calculator-block">
     <p class="field">
-      <label for="address_country">Country</label>
+      <label for="address_country">{{ 'sections.shipping_calculator.country' | t }}</label>
       <select class="dt-sc-btn" id="address_country" name="address[country]" data-default="{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address.country }}{% elsif settings.shipping_calculator_default_country != '' %}{{ settings.shipping_calculator_default_country }}{% endif %}">{{ country_option_tags }}</select>
     </p>
     <p class="field" id="address_province_container" style="display:none;">
-      <label for="address_province" id="address_province_label">Province</label>
+      <label for="address_province" id="address_province_label">{{ 'sections.shipping_calculator.province' | t }}</label>
       <select class="dt-sc-btn" id="address_province" name="address[province]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}"></select>
-    </p>  
+    </p>
     <p class="field">
-      <label for="address_zip">Zip/Postal Code</label>
+      <label for="address_zip">{{ 'sections.shipping_calculator.zip' | t }}</label>
       <input type="text" id="address_zip" name="address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} />
     </p>
     <p class="field">
-      <input type="button" class="get-rates btn button" value="{{ settings.shipping_calculator_submit_button_label | default: 'Calculate shipping' }}" />
+      <input type="button" class="get-rates btn button" value="{{ shipping_submit }}" />
     </p>
   </div>
   <div id="wrapper-response"></div>
-   <button type="button" class="close link" onclick="this.closest('details').querySelector('summary').click()">
+   <button type="button" class="close link" aria-label="{{ 'accessibility.close' | t }}" onclick="this.closest('details').querySelector('summary').click()">
   {%  render 'icon-close' %}
    </button>
 </div>
@@ -33,12 +48,12 @@
     {{#if rates}}
       {{#rates}}
         {{#if @first}}
-            Rates start at {{price}}.
+            {% endraw %}{{ 'sections.shipping_calculator.rates_start_at' | t }}{% raw %} {{price}}.
         {{/if}}
       {{/rates}}
     {{else}}
-      We do not ship to this destination.
-    {{/if}}    
+      {% endraw %}{{ 'sections.shipping_calculator.no_rates' | t }}{% raw %}
+    {{/if}}
   {{else}}
     {{ errorFeedback }}
   {{/if}}
@@ -53,8 +68,8 @@
 <script>
   var  theme = {
     strings: {
-      shippingCalcSubmitButton: {{ settings.shipping_calculator_submit_button_label | default: 'shipping' | json }},
-      shippingCalcSubmitButtonDisabled: {{ settings.shipping_calculator_submit_button_label_disabled | default: 'Calculating...' | json }},
+      shippingCalcSubmitButton: {{ shipping_submit | json }},
+      shippingCalcSubmitButtonDisabled: {{ shipping_submit_disabled | json }},
       {% if customer %}shippingCalcCustomerIsLoggedIn: true,{% endif %}
       shippingCalcMoneyFormat: {{ shop.money_with_currency_format | json }}
     }
@@ -70,7 +85,7 @@
   #shipping-calculator .select2-container{ width:100% !important; }
   #shipping-calculator .dt-sc-btn { border: var(--inputs-border-width) solid rgb(var(--color-foreground),0.2);  background-image: url("data:image/svg+xml;utf8,<svg fill='currentcolor' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>"); -webkit-appearance: none;
   -moz-appearance: none;appearance: none;background-position: 98%;background-repeat: no-repeat;  display: flex; justify-content: space-between; font-family: var(--font-body-family); font-size: 1.6rem; }  #shipping-calculator .field label { display: block; margin: 0 0 .3em; font-size: 1em; font-weight:500;}
-  #shipping-calculator .field input[type=text] { display: inline-block; box-sizing: border-box; margin: 0; font-size: 1em; outline: 0; -webkit-appearance: none; border: var(--inputs-border-width) solid rgb(var(--color-foreground),0.2); }  
+  #shipping-calculator .field input[type=text] { display: inline-block; box-sizing: border-box; margin: 0; font-size: 1em; outline: 0; -webkit-appearance: none; border: var(--inputs-border-width) solid rgb(var(--color-foreground),0.2); }
   #shipping-calculator #wrapper-response { clear: both; }
   #shipping-calculator select{     width: 100%;    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");    background-position: 98%;     background-repeat: no-repeat;     }
   #shipping-calculator .dt-sc-btn,
