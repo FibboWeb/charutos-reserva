@@ -166,6 +166,10 @@
           "settings": {
             "loading_text": ""
           }
+        },
+        "full_width_start": {
+          "type": "full_width_start",
+          "settings": {}
         }
       },
       "block_order": [
@@ -192,6 +196,7 @@
         "view_details",
         "enquiry",
         "description",
+        "full_width_start",
         "nexbundle_layout_a_Y3m3rq"
       ],
       "settings": {

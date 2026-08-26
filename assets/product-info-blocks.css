@@ -59,3 +59,20 @@
 .quick-add-modal .product__info-container > .product-info-block.product-info-block--fake-sales {
   display: none;
 }
+
+/*
+  Faixa de largura total para app blocks (ex.: buy-together), entre a grade do
+  produto e as abas. Fica no nivel raiz da section, fora do .page-width, entao
+  o recuo lateral e aplicado aqui para acompanhar o resto da pagina.
+*/
+.product-full-width-apps {
+  max-width: calc(var(--page-width) + 8rem);
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .product-full-width-apps {
+    padding: 0 4rem 4rem;
+  }
+}

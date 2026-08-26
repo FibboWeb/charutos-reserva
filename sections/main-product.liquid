@@ -514,6 +514,20 @@
               {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
               {%- comment -%}
+                Fronteira entre a coluna e a faixa full width. App blocks que vierem
+                DEPOIS do block 'full_width_start' no block_order saem da coluna e
+                sao renderizados abaixo da grade do produto, acima das abas, em
+                largura total. Sem o marcador, todos ficam na coluna.
+              {%- endcomment -%}
+              {%- assign full_width_index = 9999 -%}
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'full_width_start' -%}
+                  {%- assign full_width_index = forloop.index0 -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- comment -%}
                 Loop unico da coluna de informacoes. Cada block do tema emite exatamente um
                 filho direto de .product__info-container, envolto em .product-info-block, e
                 app blocks (@app) entram em qualquer posicao do block_order — inclusive entre
@@ -523,13 +537,18 @@
               {%- endcomment -%}
               {%- for block in section.blocks -%}
                 {%- if block.type == '@app' -%}
-                  {% render block %}
+                  {%- if forloop.index0 < full_width_index -%}
+                    {% render block %}
+                  {%- endif -%}
                 {%- else -%}
                   {%- comment -%} capturados antes do case: loops aninhados podem sobrescrever `block` {%- endcomment -%}
                   {%- assign b_attrs = block.shopify_attributes -%}
                   {%- assign b_class = block.type | handle -%}
                   {%- capture block_content -%}
                     {%- case block.type -%}
+
+                      {%- comment -%} marcador de fronteira: sem saida propria, so define onde a faixa comeca {%- endcomment -%}
+                      {%- when 'full_width_start' -%}
 
                       {%- comment -%} ---- navegacao e contexto ---- {%- endcomment -%}
                       {%- when 'prev_next' -%}
@@ -1525,6 +1544,23 @@
         </product-modal>
       </div>
 
+      {%- comment -%}
+        Faixa de largura total: app blocks posicionados depois do marcador
+        'full_width_start'. Fica entre a grade do produto e as abas.
+      {%- endcomment -%}
+      {%- if full_width_index < 9999 -%}
+        {%- capture full_width_apps -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == '@app' and forloop.index0 > full_width_index -%}
+              {% render block %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- unless full_width_apps == blank -%}
+          <div class="product-full-width-apps">{{ full_width_apps }}</div>
+        {%- endunless -%}
+      {%- endif -%}
+
       {% if section.settings['tab_position'] == 'bottom' %}
       {% if section.settings['tab_style'] == 'toggle' %}
       {%- for block in section.blocks -%}
@@ -1829,6 +1865,17 @@
     },
   {
   "type": "@app"
+  },
+  {
+    "type": "full_width_start",
+    "name": "Faixa full width",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Marcador de posicao. Blocos de aplicativo colocados ABAIXO deste sao renderizados em largura total, abaixo da grade do produto e acima das abas, em vez de na coluna de informacoes."
+      }
+    ]
   },
   {
     "type": "prev_next",
