@@ -1,0 +1,78 @@
+/*
+  Coluna de informacoes da PDP componentizada em blocks.
+
+  Cada block do tema emite um unico filho direto de .product__info-container,
+  envolto em .product-info-block. A regra de espacamento original
+  (.product__info-container > * + * { margin: 2rem 0 }, em section-main-product.css)
+  continua valendo: ela passa a casar com os wrappers e produz os mesmos 2rem
+  entre blocks. Este arquivo corrige apenas os quatro pontos onde o novo nivel
+  de DOM muda o resultado.
+*/
+
+/* (a) Gaps que existiam ENTRE os multiplos filhos diretos de um mesmo case.
+       `price` gerava tres filhos (.price-wrapper / .product__tax / installment)
+       e `deal` gerava dois — cada um recebia 2rem da regra original. Com o
+       wrapper unico esses gaps internos desapareceriam. */
+.product__info-container > .product-info-block--price > * + *,
+.product__info-container > .product-info-block--deal > * + * {
+  margin: 2rem 0;
+}
+
+/* (b) A excecao :not(.sub-total) da regra original mirava .sub-total como filho
+       direto; agora ele e neto. A excecao passa para o wrapper. */
+.product__info-container > .product-info-block.product-info-block--sub-total {
+  margin: 0;
+}
+
+/* (c) `rating` e `fake_sales` ficavam lado a lado dentro de um <div
+       class="rating-fake-sales"> que abria no case 'title' e fechava no case
+       'fake_sales'. Esse div cross-case foi removido — com blocks reordenaveis
+       ele nao tem como existir. Duas caixas inline-level adjacentes ocupam a
+       mesma line box, o que reproduz o layout sem exigir um pai comum; se o
+       merchant inserir outro block entre os dois, cada um cai numa linha
+       propria por conta dos vizinhos block-level. */
+.product__info-container > .product-info-block--rating,
+.product__info-container > .product-info-block--fake-sales {
+  display: inline-flex;
+  align-items: center;
+  line-height: 20px;
+  vertical-align: middle;
+}
+.product__info-container > .product-info-block.product-info-block--fake-sales {
+  margin: 0 0 0 0.8rem;
+}
+
+/* (d) .product--no-media mirava `> modal-opener` como filho direto. */
+.product--no-media .product__info-container > .product-info-block > modal-opener {
+  display: block;
+  text-align: center;
+}
+
+/* (e) Quick-add: quick-add.js renderiza esta mesma section (busca
+       section[id^="MainProduct-"]), entao quick-add.css atua sobre este markup.
+       Especificidade alta de proposito — quick-add.css e carregado de forma
+       condicional e a ordem de carregamento nao e garantida. */
+.quick-add-modal .product__info-container > .product-info-block > * + * {
+  margin: 0 0 1.6rem;
+}
+.quick-add-modal .product__info-container > .product-info-block.product-info-block--rating,
+.quick-add-modal .product__info-container > .product-info-block.product-info-block--fake-sales {
+  display: none;
+}
+
+/*
+  Faixa de largura total para app blocks (ex.: buy-together), entre a grade do
+  produto e as abas. Fica no nivel raiz da section, fora do .page-width, entao
+  o recuo lateral e aplicado aqui para acompanhar o resto da pagina.
+*/
+.product-full-width-apps {
+  max-width: calc(var(--page-width) + 8rem);
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .product-full-width-apps {
+    padding: 0 4rem 4rem;
+  }
+}

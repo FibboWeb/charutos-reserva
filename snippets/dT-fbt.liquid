@@ -1,4 +1,3 @@
-{{ 'frequently-buy-together.css' | asset_url | stylesheet_tag }}
 {% if product.metafields.custom.frequently_bought_together != blank %}
   {%- assign handle_metafields = product.metafields.custom.frequently_bought_together | split: ',' -%}
   {%- assign handle_size = handle_metafields | size -%}

@@ -25,6 +25,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "prev_next": {
+          "type": "prev_next",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -49,14 +53,6 @@
         },
         "ff6ad440-5f23-4eda-b2dc-a0b3e665311b": {
           "type": "sku",
-          "settings": {}
-        },
-        "ac8dc943-c308-423f-90c3-adea0b3a487e": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "7fc556c7-f815-4fd8-b219-f78a53af198f": {
-          "type": "type",
           "settings": {}
         },
         "4c6c3629-d7b7-42eb-bd05-e2189e5f2c29": {
@@ -90,6 +86,42 @@
           "disabled": true,
           "settings": {}
         },
+        "fba18659-f515-470a-ad98-83721b6d8b37": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "nexbundle_layout_b_J6LaRJ": {
+          "type": "shopify://apps/nexbundle/blocks/layout-b/019f944e-3af2-75ae-b460-5619d9b5de9b",
+          "settings": {
+            "loading_text": ""
+          }
+        },
+        "heading_frete": {
+          "type": "column_heading",
+          "settings": {
+            "text": "Calcular Frete",
+            "style": "eyebrow"
+          }
+        },
+        "frete_no_produto_shipping_calculator_ehtziE": {
+          "type": "shopify://apps/frete-no-produto/blocks/shipping_calculator/31419da2-d36b-478b-b343-989a0e842a1c",
+          "settings": {
+            "shipping_calculator": true,
+            "background_color_container": "rgba(0,0,0,0)",
+            "btnshipping": "#1a322c",
+            "color_text": "#ffffff",
+            "padding_external": 20,
+            "text": "Calcular Frete",
+            "pickup": ""
+          }
+        },
+        "pickup": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
         "68863399-17f6-4e5b-8b56-6ef125ef3168": {
           "type": "Html_c",
           "disabled": true,
@@ -103,51 +135,6 @@
             "badge_label": "100% Secured Payment"
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "fba18659-f515-470a-ad98-83721b6d8b37": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "006ee37f-0339-457e-9213-3cb0370a9dbd": {
-          "type": "product",
-          "settings": {
-            "product": "g1"
-          }
-        },
-        "5937dc9c-2e5b-44fc-9ff5-65c78e99c637": {
-          "type": "product",
-          "settings": {
-            "product": "g2"
-          }
-        },
-        "d2a11c76-c4dc-4761-829b-b40ee5dca77a": {
-          "type": "product",
-          "settings": {
-            "product": "g3"
-          }
-        },
-        "frete_no_produto_shipping_calculator_ehtziE": {
-          "type": "shopify://apps/frete-no-produto/blocks/shipping_calculator/31419da2-d36b-478b-b343-989a0e842a1c",
-          "settings": {
-            "shipping_calculator": true,
-            "background_color_container": "transparent",
-            "btnshipping": "#1A322C",
-            "color_text": "#ffffff",
-            "padding_external": 20,
-            "text": "Calcular Frete",
-            "pickup": ""
-          }
-        },
-        "02ccba60-056d-4879-a2b1-5edb74b3e7c6": {
-          "type": "fbt",
-          "settings": {}
-        },
         "3f7d416a-1acc-4807-845a-a90b79a879f9": {
           "type": "complementary",
           "settings": {
@@ -157,31 +144,60 @@
             "product_list_limit": 10,
             "products_per_page": 4
           }
+        },
+        "payment_icons": {
+          "type": "payment_icons",
+          "settings": {}
+        },
+        "view_details": {
+          "type": "view_details",
+          "settings": {}
+        },
+        "enquiry": {
+          "type": "enquiry",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "nexbundle_layout_a_Y3m3rq": {
+          "type": "shopify://apps/nexbundle/blocks/layout-a/019f944e-3af2-75ae-b460-5619d9b5de9b",
+          "settings": {
+            "loading_text": ""
+          }
+        },
+        "full_width_start": {
+          "type": "full_width_start",
+          "settings": {}
         }
       },
       "block_order": [
+        "prev_next",
         "title",
         "22daea9f-6daf-487e-b422-cba212ae0998",
         "bcddc1ff-b68c-4e0b-992f-5cee1c432000",
         "price",
         "ff6ad440-5f23-4eda-b2dc-a0b3e665311b",
-        "ac8dc943-c308-423f-90c3-adea0b3a487e",
-        "7fc556c7-f815-4fd8-b219-f78a53af198f",
         "4c6c3629-d7b7-42eb-bd05-e2189e5f2c29",
         "52794bcc-295b-4f22-af16-704f37c9ded7",
         "variant_picker",
         "381e9805-2b9d-4e45-99ce-2a5f748ed6af",
         "f2453734-fb3d-479b-bbfd-0f710967559f",
+        "fba18659-f515-470a-ad98-83721b6d8b37",
+        "nexbundle_layout_b_J6LaRJ",
+        "heading_frete",
+        "frete_no_produto_shipping_calculator_ehtziE",
+        "pickup",
         "68863399-17f6-4e5b-8b56-6ef125ef3168",
         "97cd7923-6244-47f8-9e3e-fff6bc433af4",
+        "3f7d416a-1acc-4807-845a-a90b79a879f9",
+        "payment_icons",
+        "view_details",
+        "enquiry",
         "description",
-        "fba18659-f515-470a-ad98-83721b6d8b37",
-        "006ee37f-0339-457e-9213-3cb0370a9dbd",
-        "5937dc9c-2e5b-44fc-9ff5-65c78e99c637",
-        "d2a11c76-c4dc-4761-829b-b40ee5dca77a",
-        "frete_no_produto_shipping_calculator_ehtziE",
-        "02ccba60-056d-4879-a2b1-5edb74b3e7c6",
-        "3f7d416a-1acc-4807-845a-a90b79a879f9"
+        "full_width_start",
+        "nexbundle_layout_a_Y3m3rq"
       ],
       "settings": {
         "page_full_width": false,
@@ -223,7 +239,6 @@
         "heading_3": "Free Shipping",
         "heading_3_text": "Free Shipping World wide",
         "html": "",
-        "enable_enquiry": true,
         "padding_top": 100,
         "padding_bottom": 45,
         "display_back_in_stock": false,
@@ -231,7 +246,6 @@
         "notify_error": "",
         "show_adv_product": true,
         "choose_label": "Related Accessories",
-        "prev_next_products": true,
         "show_share": true,
         "share_label": "Share",
         "show_quantity_selector": true
@@ -308,20 +322,12 @@
         "arrow_on_mobile": false,
         "columns_mobile": "1"
       }
-    },
-    "17189596966c74f455": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "2246be81-f016-4af3-a46e-0b3d46f7e978",
     "main",
     "product-recommendations",
-    "5972627f-f079-45a8-a80e-251d5fe7d45b",
-    "17189596966c74f455"
+    "5972627f-f079-45a8-a80e-251d5fe7d45b"
   ]
 }
