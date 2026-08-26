@@ -23,6 +23,8 @@
       {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
       {{ 'product-detail-page.css' | asset_url | stylesheet_tag }}
       {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+      {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+      {{ 'frequently-buy-together.css' | asset_url | stylesheet_tag }}
       {%- style -%}
         .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -217,7 +219,7 @@
         {%- unless section.settings.sidebar_settings == 'no-sidebar' -%}
           <button class="toggleFilter"> {% render 'icon-filter' %} Filter</button>
           <aside>
-            {% render 'main-product-sidebar', show_sticky: section.settings.enable_sticky_info, section: section: block: block %}
+            {% render 'main-product-sidebar', show_sticky: section.settings.enable_sticky_info, section: section %}
           </aside>
         {%- endunless -%}
         <div class="main-product_info product  product--{{ section.settings.media_size }} product--{{ section.settings.gallery_layout }}  {%  if thumb_carousel_layout %}{% if thumb_slick_layout %} media-slick-slider{% endif %} product--{{ section.settings.thumb_carousel_layout }}{% endif %} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %} ">
@@ -619,7 +621,7 @@
                     {% endif %}
                     {% if section.settings.show_share %}
                       {%- assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin -%}
-                      <div class="product-meta-share-wrap">{%- render 'product-share-button', share_url: share_url -%}</div>
+                      <div class="product-meta-share-wrap">{%- render 'product-share-button', share_url: share_url, section_id: section.id -%}</div>
                     {% endif %}
                   </div>
                 </div>
@@ -763,8 +765,8 @@
                   
                   {%- endfor -%}
                   </div>
-                  {%- for block in section.blocks -%}
-                  {%- case block.type -%}
+                  {%- for sp_block in section.blocks -%}
+                  {%- case sp_block.type -%}
                   {%- when 'size-popup' -%}
                   <div class="size-chart"> 
                   <svg xmlns="http://www.w3.org/2000/svg" class="popup-svg" width="16.432" height="28.2" viewBox="0 0 16.432 28.2">
@@ -788,37 +790,37 @@
                   </svg> 
                   <modal-opener
                   class="product-popup-modal__opener no-js-hidden quick-add-hidden"
-                  data-modal="#PopupModal-{{ block.id }}"
-                  {{ block.shopify_attributes }}
+                  data-modal="#PopupModal-{{ sp_block.id }}"
+                  {{ sp_block.shopify_attributes }}
                   >
                   <button
-                  id="ProductPopup-{{ block.id }}"
+                  id="ProductPopup-{{ sp_block.id }}"
                   class="product-popup-modal__button link"
                   type="button"
                   aria-haspopup="dialog"
                   >
-                  {{ block.settings.text | default: block.settings.page.title }}
+                  {{ sp_block.settings.text | default: sp_block.settings.page.title }}
                   </button>
                   </modal-opener>
-                  <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">
-                  {{- block.settings.text -}}
+                  <a href="{{ sp_block.settings.page.url }}" class="product-popup-modal__button link no-js">
+                  {{- sp_block.settings.text -}}
                   </a>
                   {% assign popups = section.blocks | where: 'type', 'size-popup' %}
-                  {%- for block in popups -%}
+                  {%- for popup in popups -%}
                   <modal-dialog
-                  id="PopupModal-{{ block.id }}"
+                  id="PopupModal-{{ popup.id }}"
                   class="product-popup-modal"
-                  {{ block.shopify_attributes }}
+                  {{ popup.shopify_attributes }}
                   >
                   <div
                   role="dialog"
-                  aria-label="{{ block.settings.text }}"
+                  aria-label="{{ popup.settings.text }}"
                   aria-modal="true"
                   class="product-popup-modal__content"
                   tabindex="-1"
                   >
                   <button
-                  id="ModalClose-{{ block.id }}"
+                  id="ModalClose-{{ popup.id }}"
                   type="button"
                   class="product-popup-modal__toggle"
                   aria-label="{{ 'accessibility.close' | t }}"
@@ -826,13 +828,13 @@
                   {% render 'icon-close' %}
                   </button>
                   <div class="product-popup-modal__content-info">
-                  <h1 class="h2">{{ block.settings.page.title }}</h1>
-                  {{ block.settings.page.content }}
+                  <h1 class="h2">{{ popup.settings.page.title }}</h1>
+                  {{ popup.settings.page.content }}
                   </div>
                   </div>
                   </modal-dialog>
-                  </div> 
                   {%- endfor -%}
+                  </div>
                   {%- endcase -%}
                   {%- endfor -%}
                   </div>  
@@ -1019,21 +1021,21 @@
                             {{- block.settings.text -}}
                             </a>
                             {% assign popups = section.blocks | where: 'type', 'popup' %}
-                                {%- for block in popups -%}
+                                {%- for popup in popups -%}
                                 <modal-dialog
-                                id="PopupModal-{{ block.id }}"
+                                id="PopupModal-{{ popup.id }}"
                                 class="product-popup-modal"
-                                {{ block.shopify_attributes }}
+                                {{ popup.shopify_attributes }}
                                 >
                                 <div
                                 role="dialog"
-                                aria-label="{{ block.settings.text }}"
+                                aria-label="{{ popup.settings.text }}"
                                 aria-modal="true"
                                 class="product-popup-modal__content"
                                 tabindex="-1"
                                 >
                                 <button
-                                id="ModalClose-{{ block.id }}"
+                                id="ModalClose-{{ popup.id }}"
                                 type="button"
                                 class="product-popup-modal__toggle"
                                 aria-label="{{ 'accessibility.close' | t }}"
@@ -1041,8 +1043,8 @@
                                 {% render 'icon-close' %}
                                 </button>
                                 <div class="product-popup-modal__content-info">
-                                <h1 class="h3">{{ block.settings.page.title }}</h1>
-                                {{ block.settings.page.content }}
+                                <h1 class="h3">{{ popup.settings.page.title }}</h1>
+                                {{ popup.settings.page.content }}
                                 </div>
                                 </div>
                                 </modal-dialog>
@@ -1131,7 +1133,7 @@
                           
                           <div class="product-form__buttons">    
                               {%  if section.settings.show_quantity_selector %}
-                              {%  render 'quantity-selector', product_form_id: product_form_id %}
+                              {%  render 'quantity-selector', product_form_id: product_form_id, section_id: section.id %}
                               {% endif %}
                             <button
                               type="submit"
@@ -1187,7 +1189,6 @@
                     {%- endif -%}
                   {%- endfor -%}
                   {% render 'dT-fbt' %}
-                      {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
                       {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
                       <pickup-availability
                         class="product__pickup-availabilities no-js-hidden quick-add-hidden"
