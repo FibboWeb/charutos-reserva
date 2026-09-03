@@ -256,6 +256,15 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Inicia sesión</a> para finalizar tus compras con mayor rapidez."
       }
     },
+    "shipping_calculator": {
+      "country": "País",
+      "province": "Provincia",
+      "zip": "Código postal",
+      "submit": "Calcular envío",
+      "submit_disabled": "Calculando...",
+      "rates_start_at": "Las tarifas empiezan en",
+      "no_rates": "No realizamos envíos a este destino."
+    },
     "footer": {
       "payment": "Formas de pago"
     },

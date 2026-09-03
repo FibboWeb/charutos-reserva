@@ -79,6 +79,12 @@
         endcase
         %}
   
+{%- assign analytics_list_id = 'home_product_tab_' | append: section.id -%}
+{%- if section.settings.title != blank -%}
+  {%- assign analytics_list_name = section.settings.title -%}
+{%- else -%}
+  {%- assign analytics_list_name = 'Product tabs' -%}
+{%- endif -%}
 <div class="product-tab-wrapper {{ section.settings.custom_class_name }} color-{{ section.settings.color_scheme }} gradient">
   <div class="{% if section.settings.page_full_width %} page-full-width {% else %} page-width {% endif %} {% if section.settings.page_full_width_spacing %} page-full-width_spacing {% endif %}section-{{ section.id }}-padding isolate">
     <div class="row">
@@ -183,7 +189,7 @@
               {%- assign available_count = 0 -%}
               {%- for product in collections[block.settings.collection].products -%}
               {%- if product.available and available_count < section.settings.products_to_show -%}
-              {%- assign available_count = available_count | plus: 1 -%}
+              {%- assign available_count = available_count | plus: 1 -%}{%- assign analytics_index = available_count -%}
               <div class="swiper-slide color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
                {%  case settings.card_style %}
           {%  when 'standard' %}
@@ -196,7 +202,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'button_width_icons' %}
              {% render 'card-product-2',
@@ -208,7 +217,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'card_with_icons' %}
              {% render 'card-product-3',
@@ -220,7 +232,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'card_with_buttons' %}
              {% render 'card-product-4',
@@ -232,7 +247,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'card_with_overlay' %}
              {% render 'card-product-5',
@@ -244,7 +262,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  endcase %}
               </div>
@@ -291,11 +312,12 @@
                                       }, 
                                       autoplay: {
                                         delay: 2500,
-                                        disableOnInteraction: false,
+                                        disableOnInteraction: true,
                                         pauseOnMouseEnter: true,
                                         },
-                                       // spaceBetween: 30,  
-                                      //focusableElements: 'input, select, option, textarea, video, label',
+                                      threshold: 10,
+                                      watchSlidesProgress: true,
+                                      focusableElements: 'input, select, option, textarea, button, video, label, modal-opener',
                                       navigation: {
                                       nextEl:'#product-tab-{{ forloop.index }}-{{ block.id }}-next',
                                       prevEl: '#product-tab-{{ forloop.index }}-{{ block.id }}-prev',
@@ -355,7 +377,7 @@
             {%- assign available_count = 0 -%}
             {% for product in collections[block.settings.collection].products %}
             {%- if product.available and available_count < section.settings.products_to_show -%}
-            {%- assign available_count = available_count | plus: 1 -%}
+            {%- assign available_count = available_count | plus: 1 -%}{%- assign analytics_index = available_count -%}
             <li class="color-{{ section.settings.color_scheme }} card_style-{{ settings.card_style }}">
              {%  case settings.card_style %}
           {%  when 'standard' %}
@@ -368,7 +390,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'button_width_icons' %}
              {% render 'card-product-2',
@@ -380,7 +405,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'card_with_icons' %}
              {% render 'card-product-3',
@@ -392,7 +420,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'card_with_buttons' %}
              {% render 'card-product-4',
@@ -404,7 +435,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  when 'card_with_overlay' %}
              {% render 'card-product-5',
@@ -416,7 +450,10 @@
               show_quick_add: settings.enable_quickadd,
               show_quick_view: settings.enable_quickview,
               show_new_tag: section.settings.show_new_tag,
-              section_id: section.id
+              section_id: section.id,
+              item_list_id: analytics_list_id,
+              item_list_name: analytics_list_name,
+              index: analytics_index
             %}
         {%  endcase %}
             </li>
