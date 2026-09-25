@@ -1159,7 +1159,7 @@
                       {%- when 'column_heading' -%}
                         {%- if block.settings.text != blank -%}
                           <h3 class="{% if block.settings.style == 'heading' %}h4{% else %}frete-section-title{% endif %}">
-                            {- block.settings.text | escape -}
+                            {{- block.settings.text | escape -}}
                           </h3>
                         {%- endif -%}
                       {%- when 'fbt' -%}
